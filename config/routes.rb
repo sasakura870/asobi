@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
 
+  resources :users, except: :new
+  get 'signup', to: 'users#new'
+
   root 'static_pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
