@@ -2,8 +2,13 @@ $background_color: #fdffc9;
 $header_color: #ffca99;
 $footer_color: #CBD980;
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background: $background_color;
+  font-size: 1.6rem;
 }
 
 .header {
@@ -29,10 +34,38 @@ body {
 
 .wrapper {
   margin: 30px auto 40px;
-  width: 970px;
+  width: 1000px;
+
+  .main {
+    display: block;
+    float: left;
+    width: 700px;
+  }
+
+  .sidemenu {
+    float: right;
+    width: 270px;
+  }
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
 .footer {
   width: 100%;
   background: $footer_color;
+}
+
+a {
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: whitesmoke;
+    text-decoration: none;
+  }
 }

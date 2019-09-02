@@ -9,6 +9,6 @@ html lang = 'ja'
     = stylesheet_pack_tag 'application', media: 'all'
   body
     = render partial: 'layouts/header'
-    .wrapper
+    .wrapper.clearfix
       = yield
     = render partial: 'layouts/footer'
