@@ -1,0 +1,38 @@
+$background_color: #fdffc9;
+$header_color: #ffca99;
+$footer_color: #CBD980;
+
+body {
+  background: $background_color;
+}
+
+.header {
+  width: 100%;
+  background: $header_color;
+
+  ul {
+    list-style: none;
+    text-align: right;
+
+    li {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      text-align: center;
+      background: skyblue;
+      color: white;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+  }
+}
+
+.wrapper {
+  margin: 30px auto 40px;
+  width: 970px;
+}
+
+.footer {
+  width: 100%;
+  background: $footer_color;
+}
