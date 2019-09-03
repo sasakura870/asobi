@@ -1,5 +1,21 @@
-= content_for(title: '新規登録')
+= content_for(:title, '新規登録')
 
 h1 Asobiへようこそ！
 p 新規登録してみんなと遊びをシェアしよう！
-p ここにフォームがくる
+= form_with model: @user, local: true do |f|
+  .input-form
+    = f.label :name
+    = f.text_field :name
+
+  .input-form
+    = f.label :email
+    = f.email_field :email
+
+  .input-form
+    = f.label :password
+    = f.password_field :password
+
+  .input-form
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  = f.submit '登録する'

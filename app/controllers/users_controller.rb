@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def new
     render layout: '/layouts/sessions'
+    @user = User.new
   end
 
   def show
