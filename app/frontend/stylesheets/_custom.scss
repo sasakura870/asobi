@@ -19,6 +19,17 @@ body {
   width: 100%;
   background: $header_color;
 
+  a {
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: whitesmoke;
+      text-decoration: none;
+    }
+  }
+
   ul {
     list-style: none;
     text-align: right;
@@ -65,16 +76,6 @@ body {
   background: $footer_color;
 }
 
-a {
-
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    color: whitesmoke;
-    text-decoration: none;
-  }
-}
 
 pre.debug_dump {
   margin: 10px 0px;
