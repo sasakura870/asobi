@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(name: params[:id])
   end
 
   def edit
@@ -18,9 +19,9 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = '登録に成功しました!'
-      redirect_to root_path
+      redirect_to user_path(@user.name)
     elsif
-      flash.now[:danger] = 'ユーザー名またはパスワードが違います'
+      flash.now[:danger] = '登録に失敗しました'
       render :new, layout: '/layouts/sessions'
     end
   end

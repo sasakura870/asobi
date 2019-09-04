@@ -1,0 +1,23 @@
+/ = form_with model: model, local: true do |f|
+- if local_assigns[:signup_flag].present?
+  .input-form
+    = f.label :name
+    = f.text_field :name
+
+.input-form
+  = f.label :email
+  = f.email_field :email
+
+.input-form
+  = f.label :password
+  = f.password_field :password
+
+- if local_assigns[:signup_flag].present?
+  .input-form
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+
+- if local_assigns[:signup_flag].present?
+  = f.submit '登録する'
+- else
+  = f.submit 'ログイン'
