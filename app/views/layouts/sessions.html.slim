@@ -10,3 +10,5 @@ html lang = 'ja'
   body
     .session-form
       = yield
+    - if Rails.env.development?
+      = debug(params)

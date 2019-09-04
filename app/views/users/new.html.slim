@@ -2,6 +2,8 @@
 
 h1 Asobiへようこそ！
 p 新規登録してみんなと遊びをシェアしよう！
+= render partial: 'shared/flash'
+= render partial: 'shared/error_messages', locals: { model: @user }
 = form_with model: @user, local: true do |f|
   .input-form
     = f.label :name

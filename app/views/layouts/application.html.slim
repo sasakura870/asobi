@@ -10,5 +10,8 @@ html lang = 'ja'
   body
     = render partial: 'shared/header'
     .wrapper.clearfix
+      = render partial: 'shared/flash'
       = yield
     = render partial: 'shared/footer'
+    - if Rails.env.development?
+      = debug(params)

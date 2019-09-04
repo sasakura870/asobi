@@ -12,6 +12,7 @@ html {
 body {
   background: $background_color;
   font-size: 1.6rem;
+  text-align: center;
 }
 
 .header {
@@ -73,4 +74,12 @@ a {
     color: whitesmoke;
     text-decoration: none;
   }
+}
+
+pre.debug_dump {
+  margin: 10px 0px;
+  padding: 5px;
+  border: 2px solid gray;
+  background: lightgray;
+  border-radius: 3px;
 }
