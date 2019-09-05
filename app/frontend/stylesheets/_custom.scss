@@ -16,8 +16,20 @@ body {
 }
 
 .header {
+  margin: 0px auto 20px;
+  padding: 5px auto;
   width: 100%;
   background: $header_color;
+
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: whitesmoke;
+      text-decoration: none;
+    }
+  }
 
   ul {
     list-style: none;
@@ -55,25 +67,16 @@ body {
 }
 
 .clearfix::after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
 
 .footer {
+  margin: 10px auto 0px;
+  padding: 5px auto;
   width: 100%;
   background: $footer_color;
-}
-
-a {
-
-  &:link,
-  &:visited,
-  &:hover,
-  &:active {
-    color: whitesmoke;
-    text-decoration: none;
-  }
 }
 
 pre.debug_dump {
