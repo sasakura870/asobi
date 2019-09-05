@@ -72,6 +72,16 @@ body {
   clear: both;
 }
 
+nav.pagination {
+  margin: 10px 0px;
+  display: inline-block;
+  span {
+    padding: 5px;
+    border: 0.5px gray solid;
+    color: darkblue;
+  }
+}
+
 .footer {
   margin: 10px auto 0px;
   padding: 5px auto;

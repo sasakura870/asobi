@@ -1,21 +1,21 @@
 ---
 ja:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: "バリデーションに失敗しました: %{errors}"
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
-    models:
-      user: ユーザー
-    attributes:
-      user:
-        name: ユーザーID
-        email: メールアドレス
-        introduction: 自己紹介
-        password: パスワード
-        password_confirmation: パスワード(確認用)
+  # activerecord:
+  #   errors:
+  #     messages:
+  #       record_invalid: "バリデーションに失敗しました: %{errors}"
+  #       restrict_dependent_destroy:
+  #         has_one: "%{record}が存在しているので削除できません"
+  #         has_many: "%{record}が存在しているので削除できません"
+  #   models:
+  #     user: ユーザー
+  #   attributes:
+  #     user:
+  #       name: ユーザーID
+  #       email: メールアドレス
+  #       introduction: 自己紹介
+  #       password: パスワード
+  #       password_confirmation: パスワード(確認用)
   date:
     abbr_day_names:
       - 日
