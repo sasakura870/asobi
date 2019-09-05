@@ -1,0 +1,4 @@
+li.user_media id="user_#{user.name}"
+  = link_to user.name, user_path(user.name)
+  - if user.introduction.present?
+    p = user.introduction
