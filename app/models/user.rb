@@ -11,7 +11,7 @@ class User < ApplicationRecord
                     uniqueness: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :introduction, length: { maximum: 140 }
-  validates :password, length: { minimum: 8, maximum: 16 }
+  validates :password, length: { minimum: 8, maximum: 16 }, allow_nil: true
 
   mount_uploaders :photo, PhotoUploader
 

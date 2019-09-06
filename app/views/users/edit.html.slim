@@ -1,2 +1,31 @@
-h1 Users#edit
-p Find me in app/views/users/edit.html.slim
+h1 ユーザー設定
+
+main.settings
+  = render partial: 'shared/error_messages', locals: { model: @user }
+  = form_with model: @user, local: true do |f|
+    = f.hidden_field :id
+
+    .input-form
+      = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'
+
+    / .input-form
+    /   = f.label :name
+    /   = f.text_field :name
+
+    / .input-form
+    /   = f.label :email
+    /   = f.email_field :email
+
+    .input-form
+      = f.label :introduction
+      = f.text_area :introduction
+
+    / .input-form
+    /   = f.label :password
+    /   = f.password_field :password
+
+    / .input-form
+    /   = f.label :password_confirmation
+    /   = f.password_field :password_confirmation
+
+    = f.submit '更新する'

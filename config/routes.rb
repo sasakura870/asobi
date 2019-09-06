@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
 
-  resources :users, except: :new
+  resources :users, except: %i[new edit]
   get 'signup', to: 'users#new'
+  get 'settings', to: 'users#edit'
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

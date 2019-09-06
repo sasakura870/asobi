@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: %i[edit]
   def index
     @users = User.page(params[:page])
   end
@@ -13,10 +14,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_create_params)
 
     if @user.save
       flash[:success] = '登録に成功しました!'
@@ -27,13 +29,33 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:user][:id])
+    if @user.update(user_update_params)
+      flash[:success] = '設定を更新しました'
+      redirect_to user_path(@user.name)
+    else
+      flash.now[:danger] = '設定の更新に失敗しました'
+      render :edit
+    end
+  end
+
   private
 
-  def user_params
+  def user_create_params
     params.require(:user).permit(:name,
                                  :email,
                                  :introduction,
                                  :password,
                                  :password_confirmation)
+  end
+
+  def user_update_params
+    params.require(:user).permit(:introduction,
+                                 :photo)
+  end
+
+  def logged_in_user
+    redirect_to login_path unless logged_in?
   end
 end
