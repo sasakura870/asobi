@@ -6,15 +6,16 @@ main.settings
     = f.hidden_field :id
 
     .input-form
+      = user_photo(@user, size: 100)
       = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'
 
-    / .input-form
-    /   = f.label :name
-    /   = f.text_field :name
+    .input-form
+      = f.label :name
+      = f.text_field :name
 
-    / .input-form
-    /   = f.label :email
-    /   = f.email_field :email
+    .input-form
+      = f.label :email
+      = f.email_field :email
 
     .input-form
       = f.label :introduction

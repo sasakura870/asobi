@@ -1,4 +1,9 @@
 li.user_media id="user_#{user.name}"
+  = user_photo(user)
+  / - if user.photo?
+  /   = image_tag user.photo.url
+  / - else
+  /   = image_pack_tag 'default_photo.png'
   = link_to user.name, user_path(user.name)
   - if user.introduction.present?
     p = user.introduction

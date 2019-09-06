@@ -13,7 +13,11 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 140 }
   validates :password, length: { minimum: 8, maximum: 16 }, allow_nil: true
 
-  mount_uploaders :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
+
+  # def photo_resize(size)
+  #   photo(resize: "#{size}x#{size}").process
+  # end
 
   private
 

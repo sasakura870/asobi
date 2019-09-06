@@ -3,6 +3,7 @@
 main.main
   h1 こんにちは、#{@user.name}さん!
 aside.sidemenu
+  = image_tag @user.photo.url if @user.photo?
   h1 = "@#{@user.name}"
   - unless @user.introduction.blank?
     p = @user.introduction
