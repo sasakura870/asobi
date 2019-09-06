@@ -17,6 +17,9 @@
 /storage/*
 !/storage/.keep
 
+# 開発環境でuploadしたファイル
+/public/uploads
+
 /public/assets
 .byebug_history
 
