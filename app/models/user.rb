@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 140 }
   validates :password, length: { minimum: 8, maximum: 16 }
 
+  mount_uploaders :photo, PhotoUploader
+
   private
 
   def downcase_email
