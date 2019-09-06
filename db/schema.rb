@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_002350) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
-    t.json "photo"
+    t.string "photo"
     t.index ["name"], name: "index_users_on_name"
   end
 
