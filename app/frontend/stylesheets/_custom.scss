@@ -22,6 +22,7 @@ body {
   background: $header_color;
 
   a {
+
     &:link,
     &:visited,
     &:hover,
@@ -75,6 +76,7 @@ body {
 nav.pagination {
   margin: 10px 0px;
   display: inline-block;
+
   span {
     padding: 5px;
     border: 0.5px gray solid;

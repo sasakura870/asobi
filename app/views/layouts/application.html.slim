@@ -9,7 +9,7 @@ html lang = 'ja'
     = stylesheet_pack_tag 'application', media: 'all'
   body
     = render partial: 'shared/header'
-    .wrapper.clearfix
+    .container
       = render partial: 'shared/flash'
       = yield
     = render partial: 'shared/footer'
