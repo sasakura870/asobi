@@ -1,3 +1,14 @@
-footer.footer
-  ul
-    li = link_to 'ユーザー一覧', users_path
+footer.nav.navbar-expand-lg.navbar-dark.bg-success
+  .container
+    ul.navbar-nav
+      li.nav-item
+        = link_to 'Asobiとは', about_path, class: 'nav-link'
+      li.nav-item
+        = link_to '利用規約', terms_path, class: 'nav-link'
+      li.nav-item
+        = link_to 'プライバシーポリシー', privacy_path, class: 'nav-link'
+      li.nav-item
+        = link_to 'ヘルプ', help_path, class: 'nav-link'
+      li.nav-item
+        = link_to 'ユーザー一覧', users_path, class: 'nav-link'
+    .text-center.text-light.py-2 Copyright © sasakura_870 2019

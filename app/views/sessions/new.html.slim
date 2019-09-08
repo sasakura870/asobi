@@ -1,6 +1,9 @@
 = content_for :title, 'ログイン'
 
-h1 ログイン
-= render partial: 'shared/flash'
-= form_with scope: :session, url: login_path, local: true do |f|
-  = render partial: 'shared/session/form', locals: { model: @user, f: f }
+.row
+  .col-md-4.offset-4
+    .card
+      h1.card-header ログイン
+      = render partial: 'shared/flash'
+      = form_with scope: :session, url: login_path, local: true do |f|
+        = render partial: 'shared/session/form', locals: { model: @user, f: f }

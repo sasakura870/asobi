@@ -15,10 +15,6 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  # def photo_resize(size)
-  #   photo(resize: "#{size}x#{size}").process
-  # end
-
   private
 
   def downcase_email

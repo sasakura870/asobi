@@ -1,7 +1,11 @@
-main.main
-  h1 Hello, World!
-  button.btn.btn-secondary type='button' title="こんにちは" data-toggle="tooltip" data-placement="top"
-    | Tooltip on top
-aside.sidemenu
-  p サイドメニュー
-  p = logged_in?
+.jumbotron.my-4
+  h1 Asobiへようこそ！！！
+  p 地元に伝わる遊び、いろんなゲームのローカルルール、自分で考えた「遊び」をみんなで共有しよう！
+main.row.text-center
+  .col-md-9
+    .row
+      - 10.times do
+        .col-md-4.col-sm-6.mb-4
+          = render partial: 'shared/media/article_card'
+  .col-md-3
+    .boarder-dark サイドメニュー

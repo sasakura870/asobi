@@ -1,32 +1,35 @@
-h1 ユーザー設定
+.row
+  .col-md-3
+    p サイドメニュー
 
-main.settings
-  = render partial: 'shared/error_messages', locals: { model: @user }
-  = form_with model: @user, local: true do |f|
-    = f.hidden_field :id
+  main.col-md-9
+    h1 ユーザー設定
+    = render partial: 'shared/error_messages', locals: { model: @user }
+    = form_with model: @user, local: true do |f|
+      = f.hidden_field :id
 
-    .input-form
-      = user_photo(@user, size: 100)
-      = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'
+      .form-group
+        = user_photo(@user, size: 100)
+        = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'
 
-    .input-form
-      = f.label :name
-      = f.text_field :name
+      .form-group
+        = f.label :name, class: 'form-label'
+        = f.text_field :name, class: 'form-control'
 
-    .input-form
-      = f.label :email
-      = f.email_field :email
+      .form-group
+        = f.label :email, class: 'form-label'
+        = f.email_field :email, class: 'form-control'
 
-    .input-form
-      = f.label :introduction
-      = f.text_area :introduction
+      .form-group
+        = f.label :introduction, class: 'form-label'
+        = f.text_area :introduction, class: 'form-control'
 
-    / .input-form
-    /   = f.label :password
-    /   = f.password_field :password
+      / .form-group
+      /   = f.label :password
+      /   = f.password_field :password
 
-    / .input-form
-    /   = f.label :password_confirmation
-    /   = f.password_field :password_confirmation
+      / .form-group
+      /   = f.label :password_confirmation
+      /   = f.password_field :password_confirmation
 
-    = f.submit '更新する'
+      = f.submit '更新する', class: 'btn btn-primary'

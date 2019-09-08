@@ -1,8 +1,13 @@
 = content_for(:title, '新規登録')
 
-h1 Asobiへようこそ！
-p 新規登録してみんなと遊びをシェアしよう！
-= render partial: 'shared/flash'
-= render partial: 'shared/error_messages', locals: { model: @user }
-= form_with model: @user, local: true do |f|
-  = render partial: 'shared/session/form', locals: { model: @user, signup_flag: true, f: f }
+.row
+  .col-md-4.offset-4
+    .card
+      .card-header
+        h1 Asobiへようこそ！
+        p 新規登録してみんなと遊びをシェアしよう！
+      .card-text
+        = render partial: 'shared/flash'
+        = render partial: 'shared/error_messages', locals: { model: @user }
+        = form_with model: @user, local: true do |f|
+          = render partial: 'shared/session/form', locals: { model: @user, signup_flag: true, f: f }
