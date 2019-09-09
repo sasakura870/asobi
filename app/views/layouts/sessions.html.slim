@@ -9,6 +9,7 @@ html lang = 'ja'
     = stylesheet_pack_tag 'application', media: 'all'
   body
     .container
+      h3.py-4 = link_to('Asobi', root_path, class: 'mark')
       = yield
     - if Rails.env.development?
       = debug(params)

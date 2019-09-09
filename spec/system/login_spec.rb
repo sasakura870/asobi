@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'ログイン画面' do
-  let(:main_user) { FactoryBot.create(:user) }
+  let(:main_user) { create(:user) }
 
   before do
     visit login_path
   end
 
   it '入力フォームが2つ存在する' do
-    expect(page).to have_css('div', class: 'input-form', count: 2)
+    expect(page).to have_css('input', class: 'form-control', count: 2)
   end
 
   describe 'ログイン' do

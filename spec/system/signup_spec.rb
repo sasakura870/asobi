@@ -6,11 +6,11 @@ RSpec.describe '新規登録画面' do
   end
 
   it '入力フォームが4つ存在する' do
-    expect(page).to have_css('div', class: 'input-form', count: 4)
+    expect(page).to have_css('input', class: 'form-control', count: 4)
   end
 
   describe '新規登録' do
-    let(:signup_user) { FactoryBot.build(:user) }
+    let(:signup_user) { build(:user) }
 
     before do
       fill_in 'user_name', with: signup_user.name
