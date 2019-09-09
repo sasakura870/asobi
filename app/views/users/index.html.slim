@@ -1,9 +1,9 @@
 = content_for(:title, 'ユーザー一覧')
 
-main.main
-  ul.user-list
-    - @users.each do |user|
-      = render partial: 'shared/media/user', locals: { user: user }
-  = paginate @users
-aside.sidemenu
+ul.list-group.list-group-flash.my-4
+  - @users.each do |user|
+    = render partial: 'shared/media/user', locals: { user: user }
+= paginate @users
+
+= content_for(:sidemenu) do
   h1 index

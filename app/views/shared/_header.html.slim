@@ -1,17 +1,23 @@
-header.header
-  = link_to('Asobi', root_path)
-  ul
-    li
-      = link_to('検索', '#')
-    li
-      = link_to('ユーザー検索', '#')
-    - if logged_in?
-      li
-        = link_to(current_user.name, user_path(current_user.name))
-      li
-        = link_to('ログアウト', logout_path, method: :delete)
-    -else
-      li
-        = link_to('新規登録', signup_path, class: 'btn btn-outline-light')
-      li
-        = link_to('ログイン', login_path)
+header.navbar.navbar-expand-lg.navbar-dark.bg-success
+  .container
+    = link_to('Asobi', root_path, class: 'navbar-brand')
+    button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbar_responsive" aria-controls="navbar_responsive" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbar_responsive
+      ul.navbar-nav.ml-auto
+        li.nav-item
+          = link_to('検索', '#', class: 'nav-link')
+        li.nav-item
+          = link_to('ユーザー検索', '#', class: 'nav-link')
+        - if logged_in?
+          li.nav-item.dropdown
+            a.nav-link.btn.btn-outline-light.dropdown-toggle#dropdown_profile data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href='#'
+              = current_user.name
+            .dropdown-menu aria-labelledby="dropdown_profile"
+              = link_to('マイページ', user_path(current_user.name), class: "dropdown-item")
+              = link_to('ログアウト', logout_path, class: "dropdown-item", method: :delete)
+        -else
+          li.nav-item
+            = link_to('新規登録', signup_path, class: 'btn btn-outline-light')
+          li.nav-item
+            = link_to('ログイン', login_path, class: 'nav-link')

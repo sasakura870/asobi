@@ -9,9 +9,14 @@ html lang = 'ja'
     = stylesheet_pack_tag 'application', media: 'all'
   body
     = render partial: 'shared/header'
-    .wrapper.clearfix
+    .container
       = render partial: 'shared/flash'
-      = yield
+      = yield(:jumbotron)
+      .row
+        main.col-md-9
+          = yield
+        aside.col-md-3
+          = yield(:sidemenu)
     = render partial: 'shared/footer'
     - if Rails.env.development?
       = debug(params)
