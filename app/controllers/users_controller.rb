@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[edit]
+
+  layout 'sessions', only: :new
+
   def index
     @users = User.page(params[:page])
   end
 
   def new
     @user = User.new
-    render layout: '/layouts/sessions'
+    # render layout: '/layouts/sessions'
   end
 
   def show
@@ -25,7 +28,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.name)
     elsif
       flash.now[:danger] = '登録に失敗しました'
-      render :new, layout: '/layouts/sessions'
+      render :new, layout: 'layouts/sessions'
     end
   end
 

@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_many :articles, dependent: :destroy
+
   validates :name, presence: true,
                    length: { maximum: 32 },
                    uniqueness: true,
