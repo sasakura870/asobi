@@ -8,7 +8,7 @@ RSpec.describe 'ログイン画面' do
   end
 
   it '入力フォームが2つ存在する' do
-    expect(page).to have_css('div', class: 'input-form', count: 2)
+    expect(page).to have_css('input', class: 'form-control', count: 2)
   end
 
   describe 'ログイン' do

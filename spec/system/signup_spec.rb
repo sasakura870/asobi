@@ -6,7 +6,7 @@ RSpec.describe '新規登録画面' do
   end
 
   it '入力フォームが4つ存在する' do
-    expect(page).to have_css('div', class: 'input-form', count: 4)
+    expect(page).to have_css('input', class: 'form-control', count: 4)
   end
 
   describe '新規登録' do

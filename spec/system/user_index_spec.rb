@@ -5,7 +5,7 @@ RSpec.describe 'ユーザー一覧画面' do
 
   before do
     70.times do |n|
-      create(:user_faker, name: "faker#{n}")
+      create(:user_faker, name: "faker#{n}", email: "faker#{n}@example.com")
     end
     visit users_path
   end
@@ -15,7 +15,7 @@ RSpec.describe 'ユーザー一覧画面' do
   end
 
   it 'ページネーションが存在する' do
-    expect(page).to have_css('nav', class: 'pagination', visible: false)
+    expect(page).to have_css('ul', class: 'pagination', visible: false)
   end
 
   context 'ユーザーメディア' do

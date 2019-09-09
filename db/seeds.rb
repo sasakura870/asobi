@@ -15,7 +15,7 @@ User.create!(name: 'naoyachan',
 99.times do |n|
   User.create!(name: "Faker-#{n}",
                email: Faker::Internet.email,
-               introduction: Faker::Lorem.sentence(5),
+               introduction: Faker::Lorem.sentence(word_count: 5),
                password: 'password',
                password_confirmation: 'password')
 end
