@@ -10,7 +10,7 @@ RSpec.describe '新規登録画面' do
   end
 
   describe '新規登録' do
-    let(:signup_user) { FactoryBot.build(:user) }
+    let(:signup_user) { build(:user) }
 
     before do
       fill_in 'user_name', with: signup_user.name

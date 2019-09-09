@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'ユーザー一覧画面' do
-  let!(:main_user) { FactoryBot.create(:user) }
+  let!(:main_user) { create(:user) }
 
   before do
     70.times do |n|
-      FactoryBot.create(:user_faker, name: "faker#{n}")
+      create(:user_faker, name: "faker#{n}")
     end
     visit users_path
   end

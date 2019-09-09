@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :article do
-    title { "MyString" }
-    overview { "MyString" }
-    content { "MyText" }
+    title { "testTitle" }
+    overview { "testOverview" }
+    content { Faker::Lorem.sentence(10) }
     posted { false }
-    thumbnail { "MyString" }
+    thumbnail { "" }
     user_id { "" }
   end
 end

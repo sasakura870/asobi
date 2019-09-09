@@ -1,19 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:main_user) { build(:user) }
+
   describe 'モデルの検証' do
-    let(:main_user) { FactoryBot.build(:user) }
-
-    it 'データベースへの登録が成功する' do
-      expect { main_user.save! }.to change { User.count }.by(1)
-    end
-
     shared_examples_for 'validationエラー' do
       it { expect(main_user).to_not be_valid }
     end
 
+    context '正常な値で登録する場合' do
+      it 'データベースへの登録が成功する' do
+        expect { main_user.save! }.to change { User.count }.by(1)
+      end
+    end
+
     describe 'name属性' do
-      context '値がnull' do
+      context '値がnullの場合' do
         before { main_user.name = nil }
         it_behaves_like 'validationエラー'
       end
@@ -24,7 +26,7 @@ RSpec.describe User, type: :model do
       end
 
       context '既に登録されているnameの場合' do
-        let!(:sub_user) { FactoryBot.create(:user) }
+        let!(:sub_user) { create(:user) }
         it_behaves_like 'validationエラー'
       end
     end
@@ -41,7 +43,7 @@ RSpec.describe User, type: :model do
       end
 
       context '既に登録されているemailの場合' do
-        let!(:sub_user) { FactoryBot.create(:user) }
+        let!(:sub_user) { create(:user) }
         it_behaves_like 'validationエラー'
       end
     end
@@ -68,9 +70,22 @@ RSpec.describe User, type: :model do
         it_behaves_like 'validationエラー'
       end
 
-      context 'passwordとpassword_confirmationの値が違うの場合' do
+      context 'passwordとpassword_confirmationが違う値の場合' do
         before { main_user.password_confirmation = 'badpassword' }
         it_behaves_like 'validationエラー'
+      end
+    end
+  end
+
+  describe 'メソッドの動作確認' do
+    context 'emailを大文字で登録した場合' do
+      before do
+        main_user.email.upcase!
+        main_user.save
+      end
+
+      it 'emailが小文字で登録される' do
+        expect(main_user.email).to_not match(/[A-Z]/)
       end
     end
   end
