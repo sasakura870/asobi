@@ -1,9 +1,11 @@
 .card-deck
   .card
-    = image_pack_tag 'article_default.png', size: '200x100', class: 'card-image-top'
     .card-body
       h4.card-title Title
-      p.card-text ここに概要が入ります
+      p.card-subtitle.text-muted ここに概要が入ります
+    = image_pack_tag 'article_default.png', class: 'card-image-top mx-auto w-100'
+    .card-body
       p.card-link タグも入ります
+      p.card-text.text-muted いいね数が入ります
+    .card-footer
       = link_to 'ここに作成者が入ります', '#', class: 'card-link'
-      p.card-text.text-secondary いいね数が入ります

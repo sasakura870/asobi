@@ -1,6 +1,6 @@
 = content_for(:title, 'ユーザー一覧')
 
-ul.list-group.list-group-flash.my-4
+ul.list-group.list-group-flash.mb-4
   - @users.each do |user|
     = render partial: 'shared/media/user', locals: { user: user }
 = paginate @users

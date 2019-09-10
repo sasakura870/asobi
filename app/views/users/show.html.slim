@@ -1,9 +1,14 @@
 = content_for(:title, @user.name)
 
-h1 こんにちは、#{@user.name}さん!
-
 = content_for(:sidemenu) do
-  = image_tag @user.photo.url if @user.photo?
+  = user_photo(@user, size: 200)
   h1 = "@#{@user.name}"
   - unless @user.introduction.blank?
+    hr
     p = @user.introduction
+
+h1 新着記事
+.row
+  - 10.times do
+    .col-md-4.col-sm-6.mb-4
+      = render partial: 'shared/media/article_card'

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[edit]
 
-  layout 'sessions', only: :new
+  layout :switch_layout
 
   def index
     @users = User.page(params[:page])
@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # render layout: '/layouts/sessions'
   end
 
   def show
@@ -28,7 +27,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.name)
     elsif
       flash.now[:danger] = '登録に失敗しました'
-      render :new, layout: 'layouts/sessions'
+      render :new, layout: 'sessions'
     end
   end
 
@@ -62,5 +61,12 @@ class UsersController < ApplicationController
 
   def logged_in_user
     redirect_to login_path unless logged_in?
+  end
+
+  def switch_layout
+    case action_name
+    when 'new' then 'sessions'
+    when 'show', 'edit' then 'left_sidemenu'
+    end
   end
 end

@@ -11,12 +11,11 @@ html lang = 'ja'
     = render partial: 'shared/header'
     .container.py-4
       = render partial: 'shared/flash'
-      = yield(:jumbotron)
       .row
-        main.col-md-9
-          = yield
         aside.col-md-3
           = yield(:sidemenu)
+        main.col-md-9
+          = yield
     = render partial: 'shared/footer'
     - if Rails.env.development?
       = debug(params)

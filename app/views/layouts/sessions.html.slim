@@ -8,7 +8,7 @@ html lang = 'ja'
     = javascript_pack_tag 'application'
     = stylesheet_pack_tag 'application', media: 'all'
   body
-    .container
+    .container.py-4
       h3.py-4 = link_to('Asobi', root_path, class: 'mark')
       = yield
     - if Rails.env.development?
