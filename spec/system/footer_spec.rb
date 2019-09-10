@@ -46,13 +46,23 @@ RSpec.describe 'footer' do
     end
   end
 
-  context 'ユーザー一覧リンク' do
-    it 'ユーザー一覧のリンクが存在する' do
-      within('footer') { expect(page).to have_css('a', text: 'ユーザー一覧') }
+  context 'ユーザーリンク' do
+    it 'ユーザーのリンクが存在する' do
+      within('footer') { expect(page).to have_css('a', text: 'ユーザー') }
     end
     it 'ユーザー一覧へ遷移する' do
-      within('footer') { click_on 'ユーザー一覧' }
+      within('footer') { click_on 'ユーザー' }
       expect(page).to have_title('ユーザー一覧')
+    end
+  end
+
+  context '記事リンク' do
+    it '記事のリンクが存在する' do
+      within('footer') { expect(page).to have_css('a', text: '記事') }
+    end
+    it '記事一覧へ遷移する' do
+      within('footer') { click_on '記事' }
+      expect(page).to have_title('記事一覧')
     end
   end
 end

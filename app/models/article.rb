@@ -5,4 +5,6 @@ class Article < ApplicationRecord
   validates :overview, length: { maximum: 140 }
   validates :content, presence: true
   validates :user_id, presence: true
+
+  mount_uploader :thumbnail, ThumbnailUploader
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[edit]
+  before_action :logged_in_user, only: %i[edit update destroy]
 
   layout :switch_layout
 
@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+
+  end
+
   private
 
   def user_create_params
@@ -59,9 +63,9 @@ class UsersController < ApplicationController
                                  :photo)
   end
 
-  def logged_in_user
-    redirect_to login_path unless logged_in?
-  end
+  # def logged_in_user
+  #   redirect_to login_path unless logged_in?
+  # end
 
   def switch_layout
     case action_name
