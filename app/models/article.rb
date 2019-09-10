@@ -7,4 +7,6 @@ class Article < ApplicationRecord
   validates :user_id, presence: true
 
   mount_uploader :thumbnail, ThumbnailUploader
+
+  scope :recent, -> { order(created_at: :desc) }
 end

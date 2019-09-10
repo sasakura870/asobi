@@ -19,3 +19,13 @@ User.create!(name: 'naoyachan',
                password: 'password',
                password_confirmation: 'password')
 end
+
+users = User.order(:created_at).take(10)
+5.times do |n|
+  users.each do |user|
+    user.articles.create!(title: "#{user.name}-#{n}",
+                          overview: Faker::Lorem.sentence,
+                          content: Faker::Lorem.sentence(word_count: 10),
+                          posted: true)
+  end
+end

@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @articles = Article.page(params[:page])
   end
 
   def about

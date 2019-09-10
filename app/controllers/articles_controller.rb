@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :logged_in_user, except: %i[index show]
 
   def index
-    @articles = Article.where(posted: true).page(params[:page])
+    @articles = Article.where(posted: true).recent.page(params[:page])
   end
 
   def new

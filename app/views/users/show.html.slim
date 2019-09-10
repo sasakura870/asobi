@@ -9,6 +9,8 @@
 
 h1 新着記事
 .row
-  - 10.times do
-    .col-md-4.col-sm-6.mb-4
-      = render partial: 'shared/media/article_card'
+  - if @articles.any?
+    - @articles.each do |article|
+      .col-md-4.col-sm-6.mb-4
+        = render partial: 'shared/media/article_card', locals: { article: article }
+= paginate @articles
