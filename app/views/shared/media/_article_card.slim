@@ -1,5 +1,5 @@
 .card-deck
-  .card
+  .card.shadow-sm
     .card-body
       h4.card-title = article.title
       - unless article.overview.nil?
@@ -9,4 +9,4 @@
       p.card-link タグも入ります
       p.card-text.text-muted いいね数が入ります
     .card-footer
-      = link_to article.user.name, user_path(article.user.name), class: 'card-link'
+      = link_to article.user.name, user_path(article.user), class: 'card-link'

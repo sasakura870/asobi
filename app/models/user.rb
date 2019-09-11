@@ -17,6 +17,10 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  def to_param
+    name
+  end
+
   private
 
   def downcase_email

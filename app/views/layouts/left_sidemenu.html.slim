@@ -1,12 +1,6 @@
 doctype html
 html lang = 'ja'
-  head
-    title = full_title(yield(:title))
-    meta charset = 'UTF-8'
-    = csrf_meta_tags
-    = csp_meta_tag
-    = javascript_pack_tag 'application'
-    = stylesheet_pack_tag 'application', media: 'all'
+  = render partial: 'shared/head'
   body
     = render partial: 'shared/header'
     .container.py-4

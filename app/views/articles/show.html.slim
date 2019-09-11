@@ -1,2 +1,12 @@
-h1 Articles#show
-p Find me in app/views/articles/show.html.slim
+= content_for(:title, @article.title)
+
+= content_for(:items) do
+  p アイコン
+
+p = @article.overview if @article.overview.present?
+h1 = @article.title
+
+p = @article.content
+
+= content_for(:sidemenu) do
+  p　サイドメニュー
