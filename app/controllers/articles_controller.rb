@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :logged_in_user, except: %i[index show]
 
+  layout 'article_show', only: :show
+
   def index
     @articles = Article.where(posted: true).recent.page(params[:page])
   end
@@ -12,6 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find_by(id_digest: params[:id])
   end
 
   def create

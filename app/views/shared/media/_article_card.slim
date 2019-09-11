@@ -1,7 +1,7 @@
 .card-deck
-  .card
+  .card.shadow-sm
     .card-body
-      h4.card-title = article.title
+      h4.card-title = link_to(article.title, article_path(article))
       - unless article.overview.nil?
         p.card-subtitle.text-muted = article.overview
     = image_pack_tag 'article_default.png', class: 'card-image-top mx-auto w-100'
@@ -9,4 +9,4 @@
       p.card-link タグも入ります
       p.card-text.text-muted いいね数が入ります
     .card-footer
-      = link_to article.user.name, user_path(article.user.name), class: 'card-link'
+      = link_to article.user.name, user_path(article.user), class: 'card-link'

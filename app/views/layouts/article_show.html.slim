@@ -5,9 +5,10 @@ html lang = 'ja'
     = render partial: 'shared/header'
     .container.py-4
       = render partial: 'shared/flash'
-      = yield(:jumbotron)
       .row
-        main.col-md-9
+        .col-md-1
+          = yield(:items)
+        main.col-md-8
           = yield
         aside.col-md-3
           = yield(:sidemenu)

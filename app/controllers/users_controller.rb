@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = '登録に成功しました!'
-      redirect_to user_path(@user.name)
+      redirect_to user_path(@user)
     elsif
       flash.now[:danger] = '登録に失敗しました'
       render :new, layout: 'sessions'
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user][:id])
     if @user.update(user_update_params)
       flash[:success] = '設定を更新しました'
-      redirect_to user_path(@user.name)
+      redirect_to user_path(@user)
     else
       flash.now[:danger] = '設定の更新に失敗しました'
       render :edit

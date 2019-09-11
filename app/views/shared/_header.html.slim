@@ -12,7 +12,7 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-success
           a.nav-link.btn.btn-outline-light.dropdown-toggle#dropdown_profile data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href='#'
             = current_user.name
           .dropdown-menu aria-labelledby="dropdown_profile"
-            = link_to('マイページ', user_path(current_user.name), class: "dropdown-item")
+            = link_to('マイページ', user_path(current_user), class: "dropdown-item")
             = link_to('設定', settings_path, class: 'dropdown-item')
             .dropdown-divider
             = link_to('ログアウト', logout_path, class: "dropdown-item", method: :delete)
