@@ -1,7 +1,7 @@
 .card-deck
   .card.shadow-sm
     .card-body
-      h4.card-title = article.title
+      h4.card-title = link_to(article.title, article_path(article))
       - unless article.overview.nil?
         p.card-subtitle.text-muted = article.overview
     = image_pack_tag 'article_default.png', class: 'card-image-top mx-auto w-100'

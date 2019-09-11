@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  after_save :create_id_digest
+
   belongs_to :user
 
   validates :title, presence: true, length: { maximum: 140 }
@@ -10,8 +12,16 @@ class Article < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
-  # Base64でハッシュ化されるため、URLに使えない
-  # def encrypt_id
-  #   Rails.application.message_verifier(ENV['ASOBI_ARTICLE_ID_VERIFIER_PASSWORD']).generate(id)
-  # end
+  def to_param
+    id_digest
+  end
+
+  private
+
+  def create_id_digest
+    if id_digest.nil?
+      new_digest = Digest::MD5.hexdigest(id.to_s)
+      update_column(:id_digest, new_digest)
+    end
+  end
 end
