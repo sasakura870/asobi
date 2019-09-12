@@ -4,7 +4,8 @@
       h4.card-title = link_to(article.title, article_path(article))
       - unless article.overview.nil?
         p.card-subtitle.text-muted = article.overview
-    = image_pack_tag 'article_default.png', class: 'card-image-top mx-auto w-100'
+    / = image_pack_tag 'article_default.png', class: 'card-image-top mx-auto w-100'
+    = set_thumbnail(article, contents: 'card')
     .card-body
       p.card-link タグも入ります
       p.card-text.text-muted いいね数が入ります

@@ -1,2 +1,17 @@
-h1 Articles#new
-p Find me in app/views/articles/new.html.slim
+= content_for(:title, '新規投稿')
+
+h1 新規投稿
+
+= form_with model: @article, local: true do |f|
+  .form-group
+    = f.label :title, class: 'form-label'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :overview, class: 'form-label'
+    = f.text_field :overview, class: 'form-control'
+  .form-group
+    = f.file_field :thumbnail, class: 'form-control'
+  .form-group
+    = f.rich_text_area :content
+  .form-group
+    = f.submit '投稿する', class: 'btn btn-primary'

@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -37,8 +37,8 @@ gem 'slim-rails'
 # paginate導入
 gem 'kaminari'
 
-# 画像アップロード用
-gem 'carrierwave'
+# 画像アップロード用(Active Storageに以降)
+# gem 'carrierwave'
 gem 'mini_magick'
 
 group :development, :test do

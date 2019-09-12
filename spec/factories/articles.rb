@@ -4,7 +4,7 @@ FactoryBot.define do
     overview { "testOverview" }
     content { Faker::Lorem.sentence(word_count: 10) }
     posted { false }
-    thumbnail { "" }
+    thumbnail { nil }
     user_id { "" }
   end
 end

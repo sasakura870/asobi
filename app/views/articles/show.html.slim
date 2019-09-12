@@ -5,8 +5,9 @@
 
 p = @article.overview if @article.overview.present?
 h1 = @article.title
+= set_thumbnail(@article, contents: 'article')
 
-p = @article.content
+p == @article.content
 
 = content_for(:sidemenu) do
   p　サイドメニュー
