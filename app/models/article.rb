@@ -5,10 +5,13 @@ class Article < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 140 }
   validates :overview, length: { maximum: 140 }
-  validates :content, presence: true
+  # validates :content, presence: true
   validates :user_id, presence: true
 
-  mount_uploader :thumbnail, ThumbnailUploader
+  # mount_uploader :thumbnail, ThumbnailUploader
+  has_one_attached :thumbnail
+
+  has_rich_text :content
 
   scope :recent, -> { order(created_at: :desc) }
 
