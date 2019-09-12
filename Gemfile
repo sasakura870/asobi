@@ -37,8 +37,8 @@ gem 'slim-rails'
 # paginate導入
 gem 'kaminari'
 
-# 画像アップロード用
-gem 'carrierwave'
+# 画像アップロード用(Active Storageに以降)
+# gem 'carrierwave'
 gem 'mini_magick'
 
 group :development, :test do

@@ -8,7 +8,6 @@ class Article < ApplicationRecord
   # validates :content, presence: true
   validates :user_id, presence: true
 
-  # mount_uploader :thumbnail, ThumbnailUploader
   has_one_attached :thumbnail
 
   has_rich_text :content

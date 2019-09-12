@@ -15,7 +15,8 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 140 }
   validates :password, length: { minimum: 8, maximum: 16 }, allow_nil: true
 
-  mount_uploader :photo, PhotoUploader
+  # mount_uploader :photo, PhotoUploader
+  has_one_attached :photo
 
   def to_param
     name

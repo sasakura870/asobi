@@ -5,7 +5,7 @@ RSpec.describe 'article#show' do
   let(:main_article) { main_user.articles.create(attributes_for(:article)) }
 
   before do
-    visit article_path(main_article.id)
+    visit article_path(main_article)
   end
 
   it 'タイトルに記事のタイトルが含まれる' do

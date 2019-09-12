@@ -6,11 +6,11 @@ RSpec.describe 'Header' do
   it 'ロゴが存在する' do
     within('header') { expect(page).to have_css('a', text: 'Asobi') }
   end
-  it '検索ボタンが存在する(仮)' do
-    within('header') { expect(page).to have_css('a', text: '検索') }
-  end
-  it 'ユーザー検索ボタンが存在する(仮)' do
-    within('header') { expect(page).to have_css('a', text: 'ユーザー検索') }
+  it '検索フォームが存在する' do
+    within('header') do
+      expect(page).to have_field('q')
+      expect(page).to have_button('検索')
+    end
   end
 
   describe 'ログインしている場合' do

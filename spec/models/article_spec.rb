@@ -35,13 +35,6 @@ RSpec.describe Article, type: :model do
       end
     end
 
-    describe 'content属性' do
-      context 'nilの場合' do
-        before { main_article.content = nil }
-        it_behaves_like 'validationエラー'
-      end
-    end
-
     describe 'user_id属性' do
       context 'nilの場合' do
         before { main_article.user_id = nil }
@@ -49,6 +42,7 @@ RSpec.describe Article, type: :model do
       end
     end
 
+    describe 'content属性'
     describe 'posted属性'
     describe 'thumbnail属性'
   end
