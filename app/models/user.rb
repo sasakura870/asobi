@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   has_secure_password
+  has_secure_password :remember, validations: false
 
   has_many :articles, dependent: :destroy
 
@@ -15,11 +16,19 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 140 }
   validates :password, length: { minimum: 8, maximum: 16 }, allow_nil: true
 
-  # mount_uploader :photo, PhotoUploader
   has_one_attached :photo
 
   def to_param
     name
+  end
+
+  def remember_me
+    self.remember = SecureRandom.urlsafe_base64
+    save
+  end
+
+  def forget_me
+    update_attribute(:remember_digest, nil)
   end
 
   private

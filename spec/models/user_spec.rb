@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:main_user) { build(:user) }
 
-  describe 'モデルの検証' do
+  describe 'validation' do
     shared_examples_for 'validationエラー' do
       it { expect(main_user).to_not be_valid }
     end
@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe 'name属性' do
+    describe 'name' do
       context '値がnullの場合' do
         before { main_user.name = nil }
         it_behaves_like 'validationエラー'
@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe 'email属性' do
+    describe 'email' do
       context '値がnullの場合' do
         before { main_user.email = nil }
         it_behaves_like 'validationエラー'
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe 'password属性' do
+    describe 'password' do
       context 'passwordがnullの場合' do
         before { main_user.password = nil }
         it_behaves_like 'validationエラー'
@@ -77,7 +77,11 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'メソッドの動作確認' do
+  # TODO .to_params
+  # TODO .remember_me
+  # TODO .forget_me
+
+  describe 'ロールバック' do
     context 'emailを大文字で登録した場合' do
       before do
         main_user.email.upcase!

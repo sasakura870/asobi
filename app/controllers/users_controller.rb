@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[edit update destroy]
+  before_action :filter_only_logged_in_users, only: %i[edit update destroy]
 
   layout :switch_layout
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = '登録に成功しました!'
       redirect_to user_path(@user)
-    elsif
+    else
       flash.now[:danger] = '登録に失敗しました'
       render :new, layout: 'sessions'
     end
@@ -63,10 +63,6 @@ class UsersController < ApplicationController
                                  :introduction,
                                  :photo)
   end
-
-  # def logged_in_user
-  #   redirect_to login_path unless logged_in?
-  # end
 
   def switch_layout
     case action_name

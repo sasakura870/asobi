@@ -5,4 +5,7 @@ RSpec.describe 'articles#index' do
 
   before do
   end
+
+  # TODO ページネーションがある
+  # TODO 記事へのリンクが表示されている
 end

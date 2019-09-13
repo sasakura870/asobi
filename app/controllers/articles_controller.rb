@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :logged_in_user, except: %i[index show]
+  before_action :filter_only_logged_in_users, except: %i[index show]
 
   layout 'article_show', only: :show
 

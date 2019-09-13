@@ -1,13 +1,15 @@
 require 'rails_helper'
 
+# TODO 全体的に描き直すべき?
 RSpec.describe 'footer' do
   before { visit root_path }
 
   it 'Copyrightが存在する' do
     within('footer') { expect(page).to have_content('Copyright') }
   end
+
   context 'Aboutリンク' do
-    it '「Asobiとは」のリンクが存在する' do
+    it 'About画面のリンクが存在する' do
       within('footer') { expect(page).to have_css('a', text: 'Asobiとは') }
     end
     it 'About画面へ遷移する' do

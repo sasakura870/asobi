@@ -1,4 +1,4 @@
-module UserMacros
+module Utilities
   def browser_login(user)
     visit login_path
     fill_in 'session_email', with: user.email

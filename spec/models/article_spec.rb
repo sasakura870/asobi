@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Article, type: :model do
   let(:main_user) { create(:user) }
 
-  describe 'モデルの検証' do
+  describe 'validation' do
     let(:main_article) { main_user.articles.build(attributes_for(:article)) }
 
     shared_examples_for 'validationエラー' do
@@ -16,7 +16,7 @@ RSpec.describe Article, type: :model do
       end
     end
 
-    describe 'title属性' do
+    describe 'title' do
       context 'nilの場合' do
         before { main_article.title = nil }
         it_behaves_like 'validationエラー'
@@ -28,24 +28,24 @@ RSpec.describe Article, type: :model do
       end
     end
 
-    describe 'overview属性' do
+    describe 'overview' do
       context '140字以上の場合' do
         before { main_article.overview = 'a' * 141 }
         it_behaves_like 'validationエラー'
       end
     end
 
-    describe 'user_id属性' do
+    describe 'user_id' do
       context 'nilの場合' do
         before { main_article.user_id = nil }
         it_behaves_like 'validationエラー'
       end
     end
 
-    describe 'content属性'
-    describe 'posted属性'
-    describe 'thumbnail属性'
+    describe 'content'
+    describe 'posted'
+    describe 'thumbnail'
   end
 
-  describe 'メソッドの動作確認'
+  # TODO describe '.to_param'
 end
