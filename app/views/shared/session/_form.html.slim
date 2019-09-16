@@ -2,27 +2,21 @@
   .form-group
     = f.label :name, class: 'form-label'
     = f.text_field :name, class: 'form-control'
-
 .form-group
   = f.label :email, class: 'form-label'
   = f.email_field :email, class: 'form-control'
-
 .form-group
   = f.label :password, class: 'form-label'
   = f.password_field :password, class: 'form-control'
-
 - if local_assigns[:signup_flag].present?
   .form-group
     = f.label :password_confirmation, class: 'form-label'
     = f.password_field :password_confirmation, class: 'form-control'
-
 - else
   .form-group.form-check
     = f.check_box :remember_check, class: 'form-check-input'
     = f.label :remember_check, 'ログイン状態を保持する', class: 'form-check-label'
-
 hr
-
 .form-group
   - if local_assigns[:signup_flag].present?
     = f.submit '登録する', class: 'btn btn-primary btn-block'

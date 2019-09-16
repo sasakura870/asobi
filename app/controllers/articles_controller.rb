@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
   layout 'article_show', only: :show
 
   def index
-    @articles = Article.where(posted: true).recent.page(params[:page])
+    @articles = Article.includes(:thumbnail_attachment, :user)
+                       .where(posted: true).recent.page(params[:page])
   end
 
   def new
@@ -20,6 +21,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.new(article_params)
+    @article.posted = (article_params[:posted] == '0')
 
     if @article.save
       flash[:success] = '投稿しました！'
