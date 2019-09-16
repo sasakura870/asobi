@@ -1,8 +1,9 @@
 header.navbar.navbar-expand-lg.navbar-dark.bg-success
   .container
     = link_to('Asobi', root_path, class: 'navbar-brand')
-    = form_with local: true, class: 'form-inline' do |f|
-      = f.text_field :q, placeholder: 'キーワードを入力', class: 'form-control mr-2'
+    / = form_with scope: :search, url: search_path, method: :get, local: true, class: 'form-inline' do |f|
+    = search_form_for @q, search_path, class: 'form-inline' do |f|
+      = f.search_field :q, placeholder: 'キーワードを入力', class: 'form-control mr-2'
       = f.submit '検索', class: 'btn btn-secondary'
     / ul.navbar-nav.mr-auto
       li.nav-item

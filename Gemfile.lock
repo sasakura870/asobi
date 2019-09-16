@@ -352,8 +352,6 @@ GEM
     parser (2.6.3.0)
       ast (~> 2.4.0)
     pg (1.1.4)
-    polyamorous (2.3.0)
-      activerecord (>= 5.0)
     public_suffix (3.1.1)
     puma (3.12.1)
     rack (2.0.7)
@@ -389,12 +387,6 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     rake (12.3.3)
-    ransack (2.3.0)
-      actionpack (>= 5.0)
-      activerecord (>= 5.0)
-      activesupport (>= 5.0)
-      i18n
-      polyamorous (= 2.3.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -557,7 +549,6 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 6.0.0)
-  ransack
   rspec-rails (~> 3.7)
   sass-rails (~> 5)
   selenium-webdriver

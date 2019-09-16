@@ -41,8 +41,8 @@ gem 'kaminari'
 # gem 'carrierwave'
 gem 'mini_magick'
 
-# 検索機能の導入
-gem 'ransack'
+# # 検索機能の導入(内部でform_forを使っていたため使用せず)
+# gem 'ransack'
 
 
 group :development, :test do
