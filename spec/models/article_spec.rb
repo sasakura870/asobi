@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   let(:main_user) { create(:user) }
+  let(:main_article) { main_user.articles.build(attributes_for(:article)) }
 
   describe 'validation' do
-    let(:main_article) { main_user.articles.build(attributes_for(:article)) }
-
     shared_examples_for 'validationエラー' do
       it { expect(main_article).to_not be_valid }
     end
@@ -47,5 +46,11 @@ RSpec.describe Article, type: :model do
     describe 'thumbnail'
   end
 
-  # TODO describe '.to_param'
+  describe 'メソッド' do
+    context '.to_param' do
+      it 'id_digestを返す' do
+        expect(main_article.to_param).to eq main_article.id_digest
+      end
+    end
+  end
 end

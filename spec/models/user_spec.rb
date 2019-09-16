@@ -77,11 +77,29 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # TODO .to_params
-  # TODO .remember_me
-  # TODO .forget_me
+  describe 'メソッド' do
+    context '.to_param' do
+      it 'nameの値を返す' do
+        expect(main_user.to_param).to eq main_user.name
+      end
+    end
 
-  describe 'ロールバック' do
+    context '.remember_me' do
+      before { main_user.remember_me }
+      it 'remember_digestに値が入る' do
+        expect(main_user.remember_digest).to be_present
+      end
+    end
+
+    context '.forget_me' do
+      before { main_user.forget_me }
+      it 'remember_digestにnilが入る' do
+        expect(main_user.remember_digest).to be nil
+      end
+    end
+  end
+
+  describe 'コールバック' do
     context 'emailを大文字で登録した場合' do
       before do
         main_user.email.upcase!
