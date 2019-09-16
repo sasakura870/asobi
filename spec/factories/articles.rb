@@ -1,10 +1,14 @@
 FactoryBot.define do
   factory :article do
-    title { "testTitle" }
-    overview { "testOverview" }
+    sequence(:title) { |n| "textTitle#{n}" }
+    # title { 'testTitle' }
+    overview { 'testOverview' }
     content { Faker::Lorem.sentence(word_count: 10) }
-    posted { false }
+    posted { true }
     thumbnail { nil }
-    user_id { "" }
+
+    trait :draft do
+      posted { false }
+    end
   end
 end

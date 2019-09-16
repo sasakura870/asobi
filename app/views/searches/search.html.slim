@@ -1,0 +1,11 @@
+= content_for(:title, "「#{@q}」の検索結果")
+
+h3 検索結果 : #{@articles.total_count}件
+- if @articles.any?
+  .row
+    - @articles.each do |article|
+      .col-md-4.col-sm-6.mb-4
+        = render partial: 'shared/media/article_card', locals: { article: article }
+  = paginate @articles
+- else
+  p 「#{@q}」に一致する記事は見つかりませんでした。

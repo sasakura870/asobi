@@ -4,7 +4,7 @@ RSpec.describe 'Header' do
   before { visit root_path }
 
   it 'ロゴが存在する' do
-    within('header') { expect(page).to have_css('a', text: 'Asobi') }
+    within('header') { expect(page).to have_link('Asobi') }
   end
   it '検索フォームが存在する' do
     within('header') do
@@ -13,12 +13,12 @@ RSpec.describe 'Header' do
     end
   end
 
-  describe 'ログインしている場合' do
+  describe 'ログイン中' do
     let(:main_user) { create(:user) }
     before { browser_login(main_user) }
 
     it 'ドロップダウンメニュー用のボタンが存在する' do
-      within('header') { expect(page).to have_css('a', text: main_user.name) }
+      within('header') { expect(page).to have_link(main_user.name) }
     end
 
     describe 'ドロップダウンメニュー' do
@@ -30,56 +30,35 @@ RSpec.describe 'Header' do
         expect(page).to have_css('div', class: 'dropdown-menu', visible: true)
       end
 
-      context 'マイページリンク' do
-        it 'マイページへのリンクが存在する' do
-          within('.dropdown-menu') do
-            expect(page).to have_css('a', text: 'マイページ')
-          end
-        end
-        it 'マイページへ遷移する' do
-          within('.dropdown-menu') do
-            click_on 'マイページ'
-            expect(page).to have_title(main_user.name)
-          end
+      it 'マイページへのリンクが存在する' do
+        within('.dropdown-menu') do
+          expect(page).to have_css('a', text: 'マイページ')
+          click_on 'マイページ'
+          expect(page).to have_title(main_user.name)
         end
       end
 
-      context 'ログアウトリンク' do
-        it 'ログアウトへのリンクが存在する' do
-          within('.dropdown-menu') do
-            expect(page).to have_css('a', text: 'ログアウト')
-          end
-        end
-        it 'ログアウトへ遷移する' do
-          within('.dropdown-menu') do
-            click_on 'ログアウト'
-          end
+      it 'ログアウトへのリンクが存在する' do
+        within('.dropdown-menu') do
+          expect(page).to have_css('a', text: 'ログアウト')
+          click_on 'ログアウト'
           expect(page).to have_css('div', class: 'alert-success')
         end
       end
     end
   end
 
-  describe 'ログインしていない場合' do
-    it '新規登録とログインが存在する' do
-      within 'header' do
-        expect(page).to have_css('a', text: '新規登録')
-        expect(page).to have_css('a', text: 'ログイン')
-      end
+  describe 'ログイン前' do
+    it '新規登録へのリンクが存在する' do
+      expect(page).to have_css('a', text: '新規登録')
+      click_on '新規登録'
+      expect(page).to have_title('新規登録')
     end
 
-    context '新規登録を押す' do
-      before { click_on '新規登録' }
-      it '新規登録画面へ遷移する' do
-        expect(page).to have_title('新規登録')
-      end
-    end
-
-    context 'ログインを押す' do
-      before { click_on 'ログイン' }
-      it 'ログイン画面へ遷移する' do
-        expect(page).to have_title('ログイン')
-      end
+    it 'ログイン画面へのリンクが存在する' do
+      expect(page).to have_link('ログイン')
+      click_on 'ログイン'
+      expect(page).to have_title('ログイン')
     end
   end
 end

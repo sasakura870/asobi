@@ -4,8 +4,8 @@ RSpec.describe 'user#index' do
   let!(:main_user) { create(:user) }
 
   before do
-    70.times do |n|
-      create(:user_faker, name: "faker#{n}", email: "faker#{n}@example.com")
+    70.times do
+      create(:user_faker)
     end
     visit users_path
   end

@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  before_action :filter_only_logged_in_users, only: :destroy
+  before_action :filter_except_logged_in_users, except: :destroy
+
   def new
     @user = User.new
   end
@@ -8,32 +11,50 @@ class SessionsController < ApplicationController
     if user&.authenticate(session_params[:password])
       # セッションを作成
       login user
+      # チェックが付いていればログイン状態を保持する
+      session_params[:remember_check] == '1' ? remember : forget
       flash[:success] = 'ログインしました'
       redirect_to root_path
-    elsif
+    else
       flash.now[:danger] = 'メールアドレスまたはパスワードが違います'
       render :new
     end
   end
 
   def destroy
-    logout if logged_in?
+    if logged_in?
+      forget
+      logout
+    end
     flash[:success] = 'ログアウトしました'
     redirect_to root_path
   end
 
   private
 
-  def session_params
-    params.require(:session).permit(:email, :password)
+  def filter_except_logged_in_users
+    redirect_to root_path if logged_in?
   end
 
-  def login(user)
-    session[:user_id] = user.id
+  def session_params
+    params.require(:session).permit(:email, :password, :remember_check)
+  end
+
+  def remember
+    expire = 1.month.from_now.utc
+    current_user.remember_me
+    cookies.signed[:user_id] = { value: current_user.id, expires: expire }
+    cookies[:remember] = { value: current_user.remember, expires: expire }
   end
 
   def logout
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  def forget
+    current_user.forget_me
+    cookies.delete(:user_id)
+    cookies.delete(:remember)
   end
 end

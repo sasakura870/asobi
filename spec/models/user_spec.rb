@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:main_user) { build(:user) }
 
-  describe 'モデルの検証' do
+  describe 'validation' do
     shared_examples_for 'validationエラー' do
       it { expect(main_user).to_not be_valid }
     end
@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe 'name属性' do
+    describe 'name' do
       context '値がnullの場合' do
         before { main_user.name = nil }
         it_behaves_like 'validationエラー'
@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe 'email属性' do
+    describe 'email' do
       context '値がnullの場合' do
         before { main_user.email = nil }
         it_behaves_like 'validationエラー'
@@ -48,7 +48,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe 'password属性' do
+    describe 'password' do
       context 'passwordがnullの場合' do
         before { main_user.password = nil }
         it_behaves_like 'validationエラー'
@@ -77,7 +77,29 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'メソッドの動作確認' do
+  describe 'メソッド' do
+    context '.to_param' do
+      it 'nameの値を返す' do
+        expect(main_user.to_param).to eq main_user.name
+      end
+    end
+
+    context '.remember_me' do
+      before { main_user.remember_me }
+      it 'remember_digestに値が入る' do
+        expect(main_user.remember_digest).to be_present
+      end
+    end
+
+    context '.forget_me' do
+      before { main_user.forget_me }
+      it 'remember_digestにnilが入る' do
+        expect(main_user.remember_digest).to be nil
+      end
+    end
+  end
+
+  describe 'コールバック' do
     context 'emailを大文字で登録した場合' do
       before do
         main_user.email.upcase!
