@@ -8,6 +8,8 @@ FactoryBot.define do
   end
 
   factory :user_faker, class: User do
+    # sequence(:name) { |n| "faker-#{n}" }
+    # sequence(:email) { |n| "fake#{n}@example.com"}
     name { 'fake' }
     email { 'fake@example.com' }
     introduction { Faker::Lorem.sentence(word_count: 5) }

@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :article do
+    # sequence(:title) { "textTitle#{n}" }
     title { 'testTitle' }
     overview { 'testOverview' }
     content { Faker::Lorem.sentence(word_count: 10) }

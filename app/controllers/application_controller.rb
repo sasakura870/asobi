@@ -3,11 +3,6 @@ class ApplicationController < ActionController::Base
 
   # private
 
-  def set_search
-    @q = Article.ransack(params[:q])
-    @result = @q.result
-  end
-
   def login(user)
     session[:user_id] = user.id
   end

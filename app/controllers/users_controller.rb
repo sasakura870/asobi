@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(name: params[:id])
-    @articles = @user.articles.recent.page(params[:page])
+    @articles = @user.articles.includes(:thumbnail_attachment)
+                              .recent.page(params[:page])
   end
 
   def edit

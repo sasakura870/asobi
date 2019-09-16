@@ -12,7 +12,10 @@ class Article < ApplicationRecord
 
   has_rich_text :content
 
+  scope :fair_copy, -> { where(posted: true) }
+  scope :draft, -> { where(posted: false) }
   scope :recent, -> { order(created_at: :desc) }
+  scope :search_title, ->(q) { where('title iLIKE ?', "%#{q}%") if q.present? }
 
   def to_param
     id_digest
