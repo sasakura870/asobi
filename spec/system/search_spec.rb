@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe '検索機能' do
   let(:main_user) { create(:user) }
   let(:sub_user) { create(:user_faker) }
-  let(:q) { 'test' }
+  let(:q) { 'text' }
 
   before do
-    # 10.times do |n|
-    #   main_user.articles.create(attributes_for(:article) { title: q + n.to_s } )
-    #   sub_user.articles.create(attributes_for(:article) { title: q + n.to_s } )
-    # end
+    20.times do
+      main_user.articles.create(attributes_for(:article))
+      sub_user.articles.create(attributes_for(:article))
+    end
     visit root_path
     within 'header' do
       fill_in 'search-text', with: q
@@ -25,12 +25,28 @@ RSpec.describe '検索機能' do
     count = Article.fair_copy.search_title(q).count
     expect(page).to have_content("#{count}件")
   end
-  # TODO 画面に検索にヒットした件数が表示される
 
-  # TODO 記事がヒットした場合
-    # TODO 入力した値が含まれる記事が表示される
-    # TODO 大文字小文字を無視する
+  it '入力した値が含まれる記事が表示される' do
+    within first('.card-deck') do
+      expect(page).to have_link(q)
+    end
+  end
 
-  # TODO 検索結果が0件の場合
-    # TODO 見つからなかった旨のテキストが表示される
+  it 'ページネーションが存在する' do
+    expect(page).to have_css('ul', class: 'pagination', visible: false)
+  end
+
+  context 'アルファベットを大文字で入力した場合' do
+    let(:q) { 'TEXT' }
+    it '大文字、小文字を無視して検索する' do
+      expect(page).to have_css('div', class: 'card-deck')
+    end
+  end
+
+  context '検索結果が0件の場合' do
+    let(:q) { 'badquery' }
+    it '見つからなかった旨のテキストが表示される' do
+      expect(page).to have_content('見つかりませんでした')
+    end
+  end
 end
