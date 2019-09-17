@@ -14,6 +14,8 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-success
             = link_to('マイページ', user_path(current_user), class: "dropdown-item")
             = link_to('設定', settings_path, class: 'dropdown-item')
             .dropdown-divider
+            = link_to('下書き一覧', drafts_path, class: 'dropdown-item')
+            .dropdown-divider
             = link_to('ログアウト', logout_path, class: "dropdown-item", method: :delete)
       -else
         li.nav-item

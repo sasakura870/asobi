@@ -1,11 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :filter_only_logged_in_users, except: %i[index show]
+  before_action :filter_drafts_over_10, only: :new
 
   layout 'article_show', only: :show
 
   def index
     @articles = Article.includes(:thumbnail_attachment, :user)
-                       .where(posted: true).recent.page(params[:page])
+                       .fair_copy.recent.page(params[:page])
   end
 
   def new
@@ -20,7 +21,7 @@ class ArticlesController < ApplicationController
   end
 
   def drafts
-    @articles = Article.draft.recent
+    @articles = current_user.articles.draft.recent
   end
 
   def create
@@ -50,5 +51,12 @@ class ArticlesController < ApplicationController
                                     :thumbnail,
                                     :content,
                                     :posted)
+  end
+
+  def filter_drafts_over_10
+    if current_user&.articles.draft.count >= 10
+      flash[:warning] = '下書きが多すぎます'
+      redirect_to drafts_path
+    end
   end
 end
