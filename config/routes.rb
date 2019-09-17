@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'settings', to: 'users#edit'
 
   resources :articles
+  get 'drafts', to: 'articles#drafts'
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

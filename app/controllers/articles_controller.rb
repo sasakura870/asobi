@@ -19,6 +19,10 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(id_digest: params[:id])
   end
 
+  def drafts
+    @articles = Article.draft.recent
+  end
+
   def create
     @article = current_user.articles.new(article_params)
     @article.posted = (article_params[:posted] == '0')

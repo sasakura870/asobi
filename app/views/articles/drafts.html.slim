@@ -1,0 +1,7 @@
+= content_for(:title, '下書き一覧')
+
+- if @articles.any?
+  - @articles.each do |article|
+    p = article.title
+- else
+  p 下書きはありません
