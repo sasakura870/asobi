@@ -1,0 +1,16 @@
+= content_for(:title, '下書き一覧')
+
+h1 下書き一覧(#{@articles.count}/10件)
+table.table.table-hover
+  - if @articles.any?
+    thead
+      tr
+        th #
+        th タイトル
+    - @articles.each_with_index do |article, i|
+      tr
+        th = i + 1
+        td = link_to(article.title, edit_article_path(article))
+        td = link_to('削除', '#', class: 'btn btn-danger')
+  - else
+    th 下書きはありません

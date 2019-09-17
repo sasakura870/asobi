@@ -13,5 +13,8 @@ h1 新規投稿
     = f.file_field :thumbnail, class: 'form-control'
   .form-group
     = f.rich_text_area :content
-  .form-group
+  .form-group.form-check
+    = f.check_box :posted, class: 'form-check-input'
+    = f.label :posted, '下書きに保存する', class: 'form-check-label'
+  .form-group.btn-group
     = f.submit '投稿する', class: 'btn btn-primary'
