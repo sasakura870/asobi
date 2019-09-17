@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = current_user.articles.find_by(id_digest: params[:id])
   end
 
   def show
@@ -26,10 +27,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.new(article_params)
-    @article.posted = (article_params[:posted] == '0')
+    # @article.posted = (article_params[:posted] == '0')
 
     if @article.save
-      flash[:success] = '投稿しました！'
+      flash[:success] = @article.posted ? '投稿しました！' : '下書きに保存しました'
       redirect_to article_path(@article)
     else
       flash.now[:danger] = '入力に不備があります'
@@ -38,6 +39,14 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = current_user.articles.find_by(id_digest: params[:article][:id_digest])
+    if @article.update(article_params)
+      flash[:success] = @article.posted ? '投稿しました！' : '下書きに保存しました'
+      redirect_to article_path(@article)
+    else
+      flash.now[:danger] = '入力に不備があります'
+      render :edit
+    end
   end
 
   def destroy
@@ -46,15 +55,17 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title,
-                                    :overview,
-                                    :thumbnail,
-                                    :content,
-                                    :posted)
+    result = params.require(:article).permit(:title,
+                                             :overview,
+                                             :thumbnail,
+                                             :content,
+                                             :posted)
+    result[:posted] = (result[:posted] == '0')
+    result
   end
 
   def filter_drafts_over_10
-    if current_user&.articles.draft.count >= 10
+    if current_user.articles.draft.count >= 10
       flash[:warning] = '下書きが多すぎます'
       redirect_to drafts_path
     end

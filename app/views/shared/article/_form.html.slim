@@ -1,0 +1,18 @@
+= form_with model: article, local: true do |f|
+  - if article.id_digest.present?
+    = f.hidden_field :id_digest, value: article.id_digest
+  .form-group
+    = f.label :title, class: 'form-label'
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :overview, class: 'form-label'
+    = f.text_field :overview, class: 'form-control'
+  .form-group
+    = f.file_field :thumbnail, class: 'form-control'
+  .form-group
+    = f.rich_text_area :content
+  .form-group.form-check
+    = f.check_box :posted, class: 'form-check-input'
+    = f.label :posted, '下書きに保存する', class: 'form-check-label'
+  .form-group.btn-group
+    = f.submit '投稿する', class: 'btn btn-primary'
