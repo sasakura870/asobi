@@ -2,7 +2,7 @@ doctype html
 html lang = 'ja'
   = render partial: 'shared/head'
   body
-    .container.py-4
+    .container.container-width-custom.py-4
       h3.py-4 = link_to('Asobi', root_path, class: 'mark')
       = yield
     - if Rails.env.development?

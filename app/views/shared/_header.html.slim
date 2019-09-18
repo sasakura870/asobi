@@ -1,12 +1,15 @@
-header.navbar.navbar-expand-lg.navbar-dark.bg-success
-  .container
+header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
+  .container.container-width-custom
     = link_to('Asobi', root_path, class: 'navbar-brand')
-    = form_with url: search_path, method: :get, local: true, class: 'form-inline' do |f|
-      = f.search_field :q, placeholder: 'キーワードを入力', id: 'search-text', class: 'form-control mr-2'
-    ul.navbar-nav.ml-auto
+    = form_with url: search_path, method: :get, local: true, class: 'form-inline mr-auto pl-4' do |f|
+      .input-group
+        .input-group-prepend
+          .input-group-text @
+        = f.search_field :q, placeholder: 'キーワードを入力', id: 'search-text', class: 'form-control mr-2'
+    ul.navbar-nav
       - if logged_in?
         li.nav-item
-          = link_to('投稿する', new_article_path, class: 'nav-link btn btn-primary mr-4')
+          = link_to('投稿する', new_article_path, class: 'btn btn-primary mr-4')
         li.nav-item.dropdown
           a.nav-link.btn.btn-outline-light.dropdown-toggle#dropdown_profile data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href='#'
             = current_user.name
@@ -20,5 +23,5 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-success
       -else
         li.nav-item
           = link_to('新規登録', signup_path, class: 'btn btn-outline-light')
-        li.nav-item
-          = link_to('ログイン', login_path, class: 'nav-link')
+        li.nav-item.pl-4
+          = link_to('ログイン', login_path, class: 'nav-link text-white')
