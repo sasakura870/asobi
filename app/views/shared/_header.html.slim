@@ -4,7 +4,8 @@ header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
     = form_with url: search_path, method: :get, local: true, class: 'form-inline mr-auto pl-4' do |f|
       .input-group
         .input-group-prepend
-          .input-group-text @
+          .input-group-text
+            i.fas.fa-search
         = f.search_field :q, placeholder: 'キーワードを入力', id: 'search-text', class: 'form-control mr-2'
     ul.navbar-nav
       - if logged_in?

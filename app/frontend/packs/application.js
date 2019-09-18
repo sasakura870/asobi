@@ -18,5 +18,10 @@ const images = require.context("../images", true);
 // const imagePath = (name) => images(name, true)
 
 import "bootstrap";
+import '@fortawesome/fontawesome-free/js/all'
 import "../stylesheets/application";
 import "../javascripts/application"
+
+// fontawesome.library.add(faSolid, faRegular, faBrands)
+
+// fontawesome.dom.i2svg()
