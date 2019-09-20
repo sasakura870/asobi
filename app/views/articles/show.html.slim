@@ -5,7 +5,7 @@
 
 p = @article.overview if @article.overview.present?
 h1 = @article.title
-= set_thumbnail(@article, contents: 'article')
+= set_thumbnail(@article, class_name: 'mx-auto w-90')
 
 p == @article.content
 

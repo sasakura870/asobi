@@ -1,6 +1,11 @@
 class StaticPagesController < ApplicationController
   def home
-    @articles = Article.includes(:user, :thumbnail_attachment).page(params[:page])
+    @daily_articles = Article.includes(:user, :thumbnail_attachment)
+                             .recent.take(3)
+    @weekly_articles = Article.includes(:user, :thumbnail_attachment)
+                              .take(3)
+    @recommended_articles = Article.includes(:user, :thumbnail_attachment)
+                                   .recent.take(5)
   end
 
   def about

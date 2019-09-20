@@ -2,7 +2,7 @@
 
 ul.list-group.list-group-flash.mb-4
   - @users.each do |user|
-    = render partial: 'shared/media/user', locals: { user: user }
+    = render partial: 'shared/component/user', locals: { user: user }
 = paginate @users
 
 = content_for(:sidemenu) do

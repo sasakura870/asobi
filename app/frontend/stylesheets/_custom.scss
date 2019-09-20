@@ -19,6 +19,26 @@ $max-width-size: 1200px;
   max-width: $max-width-size
 }
 
+.link-underline:hover {
+  text-decoration: underline;
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.text-gold {
+  color: gold;
+}
+
+.text-silver {
+  color: silver;
+}
+
+.text-copper {
+  color: sienna;
+}
+
 pre.debug_dump {
   max-width: 1200px;
   text-align: left;

@@ -23,6 +23,6 @@ header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
             = link_to('ログアウト', logout_path, class: "dropdown-item", method: :delete)
       -else
         li.nav-item
-          = link_to('新規登録', signup_path, class: 'btn btn-outline-light')
+          = link_to('新規登録', signup_path, class: 'btn btn-raised btn-outline-light')
         li.nav-item.pl-4
-          = link_to('ログイン', login_path, class: 'nav-link text-white')
+          = link_to('ログイン', login_path, class: 'nav-link link-underline')
