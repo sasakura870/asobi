@@ -10,7 +10,9 @@ header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
     ul.navbar-nav
       - if logged_in?
         li.nav-item
-          = link_to('投稿する', new_article_path, class: 'btn btn-primary mr-4')
+          = link_to( new_article_path, class: 'btn btn-dark-tone mr-4')
+            i.fas.fa-pen.fa-fw
+            span 投稿する
         li.nav-item.dropdown
           a.nav-link.btn.btn-outline-light.dropdown-toggle#dropdown_profile data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href='#'
             = current_user.name

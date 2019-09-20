@@ -1,6 +1,6 @@
-$background_color: #F9ED69;
-$header_color: #F08A5D;
-$footer_color: #F08A5D;
+// $background_color: #F9ED69;
+// $header_color: #F08A5D;
+// $footer_color: #F08A5D;
 $max-width-size: 1200px;
 
 .bgcolor-bg {
@@ -24,7 +24,7 @@ $max-width-size: 1200px;
 }
 
 .w-90 {
-  width: 90%;
+  width: 90% !important;
 }
 
 .text-gold {
