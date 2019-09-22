@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   layout 'article_show', only: :show
 
   def index
-    @articles = Article.includes(:thumbnail_attachment, :user)
+    @articles = Article.includes(thumbnail_attachment: :blob, user: :photo_attachment)
                        .fair_copy.recent.page(params[:page])
   end
 

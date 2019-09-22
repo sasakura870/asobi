@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   layout :switch_layout
 
   def index
-    @users = User.page(params[:page])
+    @users = User.includes(:photo_attachment).page(params[:page])
   end
 
   def new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(name: params[:id])
-    @articles = @user.articles.includes(:thumbnail_attachment)
+    @articles = @user.articles.includes(thumbnail_attachment: :blob)
                               .recent.page(params[:page])
   end
 

@@ -8,11 +8,12 @@
             p 地元に伝わる遊び、いろんなゲームのローカルルール、自分で考えた「遊び」をみんなで共有しよう！
           .col-md-7
             h4 ここにスライドショーが入ります。
-            button.btn.peach-gradient テスト
 
 = render partial: 'shared/component/3column_articles', locals: { articles: @daily_articles, content_title: 'デイリーランキング', ranking: true }
 = render partial: 'shared/component/3column_articles', locals: { articles: @weekly_articles, content_title: 'ウィークリーランキング', ranking: true }
 
 = content_for(:sidemenu) do
+  - if logged_in?
+    = render partial: 'shared/component/user_profile', locals: { user: current_user }
   = render partial: 'shared/component/capsule_toys'
   = render partial: 'shared/component/mini_article_list', locals: { articles: @recommended_articles, content_title: 'オススメの遊び' }
