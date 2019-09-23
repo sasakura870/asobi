@@ -14,8 +14,8 @@ class Article < ApplicationRecord
 
   has_rich_text :content
 
-  scope :fair_copy, -> { where(posted: true) }
-  scope :draft, -> { where(posted: false) }
+  scope :posts, -> { where(posted: true) }
+  scope :drafts, -> { where(posted: false) }
   scope :recent, -> { order(updated_at: :desc) }
   scope :search_title, ->(q) { where('title iLIKE ?', "%#{q}%") if q.present? }
 

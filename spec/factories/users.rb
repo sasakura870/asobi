@@ -1,19 +1,25 @@
 FactoryBot.define do
   factory :user do
-    name { 'TestUser' }
-    email { 'test@sample.com' }
-    introduction { 'MyText' }
-    password { 'password' }
-    password_confirmation { 'password' }
-  end
-
-  factory :user_faker, class: User do
     sequence(:name) { |n| "faker-#{n}" }
-    sequence(:email) { |n| "fake#{n}@example.com"}
-    # name { 'fake' }
-    # email { 'fake@example.com' }
+    sequence(:email) { |n| "fake#{n}@example.com" }
     introduction { Faker::Lorem.sentence(word_count: 5) }
     password { 'password' }
     password_confirmation { 'password' }
+
+    trait :with_articles do
+      transient do
+        post_count { 5 }
+        draft_count { 0 }
+      end
+
+      after(:create) do |user, evaluator|
+        evaluator.post_count.times do
+          user.articles.create(attributes_for(:article))
+        end
+        evaluator.draft_count.times do
+          user.articles.create(attributes_for(:article, :draft))
+        end
+      end
+    end
   end
 end

@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.includes(thumbnail_attachment: :blob, user: :photo_attachment)
-                       .fair_copy.recent.page(params[:page])
+                       .posts.recent.page(params[:page])
   end
 
   def new
@@ -22,12 +22,11 @@ class ArticlesController < ApplicationController
   end
 
   def drafts
-    @articles = current_user.articles.draft.recent
+    @articles = current_user.articles.drafts.recent
   end
 
   def create
     @article = current_user.articles.new(article_params)
-    # @article.posted = (article_params[:posted] == '0')
 
     if @article.save
       flash[:success] = @article.posted ? '投稿しました！' : '下書きに保存しました'
@@ -65,7 +64,7 @@ class ArticlesController < ApplicationController
   end
 
   def filter_drafts_over_10
-    if current_user.articles.draft.count >= 10
+    if current_user.articles.drafts.count >= 10
       flash[:warning] = '下書きが多すぎます'
       redirect_to drafts_path
     end
