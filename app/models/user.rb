@@ -33,6 +33,10 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  def already_favorite?(article)
+    favorites.exists?(article_id: article.id)
+  end
+
   private
 
   def downcase_email

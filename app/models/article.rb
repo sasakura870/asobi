@@ -23,6 +23,10 @@ class Article < ApplicationRecord
     id_digest
   end
 
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+
   private
 
   def create_id_digest
