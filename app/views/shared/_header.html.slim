@@ -1,15 +1,21 @@
-header.navbar.navbar-expand-lg.navbar-dark.bg-success
-  .container
-    = link_to('Asobi', root_path, class: 'navbar-brand')
-    = form_with url: search_path, method: :get, local: true, class: 'form-inline' do |f|
-      = f.search_field :q, placeholder: 'キーワードを入力', id: 'search-text', class: 'form-control mr-2'
-    ul.navbar-nav.ml-auto
+header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
+  .container.container-width-custom
+    = link_to('Asobi', root_path, class: 'navbar-brand mr-4')
+    = form_with url: search_path, method: :get, local: true, class: 'form-inline mr-auto' do |f|
+      .input-group
+        .input-group-prepend
+          .input-group-text
+            i.fas.fa-search
+        = f.search_field :q, placeholder: 'キーワードを入力', id: 'search-text', class: 'form-control mr-2'
+    ul.navbar-nav
       - if logged_in?
         li.nav-item
-          = link_to('投稿する', new_article_path, class: 'nav-link btn btn-primary mr-4')
+          = link_to(new_article_path, class: 'btn btn-dark-tone mr-4')
+            i.fas.fa-pen.fa-fw
+            | 投稿する
         li.nav-item.dropdown
-          a.nav-link.btn.btn-outline-light.dropdown-toggle#dropdown_profile data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href='#'
-            = current_user.name
+          a.nav-link.dropdown-toggle#dropdown_profile data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href='#'
+            = user_photo current_user, size: 35
           .dropdown-menu aria-labelledby="dropdown_profile"
             = link_to('マイページ', user_path(current_user), class: "dropdown-item")
             = link_to('設定', settings_path, class: 'dropdown-item')
@@ -18,7 +24,7 @@ header.navbar.navbar-expand-lg.navbar-dark.bg-success
             .dropdown-divider
             = link_to('ログアウト', logout_path, class: "dropdown-item", method: :delete)
       -else
+        li.nav-item.mr-4
+          = link_to('新規登録', signup_path, class: 'btn btn-raised btn-outline-light')
         li.nav-item
-          = link_to('新規登録', signup_path, class: 'btn btn-outline-light')
-        li.nav-item
-          = link_to('ログイン', login_path, class: 'nav-link')
+          = link_to('ログイン', login_path, class: 'nav-link link-underline')

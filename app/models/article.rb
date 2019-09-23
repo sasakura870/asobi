@@ -14,7 +14,7 @@ class Article < ApplicationRecord
 
   scope :fair_copy, -> { where(posted: true) }
   scope :draft, -> { where(posted: false) }
-  scope :recent, -> { order(created_at: :desc) }
+  scope :recent, -> { order(updated_at: :desc) }
   scope :search_title, ->(q) { where('title iLIKE ?', "%#{q}%") if q.present? }
 
   def to_param

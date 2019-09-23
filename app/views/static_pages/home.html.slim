@@ -1,15 +1,19 @@
-= content_for(:jumbotron) do
-  .jumbotron
-    h1 Asobiへようこそ！！！
-    = link_to 'Asobi', '#'
-    p 地元に伝わる遊び、いろんなゲームのローカルルール、自分で考えた「遊び」をみんなで共有しよう！
+- unless logged_in?
+  = content_for(:jumbotron) do
+    .jumbotron.jumbotron-fluid.bgcolor-header.text-white
+      .container
+        .row
+          .col-md-5
+            h1 遊び足りない！！！
+            p 地元に伝わる遊び、いろんなゲームのローカルルール、自分で考えた「遊び」をみんなで共有しよう！
+          .col-md-7
+            h4 ここにスライドショーが入ります。
 
-.row
-  - if @articles.any?
-    - @articles.each do |article|
-      .col-md-4.col-sm-6.mb-4
-        = render partial: 'shared/media/article_card', locals: { article: article }
-= paginate @articles
+= render partial: 'shared/component/3column_articles', locals: { articles: @daily_articles, content_title: 'デイリーランキング', ranking: true }
+= render partial: 'shared/component/3column_articles', locals: { articles: @weekly_articles, content_title: 'ウィークリーランキング', ranking: true }
 
 = content_for(:sidemenu) do
-  .boarder-dark サイドメニュー
+  - if logged_in?
+    = render partial: 'shared/component/user_profile', locals: { user: current_user }
+  = render partial: 'shared/component/capsule_toys'
+  = render partial: 'shared/component/mini_article_list', locals: { articles: @recommended_articles, content_title: 'オススメの遊び' }

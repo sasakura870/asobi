@@ -1,4 +1,8 @@
-// @import "~bootstrap/scss/bootstrap";
-@import '~bootstrap/dist/css/bootstrap';
-@import "./_custom";
-@import "./actiontext"
+// @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-material-design/scss/bootstrap-material-design';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import "./actiontext";
+
+@import "./valiables";
+@import "./custom";
+@import "./custom_button";

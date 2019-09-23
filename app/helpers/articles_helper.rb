@@ -1,15 +1,16 @@
 module ArticlesHelper
-  def set_thumbnail(article, contents: 'article')
-    class_name = 'card-image-top mx-auto w-100'
-    case contents
-    when 'card' then class_name = 'card-image-top mx-auto w-100'
-    else class_name = 'mx-auto w-100'
-    end
-
+  def set_thumbnail(article, class_name: 'article')
     if article.thumbnail.attached?
       image_tag article.thumbnail, class: class_name
     else
       image_pack_tag 'article_default.png', class: class_name
+    end
+  end
+
+  def set_user_link(user, size: 25, class_name: '')
+    link_to user_path(user), class: class_name do
+      user_photo(user, size: size) +
+        content_tag(:span, "@#{user.name}")
     end
   end
 end

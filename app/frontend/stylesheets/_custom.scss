@@ -1,98 +1,48 @@
-// // $background_color: #fdffc9;
-// // $header_color: #ffca99;
-// // $footer_color: #CBD980;
-// $background_color: white;
-// $header_color: lightgray;
-// $footer_color: lightgray;
+// $background_color: #F9ED69;
+// $header_color: #F08A5D;
+// $footer_color: #F08A5D;
+$max-width-size: 1200px;
 
-// html {
-//   font-size: 62.5%;
-// }
+.bgcolor-bg {
+  background: $background_color;
+}
 
-// body {
-//   background: $background_color;
-//   font-size: 1.6rem;
-//   text-align: center;
-// }
+.bgcolor-header {
+  background: $header_color;
+}
 
-// .header {
-//   margin: 0px auto 20px;
-//   padding: 5px auto;
-//   width: 100%;
-//   background: $header_color;
+.bgcolor-footer {
+  background: $footer_color;
+}
 
-//   a {
+.container-width-custom {
+  max-width: $max-width-size
+}
 
-//     &:link,
-//     &:visited,
-//     &:hover,
-//     &:active {
-//       color: whitesmoke;
-//       text-decoration: none;
-//     }
-//   }
+.link-underline:hover {
+  text-decoration: underline;
+}
 
-//   ul {
-//     list-style: none;
-//     text-align: right;
+.w-90 {
+  width: 90% !important;
+}
 
-//     li {
-//       display: inline-block;
-//       margin: 10px;
-//       padding: 10px;
-//       text-align: center;
-//       background: skyblue;
-//       color: white;
-//       font-weight: bold;
-//       border-radius: 3px;
-//     }
-//   }
-// }
+.text-gold {
+  color: gold;
+}
 
-// .wrapper {
-//   margin: 30px auto 40px;
-//   width: 1000px;
+.text-silver {
+  color: silver;
+}
 
-//   .main {
-//     display: block;
-//     float: left;
-//     width: 700px;
-//     border: 1px black solid;
-//   }
-
-//   .sidemenu {
-//     float: right;
-//     width: 270px;
-//     border: 1px black solid;
-//   }
-// }
-
-// .clearfix::after {
-//   content: "";
-//   display: block;
-//   clear: both;
-// }
-
-// nav.pagination {
-//   margin: 10px 0px;
-//   display: inline-block;
-
-//   span {
-//     padding: 5px;
-//     border: 0.5px gray solid;
-//     color: darkblue;
-//   }
-// }
-
-// .footer {
-//   margin: 10px auto 0px;
-//   padding: 5px auto;
-//   width: 100%;
-//   background: $footer_color;
-// }
+.text-copper {
+  color: sienna;
+}
 
 pre.debug_dump {
-  margin: 10px 0px;
+  max-width: 1200px;
+  text-align: left;
+  margin: 10px auto;
   padding: 5px;
   border: 2px solid gray;
   background: lightgray;
