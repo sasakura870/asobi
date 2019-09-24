@@ -32,3 +32,22 @@ $color in $custom_colors {
     color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
   }
 }
+
+// .bmd-btn-fab {
+//   i {
+//     margin: 10px auto 0px;
+//     color: black;
+//   }
+// }
+
+.btn {
+  .btn-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $bmd-btn-fab-font-size;
+    line-height: $bmd-btn-fab-font-size;
+    transform: translate(-($bmd-btn-fab-font-size / 2),
+        -($bmd-btn-fab-font-size / 2));
+  }
+}

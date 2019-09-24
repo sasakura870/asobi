@@ -2,13 +2,24 @@
 
 = content_for(:items) do
   - if current_user.already_favorite?(@article)
-    = link_to '取り消し', favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger btn-raised'
+    = link_to favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger bmd-btn-fab'
+      .material-icons
+        i.fas.fa-star
   - else
-    = link_to 'いいね', favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary btn-raised'
+    = link_to favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary bmd-btn-fab'
+      i.fas.fa-star.btn-icon
+  = link_to '#', class: 'btn btn-primary bmd-btn-fab'
+    i.fas.fa-comment-dots
+  = link_to '#', class: 'btn btn-primary bmd-btn-fab'
+    i.fab.fa-twitter
 
 .card.boarder.text-left
-  p = @article.overview if @article.overview.present?
-  h1 = @article.title
-  = set_thumbnail(@article, class_name: 'mx-auto w-90')
+  .card-header
+    = set_user_link @article.user, size: 50
+    span.text-right.text-muted = @article.updated_at
+  .card-body
+    p.card-subtitle.text-muted.mb-4 = @article.overview if @article.overview.present?
+    h1.desplay-1 = @article.title
+    = set_thumbnail(@article, class_name: 'card-img-top mx-auto w-100')
 
-  p == @article.content
+    p == @article.content

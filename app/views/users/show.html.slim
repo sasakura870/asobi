@@ -12,5 +12,5 @@ h1 新着記事
   - if @articles.any?
     - @articles.each do |article|
       .col-md-4.col-sm-6.mb-4
-        = render partial: 'shared/components/article_card', locals: { article: article }
+        = render partial: 'shared/parts/article_card', locals: { article: article }
 = paginate @articles
