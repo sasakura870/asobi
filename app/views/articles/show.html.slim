@@ -6,11 +6,9 @@
   - else
     = link_to 'いいね', favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary btn-raised'
 
-p = @article.overview if @article.overview.present?
-h1 = @article.title
-= set_thumbnail(@article, class_name: 'mx-auto w-90')
+.card.boarder.text-left
+  p = @article.overview if @article.overview.present?
+  h1 = @article.title
+  = set_thumbnail(@article, class_name: 'mx-auto w-90')
 
-p == @article.content
-
-= content_for(:sidemenu) do
-  p　サイドメニュー
+  p == @article.content
