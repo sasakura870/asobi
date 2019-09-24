@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_secure_password :remember, validations: false
 
   has_many :articles, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_articles, through: :favorites, source: :article
 
   validates :name, presence: true,
                    length: { maximum: 32 },
@@ -29,6 +31,10 @@ class User < ApplicationRecord
 
   def forget_me
     update_attribute(:remember_digest, nil)
+  end
+
+  def already_favorite?(article)
+    favorites.exists?(article_id: article.id)
   end
 
   private

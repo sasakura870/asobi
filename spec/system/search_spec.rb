@@ -22,7 +22,7 @@ RSpec.describe '検索機能' do
   end
 
   it '画面に検索にヒットした件数が表示される' do
-    count = Article.fair_copy.search_title(q).count
+    count = Article.posts.search_title(q).count
     expect(page).to have_content("#{count}件")
   end
 

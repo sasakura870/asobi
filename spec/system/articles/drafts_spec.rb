@@ -25,7 +25,7 @@ RSpec.describe '下書き一覧画面' do
 
     context '下書きがある場合' do
       let!(:draft_article) { main_user.articles.create(attributes_for(:article, :draft)) }
-      let!(:fair_copy_article) { main_user.articles.create(attributes_for(:article)) }
+      let!(:posts_article) { main_user.articles.create(attributes_for(:article)) }
       let!(:other_user_draft) { sub_user.articles.create(attributes_for(:article, :draft)) }
       before { visit drafts_path }
 
@@ -33,7 +33,7 @@ RSpec.describe '下書き一覧画面' do
         expect(page).to have_link draft_article.title
       end
       it '投稿済みの記事は表示されない' do
-        expect(page).to_not have_link fair_copy_article.title
+        expect(page).to_not have_link posts_article.title
       end
       it '他のユーザーの下書きは表示されない' do
         expect(page).to_not have_link other_user_draft.title

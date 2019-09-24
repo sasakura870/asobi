@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
       end
 
       context '既に登録されているnameの場合' do
-        let!(:sub_user) { create(:user) }
+        before { create(:user, name: main_user.name) }
         it_behaves_like 'validationエラー'
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
       end
 
       context '既に登録されているemailの場合' do
-        let!(:sub_user) { create(:user) }
+        before { create(:user, email: main_user.email) }
         it_behaves_like 'validationエラー'
       end
     end
@@ -56,16 +56,18 @@ RSpec.describe User, type: :model do
 
       context 'passwordが8文字以下の場合' do
         before do
-          main_user.password = 'badpass'
-          main_user.password_confirmation = 'badpass'
+          password = 'badpass'
+          main_user.password = password
+          main_user.password_confirmation = password
         end
         it_behaves_like 'validationエラー'
       end
 
       context 'passwordが16文字以上の場合' do
         before do
-          main_user.password = 'a' * 17
-          main_user.password_confirmation = 'a' * 17
+          password = 'a' * 17
+          main_user.password = password
+          main_user.password_confirmation = password
         end
         it_behaves_like 'validationエラー'
       end
@@ -97,6 +99,7 @@ RSpec.describe User, type: :model do
         expect(main_user.remember_digest).to be nil
       end
     end
+    # TODO already_favorite?
   end
 
   describe 'コールバック' do

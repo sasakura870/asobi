@@ -52,5 +52,39 @@ RSpec.describe Article, type: :model do
         expect(main_article.to_param).to eq main_article.id_digest
       end
     end
+    # TODO context 'faborited_by?'
+  end
+
+  describe 'スコープ' do
+    let(:test_user) do
+      create(:user, :with_articles, post_count: 3, draft_count: 2)
+    end
+
+    subject(:test_case) { test_user.articles }
+
+    context 'recent' do
+      it '先頭に一番新しい記事がある' do
+        expect(test_case.recent.first).to eq test_case.last
+      end
+    end
+
+    context 'drafts' do
+      it '下書きの記事のみ取得する' do
+        expect(test_case.drafts.count).to eq 2
+      end
+    end
+
+    context 'posts' do
+      it '投稿済みの記事のみ取得する' do
+        expect(test_case.posts.count).to eq 3
+      end
+    end
+
+    context 'search_title' do
+      let(:q) { '3' }
+      it 'タイトルに検索文字が含まれる記事のみ取得する' do
+        expect(test_case.search_title(q).count).to eq 1
+      end
+    end
   end
 end

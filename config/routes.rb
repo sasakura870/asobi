@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :articles
   get 'drafts', to: 'articles#drafts'
 
+  resources :favorites, only: %i[create destroy]
+
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'

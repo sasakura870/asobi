@@ -1,7 +1,10 @@
 = content_for(:title, @article.title)
 
 = content_for(:items) do
-  p アイコン
+  - if current_user.already_favorite?(@article)
+    = link_to '取り消し', favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger btn-raised'
+  - else
+    = link_to 'いいね', favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary btn-raised'
 
 p = @article.overview if @article.overview.present?
 h1 = @article.title

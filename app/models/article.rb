@@ -2,6 +2,8 @@ class Article < ApplicationRecord
   after_save :create_id_digest
 
   belongs_to :user
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
 
   validates :title, presence: true, length: { maximum: 140 }
   validates :overview, length: { maximum: 140 }
@@ -12,13 +14,17 @@ class Article < ApplicationRecord
 
   has_rich_text :content
 
-  scope :fair_copy, -> { where(posted: true) }
-  scope :draft, -> { where(posted: false) }
+  scope :posts, -> { where(posted: true) }
+  scope :drafts, -> { where(posted: false) }
   scope :recent, -> { order(updated_at: :desc) }
   scope :search_title, ->(q) { where('title iLIKE ?', "%#{q}%") if q.present? }
 
   def to_param
     id_digest
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
   private

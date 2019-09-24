@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
     @q = search_params[:q]
     @articles = Article
                   .includes(thumbnail_attachment: :blob, user: :photo_attachment)
-                  .fair_copy.search_title(@q).recent.page(params[:page])
+                  .posts.search_title(@q).recent.page(params[:page])
   end
 
   private
