@@ -1,0 +1,6 @@
+= set_user_link user
+p.text-muted = comment.updated_at
+p = comment.content
+- if logged_in? && user == current_user
+  = link_to '削除', comment_path(comment), method: :delete, class: 'btn btn-danger'
+br

@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_articles, through: :favorites, source: :article
+  has_many :comments, dependent: :destroy
+  has_many :comment_articles, through: :comments, source: :article
 
   validates :name, presence: true,
                    length: { maximum: 32 },
@@ -35,6 +37,10 @@ class User < ApplicationRecord
 
   def already_favorite?(article)
     favorites.exists?(article_id: article.id)
+  end
+
+  def my_comment?(comment)
+    comments.exists?(id: comment.id)
   end
 
   private
