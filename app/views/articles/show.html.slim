@@ -2,15 +2,33 @@
 
 = content_for(:items) do
   - if current_user.already_favorite?(@article)
-    = link_to '取り消し', favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger btn-raised'
+    = link_to favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger bmd-btn-fab'
+      .material-icons
+        i.fas.fa-star
   - else
-    = link_to 'いいね', favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary btn-raised'
+    = link_to favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary bmd-btn-fab'
+      i.fas.fa-star.btn-icon
+  = link_to '#', class: 'btn btn-primary bmd-btn-fab'
+    i.fas.fa-comment-dots
+  = link_to '#', class: 'btn btn-primary bmd-btn-fab'
+    i.fab.fa-twitter
 
-p = @article.overview if @article.overview.present?
-h1 = @article.title
-= set_thumbnail(@article, class_name: 'mx-auto w-90')
+.card.boarder.text-left
+  .card-header
+    = set_user_link @article.user, size: 50
+    span.text-right.text-muted = @article.updated_at
+  .card-body
+    p.card-subtitle.text-muted.mb-4 = @article.overview if @article.overview.present?
+    h1.desplay-1 = @article.title
+    = set_thumbnail(@article, class_name: 'card-img-top mx-auto w-100')
 
-p == @article.content
+    p == @article.content
 
-= content_for(:sidemenu) do
-  p　サイドメニュー
+.card.boarder.text-left
+  .content.body
+    - @article.comments.each do |comment|
+      = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
+    = form_with model: current_user.comments.new, local: true do |f|
+      = f.hidden_field :article_id, value: @article.id
+      = f.text_area :content, class: 'form-control'
+      = f.submit '投稿する', class: 'btn btn-primary btn-raised'
