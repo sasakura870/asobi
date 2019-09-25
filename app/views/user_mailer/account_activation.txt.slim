@@ -1,4 +1,4 @@
 | Asobi
 | こんにちは、#{@user.name}さん
 | Asobiへようこそ！下記のURLへアクセスして、本登録を完了してください
-/ = link_to 'Sign Up!', edit_account_activation_url(@user.activation_token, email: @user.email)
+= edit_account_activation_url(@user.activation, email: @user.email)

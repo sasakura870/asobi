@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   before_save :downcase_email
+  before_create :create_activation_digest
 
   has_secure_password
   has_secure_password :remember, validations: false
+  has_secure_password :activation, validations: false
 
   has_many :articles, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -47,5 +49,9 @@ class User < ApplicationRecord
 
   def downcase_email
     self.email = email.downcase
+  end
+
+  def create_activation_digest
+    self.activation = SecureRandom.urlsafe_base64
   end
 end

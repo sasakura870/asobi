@@ -32,11 +32,10 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # メーラー設定
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :test
-  # host = 'localhost:3000' # ここをコピペすると失敗します。自分の環境に合わせてください。
-  # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

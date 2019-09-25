@@ -21,12 +21,18 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  # 仮登録時のアクション。もっといい名前がある？
+  def confirmation
+    @user = User.find_by(name: params[:id])
+  end
+
   def create
     @user = User.new(user_create_params)
 
     if @user.save
-      flash[:success] = '登録に成功しました!'
-      redirect_to user_path(@user)
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = '本登録用のメールを送信しました'
+      redirect_to confirmation_user_path(@user)
     else
       flash.now[:danger] = '登録に失敗しました'
       render :new, layout: 'sessions'
@@ -67,7 +73,7 @@ class UsersController < ApplicationController
 
   def switch_layout
     case action_name
-    when 'new' then 'sessions'
+    when 'new', 'confirmation' then 'sessions'
     when 'show', 'edit' then 'left_sidemenu'
     end
   end
