@@ -2,9 +2,15 @@ FactoryBot.define do
   factory :user do
     sequence(:name) { |n| "faker-#{n}" }
     sequence(:email) { |n| "fake#{n}@example.com" }
+    nick_name { 'nick_name' }
     introduction { Faker::Lorem.sentence(word_count: 5) }
     password { 'password' }
     password_confirmation { 'password' }
+    activated { true }
+
+    trait :temporary do
+      activated { false }
+    end
 
     trait :with_articles do
       transient do

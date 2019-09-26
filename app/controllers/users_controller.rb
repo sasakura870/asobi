@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user][:id])
     if @user.update(user_update_params)
       flash[:success] = '設定を更新しました'
-      redirect_to user_path(@user)
+      redirect_to settings_path
     else
       flash.now[:danger] = '設定の更新に失敗しました'
       render :edit

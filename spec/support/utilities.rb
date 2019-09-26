@@ -7,7 +7,16 @@ module Utilities
     user.favorites.create(article_id: article.id)
   end
 
+  # requests用マクロ
+
+  def login_request(user, remember: '0')
+    post login_path, params: { session: { email: user.email,
+                                          password: user.password,
+                                          remember: remember } }
+  end
+
   # capybara用マクロ
+
   def browser_login(user)
     visit login_path
     fill_in 'session_email', with: user.email
