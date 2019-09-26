@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :filter_only_guests, only: %i[new create]
   before_action :filter_only_logged_in_users, only: %i[edit update destroy]
+  before_action :filter_only_no_activation_users, only: :confirmation
 
   layout :switch_layout
 

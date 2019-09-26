@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   # TODO フィルターチェック
   # article_idが存在しない値だった場合は？
 
-  before_action :filter_only_logged_in_users
+  before_action :filter_only_register
   before_action :filter_only_other_users_article
 
   def create
@@ -31,7 +31,8 @@ class FavoritesController < ApplicationController
 
   def filter_only_other_users_article
     if current_user.articles.exists?(id: params[:article_id])
-      redirect_to root_path
+      flash[:warning] = '自分の記事にいいねはできません'
+      redirect_to articles_path(Articles.find_by(id: params[:article_id]))
     end
   end
 end

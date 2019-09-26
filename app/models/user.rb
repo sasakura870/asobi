@@ -30,11 +30,15 @@ class User < ApplicationRecord
 
   def remember_me
     self.remember = SecureRandom.urlsafe_base64
-    save
+    # save
+  end
+
+  def register
+    update_column(:activated, true)
   end
 
   def forget_me
-    update_attribute(:remember_digest, nil)
+    update_column(:remember_digest, nil)
   end
 
   def already_favorite?(article)
