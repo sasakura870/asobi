@@ -181,7 +181,7 @@ RSpec.describe "UsersController", type: :request do
       context 'ログイン中のユーザーと異なるユーザーの値を更新する場合' do
         let(:patched_user) { other_user }
         let(:user_params) { attributes_for(:user) }
-        it_behaves_like 'HTTPリクエストが返る', :not_found
+        it_behaves_like 'HTTPリクエストが返る', :unprocessable_entity
       end
     end
 
