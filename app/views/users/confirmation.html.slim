@@ -7,7 +7,7 @@
           p 受け取ったメールから本登録を完了してください！
           h2
             i.far.fa-envelope
-            = @user.email
+            = current_user.email
           p メール本文に記載されているURLをクリックして会員登録を完了させましょう！
           p メールが届いていない場合は下記のリンクからメールを再送できます。
-          = link_to '再送する', confirmation_user_path(@user.activation, email: @user.email)
+          / = link_to '再送する', confirmation_users_path(@user.activation, email: @user.email)

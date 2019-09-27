@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :filter_only_register, only: :destroy
+  before_action :filter_only_logged_in_users, only: :destroy
   before_action :filter_only_guests, only: %i[new create]
 
   def new

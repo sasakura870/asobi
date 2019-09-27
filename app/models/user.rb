@@ -28,13 +28,21 @@ class User < ApplicationRecord
     name
   end
 
+  def sign_up_activation
+    update_column(:activated, true)
+  end
+
+  def register?
+    activated?
+  end
+
+  def temporary?
+    !activated?
+  end
+
   def remember_me
     self.remember = SecureRandom.urlsafe_base64
     # save
-  end
-
-  def register
-    update_column(:activated, true)
   end
 
   def forget_me

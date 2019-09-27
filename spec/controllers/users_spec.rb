@@ -25,6 +25,20 @@ RSpec.describe "UsersController", type: :request do
     end
   end
 
+  shared_examples_for 'マイページへリダイレクトする' do
+    it do
+      subject.call
+      expect(response).to redirect_to user_path(login_user)
+    end
+  end
+
+  shared_examples_for 'セッティング画面へリダイレクトする' do
+    it do
+      subject.call
+      expect(response).to redirect_to settings_path
+    end
+  end
+
   shared_examples_for 'モデルの総数が増える' do |model|
     it { expect { subject.call }.to change { model.count }.by(1) }
   end
@@ -46,18 +60,18 @@ RSpec.describe "UsersController", type: :request do
     subject { proc { get signup_path } }
 
     shared_examples_for 'リダイレクト' do
-      before { login_request user }
+      before { login_request login_user }
       it_behaves_like 'HTTPリクエストが返る', :found
-      it_behaves_like 'ホームへリダイレクトする'
+      it_behaves_like 'マイページへリダイレクトする'
     end
 
     context '本登録済みユーザーでログインしている場合' do
-      let(:user) { register }
+      let(:login_user) { register }
       it_behaves_like 'リダイレクト'
     end
 
     context '仮登録ユーザーでログインしている場合' do
-      let(:user) { temporary }
+      let(:login_user) { temporary }
       it_behaves_like 'リダイレクト'
     end
 
@@ -75,6 +89,11 @@ RSpec.describe "UsersController", type: :request do
     context '仮登録ユーザーのページの場合' do
       subject { proc { get user_path(temporary) } }
       it_behaves_like 'HTTPリクエストが返る', :not_found
+
+      context '仮登録ユーザーがマイページにアクセスする場合' do
+        before { login_request temporary }
+        it_behaves_like 'HTTPリクエストが返る', :success
+      end
     end
   end
 
@@ -102,18 +121,18 @@ RSpec.describe "UsersController", type: :request do
     subject { proc { post users_path, params: { user: user_params } } }
 
     shared_examples_for 'リダイレクト' do
-      before { login_request user }
+      before { login_request login_user }
       it_behaves_like 'HTTPリクエストが返る', :found
-      it_behaves_like 'ホームへリダイレクトする'
+      it_behaves_like 'マイページへリダイレクトする'
     end
 
     context '本登録済みユーザーでログインしている場合' do
-      let(:user) { register }
+      let(:login_user) { register }
       it_behaves_like 'リダイレクト'
     end
 
     context '仮登録ユーザーでログインしている場合' do
-      let(:user) { temporary }
+      let(:login_user) { temporary }
       it_behaves_like 'リダイレクト'
     end
 
@@ -122,7 +141,7 @@ RSpec.describe "UsersController", type: :request do
         it_behaves_like 'HTTPリクエストが返る', :found
         it 'confirmation画面へリダイレクトする' do
           subject.call
-          expect(response).to redirect_to confirmation_user_path(user_params[:name])
+          expect(response).to redirect_to confirmation_users_path
         end
         it_behaves_like 'モデルの総数が増える', User
       end
@@ -136,19 +155,18 @@ RSpec.describe "UsersController", type: :request do
   end
 
   describe 'PATCH #update' do
-    subject { proc { patch user_path(user), params: { user: user_params } } }
+    subject { proc { patch user_path(patched_user), params: { user: user_params } } }
 
-    shared_examples_for 'ユーザー情報の編集' do
+    shared_examples_for 'ログインしてユーザー情報の編集' do
+      before { login_request login_user }
+
       context 'ログイン中のユーザーの値を更新する場合' do
-        let(:user) { login_user }
+        let(:patched_user) { login_user }
 
         context '正常な値の場合' do
           let(:user_params) { login_user.attributes }
           it_behaves_like 'HTTPリクエストが返る', :found
-          it 'セッティング画面へリダイレクトする' do
-            subject.call
-            expect(response).to redirect_to settings_path
-          end
+          it_behaves_like 'セッティング画面へリダイレクトする'
         end
 
         context '検証に通らない値を送信した場合' do
@@ -161,30 +179,26 @@ RSpec.describe "UsersController", type: :request do
       end
 
       context 'ログイン中のユーザーと異なるユーザーの値を更新する場合' do
-        let(:user) { other_user }
-        let(:user_params) { other_user.attributes }
-        it_behaves_like 'HTTPリクエストが返る', :found
-        it 'セッティング画面へリダイレクトする' do
-          subject.call
-          expect(response).to redirect_to settings_path
-        end
+        let(:patched_user) { other_user }
+        let(:user_params) { attributes_for(:user) }
+        it_behaves_like 'HTTPリクエストが返る', :not_found
       end
     end
 
     context '本登録済みユーザーでログインしている場合' do
       let(:login_user) { register }
       let(:other_user) { temporary }
-      it_behaves_like 'ユーザー情報の編集'
+      it_behaves_like 'ログインしてユーザー情報の編集'
     end
 
     context '仮登録ユーザーでログインしている場合' do
       let(:login_user) { temporary }
       let(:other_user) { register }
-      it_behaves_like 'ユーザー情報の編集'
+      it_behaves_like 'ログインしてユーザー情報の編集'
     end
 
     context 'ログインしていない場合' do
-      let(:user) { register }
+      let(:patched_user) { register }
       let(:user_params) { register.attributes }
       it_behaves_like 'HTTPリクエストが返る', :found
       it_behaves_like 'ログイン画面へリダイレクトする'
@@ -195,19 +209,23 @@ RSpec.describe "UsersController", type: :request do
   end
 
   describe 'GET #confirmation' do
-    subject { proc { get confirmation_user_path(user_name) } }
+    subject { proc { get confirmation_users_path } }
 
     context '本登録済みユーザーでログインしている場合' do
-      let(:user_name) { register.name }
-      before { login_request register }
+      let(:login_user) { register }
+      before { login_request login_user }
       it_behaves_like 'HTTPリクエストが返る', :found
-      it_behaves_like 'ホームへリダイレクトする'
+      it_behaves_like 'マイページへリダイレクトする'
     end
 
     context '仮登録ユーザーでログインしている場合' do
-      let(:user_name) { temporary.name }
       before { login_request temporary }
       it_behaves_like 'HTTPリクエストが返る', :success
+    end
+
+    context 'ログインしていない場合' do
+      it_behaves_like 'HTTPリクエストが返る', :found
+      it_behaves_like 'ログイン画面へリダイレクトする'
     end
   end
 

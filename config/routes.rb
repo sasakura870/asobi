@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'search', to: 'searches#search'
 
   resources :users, except: %i[new edit] do
-    get :confirmation, on: :member
+    get :confirmation, on: :collection
   end
   get 'signup', to: 'users#new'
   get 'settings', to: 'users#edit'
