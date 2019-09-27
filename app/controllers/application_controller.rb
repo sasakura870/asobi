@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
+  include ActionFilter
+
   helper_method :current_user, :logged_in?
 
-  # private
+  protected
 
   def login(user)
     session[:user_id] = user.id
@@ -20,9 +22,5 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !current_user.nil?
-  end
-
-  def filter_only_logged_in_users
-    redirect_to login_path unless logged_in?
   end
 end

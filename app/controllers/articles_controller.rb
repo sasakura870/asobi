@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :filter_only_logged_in_users, except: %i[index show]
+  before_action :filter_only_register, except: %i[index show]
   before_action :filter_drafts_over_10, only: :new
 
   layout 'article_show', only: :show

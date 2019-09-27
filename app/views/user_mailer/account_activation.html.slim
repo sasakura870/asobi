@@ -1,0 +1,4 @@
+h1 Asobi
+p 初めまして、#{@user.name}さん！
+p Asobiへようこそ！下記のボタンから本登録を完了してください！
+= link_to '本登録', edit_account_activation_url(@user.activation, email: @user.email)

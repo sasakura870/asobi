@@ -65,6 +65,8 @@ group :development do
   gem 'binding_of_caller'
   # solargraphインストール
   gem 'solargraph'
+  # 送信したメールを確認するgem
+  gem 'letter_opener'
 end
 
 group :test do

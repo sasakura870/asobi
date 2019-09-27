@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :filter_only_logged_in_users
+  before_action :filter_only_register
 
   def create
     @article = Article.find_by(id: comment_params[:article_id])

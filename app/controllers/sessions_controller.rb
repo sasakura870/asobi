@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :filter_only_logged_in_users, only: :destroy
-  before_action :filter_except_logged_in_users, except: :destroy
+  before_action :filter_only_guests, only: %i[new create]
 
   def new
     @user = User.new
@@ -31,10 +31,6 @@ class SessionsController < ApplicationController
   end
 
   private
-
-  def filter_except_logged_in_users
-    redirect_to root_path if logged_in?
-  end
 
   def session_params
     params.require(:session).permit(:email, :password, :remember_check)
