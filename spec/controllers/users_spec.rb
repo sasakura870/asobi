@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "UsersController", type: :request do
+RSpec.describe 'UsersController', type: :request do
   let(:register) { create(:user) }
   let(:temporary) { create(:user, :temporary) }
 
@@ -8,13 +8,6 @@ RSpec.describe "UsersController", type: :request do
     it do
       subject.call
       expect(response).to have_http_status(status)
-    end
-  end
-
-  shared_examples_for 'ホームへリダイレクトする' do
-    it do
-      subject.call
-      expect(response).to redirect_to root_path
     end
   end
 
@@ -167,6 +160,7 @@ RSpec.describe "UsersController", type: :request do
           let(:user_params) { login_user.attributes }
           it_behaves_like 'HTTPリクエストが返る', :found
           it_behaves_like 'セッティング画面へリダイレクトする'
+          it_behaves_like 'モデルの総数が変わらない', User
         end
 
         context '検証に通らない値を送信した場合' do
@@ -175,6 +169,7 @@ RSpec.describe "UsersController", type: :request do
             login_user.attributes
           end
           it_behaves_like 'HTTPリクエストが返る', :success
+          it_behaves_like 'モデルの総数が変わらない', User
         end
       end
 
@@ -182,6 +177,7 @@ RSpec.describe "UsersController", type: :request do
         let(:patched_user) { other_user }
         let(:user_params) { attributes_for(:user) }
         it_behaves_like 'HTTPリクエストが返る', :unprocessable_entity
+        it_behaves_like 'モデルの総数が変わらない', User
       end
     end
 
