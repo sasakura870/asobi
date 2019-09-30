@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Sessions', type: :request do
   let(:register) { create(:user) }
   let(:temporary) { create(:user, :temporary) }
+  let(:posted_article) { register.articles.create(attributes_for(:article)) }
 
   shared_examples_for 'HTTPリクエストが返る' do |status|
     it { is_expected.to eq status }
@@ -16,6 +17,22 @@ RSpec.describe 'Sessions', type: :request do
   shared_examples_for 'マイページへリダイレクトする' do
     it_behaves_like 'HTTPリクエストが返る', 302
     it { is_expected.to redirect_to user_path(request_user) }
+  end
+
+  shared_examples_for '直前にアクセスしたページへリダイレクトする' do
+    before { get recent_access_path }
+
+    context '記事詳細からのアクセスの場合' do
+      let(:recent_access_path) { article_path(posted_article) }
+      it_behaves_like 'HTTPリクエストが返る', 302
+      it { is_expected.to redirect_to recent_access_path }
+    end
+
+    context 'ユーザー詳細からのアクセスの場合' do
+      let(:recent_access_path) { user_path(register) }
+      it_behaves_like 'HTTPリクエストが返る', 302
+      it { is_expected.to redirect_to recent_access_path }
+    end
   end
 
   describe 'GET #new' do
@@ -56,19 +73,12 @@ RSpec.describe 'Sessions', type: :request do
     end
 
     context 'ログインしていない場合' do
-      shared_examples_for '直前にアクセスしたページにリダイレクトする' do
-        it_behaves_like 'HTTPリクエストが返る', 302
-        it { is_expected.to redirect_to recent_access_path }
-      end
-
       context '登録済みのユーザーの値でリクエストする場合' do
         let(:request_user) { register }
-
-        context '記事詳細からのアクセスの場合'
-        context 'ユーザー詳細からのアクセスの場合'
+        it_behaves_like '直前にアクセスしたページへリダイレクトする'
       end
 
-      context '登録済みのユーザーの値でリクエストする場合' do
+      context '登録していないのユーザーの値でリクエストする場合' do
         let(:request_user) { build(:user) }
         it_behaves_like 'HTTPリクエストが返る', 200
       end
@@ -80,14 +90,12 @@ RSpec.describe 'Sessions', type: :request do
 
     context '本登録済みユーザーでログインしている場合' do
       before { login_request register }
-      context '記事詳細からのアクセスの場合'
-      context 'ユーザー詳細からのアクセスの場合'
+      it_behaves_like '直前にアクセスしたページへリダイレクトする'
     end
 
     context '仮登録ユーザーでログインしている場合' do
       before { login_request temporary }
-      context '記事詳細からのアクセスの場合'
-      context 'ユーザー詳細からのアクセスの場合'
+      it_behaves_like '直前にアクセスしたページへリダイレクトする'
     end
 
     context 'ログインしていない場合' do
