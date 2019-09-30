@@ -127,7 +127,7 @@ RSpec.describe 'ArticlesController', type: :request do
   end
 
   describe 'PATCH #update' do
-    let(:request_article) { register.articles.first }
+    let!(:request_article) { register.articles.first }
     subject { patch article_path(request_article), params: { article: attributes_for(:article) } }
 
     context '本登録済みユーザーでログインしている場合' do
@@ -139,12 +139,12 @@ RSpec.describe 'ArticlesController', type: :request do
     context '仮登録ユーザーでログインしている場合' do
       before { login_request temporary }
       it_behaves_like 'confirmation画面へリダイレクトする'
-      # it_behaves_like 'モデルの総数が変わらない', Article
+      it_behaves_like 'モデルの総数が変わらない', Article
     end
 
     context 'ログインしていない場合' do
       it_behaves_like 'ログイン画面へリダイレクトする'
-      # it_behaves_like 'モデルの総数が変わらない', Article
+      it_behaves_like 'モデルの総数が変わらない', Article
     end
   end
 
