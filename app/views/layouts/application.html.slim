@@ -14,3 +14,4 @@ html lang = 'ja'
     = render partial: 'shared/footer'
     - if Rails.env.development?
       = debug(params)
+      = debug(session[:return_to])

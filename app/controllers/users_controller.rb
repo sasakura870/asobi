@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  # include ActionFilter
-
+  before_action :store_location, only: %i[index new show edit]
   before_action :filter_only_guests, only: %i[new create]
   before_action :filter_only_logged_in_users, only: %i[edit]
   before_action :filter_only_temporary, only: :confirmation

@@ -23,4 +23,10 @@ module Utilities
     fill_in 'session_password', with: user.password
     click_on 'ログイン'
   end
+
+  # RSpec拡張メソッド
+
+  def is_expected_block
+    expect { subject }
+  end
 end
