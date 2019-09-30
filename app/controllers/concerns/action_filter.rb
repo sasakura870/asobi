@@ -4,7 +4,8 @@ module ActionFilter
   included do
     def filter_only_current_user(user)
       if logged_in? && current_user.id != user.id
-        render file: Rails.root.join('public/422.html'), status: 422, layout: false, content_type: 'text/html'
+        # render file: Rails.root.join('public/422.html'), status: 422, layout: false, content_type: 'text/html'
+        request_422
       elsif !logged_in?
         redirect_to login_path
       end

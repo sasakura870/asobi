@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # include ActionFilter
+
   before_action :filter_only_guests, only: %i[new create]
   before_action :filter_only_logged_in_users, only: %i[edit]
   before_action :filter_only_temporary, only: :confirmation
@@ -91,7 +93,8 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:id])
     if @user&.temporary?
       unless @user.id == current_user&.id
-        render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
+        # render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
+        request_404
       end
     end
   end

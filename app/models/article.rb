@@ -25,6 +25,14 @@ class Article < ApplicationRecord
     id_digest
   end
 
+  def post?
+    posted
+  end
+
+  def draft?
+    !posted
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
