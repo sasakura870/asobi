@@ -1,38 +1,31 @@
 class FavoritesController < ApplicationController
-  # TODO フィルターチェック
-  # article_idが存在しない値だった場合は？
-
-  before_action :filter_only_register
-  before_action :filter_only_other_users_article
+  before_action -> { filter_only_register || filter_only_other_users_article }
 
   def create
-    article = Article.find_by(id: params[:article_id])
-    favorite = current_user.favorites.build(article_id: article.id)
+    favorite = current_user.favorites.build(article_id: @article.id)
     if favorite.save
       flash[:success] = 'いいねしました'
+      redirect_to article_path(@article)
     else
-      flash[:danger] = 'いいねに失敗しました'
+      request_422
     end
-    redirect_to article_path(article)
   end
 
   def destroy
-    article = Article.find_by(id: params[:article_id])
-    favorite = Favorite.find_by(user_id: current_user.id, article_id: params[:article_id])
-    if favorite.destroy
+    favorite = Favorite.find_by(user_id: current_user.id, article_id: @article.id)
+    if favorite&.destroy
       flash[:success] = 'いいねを取り消しました'
+      redirect_to article_path(@article)
     else
-      flash[:danger] = 'いいねの取り消しに失敗しました'
+      # flash[:danger] = 'いいねの取り消しに失敗しました'
+      request_422
     end
-    redirect_to article_path(article)
   end
 
   private
 
   def filter_only_other_users_article
-    if current_user.articles.exists?(id: params[:article_id])
-      flash[:warning] = '自分の記事にいいねはできません'
-      redirect_to articles_path(Articles.find_by(id: params[:article_id]))
-    end
+    @article = Article.find_by(id: params[:article_id])
+    request_422 if @article.nil? || current_user.articles.include?(@article)
   end
 end

@@ -5,20 +5,6 @@ RSpec.describe 'Sessions', type: :request do
   let(:temporary) { create(:user, :temporary) }
   let(:posted_article) { register.articles.create(attributes_for(:article)) }
 
-  shared_examples_for 'HTTPリクエストが返る' do |status|
-    it { is_expected.to eq status }
-  end
-
-  shared_examples_for 'ログイン画面へリダイレクトする' do
-    it_behaves_like 'HTTPリクエストが返る', 302
-    it { is_expected.to redirect_to login_path }
-  end
-
-  shared_examples_for 'マイページへリダイレクトする' do
-    it_behaves_like 'HTTPリクエストが返る', 302
-    it { is_expected.to redirect_to user_path(request_user) }
-  end
-
   shared_examples_for '直前にアクセスしたページへリダイレクトする' do
     before { get recent_access_path }
 
