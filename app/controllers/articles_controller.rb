@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
-  before_action :filter_only_register, except: %i[index show]
+  # include ActionFilter
+
+  before_action :filter_only_register, only: %i[drafts create]
+  before_action :filter_only_current_user_article, only: %i[edit update destroy]
+  before_action :filter_only_post, only: :show
   before_action :filter_drafts_over_10, only: :new
 
   layout 'article_show', only: :show
@@ -14,11 +18,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = current_user.articles.find_by(id_digest: params[:id])
+    # @article ||= current_user.articles.find_by(id_digest: params[:id])
   end
 
   def show
-    @article = Article.find_by(id_digest: params[:id])
+    # @article ||= Article.find_by(id_digest: params[:id])
   end
 
   def drafts
@@ -38,7 +42,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = current_user.articles.find_by(id_digest: params[:article][:id_digest])
+    # @article ||= current_user.articles.find_by(id_digest: params[:article][:id_digest])
     if @article.update(article_params)
       flash[:success] = @article.posted ? '投稿しました！' : '下書きに保存しました'
       redirect_to article_path(@article)
@@ -64,9 +68,28 @@ class ArticlesController < ApplicationController
   end
 
   def filter_drafts_over_10
-    if current_user.articles.drafts.count >= 10
-      flash[:warning] = '下書きが多すぎます'
-      redirect_to drafts_path
+    if filter_only_register.nil?
+      if current_user.articles.drafts.count >= 10
+        flash[:warning] = '下書きが多すぎます'
+        redirect_to drafts_path
+      end
+    end
+  end
+
+  def filter_only_post
+    @article = Article.find_by(id_digest: params[:id])
+    request_404 if @article.nil? || @article.draft?
+  end
+
+  def filter_only_current_user_article
+    if filter_only_register.nil?
+      @article = current_user.articles.find_by(id_digest: params[:id])
+      if @article.nil?
+        case action_name
+        when 'edit' then request_404
+        when 'update', 'destroy' then request_422
+        end
+      end
     end
   end
 end
