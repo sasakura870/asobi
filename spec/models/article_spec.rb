@@ -2,54 +2,74 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   let(:main_user) { create(:user) }
-  let(:main_article) { main_user.articles.build(attributes_for(:article)) }
 
   describe 'validation' do
-    shared_examples_for 'validationエラー' do
-      it { expect(main_article).to_not be_valid }
-    end
+    subject { main_user.articles.build(attributes_for(:article)) }
 
     context '正常な値の場合' do
-      it 'データベースへの登録が成功する' do
-        expect(main_article).to be_valid
-      end
+      it_behaves_like 'validation通過'
     end
 
-    describe 'title' do
+    describe 'title属性' do
       context 'nilの場合' do
-        before { main_article.title = nil }
+        before { subject.title = nil }
         it_behaves_like 'validationエラー'
       end
 
-      context '140字以上の場合' do
-        before { main_article.title = 'a' * 141 }
+      context '140文字の場合' do
+        before { subject.title = 'a' * 140 }
+        it_behaves_like 'validation通過'
+      end
+
+      context '141文字の場合' do
+        before { subject.title = 'a' * 141 }
         it_behaves_like 'validationエラー'
       end
     end
 
     describe 'overview' do
-      context '140字以上の場合' do
-        before { main_article.overview = 'a' * 141 }
+      context '140文字の場合' do
+        before { subject.overview = 'a' * 140 }
+        it_behaves_like 'validation通過'
+      end
+      context '141文字の場合' do
+        before { subject.overview = 'a' * 141 }
         it_behaves_like 'validationエラー'
       end
     end
 
     describe 'user_id' do
       context 'nilの場合' do
-        before { main_article.user_id = nil }
+        before { subject.user_id = nil }
         it_behaves_like 'validationエラー'
       end
     end
 
     describe 'content'
-    describe 'posted'
     describe 'thumbnail'
   end
 
   describe 'メソッド' do
+    let(:post_article) { main_user.articles.create(attributes_for(:article)) }
+    let(:draft_article) { main_user.articles.create(attributes_for(:article, :draft)) }
+
     context '.to_param' do
       it 'id_digestを返す' do
-        expect(main_article.to_param).to eq main_article.id_digest
+        expect(post_article.to_param).to eq post_article.id_digest
+      end
+    end
+
+    context '.post?' do
+      it '投稿済みであればtrueを返す' do
+        expect(post_article.post?).to be_truthy
+        expect(draft_article.post?).to be_falsey
+      end
+    end
+
+    context '.draft?' do
+      it '下書きであればtrueを返す' do
+        expect(draft_article.draft?).to be_truthy
+        expect(post_article.draft?).to be_falsey
       end
     end
     # TODO context 'faborited_by?'
@@ -81,9 +101,9 @@ RSpec.describe Article, type: :model do
     end
 
     context 'search_title' do
-      let(:q) { '3' }
+      let(:q) { 'text' }
       it 'タイトルに検索文字が含まれる記事のみ取得する' do
-        expect(test_case.search_title(q).count).to eq 1
+        expect(test_case.search_title(q).count).to eq 5
       end
     end
   end

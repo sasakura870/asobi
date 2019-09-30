@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
+  # TODO フィルタとvalidationの役割が被っている？
   before_action -> { filter_only_register || filter_only_other_users_article }
+  # before_action :filter_only_register
 
   def create
     favorite = current_user.favorites.build(article_id: @article.id)
