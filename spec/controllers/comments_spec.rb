@@ -22,7 +22,7 @@ RSpec.describe 'Comments', type: :request do
       context '下書きの場合' do
         let(:request_article) { draft_article }
         it_behaves_like 'HTTPリクエストが返る', 422
-        # it_behaves_like 'モデルの総数が変わらない', Comment
+        it_behaves_like 'モデルの総数が変わらない', Comment
       end
     end
 

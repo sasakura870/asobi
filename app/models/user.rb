@@ -13,14 +13,14 @@ class User < ApplicationRecord
   has_many :comment_articles, through: :comments, source: :article
 
   validates :name, presence: true,
-                   length: { maximum: 32 },
+                   length: { in: 4..32 },
                    uniqueness: true,
                    format: { with: /\A[\w-]{,32}\z/ }
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :introduction, length: { maximum: 140 }
-  validates :password, length: { minimum: 8, maximum: 16 }, allow_nil: true
+  validates :password, length: { in: 8..16 }, allow_nil: true
 
   has_one_attached :photo
 
@@ -28,7 +28,7 @@ class User < ApplicationRecord
     name
   end
 
-  def sign_up_activation
+  def signup_activation
     update_column(:activated, true)
   end
 
