@@ -28,6 +28,10 @@ class ArticlesController < ApplicationController
     @articles = current_user.articles.drafts.recent
   end
 
+  def favorites
+    @article = Article.find_by(id_digest: params[:id])
+  end
+
   def create
     @article = current_user.articles.new(article_params)
 
