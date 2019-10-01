@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # let(:main_user) { build(:user) }
-
   describe 'validation' do
     subject { build(:user, :temporary) }
 
@@ -158,9 +156,30 @@ RSpec.describe User, type: :model do
       end
     end
 
-    # TODO メソッドテストの追加
-    context '.already_favorite?'
-    context '.my_comment?'
+    context '.already_favorite?' do
+      let(:main_user) { create(:user, :with_articles, post_count: 1) }
+      let(:post_article) { main_user.articles.posts.first }
+      let(:sub_user) { create(:user, :with_articles, post_count: 1) }
+      let(:sub_post_article) { sub_user.articles.first }
+      before { create_favorite(main_user, sub_post_article) }
+
+      it '引数の記事を既にいいねしていればtrueを返す' do
+        expect(main_user.already_favorite?(sub_post_article)).to be_truthy
+        expect(sub_user.already_favorite?(post_article)).to be_falsey
+      end
+    end
+
+    context '.my_comment?' do
+      let(:main_user) { create(:user, :with_articles, post_count: 1) }
+      let(:sub_user) { create(:user, :with_articles, post_count: 1) }
+      let(:post_article) { main_user.articles.posts.first }
+      let!(:comment) { create_comment(main_user, post_article) }
+
+      it '引数のコメントが自身のものであればtrueを返す' do
+        expect(main_user.my_comment?(comment)).to be_truthy
+        expect(sub_user.my_comment?(comment)).to be_falsey
+      end
+    end
   end
 
   describe 'コールバック' do

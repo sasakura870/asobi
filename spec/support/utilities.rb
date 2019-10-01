@@ -7,6 +7,14 @@ module Utilities
     user.favorites.create(article_id: article.id)
   end
 
+  def build_comment(user, article, content: 'test')
+    user.comments.build(article_id: article.id, content: content)
+  end
+
+  def create_comment(user, article, content: 'test')
+    user.comments.create(article_id: article.id, content: content)
+  end
+
   # requests用マクロ
 
   def login_request(user, remember: '0')

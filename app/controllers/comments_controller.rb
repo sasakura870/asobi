@@ -3,15 +3,11 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.posts.find_by(id: comment_params[:article_id])
-    return request_422 if @article.nil?
-
     @comment = current_user.comments.new(comment_params)
     if @comment.save
       flash[:success] = 'コメントを投稿しました'
       redirect_to @article
     else
-      # flash.now[:danger] = 'コメントに失敗しました'
-      # render @article
       request_422
     end
   end
@@ -25,8 +21,6 @@ class CommentsController < ApplicationController
       flash[:success] = 'コメントを削除しました'
       redirect_to @article
     else
-      # flash.now[:danger] = 'コメントの削除に失敗しました'
-      # render @article
       request_422
     end
   end

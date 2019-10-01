@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  let(:main_user) { create(:user) }
-
   describe 'validation' do
+    let(:main_user) { create(:user) }
     subject { main_user.articles.build(attributes_for(:article)) }
 
     context '正常な値の場合' do
@@ -50,8 +49,9 @@ RSpec.describe Article, type: :model do
   end
 
   describe 'メソッド' do
-    let(:post_article) { main_user.articles.create(attributes_for(:article)) }
-    let(:draft_article) { main_user.articles.create(attributes_for(:article, :draft)) }
+    let(:main_user) { create(:user, :with_articles, post_count: 1, draft_count: 1) }
+    let(:post_article) { main_user.articles.posts.first }
+    let(:draft_article) { main_user.articles.drafts.first }
 
     context '.to_param' do
       it 'id_digestを返す' do
@@ -72,7 +72,17 @@ RSpec.describe Article, type: :model do
         expect(post_article.draft?).to be_falsey
       end
     end
-    # TODO context 'faborited_by?'
+
+    context '.favorited_by?' do
+      let(:sub_user) { create(:user, :with_articles, post_count: 1) }
+      let(:sub_post_article) { sub_user.articles.first }
+      before { create_favorite(main_user, sub_post_article) }
+
+      it '引数のユーザーいいねされているユーザーであればtrueを返す' do
+        expect(sub_post_article.favorited_by?(main_user)).to be_truthy
+        expect(post_article.favorited_by?(sub_user)).to be_falsey
+      end
+    end
   end
 
   describe 'スコープ' do
