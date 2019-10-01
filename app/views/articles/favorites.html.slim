@@ -1,1 +1,10 @@
-h1 #{@article.title} / いいねしたユーザー一覧
+.card-body
+  h1.card-title.display-3 #{@article.title} / いいねしたユーザー一覧
+  .row
+    - @article.favorite_users.each do |user|
+      .col-md-4
+        .card-deck
+          .card
+            .card-body
+              = link_to user.name, user
+

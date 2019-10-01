@@ -37,7 +37,8 @@ class ArticlesController < ApplicationController
 
     if @article.save
       flash[:success] = @article.posted ? '投稿しました！' : '下書きに保存しました'
-      redirect_to article_path(@article)
+      redirect_path = @article.posted ? article_path(@article) : drafts_path
+      redirect_to redirect_path
     else
       flash.now[:danger] = '入力に不備があります'
       render :new
