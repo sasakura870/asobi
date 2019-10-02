@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :comments, only: %i[create destroy]
 
+  resources :relationships, only: %i[create destroy]
+
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'

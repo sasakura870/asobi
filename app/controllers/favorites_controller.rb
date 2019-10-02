@@ -14,6 +14,7 @@ class FavoritesController < ApplicationController
 
   def destroy
     @article = Article.find_by(id: params[:article_id])
+    # TODO current_user.favorites.find_byでいいのでは？
     favorite = Favorite.find_by(user_id: current_user.id, article_id: @article.id)
     if favorite&.destroy
       flash[:success] = 'いいねを取り消しました'

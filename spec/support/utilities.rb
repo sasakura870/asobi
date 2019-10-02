@@ -15,6 +15,14 @@ module Utilities
     user.comments.create(article_id: article.id, content: content)
   end
 
+  def build_follow(following, follower)
+    following.active_relationships.build(follower_id: follower.id)
+  end
+
+  def create_follow(following, follower)
+    following.active_relationships.create(follower_id: follower.id)
+  end
+
   # requests用マクロ
 
   def login_request(user, remember: '0')
