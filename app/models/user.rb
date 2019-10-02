@@ -11,6 +11,14 @@ class User < ApplicationRecord
   has_many :favorite_articles, through: :favorites, source: :article
   has_many :comments, dependent: :destroy
   has_many :comment_articles, through: :comments, source: :article
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: :following_id,
+                                  dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :follower
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: :follower_id,
+                                   dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :following
 
   validates :name, presence: true,
                    length: { in: 4..32 },
@@ -56,6 +64,22 @@ class User < ApplicationRecord
   def my_comment?(comment)
     comments.exists?(id: comment.id)
   end
+
+  def already_follow?(user)
+    followings.include?(user)
+  end
+
+  def followed_by?(user)
+    followers.include?(user)
+  end
+
+  # def follow(user)
+  #   followings << user
+  # end
+
+  # def unfollow(user)
+  #   active_relationships.find_by(id: user.id).destroy
+  # end
 
   private
 

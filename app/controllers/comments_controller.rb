@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    # TODO current_user.comment.find_by(id: params[:id])でいいのでは？
     @comment = Comment.find_by(id: params[:id])
     return request_422 if @comment.nil? || current_user.comments.exclude?(@comment)
 
