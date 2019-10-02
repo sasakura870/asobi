@@ -102,6 +102,8 @@ RSpec.describe 'ArticlesController', type: :request do
   end
 
   describe 'GET #favorites' do
+    subject { get favorites_article_path(register.articles.posts.first) }
+    it_behaves_like 'HTTPリクエストが返る', 200
   end
 
   describe 'POST #create' do

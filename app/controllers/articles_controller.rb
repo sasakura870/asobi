@@ -28,12 +28,17 @@ class ArticlesController < ApplicationController
     @articles = current_user.articles.drafts.recent
   end
 
+  def favorites
+    @article = Article.find_by(id_digest: params[:id])
+  end
+
   def create
     @article = current_user.articles.new(article_params)
 
     if @article.save
       flash[:success] = @article.posted ? '投稿しました！' : '下書きに保存しました'
-      redirect_to article_path(@article)
+      redirect_path = @article.posted ? article_path(@article) : drafts_path
+      redirect_to redirect_path
     else
       flash.now[:danger] = '入力に不備があります'
       render :new

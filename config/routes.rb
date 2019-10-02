@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   get 'settings', to: 'users#edit'
 
-  resources :articles
+  resources :articles do
+    get :favorites, on: :member
+  end
   get 'drafts', to: 'articles#drafts'
 
   resources :favorites, only: %i[create destroy]
