@@ -1,4 +1,16 @@
 module ApplicationHelper
+  def javascript_path
+    path = "#{controller_path}/#{action_name}"
+    javascript_file_exist?("#{path}.js") ? path : 'default'
+  end
+
+  def javascript_file_exist?(path)
+    manifest = File.open('public/packs/manifest.json') do |file|
+      JSON.load(file)
+    end
+    manifest.key?(path)
+  end
+
   def full_title(title = '')
     base_title = 'Asobi'
     if title.empty?

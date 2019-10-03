@@ -22,4 +22,4 @@ const images = require.context("../images", true);
 import "@fortawesome/fontawesome-free/js/all"
 import "bootstrap-material-design"
 import "../stylesheets/application"
-import "../javascripts/application"
+// import "../javascripts/application"
