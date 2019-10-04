@@ -17,9 +17,9 @@ require("@rails/actiontext");
 const images = require.context("../images", true);
 // const imagePath = (name) => images(name, true)
 
-// import "bootstrap"
+import "bootstrap"
 // import 'bootstrap/dist/css/bootstrap-material-design.min.css';
 import "@fortawesome/fontawesome-free/js/all"
-import "bootstrap-material-design"
+// import "bootstrap-material-design"
 import "../stylesheets/application"
 // import "../javascripts/application"
