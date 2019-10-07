@@ -9,7 +9,7 @@ module ArticlesHelper
 
   def set_user_link(user, size: 25, class_name: '')
     link_to user_path(user), class: class_name do
-      user_photo(user, size: size) +
+      user_photo(user, size: size, class_name: 'mr-2') +
         content_tag(:span, "@#{user.name}")
     end
   end

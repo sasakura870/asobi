@@ -1,5 +1,6 @@
-.card.boarder.mb-4
-  = link_to article_path(article), class: 'card-body text-left'
-    h3.card-title = article.title
-    p.card-subtitle.text-muted = article.overview
+.card.card-float.boarder.mb-4
+  = link_to article_path(article), class: 'card-body text-left text-decoration-none'
+    - unless article.overview.nil?
+      small.card-subtitle.text-muted = article.overview
+    h4.card-title = article.title
   = set_user_link article.user, class_name: 'card-footer'

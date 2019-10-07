@@ -19,12 +19,12 @@ RSpec.describe User, type: :model do
           before { subject.name = 'aaaa' }
           it_behaves_like 'validation通過'
         end
-        context '31文字の場合' do
-          before { subject.name = 'a' * 32 }
+        context '16文字の場合' do
+          before { subject.name = 'a' * 16 }
           it_behaves_like 'validation通過'
         end
-        context '32文字以上の場合' do
-          before { subject.name = 'a' * 33 }
+        context '17文字以上の場合' do
+          before { subject.name = 'a' * 17 }
           it_behaves_like 'validationエラー'
         end
       end
@@ -77,14 +77,24 @@ RSpec.describe User, type: :model do
           let(:value) { 'goodpass' }
           it_behaves_like 'validation通過'
         end
-        context 'passwordが16文字の場合' do
-          let(:value) { 'a' * 16 }
+        context 'passwordが72文字の場合' do
+          let(:value) { 'a' * 72 }
           it_behaves_like 'validation通過'
         end
-        context 'passwordが17文字の場合' do
-          let(:value) { 'a' * 17 }
+        context 'passwordが73文字の場合' do
+          let(:value) { 'a' * 73 }
           it_behaves_like 'validationエラー'
         end
+      end
+
+      context '使用できない文字が入っている場合' do
+        before do
+          value = '+;:/?][{}¥|'
+          subject.password = value
+          subject.password_confirmation = value
+        end
+
+        it_behaves_like 'validationエラー'
       end
 
       context 'passwordとpassword_confirmationが異なる値の場合' do
@@ -94,20 +104,32 @@ RSpec.describe User, type: :model do
     end
 
     describe 'introduction属性' do
-      context '140文字の場合' do
-        before { subject.introduction = 'a' * 140 }
-        it_behaves_like 'validation通過'
-      end
-
-      context '141文字の場合' do
-        before { subject.introduction = 'a' * 141 }
-        it_behaves_like 'validationエラー'
+      describe 'length' do
+        context '140文字の場合' do
+          before { subject.introduction = 'a' * 140 }
+          it_behaves_like 'validation通過'
+        end
+        context '141文字の場合' do
+          before { subject.introduction = 'a' * 141 }
+          it_behaves_like 'validationエラー'
+        end
       end
     end
 
+    describe 'nick_name属性' do
+      describe 'length' do
+        context '50文字の場合' do
+          before { subject.nick_name = 'a' * 50 }
+          it_behaves_like 'validation通過'
+        end
+        context '51文字の場合' do
+          before { subject.nick_name = 'a' * 51 }
+          it_behaves_like 'validationエラー'
+        end
+      end
+    end
     # TODO validationテストの追加
     describe 'photo属性'
-    describe 'nick_name属性'
   end
 
   describe 'メソッド' do
@@ -178,6 +200,28 @@ RSpec.describe User, type: :model do
       it '引数のコメントが自身のものであればtrueを返す' do
         expect(main_user.my_comment?(comment)).to be_truthy
         expect(sub_user.my_comment?(comment)).to be_falsey
+      end
+    end
+
+    context '.already_follow?' do
+      let(:main_user) { create(:user) }
+      let(:sub_user) { create(:user) }
+      before { create_follow(main_user, sub_user) }
+
+      it '引数のユーザーをフォローしていればtrueを返す' do
+        expect(main_user.already_follow?(sub_user)).to be_truthy
+        expect(sub_user.already_follow?(main_user)).to be_falsey
+      end
+    end
+
+    context '.followed_by?' do
+      let(:main_user) { create(:user) }
+      let(:sub_user) { create(:user) }
+      before { create_follow(main_user, sub_user) }
+
+      it '引数のユーザーをフォローしていればtrueを返す' do
+        expect(sub_user.followed_by?(main_user)).to be_truthy
+        expect(main_user.followed_by?(sub_user)).to be_falsey
       end
     end
   end

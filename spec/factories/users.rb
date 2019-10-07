@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    sequence(:name) { |n| "faker-#{n}" }
+    sequence(:name) { |n| "faker_#{n}" }
     sequence(:email) { |n| "fake#{n}@example.com" }
     nick_name { 'nick_name' }
     introduction { Faker::Lorem.sentence(word_count: 5) }

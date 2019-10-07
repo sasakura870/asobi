@@ -21,14 +21,17 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following
 
   validates :name, presence: true,
-                   length: { in: 4..32 },
+                   length: { in: 4..16 },
                    uniqueness: true,
-                   format: { with: /\A[\w-]{,32}\z/ }
+                   format: { with: /\A[\w]{4,16}\z/ }
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :introduction, length: { maximum: 140 }
-  validates :password, length: { in: 8..16 }, allow_nil: true
+  validates :password, length: { in: 8..72 },
+                       format: { with: /\A[\w-]{8,72}\z/ },
+                       allow_nil: true
+  validates :nick_name, length: { maximum: 50 }
 
   has_one_attached :photo
 

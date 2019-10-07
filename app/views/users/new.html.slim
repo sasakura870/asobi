@@ -2,12 +2,12 @@
 
 .row
   .col-md-4.offset-4
-    .card
-      .card-header
-        h1 Asobiへようこそ！
-        p 新規登録してみんなと遊びをシェアしよう！
-      .card-text
-        = render partial: 'shared/flash'
-        = render partial: 'shared/error_messages', locals: { model: @user }
-        = form_with model: @user, local: true do |f|
-          = render partial: 'shared/session/form', locals: { model: @user, signup_flag: true, f: f }
+    = render partial: 'shared/flash'
+    .card.shadow
+      .card-body
+        h1.card-title.text-center 新規登録
+        hr
+        .card-text
+          = render partial: 'shared/error_messages', locals: { model: @user }
+          = form_with model: @user, local: true do |f|
+            = render partial: 'shared/session/form', locals: { model: @user, signup_flag: true, f: f }

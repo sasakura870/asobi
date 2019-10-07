@@ -1,9 +1,10 @@
 doctype html
 html lang = 'ja'
   = render partial: 'shared/head'
-  body
+  body.bgcolor-bg
     .container.container-width-custom.py-4
-      h3.py-4 = link_to('Asobi', root_path, class: 'mark')
+      = link_to root_path
+        = image_pack_tag 'logo.png'
       = yield
     - if Rails.env.development?
       = debug(params)
