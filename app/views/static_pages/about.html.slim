@@ -4,10 +4,10 @@ h1 「Asobi」とは?
 
 #app
   p = '{{ message }}'
-  button.btn.btn-primary.btn-raised @click='countUp' = '{{counter}}'
+  button.btn.btn-primary @click='countUp' = '{{counter}}'
   p v-if='odd' :class='class_name' 奇数
   p v-if='!odd' 偶数
   h2 :class="'btn btn-' + color" カラーバリエーション
-  button.btn.btn-main.btn-raised @click='changeColor($event)' data-color='main' オレンジ
-  button.btn.btn-highlight.btn-raised @click='changeColor($event)' data-color='highlight' パープル
-  button.btn.btn-sub-highlight.btn-raised @click='changeColor($event)' data-color='sub-highlight' えんじ
+  button.btn.btn-main @click='changeColor($event)' data-color='main' オレンジ
+  button.btn.btn-highlight @click='changeColor($event)' data-color='highlight' パープル
+  button.btn.btn-sub-highlight @click='changeColor($event)' data-color='sub-highlight' えんじ

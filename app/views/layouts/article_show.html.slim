@@ -6,7 +6,7 @@ html lang = 'ja'
     .container.container-width-custom.py-4
       = render partial: 'shared/flash'
       .row
-        .col-md-1
+        #item-contents.col-md-1
           = yield(:items)
         main.col-md-11
           = yield

@@ -3,16 +3,16 @@
 - if logged_in?
   = content_for(:items) do
     - if current_user.already_favorite?(@article)
-      = link_to favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger bmd-btn-fab'
-        .material-icons
-          i.fas.fa-star
+      = link_to favorite_path(article_id: @article.id), method: :delete, class: 'btn btn-danger'
+        i.fas.fa-star.fa-fw
     - else
-      = link_to favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary bmd-btn-fab'
-        i.fas.fa-star.btn-icon
-    = link_to '#', class: 'btn btn-primary bmd-btn-fab'
-      i.fas.fa-comment-dots
-    = link_to '#', class: 'btn btn-primary bmd-btn-fab'
-      i.fab.fa-twitter
+      = link_to favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary'
+        i.fas.fa-star.fa-fw
+    = link_to '#', class: 'btn btn-primary'
+      i.fas.fa-comment-dots.fa-fw
+    = link_to '#', class: 'btn btn-primary'
+      i.fab.fa-twitter.fa-fw
+    button.btn.btn-main @click='countUp' = '{{counter}}'
 
 .card.boarder.text-left
   .card-header
