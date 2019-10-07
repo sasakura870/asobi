@@ -2,8 +2,11 @@
 
 .row
   .col-md-4.offset-4
-    .card
-      h1.card-header ログイン
-      = render partial: 'shared/flash'
-      = form_with scope: :session, url: login_path, local: true do |f|
-        = render partial: 'shared/session/form', locals: { model: @user, f: f }
+    = render partial: 'shared/flash'
+    .card.shadow
+      .card-body
+        h1.card-title.text-center ログイン
+        hr
+        .card-text
+          = form_with scope: :session, url: login_path, local: true do |f|
+            = render partial: 'shared/session/form', locals: { model: @user, f: f }

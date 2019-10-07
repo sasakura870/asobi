@@ -15,8 +15,10 @@ require("@rails/actiontext");
 // or the `imagePath` JavaScript helper below.
 //
 const images = require.context("../images", true);
+// const fonts = require.context("../fonts", true);
 // const imagePath = (name) => images(name, true)
 
+// import "../fonts/memoir-round.otf"
 import "bootstrap"
 // import 'bootstrap/dist/css/bootstrap-material-design.min.css';
 import "@fortawesome/fontawesome-free/js/all"
