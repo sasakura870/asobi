@@ -1,17 +1,15 @@
 
-.card.boarder.text-left
-  = link_to article_path(article)
-    .card-body
-      h4.card-title = article.title
-      - unless article.overview.nil?
-        p.card-subtitle.text-muted = article.overview
+.card.card-float.boarder.text-left
+  = link_to article_path(article), class: 'card-body text-decoration-none'
+    - unless article.overview.nil?
+      small.card-subtitle.text-muted = article.overview
+    h4.card-title = article.title
+    .card-text
       = set_thumbnail(article, class_name: 'mx-auto w-100')
       p.card-link タグも入ります
       p
-        span
-          i.fas.fa-star
-          | 120
-          i.fas.fa-comment-dots
-          | 30
-        span.text-muted.text-right 1時間前
+        i.fas.fa-star.fa-fw
+        = article.favorites.count
+        i.fas.fa-comment-dots.fa-fw
+        = article.comments.count
   = set_user_link article.user, class_name: 'card-footer'

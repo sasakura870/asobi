@@ -3,14 +3,12 @@ header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
     = link_to('Asobi', root_path, class: 'navbar-brand mr-4')
     = form_with url: search_path, method: :get, local: true, class: 'form-inline mr-auto' do |f|
       .input-group
-        .input-group-prepend
-          .input-group-text
-            i.fas.fa-search
+        .input-group-prepend: .input-group-text: i.fas.fa-search
         = f.search_field :q, placeholder: 'キーワードを入力', id: 'search-text', class: 'form-control mr-2'
     ul.navbar-nav
       - if logged_in?
-        li.nav-item
-          = link_to(new_article_path, class: 'btn btn-dark-tone mr-4')
+        li.nav-item.mt-2
+          = link_to new_article_path, class: 'btn btn-dark-tone mr-4'
             i.fas.fa-pen.fa-fw
             | 投稿する
         li.nav-item.dropdown
@@ -25,6 +23,6 @@ header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
             = link_to('ログアウト', logout_path, class: "dropdown-item", method: :delete)
       -else
         li.nav-item.mr-4
-          = link_to('新規登録', signup_path, class: 'btn btn-raised btn-outline-light')
+          = link_to('新規登録', signup_path, class: 'btn btn-outline-light')
         li.nav-item
           = link_to('ログイン', login_path, class: 'nav-link link-underline')

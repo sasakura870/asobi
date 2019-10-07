@@ -1,7 +1,7 @@
 .card-deck.mb-4
   .card
     .card-body.text-center
-      p.card-title.display-3 = content_title
+      h1.card-title = content_title
       .row
         - articles.each_with_index do |article, i|
           .col-md-4
