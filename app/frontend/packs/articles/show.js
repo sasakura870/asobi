@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue.esm.js'
+import Axios from 'axios';
 
 document.addEventListener('DOMContentLoaded', function () {
   new Vue({
@@ -17,7 +18,17 @@ document.addEventListener('DOMContentLoaded', function () {
     methods: {
       countUp: function () {
         this.counter++
-        console.log(this.$el)
+      },
+      ajaxRequest: function (id) {
+        Axios.get('/ajaxTest', {
+          params: {
+            id: id
+          }
+        }).then(function (response) {
+          console.log(response)
+        }).catch(function (error) {
+          console.log(error)
+        })
       }
     }
   })

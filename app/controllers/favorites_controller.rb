@@ -23,4 +23,9 @@ class FavoritesController < ApplicationController
       request_422
     end
   end
+
+  def ajaxTest
+    @article = Article.find_by(id: params[:id])
+    render json: @article.to_json(only: %i[id title])
+  end
 end

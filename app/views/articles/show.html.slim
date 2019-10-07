@@ -12,7 +12,7 @@
       i.fas.fa-comment-dots.fa-fw
     = link_to '#', class: 'btn btn-primary'
       i.fab.fa-twitter.fa-fw
-    button.btn.btn-main @click='countUp' = '{{counter}}'
+    button.btn.btn-main @click='countUp(); ajaxRequest(#{@article.id});' = '{{counter}}'
 
 .card.boarder.text-left
   .card-header
