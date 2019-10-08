@@ -11,3 +11,5 @@ h1 「Asobi」とは?
   button.btn.btn-main @click='changeColor($event)' data-color='main' オレンジ
   button.btn.btn-highlight @click='changeColor($event)' data-color='highlight' パープル
   button.btn.btn-sub-highlight @click='changeColor($event)' data-color='sub-highlight' えんじ
+  - User.all.each do |user|
+    test-button text='#{user.name}'

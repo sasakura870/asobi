@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   get 'drafts', to: 'articles#drafts'
 
   resources :favorites, only: %i[create destroy]
-  get 'ajaxTest', to: 'favorites#ajaxTest'
 
   resources :comments, only: %i[create destroy]
 

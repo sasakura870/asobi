@@ -5,8 +5,7 @@ class FavoritesController < ApplicationController
     @article = Article.find_by(id: params[:article_id])
     favorite = current_user.favorites.build(article_id: @article.id)
     if favorite.save
-      flash[:success] = 'いいねしました'
-      redirect_to article_path(@article)
+      head :created
     else
       request_422
     end
@@ -14,18 +13,11 @@ class FavoritesController < ApplicationController
 
   def destroy
     @article = Article.find_by(id: params[:article_id])
-    # TODO current_user.favorites.find_byでいいのでは？
-    favorite = Favorite.find_by(user_id: current_user.id, article_id: @article.id)
+    favorite = current_user.favorites.find_by(user_id: current_user.id, article_id: @article.id)
     if favorite&.destroy
-      flash[:success] = 'いいねを取り消しました'
-      redirect_to article_path(@article)
+      head :ok
     else
       request_422
     end
-  end
-
-  def ajaxTest
-    @article = Article.find_by(id: params[:id])
-    render json: @article.to_json(only: %i[id title])
   end
 end
