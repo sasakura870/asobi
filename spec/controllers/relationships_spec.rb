@@ -24,7 +24,7 @@ RSpec.describe 'Relationships', type: :request do
         end
 
         context 'フォローしていない場合' do
-          it_behaves_like 'HTTPリクエストが返る', 302
+          it_behaves_like 'HTTPリクエストが返る', 201
           it_behaves_like 'モデルの総数が増える', Relationship
         end
       end
@@ -61,7 +61,7 @@ RSpec.describe 'Relationships', type: :request do
       context '他の本登録済みユーザーへのリクエストの場合' do
         context 'フォローしている場合' do
           before { create_follow(main_register, sub_register) }
-          it_behaves_like 'HTTPリクエストが返る', 302
+          it_behaves_like 'HTTPリクエストが返る', 200
           it_behaves_like 'モデルの総数が減る', Relationship
         end
 
