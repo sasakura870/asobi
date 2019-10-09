@@ -23,7 +23,7 @@ RSpec.describe 'Favorites', type: :request do
         let(:article_id) { sub_post.id }
 
         context 'いいねしていない記事の場合' do
-          it_behaves_like 'HTTPリクエストが返る', 302
+          it_behaves_like 'HTTPリクエストが返る', 201
           it_behaves_like 'モデルの総数が増える', Favorite
         end
 
@@ -73,7 +73,7 @@ RSpec.describe 'Favorites', type: :request do
 
         context '既にいいねしている場合' do
           before { create_favorite(main_register, sub_post) }
-          it_behaves_like 'HTTPリクエストが返る', 302
+          it_behaves_like 'HTTPリクエストが返る', 200
           it_behaves_like 'モデルの総数が減る', Favorite
         end
       end

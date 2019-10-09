@@ -1,5 +1,18 @@
 import Vue from 'vue/dist/vue.esm.js'
 
+Vue.component('test-button', {
+  data: () => ({
+    count: 0
+  }),
+  props: ['text'],
+  template: '<button type="button" class="btn btn-success" @click="countDown">{{text}} {{count}}</button>',
+  methods: {
+    countDown: function () {
+      this.count--
+    }
+  }
+})
+
 document.addEventListener('DOMContentLoaded', function () {
   new Vue({
     el: '#app',
