@@ -36,6 +36,8 @@ end
 RSpec.configure do |config|
   # 自作の検証用ヘルパーの呼び出し
   config.include Utilities
+  # ShowMeTheCookiesの導入
+  config.include ShowMeTheCookies, type: :system
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

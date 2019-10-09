@@ -4,16 +4,7 @@ RSpec.describe 'ログイン画面' do
   let(:main_user) { create(:user) }
   before { visit login_path }
 
-  it '入力フォームが2つ存在する' do
-    expect(page).to have_css('input', class: 'form-control', count: 2)
-  end
-  it 'ログイン状態の保持用のチェックボックスが存在する' do
-    expect(page).to have_field 'ログイン状態を保持する'
-  end
-
-  # TODO 新規登録リンクが存在する
   # TODO 新規登録画面に遷移する
-  # TODO パスワード再設定用のリンクが存在する
   # TODO パスワード再設定画面に遷移する
 
   describe 'ログイン機能' do
@@ -47,6 +38,32 @@ RSpec.describe 'ログイン画面' do
       context '誤ったパスワードを入力した場合' do
         let(:password) { 'badpassword' }
         it_behaves_like 'ログインに失敗する'
+      end
+    end
+  end
+
+  describe 'remember_me機能' do
+    before do
+      fill_in 'session_email', with: main_user.email
+      fill_in 'session_password', with: main_user.password
+      remember_action
+      click_on 'ログイン'
+      expire_cookies
+      visit user_path(main_user)
+    end
+
+    context '使用して再起動する場合' do
+      let(:remember_action) { check 'ログイン状態を保持する', visible: false }
+      it { expect(page).to have_checked_field("ログイン状態を保持する") }
+      it '再起動後もログインしている' do
+        within('header') { expect(page).to have_link 'dropdown_profile' }
+      end
+    end
+
+    context '使用せず再起動する場合' do
+      let(:remember_action) {}
+      it '再起動後はログアウトしている' do
+        within('header') { expect(page).to have_link 'ログイン' }
       end
     end
   end
