@@ -4,6 +4,7 @@
 
 <script>
 import Axios from "axios";
+import Swal from "sweetalert2";
 import { csrfToken } from "@rails/ujs";
 import { async } from "q";
 
@@ -16,21 +17,31 @@ export default {
     return {};
   },
   methods: {
-    deleteComment: async function() {
-      try {
-        const confirmation = confirm("コメントを削除しますか？");
-        if (confirmation) {
-          const response = await Axios.delete(`/comments/${this.commentId}`);
-          console.log("vueSuccess");
-          if (response.status === 200) {
-            this.$el.parentNode.remove();
-            console.log("deleteComment");
-          }
+    deleteComment: function() {
+      const element = this.$el.parentNode;
+      const confirmation = Swal.fire({
+        type: "warning",
+        title: "コメントを削除してもよろしいですか？",
+        text: "この操作は取り消しできません",
+        showCancelButton: true,
+        confirmButtonText: "削除する",
+        cancelButtonText: "キャンセル"
+      }).then(result => {
+        if (result.value) {
+          Axios.delete(`/comments/${this.commentId}`)
+            .then(function(response) {
+              console.log("vueSuccess");
+              if (response.status === 200) {
+                element.remove();
+                console.log("deleteComment");
+              }
+            })
+            .catch(function(error) {
+              console.log("deleteFailure");
+              console.log(error);
+            });
         }
-      } catch (error) {
-        console.log("deleteFailure");
-        console.log(error);
-      }
+      });
     }
   }
 };

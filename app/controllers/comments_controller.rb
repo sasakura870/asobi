@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:success] = 'コメントを投稿しました'
       redirect_to @article
-      head :created
+      # head :created
     else
       request_422
     end
