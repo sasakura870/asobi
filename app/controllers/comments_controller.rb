@@ -13,14 +13,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    # TODO current_user.comment.find_by(id: params[:id])でいいのでは？
-    @comment = Comment.find_by(id: params[:id])
-    return request_422 if @comment.nil? || current_user.comments.exclude?(@comment)
-
-    @article = @comment.article
-    if @comment.destroy
-      flash[:success] = 'コメントを削除しました'
-      redirect_to @article
+    comment = current_user.comments.find_by(id: params[:id])
+    if comment&.destroy
+      head :ok
     else
       request_422
     end

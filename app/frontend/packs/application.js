@@ -20,8 +20,6 @@ const images = require.context("../images", true);
 
 // import "../fonts/memoir-round.otf"
 import "bootstrap"
-// import 'bootstrap/dist/css/bootstrap-material-design.min.css';
 import "@fortawesome/fontawesome-free/js/all"
-// import "bootstrap-material-design"
 import "../stylesheets/application"
 // import "../javascripts/application"

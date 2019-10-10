@@ -3,10 +3,10 @@ html lang = 'ja'
   = render partial: 'shared/head'
   body.bgcolor-bg
     = render partial: 'shared/header'
-    .container.container-width-custom.py-4
+    #app.container.container-width-custom.py-4
       = render partial: 'shared/flash'
       .row
-        #item-contents.col-md-1
+        .col-md-1
           = yield(:items)
         main.col-md-11
           = yield
