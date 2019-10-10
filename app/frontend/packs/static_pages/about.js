@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue.esm.js'
+import Swal from 'sweetalert2'
 
 Vue.component('test-button', {
   data: () => ({
@@ -29,7 +30,21 @@ document.addEventListener('DOMContentLoaded', function () {
         this.counter++
       },
       changeColor: function (event) {
-        this.color = event.currentTarget.getAttribute('data-color')
+        this.color = event.currentTarget.getAttribute('data-color');
+        Swal.fire({
+          type: 'success',
+          title: this.color,
+          text: this.message,
+          showCancelButton: true,
+          confirmButtonText: '削除する',
+          cancelButtonText: 'キャンセル'
+        }).then((result) => {
+          if (result.value) {
+            console.log(this.color);
+          } else if (result.dismiss) {
+            console.log(result.dismiss)
+          }
+        })
       }
     }
   })

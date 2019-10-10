@@ -4,23 +4,21 @@ class CommentsController < ApplicationController
   def create
     @article = Article.posts.find_by(id: comment_params[:article_id])
     @comment = current_user.comments.new(comment_params)
+    # comment = current_user.comments.new(article_id: params[:article_id],
+    #                                     content: params[:content])
     if @comment.save
       flash[:success] = 'コメントを投稿しました'
       redirect_to @article
+      # head :created
     else
       request_422
     end
   end
 
   def destroy
-    # TODO current_user.comment.find_by(id: params[:id])でいいのでは？
-    @comment = Comment.find_by(id: params[:id])
-    return request_422 if @comment.nil? || current_user.comments.exclude?(@comment)
-
-    @article = @comment.article
-    if @comment.destroy
-      flash[:success] = 'コメントを削除しました'
-      redirect_to @article
+    comment = current_user.comments.find_by(id: params[:id])
+    if comment&.destroy
+      head :ok
     else
       request_422
     end

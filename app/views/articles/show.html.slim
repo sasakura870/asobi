@@ -8,7 +8,7 @@
     = link_to '#', class: 'btn btn-primary'
       i.fab.fa-twitter.fa-fw
 
-.card.boarder.text-left
+.card.boarder.text-left.mb-4
   .card-header
     = set_user_link @article.user, size: 50
     span.text-right.text-muted = @article.updated_at
@@ -20,11 +20,13 @@
     p == @article.content
 
 .card.boarder.text-left
-  .content.body
+  .card-body
     - @article.comments.each do |comment|
       = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
     - if logged_in?
+      hr
       = form_with model: current_user.comments.new, local: true do |f|
         = f.hidden_field :article_id, value: @article.id
-        = f.text_area :content, class: 'form-control'
-        = f.submit '投稿する', class: 'btn btn-primary btn-raised'
+        .input-group
+          = f.text_area :content, class: 'form-control mb-2', required: true, rows: 4
+        = f.submit '投稿する', class: 'btn btn-main'

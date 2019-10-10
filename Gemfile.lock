@@ -458,6 +458,8 @@ GEM
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    show_me_the_cookies (5.0.0)
+      capybara (>= 2, < 4)
     signet (0.11.0)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -557,6 +559,7 @@ DEPENDENCIES
   rspec-rails (~> 3.7)
   sass-rails (~> 5)
   selenium-webdriver
+  show_me_the_cookies
   slim-rails
   solargraph
   spring

@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  # 仮登録時のアクション。もっといい名前がある？
   def confirmation
     @user = User.find_by(name: params[:id])
   end

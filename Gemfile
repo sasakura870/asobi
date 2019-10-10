@@ -78,6 +78,8 @@ group :test do
   gem 'factory_bot_rails', '~> 4.11'
   gem 'rspec-rails', '~> 3.7'
   gem 'spring-commands-rspec'
+  # systemSpec内でブラウザの再起動を再現する
+  gem "show_me_the_cookies"
 end
 
 group :production do
