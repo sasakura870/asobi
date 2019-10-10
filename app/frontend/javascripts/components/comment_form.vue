@@ -1,17 +1,16 @@
 <template>
-  <div>
+  <form @submit.prevent>
     <div class="form-group">
       <textarea
         class="form-control"
-        v-model="contents"
+        v-model="content"
         placeholder="コメントを入力してください"
-        required
+        required="true"
         rows="4"
       ></textarea>
-      <p>{{contents}}</p>
     </div>
-    <button @click="createComment" class="btn btn-main">投稿する</button>
-  </div>
+    <input type="submit" @click="createComment" value="投稿する" class="btn btn-main" />
+  </form>
 </template>
 
 <script>
@@ -26,11 +25,27 @@ export default {
   },
   data: function() {
     return {
-      contents: ""
+      content: ""
     };
   },
   methods: {
-    createComment: async function() {}
+    createComment: async function() {
+      try {
+        const response = await Axios.post("/comments", {
+          article_id: this.articleId,
+          content: this.content
+        });
+        console.log("vueSuccess");
+        if (response.status === 201) {
+          this.content = "";
+          //要素を追加する
+          console.log("creaateComment");
+        }
+      } catch (error) {
+        console.log("createFailure");
+        console.log(error);
+      }
+    }
   }
 };
 </script>

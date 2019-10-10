@@ -4,9 +4,12 @@ class CommentsController < ApplicationController
   def create
     @article = Article.posts.find_by(id: comment_params[:article_id])
     @comment = current_user.comments.new(comment_params)
+    # comment = current_user.comments.new(article_id: params[:article_id],
+    #                                     content: params[:content])
     if @comment.save
       flash[:success] = 'コメントを投稿しました'
       redirect_to @article
+      head :created
     else
       request_422
     end
