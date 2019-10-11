@@ -9,7 +9,7 @@ class AccountActivationsController < ApplicationController
       flash[:success] = '本登録が完了しました！'
       redirect_to root_path
     else
-      flash[:danger] = '無効なURLです'
+      flash[:error] = '無効なURLです'
       redirect_to root_path
     end
   end

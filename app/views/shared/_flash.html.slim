@@ -1,5 +1,20 @@
-- flash.each do |key, value|
-  div class="alert alert-#{key} alert-dismissible fade show" role='alert'
-    button.close type="button" data-dismiss="alert" aria-label="Close"
-      span aria-hidden="true" &times;
-    = value
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+javascript:
+  const toast_flash = () => {
+    var flash = #{raw flash.to_json};
+    console.log(flash);
+    if (flash.length > 0){
+      swal.fire({
+        type: flash[0][0],
+        title: flash[0][1],
+        toast: true,
+        position: 'bottom-start',
+        grow: 'column',
+        showConfirmButton: false,
+        showCloseButton: false,
+        timer: 4000
+      });
+    }
+  }
+  window.addEventListener('load', toast_flash);

@@ -1,7 +1,6 @@
-import Vue from 'vue/dist/vue.esm.js'
-import Swal from 'sweetalert2'
+// import Vue from 'vue/dist/vue.esm'
 
-Vue.component('test-button', {
+vue.component('test-button', {
   data: () => ({
     count: 0
   }),
@@ -15,7 +14,7 @@ Vue.component('test-button', {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-  new Vue({
+  new vue({
     el: '#app',
     data: {
       message: 'Hello, About!',

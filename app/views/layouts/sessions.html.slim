@@ -3,6 +3,7 @@ html lang = 'ja'
   = render partial: 'shared/head'
   body.bgcolor-bg
     .container.container-width-custom.py-4
+      / = render partial: 'shared/flash'
       = link_to root_path
         = image_pack_tag 'logo.png'
       = yield

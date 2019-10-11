@@ -4,7 +4,7 @@ html lang = 'ja'
   body.bgcolor-bg
     = render partial: 'shared/header'
     #app.container.container-width-custom.py-4
-      = render partial: 'shared/flash'
+      / = render partial: 'shared/flash'
       .row
         .col-md-1
           = yield(:items)

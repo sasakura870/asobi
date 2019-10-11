@@ -4,7 +4,6 @@
 
 <script>
 import Axios from "axios";
-import Swal from "sweetalert2";
 import { csrfToken } from "@rails/ujs";
 import { async } from "q";
 
