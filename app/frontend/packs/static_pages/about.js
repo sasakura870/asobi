@@ -1,3 +1,4 @@
+import '../default'
 import Vue from 'vue/dist/vue.esm.js'
 import Swal from 'sweetalert2'
 

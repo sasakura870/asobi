@@ -1,3 +1,4 @@
+import '../default'
 import Vue from 'vue/dist/vue.esm.js'
 import FavoriteButton from '../../javascripts/components/favorite_button'
 import CommentDeleteButton from '../../javascripts/components/comment_delete_button'
@@ -11,5 +12,5 @@ document.addEventListener('DOMContentLoaded', function () {
       'comment-delete-button': CommentDeleteButton,
       // 'comment-form': CommentForm
     }
-  })
-})
+  });
+});
