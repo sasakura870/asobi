@@ -13,12 +13,10 @@ class SessionsController < ApplicationController
       login user
       # チェックが付いていればログイン状態を保持する
       session_params[:remember_check] == '1' ? remember : forget
-      flash[:success] = 'ログインしました' * 20
-      flash[:warning] = 'ログインに成功しました'
-      flash[:info] = "ログイン情報 : #{current_user.name}"
+      flash[:success] = 'ログインしました'
       redirect_back_or root_path
     else
-      flash.now[:danger] = 'メールアドレスまたはパスワードが違います'
+      flash.now[:error] = 'メールアドレスまたはパスワードが違います'
       render :new
     end
   end
@@ -27,8 +25,6 @@ class SessionsController < ApplicationController
     forget
     logout
     flash[:success] = 'ログアウトしました'
-    flash[:warning] = 'ログアウトに成功しました'
-    flash[:info] = 'ログアウト情報'
     redirect_back_or root_path
   end
 

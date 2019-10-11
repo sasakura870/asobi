@@ -1,5 +1,3 @@
-// import Swal from "sweetalert2";
-
 // // window.addEventListener('load', function (event) {
 // //   console.log(event);
 // // })

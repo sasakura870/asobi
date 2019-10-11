@@ -1,37 +1,20 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 javascript:
-  window.addEventListener('load', function () {
+  const toast_flash = () => {
     var flash = #{raw flash.to_json};
     console.log(flash);
-    const toast = swal.mixin({
-      toast: true,
-      position: 'bottom-start',
-      grow: 'column',
-      showConfirmButton: false,
-      showCloseButton: false,
-      timer: 4000
-    });
-
-    var toastData = [];
-    for(var i = 0; i < flash.length; i++){
-      console.log(`${flash[i][0]}, ${flash[i][1]}`);
-      var data = {
-        type: flash[i][0],
-        title: flash[i][1]
-      }
-      toastData.push(data);
+    if (flash.length > 0){
+      swal.fire({
+        type: flash[0][0],
+        title: flash[0][1],
+        toast: true,
+        position: 'bottom-start',
+        grow: 'column',
+        showConfirmButton: false,
+        showCloseButton: false,
+        timer: 4000
+      });
     }
-    swal.queue(toastData);
-  });
-
-/ = hidden_field_tag :alert_type, key
-/ = hidden_field_tag :message, value
-/ div class="alert alert-#{key} alert-dismissible fade show" role='alert'
-/   button.close type="button" data-dismiss="alert" aria-label="Close"
-/     span aria-hidden="true" &times;
-/   = value
-/ script
-/   toast(key, value);
-/   / console.log("#{key}, #{value}");
-
+  }
+  window.addEventListener('load', toast_flash);

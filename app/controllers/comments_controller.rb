@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
   def destroy
     comment = current_user.comments.find_by(id: params[:id])
     if comment&.destroy
+      flash[:success] = 'コメントを削除しました'
       head :ok
     else
       request_422

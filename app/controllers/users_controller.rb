@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       flash[:info] = '本登録用のメールを送信しました'
       redirect_to confirmation_users_path
     else
-      flash.now[:danger] = '登録に失敗しました'
+      flash.now[:error] = '登録に失敗しました'
       render :new, layout: 'sessions'
     end
   end
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
       flash[:success] = '設定を更新しました'
       redirect_to settings_path
     else
-      flash.now[:danger] = '設定の更新に失敗しました'
+      flash.now[:error] = '設定の更新に失敗しました'
       render :edit
     end
   end
