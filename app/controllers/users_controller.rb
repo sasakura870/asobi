@@ -11,10 +11,10 @@ class UsersController < ApplicationController
 
   layout :switch_layout
 
-  # TODO いらない？
-  def index
-    @users = User.includes(:photo_attachment).page(params[:page])
-  end
+  # # TODO いらない？
+  # def index
+  #   @users = User.includes(:photo_attachment).page(params[:page])
+  # end
 
   def new
     @user = User.new
@@ -50,6 +50,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    # TODO current_userでいい？
     @user = User.find(params[:user][:id])
     if @user.update(user_update_params)
       flash[:success] = '設定を更新しました'
