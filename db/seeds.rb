@@ -12,7 +12,7 @@ User.create!(name: 'naoyachan',
              introduction: "開発用ユーザーです。\nテスト",
              password: 'hogehoge',
              password_confirmation: 'hogehoge',
-             activated: true)
+             status: :admin)
 
 99.times do |n|
   User.create!(name: "Faker_#{n}",
@@ -20,7 +20,7 @@ User.create!(name: 'naoyachan',
                introduction: Faker::Lorem.sentence(word_count: 5),
                password: 'password',
                password_confirmation: 'password',
-               activated: true)
+               status: :register)
 end
 
 users = User.order(:created_at).take(10)

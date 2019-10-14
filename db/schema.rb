@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_022500) do
+ActiveRecord::Schema.define(version: 2019_10_14_024757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,8 +99,9 @@ ActiveRecord::Schema.define(version: 2019_10_14_022500) do
     t.string "remember_digest"
     t.string "nick_name"
     t.string "activation_digest"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.index ["name"], name: "index_users_on_name"
+    t.index ["status"], name: "index_users_on_status"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
