@@ -1,37 +1,5 @@
 @each $key,
 $color in $custom_colors {
-  // .btn-#{$key} {
-  //   background: $color; //ボタンの背景色
-  //   color: white; //ボタンのテキストの色
-  // }
-
-  // .btn-#{$key}:hover,
-  // .btn-#{$key}:focus,
-  // .btn-#{$key}:active,
-  // .btn-#{$key}:active:focus,
-  // .btn-#{$key}:active:hover,
-  // .btn-#{$key}:active.focus,
-  // .btn-#{$key}.active,
-  // .btn-#{$key}.active:focus,
-  // .btn-#{$key}.active:hover,
-  // .btn-#{$key}.active.focus,
-  // .open>.dropdown-toggle.btn-#{$key},
-  // .open>.dropdown-toggle.btn-#{$key}:hover,
-  // .open>.dropdown-toggle.btn-#{$key}:focus,
-  // .open>.dropdown-toggle.btn-#{$key}.focus,
-  // .btn-#{$key}.disabled:hover,
-  // .btn-#{$key}[disabled]:hover,
-  // fieldset[disabled] .btn-#{$key}:hover,
-  // .btn-#{$key}.disabled:focus,
-  // .btn-#{$key}[disabled]:focus,
-  // fieldset[disabled] .btn-#{$key}:focus,
-  // .btn-#{$key}.disabled.focus,
-  // .btn-#{$key}[disabled].focus,
-  // fieldset[disabled] .btn-#{$key}.focus {
-  //   background: darken($color, 7%); //ボタンの上にポインタを持ってきたり、クリックしたりした時の背景色
-  //   color: white; //ボタンの上にポインタを持ってきたり、クリックしたりした時のテキストの色
-  // }
-
   .btn-#{$key} {
     @include button-variant($color, $color);
   }
@@ -41,7 +9,13 @@ $color in $custom_colors {
   }
 }
 
+.btn-round {
+  display: inline-block;
+  border-radius: 50%;
+}
+
 .btn {
+
   .btn-unfollow {
 
     &:hover {

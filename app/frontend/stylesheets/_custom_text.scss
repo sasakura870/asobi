@@ -1,0 +1,16 @@
+@each $key,
+$color in $custom_colors {
+  @include text-emphasis-variant(".text-#{$key}", $color);
+}
+
+.text-gold {
+  color: gold;
+}
+
+.text-silver {
+  color: silver;
+}
+
+.text-copper {
+  color: sienna;
+}
