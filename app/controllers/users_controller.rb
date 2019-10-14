@@ -27,8 +27,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # TODO viewでcurrent_userを呼び出せばいい？
-    @user = current_user
   end
 
   def confirmation
@@ -50,14 +48,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    # TODO current_userでいい？
-    @user = User.find(params[:user][:id])
-    if @user.update(user_update_params)
+    if current_user&.update(user_update_params)
       flash[:success] = '設定を更新しました'
       redirect_to settings_path
     else
       flash.now[:error] = '設定の更新に失敗しました'
-      render :edit
+      render :edit, layout: 'left_sidemenu'
     end
   end
 
@@ -77,6 +73,7 @@ class UsersController < ApplicationController
   def user_update_params
     params.require(:user).permit(:name,
                                  :email,
+                                 :nick_name,
                                  :introduction,
                                  :photo)
   end

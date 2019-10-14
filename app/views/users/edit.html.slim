@@ -1,33 +1,32 @@
 = content_for(:sidemenu) do
-  p サイドメニュー
+  ul.list-group
+    li.list-group-item = link_to 'プロフィール', '#profile'
+    li.list-group-item = link_to 'メールアドレス', '#email'
+    li.list-group-item = link_to 'パスワード', '#password'
 
-h1 ユーザー設定
-= render partial: 'shared/error_messages', locals: { model: @user }
-= form_with model: @user, local: true do |f|
-  = f.hidden_field :id
+.card
+  .card-body
+    .row
+      .col-md-8
+        .mb-4
+          = render partial: 'shared/error_messages', locals: { model: current_user }
+        .mb-4
+          = render partial: 'shared/users/edit/profile_form'
+          hr
+        .mb-4
+          = render partial: 'shared/users/edit/email_form'
+          hr
+        .mb-4
+          = render partial: 'shared/users/edit/password_form'
+          hr
+        .mb-4
+          = render partial: 'shared/users/edit/user_destroy_form'
 
-  .form-group
-    = user_photo(@user, size: 100)
-    = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'
 
-  .form-group
-    = f.label :name, class: 'form-label'
-    = f.text_field :name, class: 'form-control'
-
-  .form-group
-    = f.label :email, class: 'form-label'
-    = f.email_field :email, class: 'form-control'
-
-  .form-group
-    = f.label :introduction, class: 'form-label'
-    = f.text_area :introduction, class: 'form-control'
-
-  / .form-group
-  /   = f.label :password
-  /   = f.password_field :password
-
-  / .form-group
-  /   = f.label :password_confirmation
-  /   = f.password_field :password_confirmation
-
-  = f.submit '更新する', class: 'btn btn-primary'
+        / TODO 退会フォーム
+      .col-md-4
+        .form-group
+          p.text-center
+          = form_with model: current_user, local: true do |f|
+            = user_photo(current_user, size: 200)
+            = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'
