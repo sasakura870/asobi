@@ -43,8 +43,7 @@ class User < ApplicationRecord
     name
   end
 
-  def signup_activation
-    # update_column(:activated, true)
+  def signup
     register! if temporary?
   end
 
