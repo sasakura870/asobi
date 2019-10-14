@@ -1,13 +1,21 @@
+= content_for(:title, '仮登録の完了')
+
 .row
-  .col-md-6.col-col-md-offset-6
+  .col-md-6.offset-3
     .card
-      .card.body
-        h1.card-title 仮登録が完了しました！
+      .card-body
+        h2.card-title.text-main 仮登録が完了しました！
         .card-text
           p 受け取ったメールから本登録を完了してください！
-          h2
-            i.far.fa-envelope
-            = current_user.email
-          p メール本文に記載されているURLをクリックして会員登録を完了させましょう！
-          p メールが届いていない場合は下記のリンクからメールを再送できます。
-          / = link_to '再送する', confirmation_users_path(@user.activation, email: @user.email)
+          h2.text-center
+            i.far.fa-envelope.fa-fw.fa-2x
+            span.text-main = current_user.email
+          p メール本文に記載されているURLをクリックして会員登録を完了しましょう！
+      .card-footer
+        p 24時間を過ぎた場合、最初から登録をやり直して頂く必要がございます。
+        p
+          = link_to '詳しくはこちらをご覧ください', '#'
+        p
+          | メールが届いていない場合は
+          = link_to 'こちら', '#'
+          | からメールを再送できます。

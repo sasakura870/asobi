@@ -8,10 +8,10 @@ RSpec.describe 'ArticlesController', type: :request do
     it { is_expected.to redirect_to article_path(request_article) }
   end
 
-  describe 'GET #index' do
-    subject { get articles_path }
-    it_behaves_like 'HTTPリクエストが返る', 200
-  end
+  # describe 'GET #index' do
+  #   subject { get articles_path }
+  #   it_behaves_like 'HTTPリクエストが返る', 200
+  # end
 
   describe 'GET #new' do
     subject { get new_article_path }

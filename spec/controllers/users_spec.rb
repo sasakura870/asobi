@@ -4,10 +4,10 @@ RSpec.describe 'UsersController', type: :request do
   let(:register) { create(:user) }
   let(:temporary) { create(:user, :temporary) }
 
-  describe 'GET #index' do
-    subject { get users_path }
-    it_behaves_like 'HTTPリクエストが返る', 200
-  end
+  # describe 'GET #index' do
+  #   subject { get users_path }
+  #   it_behaves_like 'HTTPリクエストが返る', 200
+  # end
 
   describe 'GET #new' do
     subject { get signup_path }

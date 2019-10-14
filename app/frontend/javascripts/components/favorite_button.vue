@@ -1,14 +1,14 @@
 <template>
   <div>
     <div v-if="check">
-      <span class="text-muted">{{count}}</span>
-      <button class="btn btn-danger" @click="deleteFavorite">
+      <p class="text-center text-muted">{{count}}</p>
+      <button class="btn btn-danger btn-round mb-4" @click="deleteFavorite">
         <i class="fas fa-star fa-fw"></i>
       </button>
     </div>
     <div v-else>
-      <span class="text-muted">{{count}}</span>
-      <button class="btn btn-primary" @click="createFavorite">
+      <p class="text-center text-muted">{{count}}</p>
+      <button class="btn btn-primary btn-round mb-4" @click="createFavorite">
         <i class="fas fa-star fa-fw"></i>
       </button>
     </div>
