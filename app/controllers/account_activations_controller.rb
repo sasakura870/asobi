@@ -1,5 +1,5 @@
 class AccountActivationsController < ApplicationController
-  before_action :filter_only_no_activation_users
+  before_action :filter_only_temporary
 
   def edit
     user = User.find_by(email: params[:email])
