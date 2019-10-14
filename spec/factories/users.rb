@@ -6,10 +6,14 @@ FactoryBot.define do
     introduction { Faker::Lorem.sentence(word_count: 5) }
     password { 'password' }
     password_confirmation { 'password' }
-    activated { true }
+    status { :register }
+
+    trait :admin do
+      status { :admin }
+    end
 
     trait :temporary do
-      activated { false }
+      status { :temporary }
     end
 
     trait :with_articles do

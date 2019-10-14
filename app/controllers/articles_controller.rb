@@ -7,10 +7,11 @@ class ArticlesController < ApplicationController
 
   layout 'article_show', only: :show
 
-  def index
-    @articles = Article.includes(thumbnail_attachment: :blob, user: :photo_attachment)
-                       .posts.recent.page(params[:page])
-  end
+  # TODO いらない？
+  # def index
+  #   @articles = Article.includes(thumbnail_attachment: :blob, user: :photo_attachment)
+  #                      .posts.recent.page(params[:page])
+  # end
 
   def new
     @article = current_user.articles.new

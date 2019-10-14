@@ -33,27 +33,22 @@ class User < ApplicationRecord
                        allow_nil: true
   validates :nick_name, length: { maximum: 50 }
 
+  enum status: { temporary: 0,
+                 register: 1,
+                 admin: 2 }
+
   has_one_attached :photo
 
   def to_param
     name
   end
 
-  def signup_activation
-    update_column(:activated, true)
-  end
-
-  def register?
-    activated?
-  end
-
-  def temporary?
-    !activated?
+  def signup
+    register! if temporary?
   end
 
   def remember_me
     self.remember = SecureRandom.urlsafe_base64
-    # save
   end
 
   def forget_me
@@ -75,14 +70,6 @@ class User < ApplicationRecord
   def followed_by?(user)
     followers.include?(user)
   end
-
-  # def follow(user)
-  #   followings << user
-  # end
-
-  # def unfollow(user)
-  #   active_relationships.find_by(id: user.id).destroy
-  # end
 
   private
 

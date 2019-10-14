@@ -7,13 +7,13 @@ Rails.application.routes.draw do
 
   get 'search', to: 'searches#search'
 
-  resources :users, except: %i[new edit] do
+  resources :users, except: %i[index new edit] do
     get :confirmation, on: :collection
   end
   get 'signup', to: 'users#new'
   get 'settings', to: 'users#edit'
 
-  resources :articles do
+  resources :articles, except: :index do
     get :favorites, on: :member
   end
   get 'drafts', to: 'articles#drafts'

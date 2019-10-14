@@ -44,7 +44,7 @@ RSpec.describe 'Comments', type: :request do
       before { login_request register }
 
       context '自分のコメントの場合' do
-        it_behaves_like 'HTTPリクエストが返る', 302
+        it_behaves_like 'HTTPリクエストが返る', 200
         it_behaves_like 'モデルの総数が減る', Comment
       end
 
