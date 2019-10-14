@@ -141,10 +141,10 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context '.signup_activation' do
-      before { subject.signup_activation }
+    context '.signup' do
+      before { subject.signup }
       it 'activatedの値をtrueにする' do
-        expect(subject.activated).to be_truthy
+        expect(subject.register?).to be_truthy
       end
     end
 
