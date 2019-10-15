@@ -7,11 +7,18 @@ Rails.application.routes.draw do
 
   get 'search', to: 'searches#search'
 
-  resources :users, except: %i[index new edit] do
+  resources :users, only: %i[show create destroy] do
     get :confirmation, on: :collection
   end
   get 'signup', to: 'users#new'
-  get 'settings', to: 'users#edit'
+  # get 'settings', to: 'users#edit'
+
+  namespace :settings do
+    resources :profile, only: %i[index update]
+    resources :account, only: %i[index update]
+    resources :password, only: %i[index update]
+    root 'profile#index'
+  end
 
   resources :articles, except: :index do
     get :favorites, on: :member

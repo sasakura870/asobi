@@ -1,0 +1,17 @@
+doctype html
+html lang = 'ja'
+  = render partial: 'shared/head'
+  body.bgcolor-bg
+    = render partial: 'shared/header'
+    .container.container-width-custom.py-4
+      .row
+        aside.col-md-3
+          ul.list-group
+            li.list-group-item = link_to 'プロフィール', settings_profile_index_path
+            li.list-group-item = link_to 'アカウント', settings_account_index_path
+            li.list-group-item = link_to 'パスワード', settings_password_index_path
+        main.col-md-9
+          = yield
+    = render partial: 'shared/footer'
+    - if Rails.env.development?
+      = debug(params)
