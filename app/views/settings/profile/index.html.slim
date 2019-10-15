@@ -1,0 +1,25 @@
+.card
+  .card-body
+    h1.text-center プロフィールの編集
+    .row
+      .col-md-8
+        = form_with model: current_user, scope: :profile, url: settings_profile_path(current_user), method: :patch, local: true do |f|
+          = f.hidden_field :id
+          .form-group
+            = f.label :name, class: 'form-label'
+            = f.text_field :name, class: 'form-control', placeholder: 'ユーザーID'
+            small.text-muted 英数字とアンダースコア(_)で4~15文字
+          .form-group
+            = f.label :nick_name, class: 'form-label'
+            = f.text_field :nick_name, class: 'form-control', placeholder: 'ニックネーム'
+            small.text-muted 50字以内
+          .form-group
+            = f.label :introduction, class: 'form-label'
+            = f.text_area :introduction, class: 'form-control', size: '40x5'
+            small.text-muted 140字以内
+          = f.submit '更新する', class: 'btn btn-main'
+      .col-md-4
+        = form_with model: current_user, local: true do |f|
+          p.text-center
+            = user_photo(current_user, size: 200)
+            = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'

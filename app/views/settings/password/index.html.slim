@@ -1,0 +1,19 @@
+.card
+  .card-body
+    h1.text-center パスワードの変更
+    .row
+      .col-md-8
+        = form_with model: current_user, local: true do |f|
+          .form-group
+            = f.label '現在のパスワード', class: 'form-label'
+            = f.password_field :password, class: 'form-control'
+            small.text-muted 現在のパスワードを入力してください
+          .form-group
+            = f.label '新しいパスワード', class: 'form-label'
+            = f.password_field :new_password, class: 'form-control'
+            small.text-muted 新しいパスワードを入力してください
+          .form-group
+            = f.label '新しいパスワード(確認用)', class: 'form-label'
+            = f.password_field :password, class: 'form-control'
+            small.text-muted もう一度新しいパスワードを入力してください
+          = f.submit '変更する', class: 'btn btn-main'
