@@ -1,5 +1,5 @@
 class Settings::Base < ApplicationController
-  before_action :filter_only_register
+  before_action :filter_only_logged_in_users
 
   protected
 

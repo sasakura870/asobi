@@ -1,3 +1,4 @@
+# TODO Policy層に移動したい
 module ActionFilter
   extend ActiveSupport::Concern
 

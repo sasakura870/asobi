@@ -7,8 +7,7 @@ class Settings::AccountController < Settings::Base
     # TODO サービス層に移動
     input_data = update_params(:account, :email)
     if current_user&.update(input_data)
-      # TODO メール送信
-      # TODO 仮登録状態に変更
+      UserMailer.email_resetting(current_user).deliver_now
       flash[:info] = 'メールを送信しました'
       redirect_to settings_account_index_path
     else
