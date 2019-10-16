@@ -1,0 +1,2 @@
+module Settings::RememberHelper
+end

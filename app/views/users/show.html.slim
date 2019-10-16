@@ -3,13 +3,13 @@
 = content_for(:sidemenu) do
   #user_profile
     = user_photo(@user, size: 200)
-    h1 = "@#{@user.name}"
+    - if @user.nick_name.present?
+      h3 = @user.nick_name
+      p = "@#{@user.name}"
+    - else
+      h3 = "@#{@user.name}"
     - if logged_in? && @user != current_user
       follow-button　v-bind:user-id='#{@user.id}' v-bind:is-followed='#{current_user.already_follow?(@user)}'
-      / - if current_user.already_follow?(@user)
-      /   = link_to 'フォロー解除', relationship_path(user_id: @user.id), method: :delete, class: 'btn btn-danger'
-      / - else
-      /   = link_to 'フォロー', relationships_path(user_id: @user.id), method: :post, class: 'btn btn-primary'
     - unless @user.introduction.blank?
       hr
       p = @user.introduction

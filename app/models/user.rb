@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_save :downcase_email
-  before_create :create_activation_digest
+  before_save :create_activation_token, if: :email_changed?
 
   has_secure_password
   has_secure_password :remember, validations: false
@@ -77,7 +77,8 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
-  def create_activation_digest
+  def create_activation_token
+    update_column(:status, :temporary)
     self.activation = SecureRandom.urlsafe_base64
   end
 end

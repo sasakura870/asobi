@@ -1,0 +1,4 @@
+p こんにちは、#{@user.name}さん。
+p Qiitaにご登録いただいたメールアドレスを確認します。
+p 24時間以内に下記へアクセスし、登録を完了してください。
+= edit_account_activation_url(@user.activation, email: @user.email)

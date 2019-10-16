@@ -24,6 +24,19 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
+  def remember
+    expire = 1.month.from_now.utc
+    current_user.remember_me
+    cookies.signed[:user_id] = { value: current_user.id, expires: expire }
+    cookies[:remember] = { value: current_user.remember, expires: expire }
+  end
+
+  def forget
+    current_user.forget_me
+    cookies.delete(:user_id)
+    cookies.delete(:remember)
+  end
+
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)

@@ -4,10 +4,12 @@ html lang = 'ja'
   body.bgcolor-bg
     = render partial: 'shared/header'
     .container.container-width-custom.py-4
-      / = render partial: 'shared/flash'
       .row
         aside.col-md-3
-          = yield(:sidemenu)
+          ul.list-group
+            li.list-group-item = link_to 'プロフィール', settings_profile_index_path
+            li.list-group-item = link_to 'アカウント', settings_account_index_path
+            li.list-group-item = link_to 'パスワード', settings_password_index_path
         main.col-md-9
           = yield
     = render partial: 'shared/footer'

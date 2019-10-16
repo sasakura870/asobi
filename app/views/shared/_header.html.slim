@@ -16,7 +16,7 @@ header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
             = user_photo current_user, size: 35
           .dropdown-menu aria-labelledby="dropdown_profile"
             = link_to('マイページ', user_path(current_user), class: "dropdown-item")
-            = link_to('設定', settings_path, class: 'dropdown-item')
+            = link_to('設定', settings_root_path, class: 'dropdown-item')
             .dropdown-divider
             = link_to('下書き一覧', drafts_path, class: 'dropdown-item')
             .dropdown-divider
