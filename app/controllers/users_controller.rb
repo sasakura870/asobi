@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  before_action :store_location, only: %i[index new show edit]
+  before_action :store_location, only: %i[index new show]
   before_action :filter_only_guests, only: %i[new create]
   before_action :filter_only_temporary, only: :confirmation
   before_action :filter_temporary_users_page, only: :show
-  before_action lambda {
-    user = User.find_by(name: params[:id])
-    filter_only_current_user(user)
-    }, only: %i[update destroy]
+  # before_action lambda {
+  #   user = User.find_by(name: params[:id])
+  #   filter_only_current_user(user)
+  #   }, only: %i[update destroy]
 
   layout :switch_layout
 
@@ -43,9 +43,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
+  # def destroy
 
-  end
+  # end
 
   private
 

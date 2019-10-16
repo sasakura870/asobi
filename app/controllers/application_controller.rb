@@ -37,6 +37,11 @@ class ApplicationController < ActionController::Base
     cookies.delete(:remember)
   end
 
+  def logout
+    session.delete(:user_id)
+    @current_user = nil
+  end
+
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)

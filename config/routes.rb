@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :account, only: %i[index update]
     resources :password, only: %i[index update]
     resources :remember, only: %i[create destroy]
+    resources :quit, only: %i[index destroy]
     root 'profile#index'
   end
 

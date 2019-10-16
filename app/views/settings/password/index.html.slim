@@ -1,6 +1,6 @@
 .card
   .card-body
-    h1.text-center パスワードの変更
+    h1.card-title.text-center パスワードの変更
     = render partial: 'shared/error_messages', locals: { model: current_user }
     = form_with model: current_user, scope: :password, url: settings_password_path(current_user), method: :patch, local: true do |f|
       .form-group

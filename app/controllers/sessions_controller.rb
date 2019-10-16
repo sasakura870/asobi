@@ -42,10 +42,10 @@ class SessionsController < ApplicationController
   #   cookies[:remember] = { value: current_user.remember, expires: expire }
   # end
 
-  def logout
-    session.delete(:user_id)
-    @current_user = nil
-  end
+  # def logout
+  #   session.delete(:user_id)
+  #   @current_user = nil
+  # end
 
   # def forget
   #   current_user.forget_me

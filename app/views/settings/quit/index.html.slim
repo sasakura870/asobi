@@ -1,0 +1,23 @@
+.row
+  .col-md-6.offset-3
+    .card
+      .card-body
+        - if logged_in?
+          h1.card-title.text-center 退会する
+          = render partial: 'shared/error_messages', locals: { model: current_user }
+          p アカウントを削除すると、Asobiでの活動内容(投稿した記事、いいねなど)が全て削除されます。
+          p: strong.text-danger この処理は取り消しできません。十分にご注意ください。
+
+          p
+            | アカウント名:
+            = link_to current_user.name, current_user
+          = form_with model: current_user, scope: :quit, url: settings_quit_path(current_user), method: :delete, local: true do |f|
+            .form-group
+              = f.label :password, class: 'form-label'
+              = f.password_field :password, class: 'form-control'
+            = f.submit 'アカウントを削除する', class: 'btn btn-danger'
+        - else
+          h1.card-title.text-center 退会完了
+          p アカウントの削除が完了しました。この処理は数分ほどかかることがあります。
+          p 今までAsobiをご利用いただき誠にありがとうございました。
+
