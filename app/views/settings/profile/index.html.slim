@@ -23,3 +23,8 @@
           p.text-center
             = user_photo(current_user, size: 200)
             = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'
+
+            / profile-photo-form
+            / p = asset_pack_path '../images/default_photo.png'
+    #photo-form
+      profile-photo-form
