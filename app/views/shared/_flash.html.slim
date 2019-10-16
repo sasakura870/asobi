@@ -1,9 +1,8 @@
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"
 
 javascript:
   const toast_flash = () => {
     var flash = #{raw flash.to_json};
-    console.log(flash);
     if (flash.length > 0){
       swal.fire({
         type: flash[0][0],
