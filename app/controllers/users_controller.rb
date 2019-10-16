@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :store_location, only: %i[index new show edit]
   before_action :filter_only_guests, only: %i[new create]
-  # before_action :filter_only_logged_in_users, only: %i[edit]
   before_action :filter_only_temporary, only: :confirmation
   before_action :filter_temporary_users_page, only: :show
   before_action lambda {
@@ -26,9 +25,6 @@ class UsersController < ApplicationController
                               .recent.page(params[:page])
   end
 
-  # def edit
-  # end
-
   def confirmation
     @user = User.find_by(name: params[:id])
   end
@@ -47,16 +43,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def update
-  #   if current_user&.update(user_update_params)
-  #     flash[:success] = '設定を更新しました'
-  #     redirect_to settings_path
-  #   else
-  #     flash.now[:error] = '設定の更新に失敗しました'
-  #     render :edit, layout: 'left_sidemenu'
-  #   end
-  # end
-
   def destroy
 
   end
@@ -69,14 +55,6 @@ class UsersController < ApplicationController
                                  :password,
                                  :password_confirmation)
   end
-
-  # def user_update_params
-  #   params.require(:user).permit(:name,
-  #                                :email,
-  #                                :nick_name,
-  #                                :introduction,
-  #                                :photo)
-  # end
 
   def switch_layout
     case action_name

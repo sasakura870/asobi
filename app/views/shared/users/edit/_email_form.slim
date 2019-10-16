@@ -1,7 +1,0 @@
-h1#email.text-center メールアドレスの変更
-= form_with model: current_user, local: true do |f|
-  = f.hidden_field :id
-  .form-group
-    = f.label :email, class: 'form-label'
-    = f.email_field :email, class: 'form-control', placeholder: 'メールアドレス'
-  = f.submit '変更する', class: 'btn btn-main'
