@@ -17,10 +17,10 @@
         = f.submit '変更する', class: 'btn btn-main'
       hr
 
-    .mb-4
+    #remember-form.mb-4
       h4 永続ログインの設定
       p 永続ログインを設定すると、次回から自動でログインされます。
-      button.btn.btn-main 永続ログインの設定
+      remember-button v-bind:is-remembered='#{cookies.has_key? :remember}'
       hr
 
     .mb-4
