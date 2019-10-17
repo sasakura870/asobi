@@ -71,6 +71,10 @@ class User < ApplicationRecord
     followers.include?(user)
   end
 
+  def activation_mail_expired?
+    send_activation_mail_at < 1.day.ago
+  end
+
   private
 
   def downcase_email
@@ -80,5 +84,6 @@ class User < ApplicationRecord
   def deactivate
     self.status = :temporary
     self.activation = SecureRandom.urlsafe_base64
+    self.send_activation_mail_at = Time.zone.now
   end
 end
