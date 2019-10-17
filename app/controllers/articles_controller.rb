@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  before_action :store_location, only: %i[index new show edit drafts]
   before_action :filter_only_register, only: %i[drafts create]
   before_action :filter_only_current_user_article, only: %i[edit update destroy]
   before_action :filter_only_post, only: :show

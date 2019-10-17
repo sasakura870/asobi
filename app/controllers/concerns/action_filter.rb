@@ -7,7 +7,7 @@ module ActionFilter
       if logged_in? && current_user.id != user.id
         request_422
       elsif !logged_in?
-        redirect_login_holding_request
+        redirect_to login_path
       end
     end
 
@@ -16,7 +16,7 @@ module ActionFilter
         flash[:warning] = '本登録が完了していません'
         redirect_to account_activations_path
       elsif !logged_in?
-        redirect_login_holding_request
+        redirect_to login_path
       end
     end
 
@@ -24,27 +24,16 @@ module ActionFilter
       if logged_in? && current_user.register?
         redirect_to user_path(current_user)
       elsif !logged_in?
-        redirect_login_holding_request
+        redirect_to login_path
       end
     end
 
     def filter_only_logged_in_users
-      redirect_login_holding_request unless logged_in?
+      redirect_to login_path unless logged_in?
     end
 
     def filter_only_guests
       redirect_to user_path(current_user) if logged_in?
-    end
-
-    def store_location
-      session[:return_to] = request.url if request.get?
-    end
-
-    private
-
-    def redirect_login_holding_request
-      store_location
-      redirect_to login_path
     end
   end
 end

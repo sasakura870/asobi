@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   include ActionFilter
 
+  before_action :store_location, if: -> { controller_name != 'sessions' }
+
   helper_method :current_user, :logged_in?
 
+  # TODO Service層の導入でメソッドが移動できる？
   protected
 
   def login(user)
@@ -53,5 +56,11 @@ class ApplicationController < ActionController::Base
 
   def request_422
     render file: Rails.root.join('public/422.html'), status: 422, layout: false, content_type: 'text/html'
+  end
+
+  private
+
+  def store_location
+    session[:return_to] = request.url if request.get?
   end
 end

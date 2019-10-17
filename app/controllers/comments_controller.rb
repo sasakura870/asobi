@@ -18,6 +18,7 @@ class CommentsController < ApplicationController
   def destroy
     comment = current_user.comments.find_by(id: params[:id])
     if comment&.destroy
+      # TODO render jsonでメッセージを送る？
       flash[:success] = 'コメントを削除しました'
       head :ok
     else
