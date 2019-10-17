@@ -1,7 +1,7 @@
 header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
   .container.container-width-custom
     = link_to('Asobi', root_path, class: 'navbar-brand mr-4')
-    = form_with url: search_path, method: :get, local: true, class: 'form-inline mr-auto' do |f|
+    = form_with url: searches_path, method: :get, local: true, class: 'form-inline mr-auto' do |f|
       .input-group
         .input-group-prepend: .input-group-text: i.fas.fa-search
         = f.search_field :q, placeholder: 'キーワードを入力', id: 'search-text', class: 'form-control mr-2'

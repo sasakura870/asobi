@@ -14,7 +14,7 @@ module ActionFilter
     def filter_only_register
       if logged_in? && current_user.temporary?
         flash[:warning] = '本登録が完了していません'
-        redirect_to confirmation_users_path
+        redirect_to account_activations_path
       elsif !logged_in?
         redirect_login_holding_request
       end

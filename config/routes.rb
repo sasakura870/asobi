@@ -5,13 +5,10 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
 
-  get 'search', to: 'searches#search'
+  resources :searches, only: :index
 
-  resources :users, only: %i[show create destroy] do
-    get :confirmation, on: :collection
-  end
+  resources :users, only: %i[show create destroy]
   get 'signup', to: 'users#new'
-  # get 'settings', to: 'users#edit'
 
   namespace :settings do
     resources :profile, only: %i[index update]
@@ -37,7 +34,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  resources :account_activations, only: :edit
+  resources :account_activations, only: %i[index edit]
 
   root 'static_pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
