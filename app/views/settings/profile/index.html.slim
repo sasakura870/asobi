@@ -1,10 +1,10 @@
 .card
   .card-body
-    h1.text-center プロフィールの編集
-    .row
-      .col-md-8
-        = render partial: 'shared/error_messages', locals: { model: current_user }
-        = form_with model: current_user, scope: :profile, url: settings_profile_path(current_user), method: :patch, local: true do |f|
+    h1.card-title.text-center プロフィールの編集
+    = render partial: 'shared/error_messages', locals: { model: current_user }
+    = form_with model: current_user, scope: :profile, url: settings_profile_path(current_user), method: :patch, local: true do |f|
+      .row
+        .col-md-8
           .form-group
             = f.label :name, class: 'form-label'
             = f.text_field :name, class: 'form-control', placeholder: 'ユーザーID'
@@ -17,9 +17,13 @@
             = f.label :introduction, class: 'form-label'
             = f.text_area :introduction, class: 'form-control', size: '40x5'
             small.text-muted 140字以内
-          = f.submit '更新する', class: 'btn btn-main'
-      .col-md-4
-        = form_with model: current_user, local: true do |f|
+        .col-md-4
           p.text-center
             = user_photo(current_user, size: 200)
-            = f.file_field :photo, accept: 'image/jpeg,image/gif,image/png'
+            = f.file_field :photo, accept: 'image/*'
+        = f.submit '更新する', class: 'btn btn-main btn-block'
+        / p.text-center
+          profile-photo-form :img-src="'/image'"
+
+            / profile-photo-form
+            / p = asset_pack_path '../images/default_photo.png'
