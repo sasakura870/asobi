@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :store_location, only: %i[index new show]
   before_action :filter_only_guests, only: %i[new create]
   before_action :filter_temporary_users_page, only: :show
 

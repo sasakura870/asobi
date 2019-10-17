@@ -14,10 +14,9 @@ class AccountActivationsController < ApplicationController
       user.signup
       login user
       flash[:success] = '本登録が完了しました！'
-      redirect_back_or root_path
     else
       flash[:error] = '無効なURLです'
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 end
