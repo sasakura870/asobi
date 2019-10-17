@@ -8,6 +8,7 @@ class AccountActivationsController < ApplicationController
   end
 
   def edit
+    # TODO 24時間経過している場合は新しいメールを送ってrender :index(メッセージ付き)
     # TODO service層に移動
     user = User.find_by(email: params[:email])
     if user&.authenticate_activation(params[:id]) && user&.temporary?
