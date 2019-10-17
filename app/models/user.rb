@@ -49,6 +49,7 @@ class User < ApplicationRecord
 
   def remember_me
     self.remember = SecureRandom.urlsafe_base64
+    save
   end
 
   def forget_me
