@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_024757) do
+ActiveRecord::Schema.define(version: 2019_10_17_064317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_024757) do
     t.string "nick_name"
     t.string "activation_digest"
     t.integer "status", default: 0, null: false
+    t.datetime "send_activation_mail_at"
     t.index ["name"], name: "index_users_on_name"
     t.index ["status"], name: "index_users_on_status"
   end

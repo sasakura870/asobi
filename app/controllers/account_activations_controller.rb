@@ -10,7 +10,7 @@ class AccountActivationsController < ApplicationController
   def edit
     # TODO service層に移動
     user = User.find_by(email: params[:email])
-    if user&.authenticate_activation(params[:id]) && user&.temporary?
+    if user&.authenticate_activation(params[:id]) && user&.temporary? && !user&.activation_mail_expired?
       user.signup
       login user
       flash[:success] = '本登録が完了しました！'
