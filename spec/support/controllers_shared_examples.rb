@@ -12,7 +12,7 @@ module ControllersSharedExamples
   end
 
   RSpec.shared_examples_for 'confirmation画面へリダイレクトする' do
-    it { is_expected.to redirect_to confirmation_users_path }
+    it { is_expected.to redirect_to account_activations_path }
   end
 
   RSpec.shared_examples_for 'セッティング画面へリダイレクトする' do

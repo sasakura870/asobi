@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    # TODO viewModel検討する？
     @daily_articles = Article
                         .includes(thumbnail_attachment: :blob, user: :photo_attachment)
                         .recent.take(3)

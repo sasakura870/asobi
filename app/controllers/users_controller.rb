@@ -1,12 +1,7 @@
 class UsersController < ApplicationController
   before_action :store_location, only: %i[index new show]
   before_action :filter_only_guests, only: %i[new create]
-  before_action :filter_only_temporary, only: :confirmation
   before_action :filter_temporary_users_page, only: :show
-  # before_action lambda {
-  #   user = User.find_by(name: params[:id])
-  #   filter_only_current_user(user)
-  #   }, only: %i[update destroy]
 
   layout :switch_layout
 
@@ -25,31 +20,23 @@ class UsersController < ApplicationController
                               .recent.page(params[:page])
   end
 
-  def confirmation
-    @user = User.find_by(name: params[:id])
-  end
-
   def create
-    @user = User.new(user_create_params)
+    @user = User.new(user_params)
 
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       login @user
       flash[:info] = '本登録用のメールを送信しました'
-      redirect_to confirmation_users_path
+      redirect_to account_activations_path
     else
       flash.now[:error] = '登録に失敗しました'
       render :new, layout: 'sessions'
     end
   end
 
-  # def destroy
-
-  # end
-
   private
 
-  def user_create_params
+  def user_params
     params.require(:user).permit(:name,
                                  :email,
                                  :password,
@@ -58,8 +45,8 @@ class UsersController < ApplicationController
 
   def switch_layout
     case action_name
-    when 'new', 'confirmation' then 'sessions'
-    when 'show', 'edit' then 'left_sidemenu'
+    when 'new' then 'sessions'
+    when 'show' then 'left_sidemenu'
     end
   end
 

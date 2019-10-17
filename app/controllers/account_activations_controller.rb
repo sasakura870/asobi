@@ -1,6 +1,12 @@
 class AccountActivationsController < ApplicationController
   before_action :filter_only_temporary
 
+  layout 'sessions'
+
+  def index
+    @user = User.find_by(name: params[:id])
+  end
+
   def edit
     # TODO service層に移動
     user = User.find_by(email: params[:email])
