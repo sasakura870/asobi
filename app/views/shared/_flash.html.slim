@@ -1,19 +1,4 @@
-script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"
-
-javascript:
-  const toast_flash = () => {
-    var flash = #{raw flash.to_json};
-    if (flash.length > 0){
-      swal.fire({
-        type: flash[0][0],
-        title: flash[0][1],
-        toast: true,
-        position: 'bottom-start',
-        grow: 'column',
-        showConfirmButton: false,
-        showCloseButton: false,
-        timer: 4000
-      });
-    }
-  }
-  window.addEventListener('load', toast_flash);
+- if flash.any?
+  = hidden_field_tag :toast_type, flash.keys[0]
+  = hidden_field_tag :toast_message, flash.to_hash.values[0]
+  = javascript_pack_tag 'toast'

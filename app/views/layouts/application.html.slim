@@ -15,3 +15,4 @@ html lang = 'ja'
     - if Rails.env.development?
       = debug(params)
       = debug(session[:return_to])
+    = render partial: 'shared/flash'

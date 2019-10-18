@@ -8,3 +8,4 @@ html lang = 'ja'
       = yield
     - if Rails.env.development?
       = debug(params)
+    = render partial: 'shared/flash'
