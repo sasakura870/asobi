@@ -9,7 +9,7 @@
     - else
       h3 = "@#{@user.name}"
     - if logged_in? && @user != current_user
-      follow-button　v-bind:user-id='#{@user.id}' v-bind:is-followed='#{current_user.already_follow?(@user)}'
+      follow-button　:user-id='#{@user.id}' :is-followed='#{current_user.already_follow?(@user)}'
     - unless @user.introduction.blank?
       hr
       p = @user.introduction

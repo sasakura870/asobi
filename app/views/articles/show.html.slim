@@ -2,7 +2,7 @@
 
 - if logged_in?
   = content_for(:items) do
-    favorite-button v-bind:article-id='#{@article.id}' v-bind:is-favorited='#{current_user.already_favorite?(@article)}' v-bind:favorite-count=@article.favorites.count
+    favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
     = link_to '#', class: 'btn btn-primary btn-round'
       i.fas.fa-comment-dots.fa-fw
     = link_to '#', class: 'btn btn-primary btn-round'

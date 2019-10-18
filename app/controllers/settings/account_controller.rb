@@ -1,7 +1,5 @@
 class Settings::AccountController < Settings::Base
-  def index
-
-  end
+  def index; end
 
   def update
     # TODO サービス層に移動
