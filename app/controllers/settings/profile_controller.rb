@@ -1,7 +1,5 @@
 class Settings::ProfileController < Settings::Base
-  def index
-
-  end
+  def index; end
 
   def update
     input_data = update_params(:profile, :name, :nick_name, :photo, :introduction)

@@ -1,7 +1,5 @@
 class Settings::PasswordController < Settings::Base
-  def index
-
-  end
+  def index; end
 
   def update
     # TODO ゆくゆくはサービス層に移動
