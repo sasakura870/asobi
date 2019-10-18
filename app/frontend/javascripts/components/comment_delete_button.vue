@@ -29,14 +29,12 @@ export default {
         if (result.value) {
           Axios.delete(`/comments/${this.commentId}`)
             .then(function(response) {
-              console.log("vueSuccess");
               if (response.status === 200) {
                 element.remove();
-                console.log("deleteComment");
               }
             })
             .catch(function(error) {
-              console.log("deleteFailure");
+              console.log("deleteCommentFailure");
               console.log(error);
             });
         }
