@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(name: params[:id])
+    # @user = User.find_by(name: params[:id])
     @articles = @user.articles.includes(thumbnail_attachment: :blob)
                               .recent.page(params[:page])
   end
@@ -50,12 +50,14 @@ class UsersController < ApplicationController
   end
 
   # 仮ユーザーのページは閲覧できない
-  # 仮ユーザーが自分のページを閲覧する場合のみ許可
+  # 仮ユーザーが自分のページを閲覧する場合はaccount_activations#indexにリダイレクト
   def filter_temporary_users_page
     @user = User.find_by(name: params[:id])
     if @user&.temporary?
-      unless @user.id == current_user&.id
+      if @user.id != current_user&.id
         request_404
+      else
+        redirect_to account_activations_path
       end
     end
   end
