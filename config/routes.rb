@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   resources :articles, except: :index do
     get :favorites, on: :member
   end
-  get 'drafts', to: 'articles#drafts'
+
+  resources :drafts, only: %i[index]
 
   resources :favorites, only: %i[create destroy]
 

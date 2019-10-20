@@ -8,11 +8,8 @@
     = f.label :overview, class: 'form-label'
     = f.text_field :overview, class: 'form-control'
   .form-group
-    = f.file_field :thumbnail, class: 'form-control'
-  .form-group
     = f.rich_text_area :content
-  .form-group.form-check
-    = f.check_box :posted, class: 'form-check-input'
-    = f.label :posted, '下書きに保存する', class: 'form-check-label'
-  .form-group.btn-group
-    = f.submit '投稿する', class: 'btn btn-primary'
+  .from-group
+    = f.button '下書きに保存', name: 'article[status]', value: 'draft', class: 'btn btn-secondary'
+  .form-group
+    = f.button '投稿する', name: 'article[status]', value: 'published', class: 'btn btn-main'

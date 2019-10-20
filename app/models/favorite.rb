@@ -13,6 +13,6 @@ class Favorite < ApplicationRecord
   end
 
   def cannot_favorite_draft
-    errors.add(:draft, '下書きにいいねはできません') unless Article.find_by(id: article_id).posted?
+    errors.add(:draft, '下書きにいいねはできません') unless Article.find_by(id: article_id).published?
   end
 end

@@ -12,25 +12,17 @@ class Article < ApplicationRecord
   # validates :content, presence: true
   validates :user_id, presence: true
 
-  has_one_attached :thumbnail
+  enum status: { draft: 0, published: 1 }
 
   has_rich_text :content
 
-  scope :posts, -> { where(posted: true) }
-  scope :drafts, -> { where(posted: false) }
+  # scope :published, -> { where(status: :published) }
+  # scope :drafts, -> { where(status: :draft) }
   scope :recent, -> { order(updated_at: :desc) }
   scope :search_title, ->(q) { where('title iLIKE ?', "%#{q}%") if q.present? }
 
   def to_param
     id_digest
-  end
-
-  def post?
-    posted
-  end
-
-  def draft?
-    !posted
   end
 
   def favorited_by?(user)

@@ -3,11 +3,10 @@ FactoryBot.define do
     sequence(:title) { |n| "textTitle#{n}" }
     overview { 'testOverview' }
     content { Faker::Lorem.sentence(word_count: 10) }
-    posted { true }
-    thumbnail { nil }
+    status { :published }
 
     trait :draft do
-      posted { false }
+      status { :draft }
     end
   end
 end
