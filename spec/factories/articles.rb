@@ -4,7 +4,6 @@ FactoryBot.define do
     overview { 'testOverview' }
     content { Faker::Lorem.sentence(word_count: 10) }
     status { :published }
-    thumbnail { nil }
 
     trait :draft do
       status { :draft }

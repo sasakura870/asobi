@@ -8,8 +8,6 @@
     = f.label :overview, class: 'form-label'
     = f.text_field :overview, class: 'form-control'
   .form-group
-    = f.file_field :thumbnail, class: 'form-control'
-  .form-group
     = f.rich_text_area :content
   .from-group
     = f.button '下書きに保存', name: 'article[status]', value: 'draft', class: 'btn btn-secondary'

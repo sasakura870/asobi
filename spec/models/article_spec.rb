@@ -45,7 +45,6 @@ RSpec.describe Article, type: :model do
     end
 
     describe 'content'
-    describe 'thumbnail'
   end
 
   describe 'メソッド' do

@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
 
   def filter_drafts_over_10
     if filter_only_register.nil?
-      if current_user.articles.drafts.count >= 10
+      if current_user.articles.draft.count >= 10
         flash[:warning] = '下書きが多すぎます'
         redirect_to drafts_path
       end

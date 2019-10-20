@@ -15,8 +15,7 @@ class UsersController < ApplicationController
 
   def show
     # @user = User.find_by(name: params[:id])
-    @articles = @user.articles.includes(thumbnail_attachment: :blob)
-                              .recent.page(params[:page])
+    @articles = @user.articles.recent.page(params[:page])
   end
 
   def create

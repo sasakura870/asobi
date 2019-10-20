@@ -14,12 +14,10 @@ class Article < ApplicationRecord
 
   enum status: { draft: 0, published: 1 }
 
-  has_one_attached :thumbnail
-
   has_rich_text :content
 
-  scope :posts, -> { where(status: :published) }
-  scope :drafts, -> { where(status: :draft) }
+  # scope :published, -> { where(status: :published) }
+  # scope :drafts, -> { where(status: :draft) }
   scope :recent, -> { order(updated_at: :desc) }
   scope :search_title, ->(q) { where('title iLIKE ?', "%#{q}%") if q.present? }
 
