@@ -30,7 +30,7 @@ main_user = User.first
     article = user.articles.create!(title: "#{user.name}-#{n}",
                                     overview: Faker::Lorem.sentence,
                                     content: Faker::Lorem.sentence(word_count: 10),
-                                    posted: true)
+                                    status: :published)
     next if user == main_user
 
     main_user.favorites.create!(article_id: article.id) if n > 2
