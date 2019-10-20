@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :filter_only_register, only: %i[create]
-  before_action :filter_only_current_user_article, only: %i[edit update destroy]
   before_action :filter_only_post, only: :show
   before_action :filter_drafts_over_10, only: :new
 
@@ -17,7 +16,8 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    # @article ||= current_user.articles.find_by(id_digest: params[:id])
+    @article = current_user.articles.find_by(id_digest: params[:id])
+    request_404 if @article.nil?
   end
 
   def show
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.new(article_params)
-    if @article.save
+    if @article&.save
       if @article.published?
         flash[:success] = '投稿しました！'
         redirect_to @article
@@ -45,8 +45,8 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    # @article ||= current_user.articles.find_by(id_digest: params[:article][:id_digest])
-    if @article.update(article_params)
+    @article = current_user.articles.find_by(id_digest: params[:article][:id_digest])
+    if @article&.update(article_params)
       if @article.published?
         flash[:success] = '投稿しました！'
         redirect_to @article
@@ -87,17 +87,5 @@ class ArticlesController < ApplicationController
   def filter_only_post
     @article = Article.find_by(id_digest: params[:id])
     request_404 if @article.nil? || @article.draft?
-  end
-
-  def filter_only_current_user_article
-    if filter_only_register.nil?
-      @article = current_user.articles.find_by(id_digest: params[:id])
-      if @article.nil?
-        case action_name
-        when 'edit' then request_404
-        when 'update', 'destroy' then request_422
-        end
-      end
-    end
   end
 end
