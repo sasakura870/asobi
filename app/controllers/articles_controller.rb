@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :filter_only_register, only: %i[drafts create]
+  before_action :filter_only_register, only: %i[create]
   before_action :filter_only_current_user_article, only: %i[edit update destroy]
   before_action :filter_only_post, only: :show
   before_action :filter_drafts_over_10, only: :new
@@ -24,21 +24,20 @@ class ArticlesController < ApplicationController
     # @article ||= Article.find_by(id_digest: params[:id])
   end
 
-  def drafts
-    @articles = current_user.articles.drafts.recent
-  end
-
   def favorites
     @article = Article.find_by(id_digest: params[:id])
   end
 
   def create
     @article = current_user.articles.new(article_params)
-
     if @article.save
-      flash[:success] = @article.posted ? '投稿しました！' : '下書きに保存しました'
-      redirect_path = @article.posted ? article_path(@article) : drafts_path
-      redirect_to redirect_path
+      if @article.published?
+        flash[:success] = '投稿しました！'
+        redirect_to @article
+      elsif @article.draft?
+        flash[:success] = '下書きに保存しました'
+        redirect_to drafts_path
+      end
     else
       flash.now[:error] = '入力に不備があります'
       render :new
@@ -48,8 +47,13 @@ class ArticlesController < ApplicationController
   def update
     # @article ||= current_user.articles.find_by(id_digest: params[:article][:id_digest])
     if @article.update(article_params)
-      flash[:success] = @article.posted ? '投稿しました！' : '下書きに保存しました'
-      redirect_to article_path(@article)
+      if @article.published?
+        flash[:success] = '投稿しました！'
+        redirect_to @article
+      elsif @article.draft?
+        flash[:success] = '下書きに保存しました'
+        redirect_to drafts_path
+      end
     else
       flash.now[:error] = '入力に不備があります'
       render :edit
@@ -66,8 +70,8 @@ class ArticlesController < ApplicationController
                                              :overview,
                                              :thumbnail,
                                              :content,
-                                             :posted)
-    result[:posted] = (result[:posted] == '0')
+                                             :status)
+    result[:status] = result[:status].to_sym
     result
   end
 
