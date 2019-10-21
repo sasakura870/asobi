@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :filter_only_register, only: %i[create]
   before_action :filter_only_post, only: :show
-  before_action :filter_drafts_over_10, only: :new
+  # before_action :filter_drafts_over_10, only: :new
 
   layout 'article_show', only: :show
 
@@ -75,14 +75,14 @@ class ArticlesController < ApplicationController
     result
   end
 
-  def filter_drafts_over_10
-    if filter_only_register.nil?
-      if current_user.articles.draft.count >= 10
-        flash[:warning] = '下書きが多すぎます'
-        redirect_to drafts_path
-      end
-    end
-  end
+  # def filter_drafts_over_10
+  #   if filter_only_register.nil?
+  #     if current_user.articles.draft.count >= 10
+  #       flash[:warning] = '下書きが多すぎます'
+  #       redirect_to drafts_path
+  #     end
+  #   end
+  # end
 
   def filter_only_post
     @article = Article.find_by(id_digest: params[:id])
