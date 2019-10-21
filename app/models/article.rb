@@ -16,8 +16,6 @@ class Article < ApplicationRecord
 
   has_rich_text :content
 
-  # scope :published, -> { where(status: :published) }
-  # scope :drafts, -> { where(status: :draft) }
   scope :recent, -> { order(updated_at: :desc) }
   scope :search_title, ->(q) { where('title iLIKE ?', "%#{q}%") if q.present? }
 

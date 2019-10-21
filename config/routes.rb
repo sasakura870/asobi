@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     get :favorites, on: :member
   end
 
-  resources :drafts, only: %i[index]
+  resources :drafts, only: %i[index destroy]
 
   resources :favorites, only: %i[create destroy]
 
