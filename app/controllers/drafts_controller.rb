@@ -2,7 +2,7 @@ class DraftsController < ApplicationController
   before_action :filter_only_register
 
   def index
-    @drafts = current_user.articles.draft.recent
+    @drafts = current_user.articles.draft.recent.page(params[:page])
   end
 
   def destroy
