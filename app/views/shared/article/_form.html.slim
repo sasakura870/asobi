@@ -2,11 +2,14 @@
   - if article.id_digest.present?
     = f.hidden_field :id_digest, value: article.id_digest
   .form-group
-    = f.label :title, class: 'form-label'
-    = f.text_field :title, class: 'form-control'
+    = f.label :title, class: 'sr-only'
+    = f.text_field :title, placeholder: 'タイトルを入力できます(140字まで)', class: 'form-control'
   .form-group
-    = f.label :overview, class: 'form-label'
-    = f.text_field :overview, class: 'form-control'
+    = f.label :overview, class: 'sr-only'
+    = f.text_field :overview, placeholder: '記事の概要を入力できます(140字まで)', class: 'form-control'
+  .form-group
+    = f.label :tags_list, class: 'sr-only'
+    = f.text_field :tags_list, placeholder: '記事に関連するタグをスペース区切りで5つまで入力できます(屋外, トランプ, ローカルルール, 兵庫 etc...)', class: 'form-control'
   .form-group
     = f.rich_text_area :content
   .from-group
