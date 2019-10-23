@@ -19,8 +19,12 @@
 
     p == @article.content
 
-.card.boarder.text-left
-  .card-body
+.section
+  - @article.comments.each do |comment|
+    = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
+    button.button hogeaaaaaa
+
+  / .card-body
     - @article.comments.each do |comment|
       = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
     - if logged_in?
