@@ -21,6 +21,4 @@ const images = require.context("../images", true);
 // import "../fonts/memoir-round.otf"
 import "bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
-// import "sweetalert2";
-import "../stylesheets/application";
-// import "../javascripts/application"
+import "../scss/application";

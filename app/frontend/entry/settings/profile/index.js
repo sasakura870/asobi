@@ -1,4 +1,4 @@
-import ProfilePhotoForm from '../../../javascripts/components/profile_photo_form';
+import ProfilePhotoForm from '../../../js/components/profile_photo_form';
 
 document.addEventListener('DOMContentLoaded', function () {
   // new vue({

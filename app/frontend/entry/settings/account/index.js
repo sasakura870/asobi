@@ -1,4 +1,4 @@
-import RememberButton from "../../../javascripts/components/remember_button";
+import RememberButton from "../../../js/components/remember_button";
 
 document.addEventListener('DOMContentLoaded', function () {
   new vue({
