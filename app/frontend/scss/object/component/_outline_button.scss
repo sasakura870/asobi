@@ -1,6 +1,6 @@
 @mixin outline-btn-color-extension($color) {
   color: $color;
-  border: solid 2px $color;
+  border: 2px solid $color;
 
   &:hover {
     background: $color;

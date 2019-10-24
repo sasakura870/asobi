@@ -1,0 +1,30 @@
+.c-text-field {
+  position: relative;
+  width: 80%;
+
+  &__input-form {
+    width: 100%;
+    padding: .3em .3em .3em 3em;
+    border: 2px solid $general_line_color;
+    border-radius: 3px;
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.2s;
+
+    &:focus {
+      border: 2px solid $primary_color;
+
+      +.c-text-field__icon {
+        color: $primary_color;
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: .4em;
+    left: .8em;
+    transition: 0.2s;
+    color: $general_line_color;
+  }
+}
