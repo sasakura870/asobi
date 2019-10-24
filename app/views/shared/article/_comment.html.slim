@@ -1,4 +1,4 @@
-div id="comment-#{comment.id}"
+/ div id="comment-#{comment.id}"
   .list-item
     .list-item__header
       = set_user_link user
@@ -7,7 +7,7 @@ div id="comment-#{comment.id}"
       p = comment.content
     .list-item__footer
       comment-delete-button :comment-id="#{comment.id}"
-/ div id="comment-#{comment.id}"
+div id="comment-#{comment.id}"
   hr
   = set_user_link user
   p.text-muted = comment.updated_at
