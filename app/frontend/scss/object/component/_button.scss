@@ -1,10 +1,10 @@
-@mixin btn-color-extension($color) {
-  background: $color;
+// @mixin btn-color-extension($color) {
+//   background: $color;
 
-  &:hover {
-    background: darken($color, 10);
-  }
-}
+//   &:hover {
+//     background: darken($color, 10);
+//   }
+// }
 
 .c-btn {
   display: inline-block;
@@ -20,5 +20,9 @@
     &--#{$key} {
       @include btn-color-extension(($color));
     }
+  }
+
+  &--block {
+    @include btn-block();
   }
 }
