@@ -6,6 +6,8 @@ class Article < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
   has_many :comment_users, through: :comments, source: :user
+  has_many :tag_maps, as: :taggable, dependent: :destroy
+  has_many :tags, through: :tag_maps
 
   validates :title, presence: true, length: { maximum: 140 }
   validates :overview, length: { maximum: 140 }
@@ -25,6 +27,16 @@ class Article < ApplicationRecord
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  def link_tag(tag)
+    map = tag_maps.build(tag_id: tag.id)
+    map.save
+  end
+
+  def unlink_tag(tag)
+    map = tag_maps.find_by(tag_id: tag.id)
+    map.destroy
   end
 
   private

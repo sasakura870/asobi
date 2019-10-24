@@ -1,9 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :filter_only_register, only: %i[create]
   before_action :filter_only_post, only: :show
-  # before_action :filter_drafts_over_10, only: :new
 
-  layout 'article_show', only: :show
+  layout :switch_layout
 
   # TODO いらない？
   # def index
@@ -31,6 +30,14 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.new(article_params)
     if @article&.save
+      new_tag_list = params[:article][:tags_list].split.uniq
+      # 入力されたタグを元に@articleとリンクさせる
+      new_tag_list.each do |tag_name|
+        tag = Tag.find_by(name: tag_name)
+        tag = Tag.create(name: tag_name) if tag.nil?
+        @article.link_tag(tag)
+      end
+
       if @article.published?
         flash[:success] = '投稿しました！'
         redirect_to @article
@@ -47,6 +54,23 @@ class ArticlesController < ApplicationController
   def update
     @article = current_user.articles.find_by(id_digest: params[:article][:id_digest])
     if @article&.update(article_params)
+      new_tag_list = params[:article][:tags_list].split.uniq
+      linked_tag_list = @article.tags.map(&:name)
+
+      # @articleにリンクしていて、入力したタグに含まれていないタグ
+      (linked_tag_list - new_tag_list).each do |tag_name|
+        # リンク解除
+        tag = Tag.find_by(name: tag_name)
+        @article.unlink_tag(tag)
+      end
+
+      # 入力したタグに含まれていて、@articleがまだリンクしていないタグ
+      (new_tag_list - linked_tag_list).each do |tag_name|
+        tag = Tag.find_by(name: tag_name)
+        tag = Tag.create(name: tag_name) if tag.nil?
+        @article.link_tag(tag)
+      end
+
       if @article.published?
         flash[:success] = '投稿しました！'
         redirect_to @article
@@ -75,17 +99,15 @@ class ArticlesController < ApplicationController
     result
   end
 
-  # def filter_drafts_over_10
-  #   if filter_only_register.nil?
-  #     if current_user.articles.draft.count >= 10
-  #       flash[:warning] = '下書きが多すぎます'
-  #       redirect_to drafts_path
-  #     end
-  #   end
-  # end
-
   def filter_only_post
     @article = Article.find_by(id_digest: params[:id])
     request_404 if @article.nil? || @article.draft?
+  end
+
+  def switch_layout
+    case action_name
+    when 'new', 'edit' then 'article_post'
+    when 'show' then 'article_show'
+    end
   end
 end

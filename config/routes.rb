@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tags/index'
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
   end
 
   resources :drafts, only: %i[index destroy]
+
+  resources :tags, only: %i[index show]
 
   resources :favorites, only: %i[create destroy]
 

@@ -19,6 +19,8 @@ class User < ApplicationRecord
                                    foreign_key: :follower_id,
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :following
+  has_many :tag_maps, as: :taggable, dependent: :destroy
+  has_many :tags, through: :tag_maps
 
   validates :name, presence: true,
                    length: { in: 4..16 },
