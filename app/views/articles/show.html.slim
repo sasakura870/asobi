@@ -23,10 +23,27 @@
 
     p == @article.content
 
-/ .section
-  - @article.comments.each do |comment|
-    = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
-    button.button hogeaaaaaa
+.card.u-mb5
+  .card-body
+    - @article.comments.each do |comment|
+      = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
+    - if logged_in?
+      hr
+      = form_with model: current_user.comments.new, local: true do |f|
+        = f.hidden_field :article_id, value: @article.id
+        .input-group.u-mb2
+          = f.text_area :content, class: 'form-control', required: true, rows: 4
+        = f.submit '投稿する', class: 'c-btn'
+
+
+.p-comment-item
+  .p-comment-item__icon
+  .p-comment_item__user-name
+  .p-comment-item__body
+  .p-comment-item__datetime
+  .p-comment-item__menu
+
+
 
 .card style='background: gray;'
   .card-body

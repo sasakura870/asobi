@@ -1,0 +1,24 @@
+@mixin btn-color-extension($color) {
+  background: $color;
+
+  &:hover {
+    background: darken($color, 10);
+  }
+}
+
+.c-btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: .2s;
+  color: white;
+  @include btn-color-extension($main_color);
+
+  @each $key,
+  $color in $custom_colors {
+    &--#{$key} {
+      @include btn-color-extension(($color));
+    }
+  }
+}
