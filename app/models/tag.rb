@@ -6,4 +6,8 @@ class Tag < ApplicationRecord
   validates :name, presence: true,
                    uniqueness: true,
                    length: { maximum: 140 }
+
+  def to_param
+    name
+  end
 end
