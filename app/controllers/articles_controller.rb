@@ -30,6 +30,14 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.new(article_params)
     if @article&.save
+      new_tag_list = params[:article][:tags_list].split
+      # 入力されたタグを元に@articleとリンクさせる
+      new_tag_list.each do |tag_name|
+        tag = Tag.find_by(name: tag_name)
+        tag = Tag.create(name: tag_name) if tag.nil?
+        @article.link_tag(tag)
+      end
+
       if @article.published?
         flash[:success] = '投稿しました！'
         redirect_to @article
@@ -46,6 +54,23 @@ class ArticlesController < ApplicationController
   def update
     @article = current_user.articles.find_by(id_digest: params[:article][:id_digest])
     if @article&.update(article_params)
+      new_tag_list = params[:article][:tags_list].split
+      linked_tag_list = @article.tags.map(&:name)
+
+      # @articleにリンクしていて、入力したタグに含まれていないタグ
+      (linked_tag_list - new_tag_list).each do |tag_name|
+        # リンク解除
+        tag = Tag.find_by(name: tag_name)
+        @article.unlink_tag(tag)
+      end
+
+      # 入力したタグに含まれていて、@articleがまだリンクしていないタグ
+      (new_tag_list - linked_tag_list).each do |tag_name|
+        tag = Tag.find_by(name: tag_name)
+        tag = Tag.create(name: tag_name) if tag.nil?
+        @article.link_tag(tag)
+      end
+
       if @article.published?
         flash[:success] = '投稿しました！'
         redirect_to @article

@@ -1,7 +1,7 @@
 class Tag < ApplicationRecord
-  has_many :tag_map
-  has_many :users, through: :tag_map, source: :taggable, source_type: 'User'
-  has_many :articles, through: :tag_map, source: :taggable, source_type: 'Article'
+  has_many :tag_maps, dependent: :destroy
+  has_many :users, through: :tag_maps, source: :taggable, source_type: 'User'
+  has_many :articles, through: :tag_maps, source: :taggable, source_type: 'Article'
 
   validates :name, presence: true,
                    uniqueness: true,

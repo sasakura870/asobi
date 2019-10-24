@@ -29,6 +29,16 @@ class Article < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  def link_tag(tag)
+    map = tag_maps.build(tag_id: tag.id)
+    map.save
+  end
+
+  def unlink_tag(tag)
+    map = tag_maps.find_by(tag_id: tag.id)
+    map.destroy
+  end
+
   private
 
   def create_id_digest
