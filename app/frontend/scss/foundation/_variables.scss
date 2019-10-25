@@ -6,11 +6,12 @@ $sub_highlight_color: #B83B5E;
 $main_dark_tone_color: #B1552C;
 $primary_color: #518CFC;
 $danger_color: #DC3445;
+$supplement_color: #939393;
 
 $header_color: $main_color;
 $footer_color: $main_color;
 
-$general_line_color: #939393;
+$general_line_color: #DDDDDD;
 
 $custom_colors: (bg: $background_color,
   main: $main_color,
@@ -18,7 +19,8 @@ $custom_colors: (bg: $background_color,
   sub-highlight: $sub_highlight_color,
   dark-tone: $main_dark_tone_color,
   primary: $primary_color,
-  danger: $danger_color);
+  danger: $danger_color,
+  supplement: $supplement_color);
 
 $spacers: (0: 0,
   1: .25rem,

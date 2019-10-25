@@ -1,5 +1,9 @@
 <template>
-  <button :disabled="isToastRunning" @click="deleteComment" class="btn btn-outline-danger">削除</button>
+  <button
+    :disabled="isToastRunning"
+    @click="deleteComment"
+    class="c-outline-btn c-outline-btn--danger"
+  >削除</button>
 </template>
 
 <script>
@@ -24,7 +28,7 @@ export default {
   },
   methods: {
     deleteComment: function() {
-      const element = this.$el.parentNode;
+      const element = document.getElementById(`comment-${this.commentId}`);
       const toast = this.toast;
       const confirmation = Swal.fire({
         type: "warning",

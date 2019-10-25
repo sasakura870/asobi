@@ -1,0 +1,9 @@
+.c-text {
+
+  @each $key,
+  $color in $custom_colors {
+    .c-text--#{$key} {
+      color: $color
+    }
+  }
+}

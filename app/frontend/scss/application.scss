@@ -4,13 +4,19 @@
 @import "./actiontext";
 
 // foundation
+@import "./foundation/reset";
 @import "./foundation/variables";
 @import "./foundation/mixin/button";
 
 // component
-@import "./object/component/outline_button";
 @import "./object/component/button";
+@import "./object/component/link";
+@import "./object/component/outline_button";
 @import "./object/component/text_field";
+@import "./object/component/text";
+
+// project
+@import "./object/project/comment_item";
 
 // utility
 @import "./object/utility/spacer";
