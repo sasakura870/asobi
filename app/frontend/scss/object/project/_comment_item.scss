@@ -1,0 +1,36 @@
+.p-comment-item {
+  width: 100%;
+  padding: 1em;
+  border-bottom: 1px solid $general_line_color;
+
+  .p-comment-item__header {
+    display: flex;
+    margin-bottom: 1em;
+  }
+
+  .p-comment-item__icon {
+    margin-right: 1em;
+    text-align: center;
+  }
+
+  .p-comment_item__user-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .p-comment-item__body {
+    font-size: 1.6rem;
+    margin-bottom: 1em;
+  }
+
+  .p-comment-item__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .p-comment-item__datetime {}
+
+  .p-comment-item__menu {
+    text-align: right;
+  }
+}

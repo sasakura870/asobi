@@ -1,12 +1,12 @@
 - if local_assigns[:signup_flag].present?
-  .mb-3
+  .u-mb3
     = render partial: 'shared/session/input_field', locals: { f: f, value: :name, icon: 'fas fa-fw fa-user', placeholder: 'ユーザーID', notes: '英数字とアンダースコア(_)で4~15文字' }
-.mb-3
+.u-mb3
   = render partial: 'shared/session/email_field', locals: { f: f, value: :email, placeholder: 'メールアドレス', notes: '' }
-.mb-3
+.u-mb3
   = render partial: 'shared/session/password_field', locals: { f: f, value: :password, placeholder: 'パスワード', notes: '8文字以上の英数字' }
 - if local_assigns[:signup_flag].present?
-  .mb-3
+  .u-mb3
     = render partial: 'shared/session/password_field', locals: { f: f, value: :password_confirmation, placeholder: 'パスワード(確認用)', notes: '' }
 - else
   .custom-control.custom-checkbox
@@ -15,6 +15,6 @@
 hr
 .form-group
   - if local_assigns[:signup_flag].present?
-    = f.submit '登録する', class: 'btn btn-block btn-main'
+    = f.submit '登録する', class: 'c-btn c-btn--block'
   - else
-    = f.submit 'ログイン', class: 'btn btn-block btn-main'
+    = f.submit 'ログイン', class: 'c-btn c-btn--block'

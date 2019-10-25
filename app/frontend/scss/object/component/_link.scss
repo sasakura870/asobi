@@ -1,0 +1,7 @@
+.c-link {
+  color: $primary_color;
+
+  &:focus {
+    text-decoration: none;
+  }
+}

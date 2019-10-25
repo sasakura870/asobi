@@ -23,18 +23,14 @@
 
     p == @article.content
 
-.section
-  - @article.comments.each do |comment|
-    = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
-    button.button hogeaaaaaa
-
-  / .card-body
+.card.u-mb5
+  .card-body
     - @article.comments.each do |comment|
       = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
     - if logged_in?
       hr
       = form_with model: current_user.comments.new, local: true do |f|
         = f.hidden_field :article_id, value: @article.id
-        .input-group
-          = f.text_area :content, class: 'form-control mb-2', required: true, rows: 4
-        = f.submit '投稿する', class: 'btn btn-main'
+        .input-group.u-mb2
+          = f.text_area :content, class: 'form-control', required: true, rows: 4
+        = f.submit '投稿する', class: 'c-btn'

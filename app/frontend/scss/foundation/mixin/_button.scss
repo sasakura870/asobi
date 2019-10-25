@@ -1,0 +1,22 @@
+@mixin btn-color-extension($color) {
+  background: $color;
+
+  &:hover {
+    background: darken($color, 10);
+  }
+}
+
+@mixin outline-btn-color-extension($color) {
+  background: transparent;
+  color: $color;
+  border: 2px solid $color;
+
+  &:hover {
+    background: $color;
+    color: white;
+  }
+}
+
+@mixin btn-block() {
+  display: block;
+}
