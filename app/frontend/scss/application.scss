@@ -13,6 +13,7 @@
 
 // component
 @import "./object/component/button";
+@import "./object/component/circle_button";
 @import "./object/component/link";
 @import "./object/component/outline_button";
 @import "./object/component/text_field";
@@ -21,8 +22,10 @@
 // project
 @import "./object/project/comment_item";
 @import "./object/project/footer";
+@import "./object/project/sticky_menu";
 
 // utility
+@import "./object/utility/shadow";
 @import "./object/utility/spacer";
 
 @import "./custom";

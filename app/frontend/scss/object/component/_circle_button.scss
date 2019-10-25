@@ -1,8 +1,8 @@
-.c-btn {
+.c-circle-btn {
   display: inline-block;
-  padding: 0.3em 1em;
+  padding: .7em;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 50%;
   transition: .2s;
   color: white;
   @include btn-color-extension($main_color);
@@ -12,9 +12,5 @@
     &--#{$key} {
       @include btn-color-extension($color);
     }
-  }
-
-  &--block {
-    @include btn-block();
   }
 }

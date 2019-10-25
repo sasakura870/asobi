@@ -2,11 +2,12 @@
 
 - if logged_in?
   = content_for(:items) do
-    favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
-    = link_to '#', class: 'btn btn-primary btn-round'
-      i.fas.fa-comment-dots.fa-fw
-    = link_to '#', class: 'btn btn-primary btn-round'
-      i.fab.fa-twitter.fa-fw
+    .p-sticky-menu
+      favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
+    / = link_to '#', class: 'btn btn-primary btn-round'
+    /   i.fas.fa-comment-dots.fa-fw
+    / = link_to '#', class: 'c-circle-btn c-circle-btn--primary'
+    /   i.fab.fa-twitter.fa-fw
 
 .card.boarder.text-left.mb-4
   .card-header
