@@ -1,0 +1,18 @@
+.p-footer {
+  width: $global_page_width;
+  margin: 0 auto;
+
+  .p-footer__link-list {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+
+  .p-footer__link-item {
+    margin-right: 1rem;
+  }
+
+  .p-footer__copyright {
+    text-align: center;
+    color: $white_color;
+  }
+}

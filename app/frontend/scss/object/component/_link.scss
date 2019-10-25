@@ -1,7 +1,15 @@
 .c-link {
   color: $primary_color;
 
-  &:focus {
+  &:hover {
     text-decoration: none;
+  }
+
+  &--nav {
+    color: rgba($white_color, 0.5);
+
+    &:hover {
+      color: $white_color;
+    }
   }
 }
