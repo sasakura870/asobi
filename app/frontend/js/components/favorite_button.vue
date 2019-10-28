@@ -1,21 +1,19 @@
 <template>
-  <div>
-    <div v-if="check">
-      <p class="text-center text-muted">{{count}}</p>
-      <button
-        @click="deleteFavorite"
-        :disabled="isProcessing"
-        class="btn btn-danger btn-round mb-4"
-      >
+  <div v-if="check">
+    <span class="p-sticky-menu__btn-counter">{{count}}</span>
+    <div class="p-sticky-menu__btn">
+      <button @click="deleteFavorite" :disabled="isProcessing" class="c-circle-btn u-shadow">
         <i class="fas fa-star fa-fw"></i>
       </button>
     </div>
-    <div v-else>
-      <p class="text-center text-muted">{{count}}</p>
+  </div>
+  <div v-else>
+    <span class="p-sticky-menu__btn-counter">{{count}}</span>
+    <div class="p-sticky-menu__btn">
       <button
         @click="createFavorite"
         :disabled="isProcessing"
-        class="btn btn-primary btn-round mb-4"
+        class="c-circle-btn c-circle-btn--supplement"
       >
         <i class="fas fa-star fa-fw"></i>
       </button>

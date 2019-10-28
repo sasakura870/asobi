@@ -3,34 +3,38 @@
   padding: 1em;
   border-bottom: 1px solid $general_line_color;
 
-  .p-comment-item__header {
+  &__header {
     display: flex;
     margin-bottom: 1em;
+    align-items: center;
   }
 
-  .p-comment-item__icon {
+  &__icon {
     margin-right: 1em;
     text-align: center;
   }
 
-  .p-comment_item__user-name {
+  &__user-name {
     font-size: 1.2rem;
     font-weight: 700;
   }
 
-  .p-comment-item__body {
+  &__body {
     font-size: 1.6rem;
     margin-bottom: 1em;
   }
 
-  .p-comment-item__footer {
+  &__footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
-  .p-comment-item__datetime {}
+  &__datetime {
+    color: $supplement_color;
+  }
 
-  .p-comment-item__menu {
+  &__menu {
     text-align: right;
   }
 }

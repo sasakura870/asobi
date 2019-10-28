@@ -1,10 +1,11 @@
 module ApplicationHelper
   def javascript_path
     path = "#{controller_path}/#{action_name}"
-    javascript_file_exist?("#{path}.js") ? path : 'default'
+    javascript_file_exist? ? path : 'default'
   end
 
-  def javascript_file_exist?(path)
+  def javascript_file_exist?
+    path = "#{controller_path}/#{action_name}.js"
     manifest = File.open('public/packs/manifest.json') do |file|
       JSON.load(file)
     end

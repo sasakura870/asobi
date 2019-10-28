@@ -1,8 +1,20 @@
+@mixin block-btn {
+  display: inline-block;
+  padding: 0.3em 1em;
+  border-radius: 5px;
+  transition: .2s;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 @mixin btn-color-extension($color) {
   background: $color;
 
   &:hover {
     background: darken($color, 10);
+    color: white;
   }
 }
 
@@ -13,10 +25,6 @@
 
   &:hover {
     background: $color;
-    color: white;
+    color: transparent;
   }
-}
-
-@mixin btn-block() {
-  display: block;
 }

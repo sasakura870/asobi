@@ -1,28 +1,29 @@
-header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
-  .container.container-width-custom
-    = link_to('Asobi', root_path, class: 'navbar-brand mr-4')
-    = form_with url: searches_path, method: :get, local: true, class: 'form-inline mr-auto' do |f|
-      .input-group
-        .input-group-prepend: .input-group-text: i.fas.fa-search
-        = f.search_field :q, placeholder: 'キーワードを入力', id: 'search-text', class: 'form-control mr-2'
-    ul.navbar-nav
-      - if logged_in?
-        li.nav-item.mt-2
-          = link_to new_article_path, class: 'btn btn-dark-tone mr-4'
-            i.fas.fa-pen.fa-fw
-            | 投稿する
-        li.nav-item.dropdown
-          a.nav-link.dropdown-toggle#dropdown_profile data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href='#'
-            = user_photo current_user, size: 35
-          .dropdown-menu aria-labelledby="dropdown_profile"
-            = link_to('マイページ', user_path(current_user), class: "dropdown-item")
-            = link_to('設定', settings_root_path, class: 'dropdown-item')
-            .dropdown-divider
-            = link_to('下書き一覧', drafts_path, class: 'dropdown-item')
-            .dropdown-divider
-            = link_to('ログアウト', logout_path, class: "dropdown-item", method: :delete)
-      -else
-        li.nav-item.mr-4
-          = link_to('新規登録', signup_path, class: 'btn btn-outline-light')
-        li.nav-item
-          = link_to('ログイン', login_path, class: 'nav-link link-underline')
+header#header.l-header
+  nav.p-header
+    .p-header__left
+      .p-header__logo = link_to 'Asobi', root_path, class: 'c-link c-link--brand'
+      = form_with url: searches_path, method: :get, local: true, class: 'p-header__search-form' do |f|
+        .c-text-field
+          = f.search_field :q, placeholder: 'キーワードを入力…', class: 'c-text-field__input-form'
+          .c-text-field__icon: i.fas.fa-search
+    .p-header__right
+      ul.p-header__list
+        - if logged_in?
+          li.p-header__list-item
+            = link_to new_article_path, class: 'c-btn c-btn--dark-tone'
+              i.fas.fa-pen.fa-fw
+              | 投稿
+          li.p-header__list-item
+            = link_to '#', class: 'c-link c-link--nav'
+              i.far.fa-bell.fa-lg
+          li.p-header__list-item
+            .p-header__dropdown
+              = user_photo current_user, size:35, class_name: ''
+              ul.p-header__dropdown-list.u-shadow
+                li.p-header__dropdown-item = link_to 'マイページ', current_user
+                li.p-header__dropdown-item = link_to '設定', settings_root_path
+                li.p-header__dropdown-item = link_to '下書き一覧', drafts_path
+                li.p-header__dropdown-item = link_to 'ログアウト', logout_path, method: :delete
+        - else
+          li.p-header__list-item = link_to '新規登録', signup_path, class: 'c-btn c-btn--sub-highlight'
+          li.p-header__list-item = link_to 'ログイン', login_path, class: 'c-link c-link--nav'

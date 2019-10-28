@@ -1,0 +1,23 @@
+.p-footer {
+  max-width: $global_page_width;
+  margin: 0 auto;
+
+  &__link-list {
+    display: flex;
+    list-style: none;
+    margin-bottom: 1rem;
+    padding-left: 0;
+  }
+
+  &__link-item {
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    color: $white_color;
+  }
+}

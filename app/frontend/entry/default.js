@@ -1,13 +1,12 @@
-// // window.addEventListener('load', function (event) {
-// //   console.log(event);
-// // })
+// import HeaderDropdownMenu from "../js/components/header_dropdown_menu";
 
-// function flash_toast(alertType, message) {
-//   Swal.fire({
-//     type: alertType,
-//     text: message,
-//     toast: true,
-//     position: 'top-end',
-//     timer: 4000
-//   })
-// }
+// document.addEventListener('DOMContentLoaded', function (event) {
+//   if (document.getElementById("header")) {
+//     new vue({
+//       el: "#header",
+//       components: {
+//         "header-dropdown-menu": HeaderDropdownMenu
+//       }
+//     })
+//   }
+// })

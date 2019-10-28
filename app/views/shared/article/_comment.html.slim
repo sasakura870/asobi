@@ -5,6 +5,6 @@
     .p-comment_item__user-name = link_to user.name, user, class: 'c-link'
   .p-comment-item__body: p = comment.content
   .p-comment-item__footer
-    .p-comment-item__datetime: p.c-text.c-text--supplement = comment.created_at
+    .p-comment-item__datetime: p = comment.created_at
     - if logged_in? && user == current_user
       .p-comment-item__menu: comment-delete-button :comment-id="#{comment.id}"

@@ -1,5 +1,3 @@
-import '../default'
-// import Vue from "vue/dist/vue.esm.js";
 import FollowButton from "../../js/components/follow_button";
 
 document.addEventListener("DOMContentLoaded", function () {

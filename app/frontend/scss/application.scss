@@ -1,6 +1,8 @@
 // @import 'media/fonts/memoir-round-c63b435d0161341b85dd2b9262eef3ee.otf';
 @import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+@import "ress";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "./actiontext";
 
 // foundation
@@ -8,8 +10,13 @@
 @import "./foundation/variables";
 @import "./foundation/mixin/button";
 
+// layout
+@import "./layout/footer";
+@import "./layout/header";
+
 // component
 @import "./object/component/button";
+@import "./object/component/circle_button";
 @import "./object/component/link";
 @import "./object/component/outline_button";
 @import "./object/component/text_field";
@@ -17,8 +24,12 @@
 
 // project
 @import "./object/project/comment_item";
+@import "./object/project/footer";
+@import "./object/project/header";
+@import "./object/project/sticky_menu";
 
 // utility
+@import "./object/utility/shadow";
 @import "./object/utility/spacer";
 
 @import "./custom";
