@@ -1,4 +1,4 @@
-header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
+/ header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
   .container.container-width-custom
     = link_to('Asobi', root_path, class: 'navbar-brand mr-4')
     = form_with url: searches_path, method: :get, local: true, class: 'form-inline mr-auto' do |f|
@@ -26,3 +26,24 @@ header.navbar.navbar-expand-lg.navbar-dark.bgcolor-header.sticky-top
           = link_to('新規登録', signup_path, class: 'btn btn-outline-light')
         li.nav-item
           = link_to('ログイン', login_path, class: 'nav-link link-underline')
+
+header.l-header
+  nav.p-header
+    .p-header__left
+      .p-header__logo = link_to 'Asobi', root_path
+      = form_with url: searches_path, method: :get, local: true, class: 'p-header__search-form' do |f|
+        .c-text-field
+          = f.search_field :q, placeholder: 'キーワードを入力…', class: 'c-text-field__input-form'
+          .c-text-field__icon: i.fas.fa-search
+    .p-header__right
+      ul.p-header__list
+        - if logged_in?
+          li.p-header__nav-item 1
+          li.p-header__nav-item 2
+          li.p-header__nav-item 3
+          li.p-header__nav-item 4
+        - else
+          li.p-header__nav-item 5
+          li.p-header__nav-item 6
+          li.p-header__nav-item 7
+          li.p-header__nav-item 8

@@ -1,0 +1,10 @@
+// TODO レイアウト同士でz-indexの値を調整する
+.l-header {
+  background: $header_color;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin: 0 auto;
+  padding: 1rem;
+}
