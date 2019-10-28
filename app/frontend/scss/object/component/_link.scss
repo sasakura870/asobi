@@ -5,6 +5,14 @@
     text-decoration: none;
   }
 
+  &--brand {
+    color: $white_color;
+
+    &:hover {
+      color: $white_color;
+    }
+  }
+
   &--nav {
     color: rgba($white_color, 0.5);
 

@@ -1,5 +1,5 @@
 .p-footer {
-  width: $global_page_width;
+  max-width: $global_page_width;
   margin: 0 auto;
 
   &__link-list {
@@ -10,7 +10,10 @@
   }
 
   &__link-item {
-    margin-right: 1rem;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
   }
 
   &__copyright {
