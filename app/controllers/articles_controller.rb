@@ -29,14 +29,16 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.new(article_params)
-    if @article&.save
-      new_tag_list = params[:article][:tags_list].split.uniq
+    new_tag_list = params[:article][:tags_list].split.uniq
+    if @article&.save && new_tag_list.length <= 10
       # 入力されたタグを元に@articleとリンクさせる
+      tag_list = []
       new_tag_list.each do |tag_name|
         tag = Tag.find_by(name: tag_name)
         tag = Tag.create(name: tag_name) if tag.nil?
-        @article.link_tag(tag)
+        tag_list << tag
       end
+      @article.link_tag(tag_list)
 
       if @article.published?
         flash[:success] = '投稿しました！'
@@ -53,8 +55,8 @@ class ArticlesController < ApplicationController
 
   def update
     @article = current_user.articles.find_by(id_digest: params[:article][:id_digest])
-    if @article&.update(article_params)
-      new_tag_list = params[:article][:tags_list].split.uniq
+    new_tag_list = params[:article][:tags_list].split.uniq
+    if @article&.update(article_params) && new_tag_list.length <= 10
       linked_tag_list = @article.tags.map(&:name)
 
       # @articleにリンクしていて、入力したタグに含まれていないタグ
@@ -65,11 +67,13 @@ class ArticlesController < ApplicationController
       end
 
       # 入力したタグに含まれていて、@articleがまだリンクしていないタグ
+      tag_list = []
       (new_tag_list - linked_tag_list).each do |tag_name|
         tag = Tag.find_by(name: tag_name)
         tag = Tag.create(name: tag_name) if tag.nil?
-        @article.link_tag(tag)
+        tag_list << tag
       end
+      @article.link_tag(tag_list)
 
       if @article.published?
         flash[:success] = '投稿しました！'
