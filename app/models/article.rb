@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  after_save :create_id_digest
+  after_create :create_id_digest
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -29,9 +29,12 @@ class Article < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def link_tag(tag)
-    map = tag_maps.build(tag_id: tag.id)
-    map.save
+  def link_tag(tags)
+    map = []
+    tags.each do |tag|
+      map << tag_maps.build(tag_id: tag.id)
+    end
+    TagMap.import map
   end
 
   def unlink_tag(tag)

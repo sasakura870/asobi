@@ -41,6 +41,10 @@ gem 'kaminari'
 # gem 'carrierwave'
 gem 'mini_magick'
 
+# bulk insert用のgem
+# Rails6標準のbulk insertを行うメソッドはvalidationを無視するものしかなかったため
+gem 'activerecord-import', '~> 1.0', '>= 1.0.3'
+
 # # 検索機能の導入(内部でform_forを使っていたため使用せず)
 # gem 'ransack'
 

@@ -1,0 +1,67 @@
+.c-badge {
+  @include block-badge;
+  background: $main_color;
+  color: $white_color;
+
+  @each $key,
+  $color in $custom_colors {
+    &--#{$key} {
+      @include badge-color-extension($color);
+    }
+  }
+
+  &--tag {
+    position: relative;
+    background: $sub_highlight_color;
+    border-radius: 0px;
+    padding-right: 0;
+
+    &::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      font-size: .1rem;
+      content: "\f02b";
+      padding-right: .2rem;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 100%;
+      border-top: .7rem solid transparent;
+      border-bottom: 1rem solid transparent;
+      border-left: .5rem solid $sub_highlight_color;
+    }
+  }
+
+  &--favorite {
+    background: $white_color;
+    border: 1px solid black;
+    border-radius: 0px;
+    color: $black_color;
+
+    &::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f005";
+      color: $main_color;
+      padding-right: .2rem;
+    }
+  }
+
+  &--comment {
+    background: $white_color;
+    border: 1px solid black;
+    border-radius: 0px;
+    color: $black_color;
+
+    &::before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f4ad";
+      color: $primary_color;
+      padding-right: .2rem;
+    }
+  }
+}

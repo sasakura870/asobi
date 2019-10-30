@@ -3,11 +3,16 @@
 
 @import "ress";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 @import "./actiontext";
 
 // foundation
 @import "./foundation/reset";
 @import "./foundation/variables";
+@import "./foundation/mixin/badge";
 @import "./foundation/mixin/button";
 
 // layout
@@ -15,6 +20,7 @@
 @import "./layout/header";
 
 // component
+@import "./object/component/badge";
 @import "./object/component/button";
 @import "./object/component/circle_button";
 @import "./object/component/link";
@@ -23,12 +29,14 @@
 @import "./object/component/text";
 
 // project
+@import "./object/project/article_card";
 @import "./object/project/comment_item";
 @import "./object/project/footer";
 @import "./object/project/header";
 @import "./object/project/sticky_menu";
 
 // utility
+@import "./object/utility/float";
 @import "./object/utility/shadow";
 @import "./object/utility/spacer";
 
@@ -36,5 +44,4 @@
 @import "./separator";
 @import "./custom_button";
 @import "./custom_text";
-@import "./custom_card";
 @import "./custom_article_show";

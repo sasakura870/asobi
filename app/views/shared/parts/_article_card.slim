@@ -1,5 +1,5 @@
 
-.card.card-float.boarder.text-left
+/ .card.card-float.boarder.text-left
   = link_to article_path(article), class: 'card-body text-decoration-none'
     - unless article.overview.nil?
       small.card-subtitle.text-muted = article.overview
@@ -13,3 +13,18 @@
         i.fas.fa-comment-dots.fa-fw
         = article.comments.count
   = set_user_link article.user, class_name: 'card-footer'
+
+.p-article-card.c-float
+  = link_to article, class: 'p-article-card__body c-link'
+    p.p-article-card__overview = article.overview
+    p.p-article-card__title = article.title
+    = set_thumbnail article, class_name: 'p-article-card__thumbnail'
+    ul.p-article-card__tag-list
+      - article.tags.each do |tag|
+        li.p-article-card__tag-item: span.c-badge.c-badge--tag = tag.name
+    .p-article-card__reaction
+      .p-article-card__favorite: span.c-badge.c-badge--favorite = article.favorites.count
+      .p-article-card__comment: span.c-badge.c-badge--comment = article.comments.count
+  = link_to article.user, class: 'p-article-card__footer'
+    .p-article-card__icon = user_photo article.user, size: 40, class_name: 'c-user-photo'
+    .p-article-card__user-name = article.user.name

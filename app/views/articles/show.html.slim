@@ -5,7 +5,7 @@
     .p-sticky-menu
       favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
     / = link_to '#', class: 'btn btn-primary btn-round'
-    /   i.fas.fa-comment-dots.fa-fw
+      i.fas.fa-comment-dots.fa-fw.fa-spin
     / = link_to '#', class: 'c-circle-btn c-circle-btn--primary'
     /   i.fab.fa-twitter.fa-fw
 
@@ -16,6 +16,8 @@
   .card-body
     p.card-subtitle.text-muted.mb-4 = @article.overview if @article.overview.present?
     h1.desplay-1 = @article.title
+    - @article.tags.each do |tag|
+      p = tag.name
     = set_thumbnail(@article, class_name: 'card-img-top mx-auto w-100')
     ul
       - @article.tags.each do |tag|
