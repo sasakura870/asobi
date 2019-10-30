@@ -5,7 +5,7 @@
     .p-sticky-menu
       favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
     / = link_to '#', class: 'btn btn-primary btn-round'
-    /   i.fas.fa-comment-dots.fa-fw
+      i.fas.fa-comment-dots.fa-fw.fa-spin
     / = link_to '#', class: 'c-circle-btn c-circle-btn--primary'
     /   i.fab.fa-twitter.fa-fw
 
