@@ -14,7 +14,7 @@
         = article.comments.count
   = set_user_link article.user, class_name: 'card-footer'
 
-.p-article-card
+.p-article-card.c-float
   = link_to article, class: 'p-article-card__body c-link'
     p.p-article-card__overview = article.overview
     p.p-article-card__title = article.title
