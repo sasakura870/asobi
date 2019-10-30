@@ -8,6 +8,7 @@
 // foundation
 @import "./foundation/reset";
 @import "./foundation/variables";
+@import "./foundation/mixin/badge";
 @import "./foundation/mixin/button";
 
 // layout
@@ -15,6 +16,7 @@
 @import "./layout/header";
 
 // component
+@import "./object/component/badge";
 @import "./object/component/button";
 @import "./object/component/circle_button";
 @import "./object/component/link";
@@ -23,6 +25,7 @@
 @import "./object/component/text";
 
 // project
+@import "./object/project/article_card";
 @import "./object/project/comment_item";
 @import "./object/project/footer";
 @import "./object/project/header";

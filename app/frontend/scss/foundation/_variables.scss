@@ -1,7 +1,19 @@
-// サイズ
+/*===============================
+
+	サイズ
+
+================================*/
 $global_page_width: 1200px;
 
-// カラー
+/*===============================
+
+	カラー
+
+================================*/
+
+/*
+	カスタムカラー(コンポーネントにも同様のカラーのCSSを作成)
+================================*/
 $background_color: #F9ED69;
 $main_color: #F08A5D;
 $highlight_color: #6A2C70;
@@ -10,15 +22,9 @@ $main_dark_tone_color: #B1552C;
 $primary_color: #518CFC;
 $danger_color: #DC3445;
 $supplement_color: #939393;
-$white_color: white;
 $gold_color: #DBB400;
 $silver_color: #96A9B3;
 $copper_color: #C47022;
-
-$header_color: $main_color;
-$footer_color: $main_color;
-
-$general_line_color: #DDDDDD;
 
 $custom_colors: (bg: $background_color,
   main: $main_color,
@@ -28,12 +34,26 @@ $custom_colors: (bg: $background_color,
   primary: $primary_color,
   danger: $danger_color,
   supplement: $supplement_color,
-  white: $white_color,
   gold: $gold_color,
   silver: $silver_color,
   copper: $copper_color);
 
-// 余白
+/*
+	コンポーネントに使用しないカラー
+================================*/
+$header_color: $main_color;
+$footer_color: $main_color;
+
+$general_line_color: #DDDDDD;
+$white_color: white;
+$black_color: black;
+
+
+/*===============================
+
+	余白
+
+================================*/
 
 $spacers: (0: 0,
   1: .25rem,
