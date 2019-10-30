@@ -28,7 +28,8 @@
     }
   }
 
-  &__search-form {}
+  &__search-form {
+  }
 
   &__list {
     display: flex;
@@ -40,7 +41,6 @@
   }
 
   &__list-item {
-
     &:not(:last-child) {
       margin-right: 1rem;
     }
@@ -49,8 +49,10 @@
   &__dropdown {
     position: relative;
 
-    &:hover>&__dropdown-list {
-      display: block;
+    &:hover {
+      .p-header__dropdown-list {
+        display: block;
+      }
     }
   }
 
@@ -69,7 +71,7 @@
   }
 
   &__dropdown-item {
-    padding: .5rem;
+    padding: 0.3rem;
 
     &:not(:last-child) {
       margin-bottom: 1rem;

@@ -18,7 +18,7 @@ header#header.l-header
               i.far.fa-bell.fa-lg
           li.p-header__list-item
             .p-header__dropdown
-              = user_photo current_user, size:35, class_name: ''
+              = user_photo current_user, size:35, class_name: 'c-user-photo'
               ul.p-header__dropdown-list.u-shadow
                 li.p-header__dropdown-item = link_to 'マイページ', current_user
                 li.p-header__dropdown-item = link_to '設定', settings_root_path
