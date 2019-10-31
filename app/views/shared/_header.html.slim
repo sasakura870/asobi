@@ -25,5 +25,5 @@ header#header.l-header
                 li.p-header__dropdown-item = link_to '下書き一覧', drafts_path
                 li.p-header__dropdown-item = link_to 'ログアウト', logout_path, method: :delete
         - else
-          li.p-header__list-item = link_to '新規登録', signup_path, class: 'c-btn c-btn--sub-highlight'
+          li.p-header__list-item = link_to '新規登録', signup_path, class: 'c-hand-write-btn c-hand-write-btn--sub-highlight'
           li.p-header__list-item = link_to 'ログイン', login_path, class: 'c-link c-link--nav'

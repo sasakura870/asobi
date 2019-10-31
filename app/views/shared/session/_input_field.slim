@@ -1,9 +1,0 @@
-/ .input-group
-  = f.label value, class: 'sr-only'
-  .input-group-prepend: .input-group-text: i class=icon
-  = f.text_field value, placeholder: placeholder, class: 'form-control'
-.c-text-field
-  = f.text_field value, placeholder: placeholder, class: 'c-text-field__input-form'
-  .c-text-field__icon: i class=icon
-- unless notes.nil?
-  small.text-muted = notes

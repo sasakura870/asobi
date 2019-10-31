@@ -1,0 +1,5 @@
+.c-text-field
+  = f.text_field value, placeholder: placeholder, class: 'c-text-field__input-form'
+  .c-text-field__icon: i class=icon
+- unless notes.nil?
+  small.text-muted = notes

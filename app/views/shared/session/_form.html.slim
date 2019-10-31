@@ -1,13 +1,13 @@
 - if local_assigns[:signup_flag].present?
   .u-mb3
-    = render partial: 'shared/session/input_field', locals: { f: f, value: :name, icon: 'fas fa-fw fa-user', placeholder: 'ユーザーID', notes: '英数字とアンダースコア(_)で4~15文字' }
+    = render partial: 'shared/parts/input_field', locals: { f: f, value: :name, icon: 'fas fa-fw fa-user', placeholder: 'ユーザーID', notes: '英数字とアンダースコア(_)で4~15文字' }
 .u-mb3
-  = render partial: 'shared/session/email_field', locals: { f: f, value: :email, placeholder: 'メールアドレス', notes: '' }
+  = render partial: 'shared/parts/email_field', locals: { f: f, value: :email, placeholder: 'メールアドレス', notes: '' }
 .u-mb3
-  = render partial: 'shared/session/password_field', locals: { f: f, value: :password, placeholder: 'パスワード', notes: '8文字以上の英数字' }
+  = render partial: 'shared/parts/password_field', locals: { f: f, value: :password, placeholder: 'パスワード', notes: '8文字以上の英数字' }
 - if local_assigns[:signup_flag].present?
   .u-mb3
-    = render partial: 'shared/session/password_field', locals: { f: f, value: :password_confirmation, placeholder: 'パスワード(確認用)', notes: '' }
+    = render partial: 'shared/parts/password_field', locals: { f: f, value: :password_confirmation, placeholder: 'パスワード(確認用)', notes: '' }
 - else
   .custom-control.custom-checkbox
     = f.check_box :remember_check, class: 'custom-control-input'

@@ -23,8 +23,8 @@
     height: 100%;
     top: .2em;
     left: .2em;
-    z-index: -1;
     opacity: 1;
+    z-index: -1;
     transition-duration: .2s;
     transition-timing-function: ease-out;
   }
@@ -34,5 +34,9 @@
     &--#{$key} {
       @include hand-write-btn-color-extension($color);
     }
+  }
+
+  &--block {
+    @include wide-btn-extension();
   }
 }
