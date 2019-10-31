@@ -1,22 +1,11 @@
 = content_for :title, 'ログイン'
 
-/ .row.u-mb5
-  .col-md-4.offset-4
-    .card.shadow
-      .card-body
-        h1.card-title.text-center ログイン
-        hr
-        .card-text
-          = form_with scope: :session, url: login_path, local: true do |f|
-            = render partial: 'shared/session/form', locals: { model: @user, f: f }
-
-// レイヤーはlayoutで定義する
 .p-session-form.u-shadow
   .p-session-form__header
     h1 ログイン
   ul.p-session-form__social-btn-list
     li.p-session-form__social-btn-item
-      button.c-btn.c-btn--primary.c-btn--block
+      button.c-btn.c-btn--primary.c-btn--wide
         i.fab.fa-twitter.fa-fw
         | Twitterでログイン
   = form_with scope: :session, url: login_path, local: true, class: 'p-session-form__form' do |f|
@@ -27,6 +16,4 @@
     .p-session-form__form-input
       = f.check_box :remember_check, class: ''
       = f.label :remember_check, 'ログイン状態を保持する', class: ''
-    .p-session-form__form-submit
-      button.c-hand-write-btn type='submit' ログイン
-  .p-session-form__footer
+    button.p-session-form__form-input.c-btn.c-btn--wide type='submit' ログイン

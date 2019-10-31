@@ -1,12 +1,23 @@
 = content_for(:title, '新規登録')
 
-.row
-  .col-md-4.offset-4
-    .card.shadow
-      .card-body
-        h1.card-title.text-center 新規登録
-        hr
-        .card-text
-          = render partial: 'shared/error_messages', locals: { model: @user }
-          = form_with model: @user, local: true do |f|
-            = render partial: 'shared/session/form', locals: { model: @user, signup_flag: true, f: f }
+.p-session-form.u-shadow
+  .p-session-form__header
+    h1 新規登録
+  ul.p-session-form__social-btn-list
+    li.p-session-form__social-btn-item
+      button.c-btn.c-btn--primary.c-btn--wide
+        i.fab.fa-twitter.fa-fw
+        | Twitterで新規登録
+  = form_with model: @user, local: true, class: 'p-session-form__form' do |f|
+    .p-session-form__form-input
+      = render partial: 'shared/parts/input_field', locals: { f: f, value: :name, icon: 'fas fa-fw fa-user', placeholder: 'ユーザーID', notes: '英数字とアンダースコア(_)で4~15文字' }
+    .p-session-form__form-input
+      = render partial: 'shared/parts/email_field', locals: { f: f, value: :email, placeholder: 'メールアドレス', notes: '' }
+    .p-session-form__form-input
+      = render partial: 'shared/parts/password_field', locals: { f: f, value: :password, placeholder: 'パスワード', notes: '' }
+    .p-session-form__form-input
+      = render partial: 'shared/parts/password_field', locals: { f: f, value: :password_confirmation, placeholder: 'パスワード(確認用)', notes: '' }
+    .p-session-form__form-input
+      = f.check_box :accept, class: ''
+      = f.label :accept, '利用規約に同意する', class: ''
+    button.p-session-form__form-input.c-btn.c-btn--wide type='submit' 新規登録

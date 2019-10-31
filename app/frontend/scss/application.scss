@@ -16,8 +16,10 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "./foundation/reset";
 
 // layout
+@import "./layout/container";
 @import "./layout/footer";
 @import "./layout/header";
+@import "./layout/session";
 
 // component
 @import "./object/component/badge";
