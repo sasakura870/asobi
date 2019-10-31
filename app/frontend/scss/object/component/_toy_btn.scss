@@ -1,0 +1,16 @@
+.c-toy-btn {
+  position: relative;
+  @include circle-btn(.4em);
+  @include btn-color-extension($main_color);
+  border: 3px dashed $white_color;
+  color: $white_color;
+  box-shadow: 0px 0px 0px .3em $main_color;
+
+  @each $key,
+  $color in $custom_colors {
+    &--#{$key} {
+      @include btn-color-extension($color);
+      box-shadow: 0px 0px 0px .3em $color;
+    }
+  }
+}

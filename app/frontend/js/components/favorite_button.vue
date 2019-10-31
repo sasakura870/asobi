@@ -13,7 +13,7 @@
       <button
         @click="createFavorite"
         :disabled="isProcessing"
-        class="c-circle-btn c-circle-btn--supplement"
+        class="c-circle-btn c-circle-btn--supplement u-shadow"
       >
         <i class="fas fa-star fa-fw"></i>
       </button>
