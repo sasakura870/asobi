@@ -8,4 +8,8 @@
       @include outline-btn-color-extension(($color));
     }
   }
+
+  &--block {
+    @include wide-btn-extension();
+  }
 }

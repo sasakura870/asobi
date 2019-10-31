@@ -47,3 +47,8 @@
     box-shadow: 1px 1px 5px darken($color, 10);
   }
 }
+
+@mixin wide-btn-extension {
+  display: block;
+  width: 100%;
+}
