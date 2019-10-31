@@ -30,7 +30,6 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "./object/component/link";
 @import "./object/component/outline_button";
 @import "./object/component/text_field";
-@import "./object/component/text";
 @import "./object/component/toy_btn";
 @import "./object/component/user_photo";
 
@@ -46,6 +45,7 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "./object/utility/float";
 @import "./object/utility/shadow";
 @import "./object/utility/spacer";
+@import "./object/utility/text";
 
 @import "./custom";
 @import "./separator";
