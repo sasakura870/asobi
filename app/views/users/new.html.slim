@@ -3,6 +3,7 @@
 .p-session-form.u-shadow
   .p-session-form__header
     h1 新規登録
+    = render partial: 'shared/error_messages', locals: { model: @user }
   ul.p-session-form__social-btn-list
     li.p-session-form__social-btn-item
       button.c-btn.c-btn--primary.c-btn--wide

@@ -1,5 +1,4 @@
 - if model.errors.present?
-  .error_explanation
-    ul
-      - model.errors.full_messages.each do |msg|
-        li.text-danger = msg
+  ul.c-errors
+    - model.errors.full_messages.each do |msg|
+      li.c-errors__item = msg
