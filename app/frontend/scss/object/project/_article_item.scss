@@ -19,12 +19,14 @@
   }
 
   &__overview {
+    font-size: 1.2rem;
     color: $supplement_color;
   }
 
   &__title {
-    font-size: 2.4em;
+    font-size: 3.2rem;
     font-weight: 700;
+    margin-bottom: .5em;
   }
 
   &__tag-list {
@@ -33,7 +35,7 @@
   }
 
   &__tag-item {
-    font-size: .8em;
+    font-size: 1.2rem;
     margin-bottom: 1em;
 
     &:not(:last-child) {
@@ -53,11 +55,11 @@
   }
 
   &__user-photo {
-    margin-right: 1em;
+    margin-right: .5em;
   }
 
   &__user-name {
-    font-size: 1.6em;
+    font-weight: 700;
     color: $black_color;
   }
 

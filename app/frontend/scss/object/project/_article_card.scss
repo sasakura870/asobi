@@ -15,12 +15,13 @@
 
   &__overview {
     color: $supplement_color;
-    font-size: .8em;
+    font-size: 1.2rem;
   }
 
   &__title {
-    font-size: 1.6em;
+    font-size: 2.4rem;
     font-weight: 700;
+    margin-bottom: .5em;
   }
 
   &__thumbnail {
@@ -36,8 +37,8 @@
   }
 
   &__tag-item {
-    font-size: .8em;
-    margin-bottom: .5em;
+    font-size: 1.2rem;
+    margin-bottom: 1em;
 
     &:not(:last-child) {
       margin-right: 1em;
@@ -50,13 +51,10 @@
   }
 
   &__favorite {
-    font-size: .8em;
     margin-right: .5em;
   }
 
-  &__comment {
-    font-size: .8em;
-  }
+  &__comment {}
 
   &__footer {
     display: flex;
@@ -69,7 +67,6 @@
   }
 
   &__user-name {
-    font-size: 1.2em;
     font-weight: 700;
   }
 }
