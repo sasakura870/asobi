@@ -29,7 +29,7 @@
 
     p == @article.content
 
-.card.u-mb5
+/ .card.u-mb5
   .card-body
     - @article.comments.each do |comment|
       = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
@@ -40,3 +40,21 @@
         .input-group.u-mb2
           = f.text_area :content, class: 'form-control', required: true, rows: 4
         = f.submit '投稿する', class: 'c-btn'
+
+.p-list-contents
+  ul.p-list-contents__list
+    - @article.comments.each do |comment|
+      li.p-list-contents__list-item
+        .p-comment-item id="comment-#{comment.id}"
+          .p-comment-item__header
+            = link_to comment.user, class: 'p-comment-item__icon'
+              = user_photo comment.user, size: 40, class_name: 'c-user-photo'
+            .p-comment_item__user-name = link_to comment.user.name, comment.user, class: 'c-link'
+          p.p-comment-item__body = comment.content
+          .p-comment-item__footer
+            p.p-comment-item__datetime = comment.created_at
+            - if logged_in? && user == current_user
+              .p-comment-item__menu: comment-delete-button :comment-id="#{comment.id}"
+  .p-list-contents__footer
+    p コメント投稿
+
