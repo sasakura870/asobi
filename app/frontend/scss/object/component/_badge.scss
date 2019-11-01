@@ -19,9 +19,9 @@
     &::before {
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
-      font-size: .1rem;
+      font-size: .1em;
       content: "\f02b";
-      padding-right: .2rem;
+      padding-right: .2em;
     }
 
     &::after {
@@ -29,9 +29,9 @@
       content: "";
       top: 0;
       left: 100%;
-      border-top: .83rem solid transparent;
-      border-bottom: .83rem solid transparent;
-      border-left: .5rem solid $sub_highlight_color;
+      border-top: .83em solid transparent;
+      border-bottom: .83em solid transparent;
+      border-left: .5em solid $sub_highlight_color;
     }
   }
 
@@ -46,7 +46,7 @@
       font-weight: 900;
       content: "\f005";
       color: $main_color;
-      padding-right: .2rem;
+      padding-right: .2em;
     }
   }
 
@@ -61,7 +61,7 @@
       font-weight: 900;
       content: "\f4ad";
       color: $primary_color;
-      padding-right: .2rem;
+      padding-right: .2em;
     }
   }
 }

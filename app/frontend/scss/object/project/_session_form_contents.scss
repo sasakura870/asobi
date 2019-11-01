@@ -7,21 +7,21 @@
 
   &__social-btn-list {
     border-bottom: 1px solid $general_line_color;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
   }
 
   &__social-btn-item {
     &:not(:last-child) {
-      margin-bottom: .5rem;
+      margin-bottom: .5em;
     }
   }
 
   &__form {
-    padding-bottom: 1rem;
+    padding-bottom: 1em;
   }
 
   &__form-input {
-    margin-bottom: .5rem;
+    margin-bottom: .5em;
   }
 }

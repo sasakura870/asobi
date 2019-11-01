@@ -4,14 +4,14 @@
 
   &__link-list {
     display: flex;
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
     padding-left: 0;
   }
 
   &__link-item {
 
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 1em;
     }
   }
 
