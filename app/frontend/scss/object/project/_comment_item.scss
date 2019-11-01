@@ -9,17 +9,15 @@
   }
 
   &__icon {
-    margin-right: 1em;
+    margin-right: .5em;
     text-align: center;
   }
 
   &__user-name {
-    font-size: 1.2em;
     font-weight: 700;
   }
 
   &__body {
-    font-size: 1.6em;
     margin-bottom: 1em;
   }
 
@@ -30,6 +28,7 @@
   }
 
   &__datetime {
+    font-size: 1.2rem;
     color: $supplement_color;
   }
 

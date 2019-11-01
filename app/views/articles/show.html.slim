@@ -49,7 +49,7 @@
           .p-comment-item__header
             = link_to comment.user, class: 'p-comment-item__icon'
               = user_photo comment.user, size: 40, class_name: 'c-user-photo'
-            .p-comment_item__user-name = link_to comment.user.name, comment.user, class: 'c-link'
+            .p-comment-item__user-name = link_to "@#{comment.user.name}", comment.user, class: 'c-link'
           p.p-comment-item__body = comment.content
           .p-comment-item__footer
             p.p-comment-item__datetime = comment.created_at
