@@ -7,9 +7,8 @@
   }
 
   &__header {
-    border-bottom: 1px solid $general_line_color;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    @include contents-header();
+    text-align: left;
   }
 
   &__full-name {

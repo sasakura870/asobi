@@ -13,24 +13,28 @@
           follow-button　:user-id='#{@user.id}' :is-followed='#{current_user.already_follow?(@user)}'
     = simple_format(h(@user.introduction), class: 'p-user-profile-contents__introduction')
 
-h1 新着記事
-.row
-  - if @articles.any?
-    - @articles.each do |article|
-      .col-md-4.col-sm-6.mb-4
-        = render partial: 'shared/parts/article_card', locals: { article: article }
-= paginate @articles
-
-.p-card-contents
+/ .p-card-contents.u-mb3
   .p-card-contents__header
     h1 新着記事
-  .p-card-contents__list
-    .p-card-contents__list-item
+  - if @articles.any?
+    ul.p-card-contents__list
+      - @articles.each do |article|
+        li.p-card-contents__list-item
+          = render partial: 'shared/parts/article_card', locals: { article: article }
+  -else
+    p 投稿された遊びはありません。
   .p-card-contents__footer
+    = paginate @articles
 
 .p-list-contents
   .p-list-contents__header
     h1 新着記事
-  .p-list-contents__list
-    .p-list-contents__list-item
+  - if @articles.any?
+    ul.p-list-contents__list
+      - @articles.each do |article|
+        li.p-list-contents__list-item
+          = render partial: 'shared/parts/article_item', locals: { article: article }
+  - else
+    p 投稿された遊びはありません
   .p-list-contents__footer
+    = paginate @articles

@@ -4,3 +4,9 @@
   border-radius: 3px;
   padding: 1rem;
 }
+
+@mixin contents-header {
+  text-align: center;
+  border-bottom: 1px solid $general_line_color;
+  margin-bottom: 1rem;
+}

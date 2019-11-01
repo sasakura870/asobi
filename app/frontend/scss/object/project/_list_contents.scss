@@ -1,11 +1,21 @@
 .p-list-contents {
-  background: pink;
+  @include contents-box();
 
-  &__header {}
+  &__header {
+    @include contents-header();
+  }
 
-  &__list {}
+  &__list {
+    margin-bottom: 1rem;
+  }
 
-  &__list-item {}
+  &__list-item {
+    &:not(:last-child) {
+      border-bottom: 1px solid $general_line_color;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
 
   &__footer {}
 }

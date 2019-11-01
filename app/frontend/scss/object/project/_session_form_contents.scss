@@ -2,9 +2,7 @@
   @include contents-box();
 
   &__header {
-    text-align: center;
-    border-bottom: 1px solid $general_line_color;
-    margin-bottom: 1rem;
+    @include contents-header();
   }
 
   &__social-btn-list {

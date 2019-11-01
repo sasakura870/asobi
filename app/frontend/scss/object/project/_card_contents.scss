@@ -1,16 +1,23 @@
 .p-card-contents {
   @include contents-box();
-  background: lightgreen;
 
   &__header {
-    text-align: center;
-    border-bottom: 1px solid $general_line_color;
+    @include contents-header();
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin-bottom: 1rem;
   }
 
-  &__list {}
+  &__list-item {
+    max-width: fit-content;
+    min-width: 450px;
+  }
 
-  &__list-item {}
-
-  &__footer {}
+  &__footer {
+    text-align: center;
+  }
 }

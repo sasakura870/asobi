@@ -50,6 +50,7 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "./object/component/link";
 @import "./object/component/outline_button";
 @import "./object/component/text_field";
+@import "./object/component/thumbnail";
 @import "./object/component/toy_btn";
 @import "./object/component/user_photo";
 
@@ -58,6 +59,7 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 ================================*/
 
 @import "./object/project/article_card";
+@import "./object/project/article_item";
 @import "./object/project/comment_item";
 @import "./object/project/footer";
 @import "./object/project/header";
