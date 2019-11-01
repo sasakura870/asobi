@@ -3,7 +3,7 @@ html lang = 'ja'
   = render partial: 'shared/head'
   body
     = render partial: 'shared/header'
-    .l-container
+    #container.l-container
       .l-session
         = yield
     - if Rails.env.development?

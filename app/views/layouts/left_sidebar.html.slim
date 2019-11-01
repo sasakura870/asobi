@@ -1,15 +1,11 @@
 doctype html
 html lang = 'ja'
   = render partial: 'shared/head'
-  body.bgcolor-bg
+  body
     = render partial: 'shared/header'
-    .container.container-width-custom.py-4
-      / = render partial: 'shared/flash'
-      .row
-        aside.col-md-3
-          = yield(:sidemenu)
-        main.col-md-9
-          = yield
+    #container.l-container
+      aside.l-sidebar--left.u-flex-size-1.u-mr3 = yield(:sidebar)
+      main.l-main.u-flex-size-4 = yield
     = render partial: 'shared/footer'
     - if Rails.env.development?
       = debug(params)

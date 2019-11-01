@@ -13,6 +13,7 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "./foundation/variables";
 @import "./foundation/mixin/badge";
 @import "./foundation/mixin/button";
+@import "./foundation/mixin/content_box";
 @import "./foundation/reset";
 
 // layout
@@ -36,13 +37,17 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 
 // project
 @import "./object/project/article_card";
+@import "./object/project/card_contents";
 @import "./object/project/comment_item";
 @import "./object/project/footer";
 @import "./object/project/header";
-@import "./object/project/session_form";
+@import "./object/project/list_contents";
+@import "./object/project/session_form_contents";
 @import "./object/project/sticky_menu";
+@import "./object/project/user_profile_contents";
 
 // utility
+@import "./object/utility/flex_size";
 @import "./object/utility/float";
 @import "./object/utility/shadow";
 @import "./object/utility/spacer";

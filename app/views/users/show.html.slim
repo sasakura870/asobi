@@ -1,18 +1,17 @@
 = content_for(:title, @user.name)
 
-= content_for(:sidemenu) do
-  #user_profile
-    = user_photo(@user, size: 200)
-    - if @user.nick_name.present?
-      h3 = @user.nick_name
-      p = "@#{@user.name}"
-    - else
-      h3 = "@#{@user.name}"
-    - if logged_in? && @user != current_user
-      follow-button　:user-id='#{@user.id}' :is-followed='#{current_user.already_follow?(@user)}'
-    - unless @user.introduction.blank?
-      hr
-      p = @user.introduction
+= content_for(:sidebar)
+  .p-user-profile-contents
+    .p-user-profile-contents__photo
+      = user_photo @user, size: 200, class_name: 'c-user-photo'
+    .p-user-profile-contents__header
+      - if @user.nick_name.present?
+        h3.p-user-profile-contents__full-name = @user.nick_name
+      h4.p-user-profile-contents__name @#{@user.name}
+      - if logged_in? && @user != current_user
+        .p-user-profile-contents__follow-btn
+          follow-button　:user-id='#{@user.id}' :is-followed='#{current_user.already_follow?(@user)}'
+    = simple_format(h(@user.introduction), class: 'p-user-profile-contents__introduction')
 
 h1 新着記事
 .row
@@ -21,3 +20,17 @@ h1 新着記事
       .col-md-4.col-sm-6.mb-4
         = render partial: 'shared/parts/article_card', locals: { article: article }
 = paginate @articles
+
+.p-card-contents
+  .p-card-contents__header
+    h1 新着記事
+  .p-card-contents__list
+    .p-card-contents__list-item
+  .p-card-contents__footer
+
+.p-list-contents
+  .p-list-contents__header
+    h1 新着記事
+  .p-list-contents__list
+    .p-list-contents__list-item
+  .p-list-contents__footer

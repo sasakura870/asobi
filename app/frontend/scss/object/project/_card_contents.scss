@@ -1,0 +1,16 @@
+.p-card-contents {
+  @include contents-box();
+  background: lightgreen;
+
+  &__header {
+    text-align: center;
+    border-bottom: 1px solid $general_line_color;
+    margin-bottom: 1rem;
+  }
+
+  &__list {}
+
+  &__list-item {}
+
+  &__footer {}
+}
