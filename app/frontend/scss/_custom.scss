@@ -27,34 +27,34 @@ $max-width-size: 1200px;
 //   /* Legacy iOS */
 // }
 
-html {
-  font-family: 'memoir';
-  font-size: 15px;
-}
+// html {
+//   font-family: 'memoir';
+//   font-size: 15px;
+// }
 
-.bgcolor-bg {
-  background: $background_color;
-}
+// .bgcolor-bg {
+//   background: $background_color;
+// }
 
 .bgcolor-header {
   background: $header_color;
 }
 
-.bgcolor-footer {
-  background: $footer_color;
-}
+// .bgcolor-footer {
+//   background: $footer_color;
+// }
 
 .container-width-custom {
   max-width: $max-width-size
 }
 
-.link-underline:hover {
-  text-decoration: underline;
-}
+// .link-underline:hover {
+//   text-decoration: underline;
+// }
 
-.w-90 {
-  width: 90% !important;
-}
+// .w-90 {
+//   width: 90% !important;
+// }
 
 // .text-gold {
 //   color: gold;
