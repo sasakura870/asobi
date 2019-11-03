@@ -1,0 +1,24 @@
+.p-comment-form {
+  display: flex;
+  padding: 1em;
+
+  &__user-photo {
+    margin-right: 1em;
+  }
+
+  &__form {
+    flex-grow: 1;
+  }
+
+  &__text-area {
+    width: 100%;
+    border: 2px solid $black_color;
+    border-radius: 3em 0.5em 2em 0.5em/0.4em 2em 0.5em 3em;
+    padding: .5em;
+    outline: none;
+  }
+
+  &__submit {
+    text-align: left;
+  }
+}

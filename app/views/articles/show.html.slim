@@ -21,25 +21,30 @@
     h1.desplay-1 = @article.title
     - @article.tags.each do |tag|
       p = tag.name
-    = set_thumbnail(@article, class_name: 'card-img-top mx-auto w-100')
     ul
       - @article.tags.each do |tag|
         li = link_to tag.name, tag
 
-
     p == @article.content
 
-/ .card.u-mb5
-  .card-body
-    - @article.comments.each do |comment|
-      = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
-    - if logged_in?
-      hr
-      = form_with model: current_user.comments.new, local: true do |f|
-        = f.hidden_field :article_id, value: @article.id
-        .input-group.u-mb2
-          = f.text_area :content, class: 'form-control', required: true, rows: 4
-        = f.submit '投稿する', class: 'c-btn'
+.p-article-contents
+  .p-article-contents__header
+    .p-article-contents__user-profile
+      .p-article-contents__user-photo
+      .p-article-contents__user-name
+    .p-article-contents__datetime
+  .p-article-contents__body
+    .p-article-contents__overview
+    .p-article-contents__title
+    .p-article-contents__tag-list
+      .p-article-contents__tag
+    // コンテンツが入る
+  .p-article-contents__footer
+    .p-article-contents__user-profile
+      .p-article-contents__user-photo
+      .p-article-contents__user-name
+      .p-article-contents__user-introduction
+    .p-article-contents__follow-btn
 
 .p-list-contents
   ul.p-list-contents__list
@@ -54,7 +59,9 @@
           .p-comment-item__footer
             p.p-comment-item__datetime = comment.created_at
             - if logged_in? && comment.user == current_user
-              .p-comment-item__menu: comment-delete-button :comment-id="#{comment.id}"
-  .p-list-contents__footer
-    p コメント投稿
-
+              .p-comment-item__menu: delete-comment-button :comment-id="#{comment.id}"
+  .p-list-contents__footer.p-comment-form
+    .p-comment-form__user-photo = user_photo current_user, size: 40, class_name: 'c-user-photo'
+    = form_with model: current_user.comments.new, local: true, class: 'p-comment-form__form' do |f|
+      = f.text_area :content, placeholder: 'コメントを入力…', required: true, rows: 4, class: 'p-comment-form__text-area'
+      .p-comment-form__submit: button.c-hand-write-btn 投稿する
