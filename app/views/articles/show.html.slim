@@ -53,7 +53,7 @@
           p.p-comment-item__body = comment.content
           .p-comment-item__footer
             p.p-comment-item__datetime = comment.created_at
-            - if logged_in? && user == current_user
+            - if logged_in? && comment.user == current_user
               .p-comment-item__menu: comment-delete-button :comment-id="#{comment.id}"
   .p-list-contents__footer
     p コメント投稿
