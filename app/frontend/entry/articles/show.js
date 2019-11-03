@@ -1,5 +1,5 @@
 import FavoriteButton from '../../js/components/favorite_button'
-import CommentDeleteButton from '../../js/components/delete_comment_button'
+import DeleteCommentButton from '../../js/components/delete_comment_button'
 // import CommentForm from '../../js/components/comment_form'
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     el: '#app',
     components: {
       'favorite-button': FavoriteButton,
-      'comment-delete-button': CommentDeleteButton,
+      'delete-comment-button': DeleteCommentButton,
       // 'comment-form': CommentForm
     }
   });
