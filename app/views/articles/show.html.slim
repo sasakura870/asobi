@@ -12,7 +12,7 @@
         button.c-circle-btn.c-circle-btn--highlight
           <i class="fas fa-surprise fa-fw"></i>
 
-.card.boarder.text-left.mb-4
+/ .card.boarder.text-left.mb-4
   .card-header
     = set_user_link @article.user, size: 50
     span.text-right.text-muted = @article.updated_at
@@ -24,8 +24,8 @@
     ul
       - @article.tags.each do |tag|
         li = link_to tag.name, tag
-
     p == @article.content
+
 
 .p-article-contents.u-mb3
   / .p-article-contents__header

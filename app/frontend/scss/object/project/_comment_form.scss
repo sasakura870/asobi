@@ -11,9 +11,8 @@
   }
 
   &__text-area {
+    @include hand-write-border();
     width: 100%;
-    border: 2px solid $black_color;
-    border-radius: 3em 0.5em 2em 0.5em/0.4em 2em 0.5em 3em;
     padding: .5em;
     outline: none;
   }

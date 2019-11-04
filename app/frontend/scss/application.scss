@@ -11,6 +11,7 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
+@import "trix/dist/trix";
 
 /*===============================
 foundation
@@ -19,16 +20,17 @@ foundation
 @import "./foundation/variables";
 @import "./foundation/reset";
 
-//自動生成されたファイルだが、_variables.scssの変数を内部で使用するためにここに記述
-@import "./actiontext";
-
 /*
-	mixin
+mixin
 ================================*/
 
 @import "./foundation/mixin/badge";
+@import "./foundation/mixin/border";
 @import "./foundation/mixin/button";
 @import "./foundation/mixin/contents_box";
+
+//自動生成されたファイルだが、foundationフォルダ内の変数とmixinを内部で使用するためにここに記述
+@import "./actiontext";
 
 /*===============================
 	layout
