@@ -73,12 +73,12 @@ mixin
 /*
 contents
 ================================*/
-@import "./object/project/account_activation_contents";
-@import "./object/project/article_contents";
-@import "./object/project/card_contents";
-@import "./object/project/session_form_contents";
-@import "./object/project/list_contents";
-@import "./object/project/user_profile_contents";
+@import "./object/project/contents/account_activation_contents";
+@import "./object/project/contents/article_contents";
+@import "./object/project/contents/card_contents";
+@import "./object/project/contents/session_form_contents";
+@import "./object/project/contents/list_contents";
+@import "./object/project/contents/user_profile_contents";
 
 /*===============================
 	utility
