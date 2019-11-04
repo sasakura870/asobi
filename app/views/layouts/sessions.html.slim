@@ -4,8 +4,7 @@ html lang = 'ja'
   body
     = render partial: 'shared/header'
     #container.l-container
-      .l-session
-        = yield
+      main.l-session = yield
     - if Rails.env.development?
       = debug(params)
     = render partial: 'shared/flash'
