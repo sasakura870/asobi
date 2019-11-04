@@ -11,14 +11,16 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
-@import "./actiontext";
 
 /*===============================
-	foundation
+foundation
 ================================*/
 
 @import "./foundation/variables";
 @import "./foundation/reset";
+
+//自動生成されたファイルだが、_variables.scssの変数を内部で使用するためにここに記述
+@import "./actiontext";
 
 /*
 	mixin
@@ -86,7 +88,5 @@ contents
 @import "./object/utility/text";
 
 @import "./custom";
-@import "./separator";
 @import "./custom_button";
 @import "./custom_text";
-@import "./custom_article_show";
