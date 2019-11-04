@@ -27,23 +27,26 @@
 
     p == @article.content
 
-.p-article-contents
-  .p-article-contents__header
+.p-article-contents.u-mb3
+  / .p-article-contents__header
+    = link_to @article.user, class: 'p-article-contents__user-profile'
+      .p-article-contents__user-photo = user_photo @article.user, size: 40, class_name: 'c-user-photo'
+      .p-article-contents__user-name @#{@article.user.name}
+  / .p-article-contents__body
+  p.p-article-contents__overview = @article.overview
+  h1.p-article-contents__title = @article.title
+  ul.p-article-contents__tag-list
+    - @article.tags.each do |tag|
+      / li.p-article-contents__tag: span.c-badge.c-badge--tag = tag.name
+      li.p-article-contents__tag
+        = link_to tag.name, tag, class: 'c-badge c-badge--tag'
+  == @article.content
+  p.p-article-contents__datetime = @article.created_at
+  / .p-article-contents__footer
     .p-article-contents__user-profile
-      .p-article-contents__user-photo
-      .p-article-contents__user-name
-    .p-article-contents__datetime
-  .p-article-contents__body
-    .p-article-contents__overview
-    .p-article-contents__title
-    .p-article-contents__tag-list
-      .p-article-contents__tag
-    // コンテンツが入る
-  .p-article-contents__footer
-    .p-article-contents__user-profile
-      .p-article-contents__user-photo
-      .p-article-contents__user-name
-      .p-article-contents__user-introduction
+      .p-article-contents__user-photo = user_photo @article.user, size: 40, class_name: 'c-user-photo'
+      .p-article-contents__user-name @#{@article.user.name}
+      .p-article-contents__user-introduction = @article.user.introduction
     .p-article-contents__follow-btn
 
 .p-list-contents
@@ -54,7 +57,7 @@
           .p-comment-item__header
             = link_to comment.user, class: 'p-comment-item__icon'
               = user_photo comment.user, size: 40, class_name: 'c-user-photo'
-            .p-comment-item__user-name = link_to "@#{comment.user.name}", comment.user, class: 'c-link'
+            .p-comment-item__user-name = link_to "@#{comment.user.name}", comment.user, class: 'c-link c-link-user'
           p.p-comment-item__body = comment.content
           .p-comment-item__footer
             p.p-comment-item__datetime = comment.created_at

@@ -33,6 +33,10 @@
       border-bottom: 1em solid transparent;
       border-left: .5em solid $sub_highlight_color;
     }
+
+    &:hover {
+      color: $white_color;
+    }
   }
 
   &--favorite {
