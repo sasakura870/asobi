@@ -1,53 +1,31 @@
 = content_for(:title, @article.title)
 
 - if logged_in?
-  = content_for(:items) do
-    .p-sticky-menu
-      favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
+  = content_for(:items)
+    ul.p-sticky-menu
+      li.p-sticky-menu__item
+        favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
       / = link_to '#', class: 'btn btn-primary btn-round'
         i.fas.fa-comment-dots.fa-fw.fa-spin
       / = link_to '#', class: 'c-circle-btn c-circle-btn--primary'
       /   i.fab.fa-twitter.fa-fw
-      .p-sticky-menu__btn
-        button.c-circle-btn.c-circle-btn--highlight
-          <i class="fas fa-surprise fa-fw"></i>
+      li.p-sticky-menu__item
+        .p-sticky-menu__btn
+          button.c-circle-btn.c-circle-btn--highlight
+            <i class="fas fa-surprise fa-fw"></i>
 
-/ .card.boarder.text-left.mb-4
-  .card-header
-    = set_user_link @article.user, size: 50
-    span.text-right.text-muted = @article.updated_at
-  .card-body
-    p.card-subtitle.text-muted.mb-4 = @article.overview if @article.overview.present?
-    h1.desplay-1 = @article.title
-    - @article.tags.each do |tag|
-      p = tag.name
-    ul
-      - @article.tags.each do |tag|
-        li = link_to tag.name, tag
-    p == @article.content
-
+= content_for(:side_menu)
+  = render partial: 'shared/parts/user_profile', locals: { user: @article.user }
 
 .p-article-contents.u-mb3
-  / .p-article-contents__header
-    = link_to @article.user, class: 'p-article-contents__user-profile'
-      .p-article-contents__user-photo = user_photo @article.user, size: 40, class_name: 'c-user-photo'
-      .p-article-contents__user-name @#{@article.user.name}
-  / .p-article-contents__body
+  p.p-article-contents__datetime = @article.created_at
   p.p-article-contents__overview = @article.overview
   h1.p-article-contents__title = @article.title
   ul.p-article-contents__tag-list
     - @article.tags.each do |tag|
-      / li.p-article-contents__tag: span.c-badge.c-badge--tag = tag.name
       li.p-article-contents__tag
         = link_to tag.name, tag, class: 'c-badge c-badge--tag'
   == @article.content
-  p.p-article-contents__datetime = @article.created_at
-  / .p-article-contents__footer
-    .p-article-contents__user-profile
-      .p-article-contents__user-photo = user_photo @article.user, size: 40, class_name: 'c-user-photo'
-      .p-article-contents__user-name @#{@article.user.name}
-      .p-article-contents__user-introduction = @article.user.introduction
-    .p-article-contents__follow-btn
 
 .p-list-contents
   ul.p-list-contents__list

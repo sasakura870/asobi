@@ -1,30 +1,7 @@
 = content_for(:title, @user.name)
 
 = content_for(:sidebar)
-  .p-user-profile-contents
-    .p-user-profile-contents__photo
-      = user_photo @user, size: 200, class_name: 'c-user-photo'
-    .p-user-profile-contents__header
-      - if @user.nick_name.present?
-        h3.p-user-profile-contents__full-name = @user.nick_name
-      h4.p-user-profile-contents__name @#{@user.name}
-      - if logged_in? && @user != current_user
-        .p-user-profile-contents__follow-btn
-          follow-button　:user-id='#{@user.id}' :is-followed='#{current_user.already_follow?(@user)}'
-    = simple_format(h(@user.introduction), class: 'p-user-profile-contents__introduction')
-
-/ .p-card-contents.u-mb3
-  .p-card-contents__header
-    h1 新着記事
-  - if @articles.any?
-    ul.p-card-contents__list
-      - @articles.each do |article|
-        li.p-card-contents__list-item
-          = render partial: 'shared/parts/article_card', locals: { article: article }
-  -else
-    p 投稿された遊びはありません。
-  .p-card-contents__footer
-    = paginate @articles
+  = render partial: 'shared/parts/user_profile', locals: { user: @user }
 
 .p-list-contents
   .p-list-contents__header

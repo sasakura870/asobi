@@ -2,32 +2,13 @@
   @include contents-box();
   padding: 2em;
 
-  // &__header {
-  //   @include contents-header();
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   padding: 1em;
-  // }
-
-  // &__user-profile {
-  //   display: flex;
-  //   align-items: center;
-  // }
-
-  // &__user-photo {
-  //   margin-right: .5em;
-  // }
-
-  // &__user-name {}
-
-
-  // &__body {}
-
-  &__overview {
+  &__datetime {
     font-size: 1.4rem;
     color: $supplement_color;
+    margin-bottom: .5em;
   }
+
+  &__overview {}
 
   &__title {
     font-size: 4.4rem;
@@ -47,21 +28,4 @@
       margin-right: 1em;
     }
   }
-
-  &__datetime {
-    font-size: 1.4rem;
-    color: $supplement_color;
-  }
-
-  // &__footer {}
-
-  // &__user-profile {}
-
-  // &__user-photo {}
-
-  // &__user-name {}
-
-  // &__user-introduction {}
-
-  // &__follow-btn {}
 }
