@@ -1,7 +1,6 @@
 .p-comment-item {
   width: 100%;
   padding: 1em;
-  border-bottom: 1px solid $general_line_color;
 
   &__header {
     display: flex;
@@ -10,17 +9,15 @@
   }
 
   &__icon {
-    margin-right: 1em;
+    margin-right: .5em;
     text-align: center;
   }
 
   &__user-name {
-    font-size: 1.2rem;
     font-weight: 700;
   }
 
   &__body {
-    font-size: 1.6rem;
     margin-bottom: 1em;
   }
 
@@ -31,6 +28,7 @@
   }
 
   &__datetime {
+    font-size: 1.2rem;
     color: $supplement_color;
   }
 

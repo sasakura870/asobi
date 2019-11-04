@@ -2,8 +2,10 @@
   <button
     :disabled="isToastRunning"
     @click="deleteComment"
-    class="c-outline-btn c-outline-btn--danger"
-  >削除</button>
+    class="c-hand-write-btn c-hand-write-btn--danger"
+  >
+    <i class="fas fa-trash-alt fa-fw"></i>削除する
+  </button>
 </template>
 
 <script>

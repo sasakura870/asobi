@@ -9,4 +9,8 @@
       @include btn-color-extension($color);
     }
   }
+
+  &--wide {
+    @include wide-btn-extension();
+  }
 }

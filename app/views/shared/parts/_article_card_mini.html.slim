@@ -1,6 +1,7 @@
-.card.card-float.boarder.mb-4
-  = link_to article_path(article), class: 'card-body text-left text-decoration-none'
-    - unless article.overview.nil?
-      small.card-subtitle.text-muted = article.overview
-    h4.card-title = article.title
-  = set_user_link article.user, class_name: 'card-footer'
+.p-article-card.c-float.u-mb3
+  = link_to article, class: 'p-article-card__body c-link'
+    p.p-article-card__overview = article.overview
+    p.p-article-card__title = article.title
+  = link_to article.user, class: 'p-article-card__footer'
+    .p-article-card__icon = user_photo article.user, size: 40, class_name: 'c-user-photo'
+    .p-article-card__user-name = article.user.name

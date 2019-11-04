@@ -18,9 +18,9 @@
   }
 
   &__logo {
-    font-size: 2rem;
+    font-size: 2em;
     font-weight: 700;
-    margin-right: 1rem;
+    margin-right: 1em;
     color: $white_color;
 
     &:hover {
@@ -34,23 +34,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    list-style: none;
     margin-bottom: 0;
     padding-left: 0;
   }
 
   &__list-item {
-
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 1em;
     }
   }
 
   &__dropdown {
     position: relative;
 
-    &:hover>&__dropdown-list {
-      display: block;
+    &:hover {
+      .p-header__dropdown-list {
+        display: block;
+      }
     }
   }
 
@@ -62,17 +62,16 @@
     border-radius: 3px;
     background: white;
     right: 10px;
-    list-style: none;
     display: none;
-    padding: 1rem;
+    padding: 1em;
     margin-bottom: 0;
   }
 
   &__dropdown-item {
-    padding: .5rem;
+    padding: 0.3em;
 
     &:not(:last-child) {
-      margin-bottom: 1rem;
+      margin-bottom: 1em;
       border-bottom: 1px solid $general_line_color;
     }
   }

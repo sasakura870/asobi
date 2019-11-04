@@ -9,6 +9,14 @@
   }
 }
 
+@mixin circle-btn($padding: .7em) {
+  display: inline-block;
+  padding: $padding;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: .2s;
+}
+
 @mixin btn-color-extension($color) {
   background: $color;
 
@@ -27,4 +35,20 @@
     background: $color;
     color: transparent;
   }
+}
+
+@mixin hand-write-btn-color-extension($color) {
+  &:hover {
+    background: $color;
+  }
+
+  &::before {
+    background: $color;
+    box-shadow: 1px 1px 5px darken($color, 10);
+  }
+}
+
+@mixin wide-btn-extension {
+  display: block;
+  width: 100%;
 }

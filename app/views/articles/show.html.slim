@@ -1,39 +1,48 @@
 = content_for(:title, @article.title)
 
 - if logged_in?
-  = content_for(:items) do
-    .p-sticky-menu
-      favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
-    / = link_to '#', class: 'btn btn-primary btn-round'
-      i.fas.fa-comment-dots.fa-fw.fa-spin
-    / = link_to '#', class: 'c-circle-btn c-circle-btn--primary'
-    /   i.fab.fa-twitter.fa-fw
+  = content_for(:items)
+    ul.p-sticky-menu
+      li.p-sticky-menu__item
+        favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
+      / = link_to '#', class: 'btn btn-primary btn-round'
+        i.fas.fa-comment-dots.fa-fw.fa-spin
+      / = link_to '#', class: 'c-circle-btn c-circle-btn--primary'
+      /   i.fab.fa-twitter.fa-fw
+      li.p-sticky-menu__item
+        .p-sticky-menu__btn
+          button.c-circle-btn.c-circle-btn--highlight
+            <i class="fas fa-surprise fa-fw"></i>
 
-.card.boarder.text-left.mb-4
-  .card-header
-    = set_user_link @article.user, size: 50
-    span.text-right.text-muted = @article.updated_at
-  .card-body
-    p.card-subtitle.text-muted.mb-4 = @article.overview if @article.overview.present?
-    h1.desplay-1 = @article.title
+= content_for(:side_menu)
+  = render partial: 'shared/parts/user_profile', locals: { user: @article.user }
+
+.p-article-contents.u-mb3
+  p.p-article-contents__datetime = @article.created_at
+  p.p-article-contents__overview = @article.overview
+  h1.p-article-contents__title = @article.title
+  ul.p-article-contents__tag-list
     - @article.tags.each do |tag|
-      p = tag.name
-    = set_thumbnail(@article, class_name: 'card-img-top mx-auto w-100')
-    ul
-      - @article.tags.each do |tag|
-        li = link_to tag.name, tag
+      li.p-article-contents__tag
+        = link_to tag.name, tag, class: 'c-badge c-badge--tag'
+  == @article.content
 
-
-    p == @article.content
-
-.card.u-mb5
-  .card-body
+.p-list-contents
+  ul.p-list-contents__list
     - @article.comments.each do |comment|
-      = render partial: 'shared/article/comment', locals: { user: comment.user, comment: comment }
-    - if logged_in?
-      hr
-      = form_with model: current_user.comments.new, local: true do |f|
-        = f.hidden_field :article_id, value: @article.id
-        .input-group.u-mb2
-          = f.text_area :content, class: 'form-control', required: true, rows: 4
-        = f.submit '投稿する', class: 'c-btn'
+      li.p-list-contents__list-item
+        .p-comment-item id="comment-#{comment.id}"
+          .p-comment-item__header
+            = link_to comment.user, class: 'p-comment-item__icon'
+              = user_photo comment.user, size: 40, class_name: 'c-user-photo'
+            .p-comment-item__user-name = link_to "@#{comment.user.name}", comment.user, class: 'c-link c-link-user'
+          p.p-comment-item__body = comment.content
+          .p-comment-item__footer
+            p.p-comment-item__datetime = comment.created_at
+            - if logged_in? && comment.user == current_user
+              .p-comment-item__menu: delete-comment-button :comment-id="#{comment.id}"
+  .p-list-contents__footer.p-comment-form
+    .p-comment-form__user-photo = user_photo current_user, size: 40, class_name: 'c-user-photo'
+    = form_with model: current_user.comments.new, local: true, class: 'p-comment-form__form' do |f|
+      = f.text_area :content, placeholder: 'コメントを入力…', required: true, rows: 4, class: 'p-comment-form__text-area'
+      .p-comment-form__submit: button.c-hand-write-btn 投稿する

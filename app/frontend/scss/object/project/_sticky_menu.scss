@@ -4,11 +4,15 @@
   margin: 0 auto;
   text-align: center;
 
+  &__item {
+    margin-bottom: .5em;
+  }
+
   &__btn-counter {
     color: $supplement_color;
   }
 
   &__btn {
-    font-size: 1.4rem;
+    font-size: 1.4em;
   }
 }

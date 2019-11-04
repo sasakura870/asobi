@@ -4,7 +4,7 @@
 // inclusion directly in any other asset bundle and remove this file.
 //
 //= require trix/dist/trix
-@import "trix/dist/trix";
+// @import "trix/dist/trix";
 // We need to override trix.css’s image gallery styles to accommodate the
 
 // <action-text-attachment> element we wrap around attachments. Otherwise,
@@ -37,5 +37,123 @@
     }
   }
 
-  // max-width: 50%;
+  // ここから追加したコード
+
+  h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    border-left: 5px solid $main_color;
+    background: lighten($main_color, 30);
+    padding: .8rem 1.6rem;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+
+  strong {}
+
+  em {}
+
+  del {}
+
+  a {
+    color: $main_color;
+
+    &:hover {
+      color: $main_color;
+    }
+
+    &:visited {
+      color: purple;
+    }
+  }
+
+  blockquote {
+    position: relative;
+    padding: .5em 1em .5em 4em;
+    font-style: italic;
+    background: #efefef;
+    color: #555;
+    border: none;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+
+    &::before {
+      display: inline-block;
+      position: absolute;
+      font-family: "Font Awesome 5 Free";
+      content: "\f10d";
+      left: .5em;
+      color: #cfcfcf;
+      font-size: 2.8rem;
+      line-height: 1;
+      font-weight: 900;
+    }
+  }
+
+  pre {
+    @include hand-write-border();
+    padding: 0.5em 1em;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+
+  ul {
+    position: relative;
+    border: solid 2px $main_color;
+    border-radius: 5px;
+    padding: 0.5em 1em 0.5em 2.3em;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+
+    li {
+      line-height: 1.5;
+      padding: 0.5em 0;
+
+      &::before {
+        position: absolute;
+        left: 1em;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f138";
+        color: $main_color;
+      }
+    }
+  }
+
+  ol {
+    counter-reset: number;
+    border: solid 2px $highlight_color;
+    border-radius: 5px;
+    padding: 0.5em;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+
+    li {
+      position: relative;
+      padding-left: 30px;
+      line-height: 1.5em;
+      padding: 0.5em 0.5em 0.5em 30px;
+
+      &:before {
+        position: absolute;
+        counter-increment: number;
+        content: counter(number);
+        display: inline-block;
+        background: $highlight_color;
+        color: white;
+        font-family: 'Avenir', 'Arial Black', 'Arial', sans-serif;
+        font-weight: bold;
+        font-size: 1.6rem;
+        border-radius: 50%;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    }
+  }
 }

@@ -1,0 +1,25 @@
+.p-user-profile-contents {
+  @include contents-box();
+
+  &__photo {
+    text-align: center;
+    margin-bottom: .5em;
+  }
+
+  &__header {
+    @include contents-header();
+    text-align: left;
+  }
+
+  &__full-name {
+    font-weight: 700;
+  }
+
+  &__name {
+    color: $supplement_color;
+  }
+
+  &__follow-btn {}
+
+  &__introduction {}
+}

@@ -29,20 +29,22 @@ end
 User.import user_list
 
 users = User.order(:created_at).take(10)
+create_counter = 0
+article_list = []
 users.each do |user|
-  article_list = []
   5.times do |n|
+    create_counter += 1
     article_list << user.articles.new(
       title: "#{user.name}-#{n}",
       overview: Faker::Lorem.sentence,
       content: Faker::Lorem.sentence(word_count: 10),
       status: :published,
       # bulk insertはafter createが実行されない
-      id_digest: Digest::MD5.hexdigest(n.to_s)
+      id_digest: Digest::MD5.hexdigest(create_counter.to_s)
     )
   end
-  Article.import article_list
 end
+Article.import article_list
 
 tag_list = []
 20.times do |n|
@@ -58,3 +60,14 @@ Tag.find_each do |tag|
   end
 end
 TagMap.import tag_maps
+
+comment_list = []
+Article.find_each do |article|
+  users.each do |user|
+    comment_list << article.comments.new(
+      user_id: user.id,
+      content: Faker::Lorem.sentence(word_count: 5)
+    )
+  end
+end
+Comment.import comment_list

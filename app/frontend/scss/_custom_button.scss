@@ -8,38 +8,3 @@ $color in $custom_colors {
     @include button-outline-variant($color);
   }
 }
-
-.btn-round {
-  display: inline-block;
-  border-radius: 50%;
-}
-
-.btn {
-
-  .btn-unfollow {
-
-    &:hover {
-      background: $sub_highlight_color;
-      color: white;
-    }
-  }
-}
-
-// .bmd-btn-fab {
-//   i {
-//     margin: 10px auto 0px;
-//     color: black;
-//   }
-// }
-
-// .btn {
-//   .btn-icon {
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     width: $bmd-btn-fab-font-size;
-//     line-height: $bmd-btn-fab-font-size;
-//     transform: translate(-($bmd-btn-fab-font-size / 2),
-//         -($bmd-btn-fab-font-size / 2));
-//   }
-// }

@@ -1,8 +1,31 @@
+html {
+  font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', 'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic';
+  font-size: 62.5%;
+}
+
 body {
-  font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', 'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic'
+  font-size: 1.6rem;
+  line-height: 1.4;
+  background: $background_color;
 }
 
 p {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.swal2-popup {
+  font-size: 1.6rem !important;
+}
+
+.trix-content {
+  font-size: 1.6rem;
+  line-height: 1.4;
   margin: 0;
   padding: 0;
 }

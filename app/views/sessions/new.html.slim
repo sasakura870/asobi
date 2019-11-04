@@ -1,12 +1,19 @@
 = content_for :title, 'ログイン'
 
-.row
-  .col-md-4.offset-4
-    = render partial: 'shared/flash'
-    .card.shadow
-      .card-body
-        h1.card-title.text-center ログイン
-        hr
-        .card-text
-          = form_with scope: :session, url: login_path, local: true do |f|
-            = render partial: 'shared/session/form', locals: { model: @user, f: f }
+.p-session-form-contents.u-shadow
+  .p-session-form-contents__header
+    h1 ログイン
+  ul.p-session-form-contents__social-btn-list
+    li.p-session-form-contents__social-btn-item
+      button.c-btn.c-btn--primary.c-btn--wide
+        i.fab.fa-twitter.fa-fw
+        | Twitterでログイン
+  = form_with scope: :session, url: login_path, local: true, class: 'p-session-form-contents__form' do |f|
+    .p-session-form-contents__form-input
+      = render partial: 'shared/parts/email_field', locals: { f: f, value: :email, placeholder: 'メールアドレス', notes: '' }
+    .p-session-form-contents__form-input
+      = render partial: 'shared/parts/password_field', locals: { f: f, value: :password, placeholder: 'パスワード', notes: '' }
+    .p-session-form-contents__form-input
+      = f.check_box :remember_check, class: ''
+      = f.label :remember_check, 'ログイン状態を保持する', class: ''
+    button.p-session-form-contents__form-input.c-hand-write-btn.c-hand-write-btn--wide type='submit' ログイン

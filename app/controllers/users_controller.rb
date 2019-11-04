@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def switch_layout
     case action_name
     when 'new' then 'sessions'
-    when 'show' then 'left_sidemenu'
+    when 'show' then 'left_sidebar'
     end
   end
 

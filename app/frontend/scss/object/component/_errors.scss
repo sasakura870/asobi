@@ -1,0 +1,15 @@
+.c-errors {
+  background: lighten($danger_color, 30);
+  border: 2px solid $danger_color;
+  border-radius: 3px;
+  text-align: left;
+  padding: 1em;
+
+  &__item {
+    color: $danger_color;
+
+    &:not(:last-child) {
+      margin-bottom: .5em;
+    }
+  }
+}

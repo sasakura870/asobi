@@ -10,7 +10,7 @@ header#header.l-header
       ul.p-header__list
         - if logged_in?
           li.p-header__list-item
-            = link_to new_article_path, class: 'c-btn c-btn--dark-tone'
+            = link_to new_article_path, class: 'c-hand-write-btn c-hand-write-btn--dark-tone'
               i.fas.fa-pen.fa-fw
               | 投稿
           li.p-header__list-item
@@ -18,12 +18,12 @@ header#header.l-header
               i.far.fa-bell.fa-lg
           li.p-header__list-item
             .p-header__dropdown
-              = user_photo current_user, size:35, class_name: ''
+              = user_photo current_user, size:35, class_name: 'c-user-photo'
               ul.p-header__dropdown-list.u-shadow
                 li.p-header__dropdown-item = link_to 'マイページ', current_user
                 li.p-header__dropdown-item = link_to '設定', settings_root_path
                 li.p-header__dropdown-item = link_to '下書き一覧', drafts_path
                 li.p-header__dropdown-item = link_to 'ログアウト', logout_path, method: :delete
         - else
-          li.p-header__list-item = link_to '新規登録', signup_path, class: 'c-btn c-btn--sub-highlight'
+          li.p-header__list-item = link_to '新規登録', signup_path, class: 'c-hand-write-btn c-hand-write-btn--sub-highlight'
           li.p-header__list-item = link_to 'ログイン', login_path, class: 'c-link c-link--nav'

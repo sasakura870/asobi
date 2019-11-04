@@ -1,0 +1,31 @@
+.p-article-contents {
+  @include contents-box();
+  padding: 2em;
+
+  &__datetime {
+    font-size: 1.4rem;
+    color: $supplement_color;
+    margin-bottom: .5em;
+  }
+
+  &__overview {}
+
+  &__title {
+    font-size: 4.4rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+  }
+
+  &__tag-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    margin-bottom: 1em;
+
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}

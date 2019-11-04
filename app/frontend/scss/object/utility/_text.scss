@@ -1,0 +1,6 @@
+@each $key,
+$color in $custom_colors {
+  .u-text-#{$key} {
+    color: $color
+  }
+}

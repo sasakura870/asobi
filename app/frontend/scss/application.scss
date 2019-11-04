@@ -1,47 +1,94 @@
 // @import 'media/fonts/memoir-round-c63b435d0161341b85dd2b9262eef3ee.otf';
 @import '~bootstrap/scss/bootstrap';
 
+/*===============================
+	パッケージ
+================================*/
+
 @import "ress";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
+@import "trix/dist/trix";
+
+/*===============================
+foundation
+================================*/
+
+@import "./foundation/variables";
+@import "./foundation/reset";
+
+/*
+mixin
+================================*/
+
+@import "./foundation/mixin/badge";
+@import "./foundation/mixin/border";
+@import "./foundation/mixin/button";
+@import "./foundation/mixin/contents_box";
+
+//自動生成されたファイルだが、foundationフォルダ内の変数とmixinを内部で使用するためにここに記述
 @import "./actiontext";
 
-// foundation
-@import "./foundation/reset";
-@import "./foundation/variables";
-@import "./foundation/mixin/badge";
-@import "./foundation/mixin/button";
+/*===============================
+	layout
+================================*/
 
-// layout
+@import "./layout/container";
 @import "./layout/footer";
 @import "./layout/header";
+@import "./layout/session";
 
-// component
+/*===============================
+	component
+================================*/
+
 @import "./object/component/badge";
 @import "./object/component/button";
+@import "./object/component/checkbox";
 @import "./object/component/circle_button";
+@import "./object/component/errors";
+@import "./object/component/hand_write_button";
 @import "./object/component/link";
 @import "./object/component/outline_button";
 @import "./object/component/text_field";
-@import "./object/component/text";
+@import "./object/component/thumbnail";
+@import "./object/component/toy_btn";
+@import "./object/component/user_photo";
 
-// project
+/*===============================
+	project
+================================*/
+
 @import "./object/project/article_card";
+@import "./object/project/article_item";
+@import "./object/project/comment_form";
 @import "./object/project/comment_item";
 @import "./object/project/footer";
 @import "./object/project/header";
 @import "./object/project/sticky_menu";
 
-// utility
+/*
+contents
+================================*/
+@import "./object/project/article_contents";
+@import "./object/project/card_contents";
+@import "./object/project/session_form_contents";
+@import "./object/project/list_contents";
+@import "./object/project/user_profile_contents";
+
+/*===============================
+	utility
+================================*/
+
+@import "./object/utility/flex_size";
 @import "./object/utility/float";
 @import "./object/utility/shadow";
 @import "./object/utility/spacer";
+@import "./object/utility/text";
 
 @import "./custom";
-@import "./separator";
 @import "./custom_button";
 @import "./custom_text";
-@import "./custom_article_show";

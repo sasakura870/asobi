@@ -11,7 +11,7 @@ class Comment < ApplicationRecord
 
   def only_post
     article = Article.find_by(id: article_id)
-    errors.add(:draft, '下書きにはコメントできません') if article.draft?
+    errors.add(:draft, '下書きにはコメントできません') if article&.draft?
   end
 
   # def only_my_comment
