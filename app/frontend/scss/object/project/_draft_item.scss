@@ -9,10 +9,10 @@
   }
 
   &__title {
-    flex-grow: 4;
+    flex-basis: 70%;
   }
 
   &__menu {
-    flex-grow: 1;
+    flex-basis: 30%;
   }
 }
