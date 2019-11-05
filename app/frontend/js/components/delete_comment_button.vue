@@ -2,9 +2,9 @@
   <button
     :disabled="isToastRunning"
     @click="deleteComment"
-    class="c-hand-write-btn c-hand-write-btn--danger"
+    class="c-outline-btn c-outline-btn--danger"
   >
-    <i class="fas fa-trash-alt fa-fw"></i>削除する
+    <i class="fas fa-trash-alt fa-fw"></i>
   </button>
 </template>
 

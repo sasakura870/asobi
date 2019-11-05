@@ -1,16 +1,16 @@
 = content_for(:title, '下書き一覧')
 
-#draft-table.card.col-12
-  .card-body
-    h1.card-title.mb-4 下書き一覧
-    .card-text
-      table.table.table-hover
-        - if @drafts.any?
-          tbody
-            - @drafts.each do |draft|
-              tr
-                td scope='row' = link_to(draft.title, edit_article_path(draft))
-                td: delete-draft-button :article-id="#{draft.id}"
-        - else
-          th 下書きはありません
-      = paginate @drafts
+.p-list-contents
+  .p-list-contents__header: h1 下書き一覧
+  - if @drafts.any?
+    ul.p-list-contents__list
+      - @drafts.each do |draft|
+        li.p-list-contents__list-item
+          .p-draft-item
+            = link_to draft.title, edit_article_path(draft), class: 'p-draft-item__title c-link'
+            .p-draft-item__menu
+              delete-draft-button :article-id="#{draft.id}"
+  - else
+    p 下書きはありません
+  .p-list-contents__footer
+    = paginate @drafts

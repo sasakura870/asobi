@@ -1,5 +1,6 @@
 class DraftsController < ApplicationController
   before_action :filter_only_register
+  layout 'no_sidebar'
 
   def index
     @drafts = current_user.articles.draft.recent.page(params[:page])

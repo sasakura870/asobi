@@ -1,0 +1,18 @@
+.p-draft-item {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+
+
+  &:hover {
+    background: $general_line_color;
+  }
+
+  &__title {
+    flex-grow: 4;
+  }
+
+  &__menu {
+    flex-grow: 1;
+  }
+}
