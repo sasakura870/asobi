@@ -2,7 +2,7 @@
   <div v-if="check">
     <span class="p-sticky-menu__btn-counter">{{count}}</span>
     <div class="p-sticky-menu__btn">
-      <button @click="deleteFavorite" :disabled="isProcessing" class="c-circle-btn u-shadow">
+      <button @click="deleteFavorite" :disabled="isProcessing" class="c-circle-btn">
         <i class="fas fa-star fa-fw"></i>
       </button>
     </div>
@@ -13,7 +13,7 @@
       <button
         @click="createFavorite"
         :disabled="isProcessing"
-        class="c-circle-btn c-circle-btn--supplement u-shadow"
+        class="c-circle-btn c-circle-btn--supplement"
       >
         <i class="fas fa-star fa-fw"></i>
       </button>
