@@ -1,0 +1,23 @@
+.p-form-contents {
+  @include contents-box();
+
+  &__header {
+    @include contents-header();
+  }
+
+  &__form {
+    padding: 1em;
+  }
+
+  &__input {
+    padding: 1em;
+  }
+
+  &__input-label {}
+
+  &__input-field {}
+
+  &__input-note {}
+
+  &__submit {}
+}

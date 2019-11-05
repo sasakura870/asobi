@@ -1,9 +1,9 @@
-.card
+/ .card
   .card-body
     h1.card-title.text-center パスワードの変更
     = render partial: 'shared/error_messages', locals: { model: current_user }
-    = form_with model: current_user, scope: :password, url: settings_password_path(current_user), method: :patch, local: true do |f|
-      .form-group
+    / = form_with model: current_user, scope: :password, url: settings_password_path(current_user), method: :patch, local: true do |f|
+      / .form-group
         = f.label '現在のパスワード', class: 'form-label'
         = f.password_field :old_password, class: 'form-control'
         small.text-muted 現在のパスワードを入力してください
@@ -16,3 +16,21 @@
         = f.password_field :password_confirmation, class: 'form-control'
         small.text-muted もう一度新しいパスワードを入力してください
       = f.submit '変更する', class: 'btn btn-main'
+
+.p-form-contents
+  .p-form-contents__header: h1 パスワードの変更
+  / .p-form-contents__form
+  = form_with model: current_user, scope: :password, url: settings_password_path(current_user), method: :patch, local: true, class: 'p-form-contents__form' do |f|
+    .p-form-contents__input
+      = f.label :old_password, '現在のパスワード', class: 'p-form-contents__input-label'
+      = f.password_field :old_password, class: 'p-form-contents__input-field'
+      p.p-form-contents__input-notes 現在のパスワードを入力してください
+    .p-form-contents__input
+      .p-form-contents__input-label
+      .p-form-contents__input-field
+      .p-form-contents__input-notes
+    .p-form-contents__input
+      .p-form-contents__input-label
+      .p-form-contents__input-field
+      .p-form-contents__input-notes
+    .p-form-contents__submit
