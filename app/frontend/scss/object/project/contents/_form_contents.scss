@@ -15,9 +15,16 @@
 
   &__input-label {}
 
-  &__input-field {}
+  &__input-field {
+    margin-bottom: .5em;
+  }
 
-  &__input-note {}
+  &__input-note {
+    font-size: 1.2rem;
+    color: $supplement_color;
+  }
 
-  &__submit {}
+  &__submit {
+    padding: 1em;
+  }
 }
