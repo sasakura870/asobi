@@ -16,3 +16,11 @@
     = f.button '下書きに保存', name: 'article[status]', value: 'draft', class: 'btn btn-secondary'
   .form-group
     = f.button '投稿する', name: 'article[status]', value: 'published', class: 'btn btn-main'
+
+= form_with model: article, local: true, class: 'p-article-edit-form' do |f|
+  - if article.id_digest.present?
+    = f.hidden_field :id_digest, value: article.id_digest
+  .p-article-edit-form__title-wrapper
+  .p-article-edit-form__overview-wrapper
+  .p-article-edit-form__tag-wrapper
+  .p-article-edit-form__content-wrapper
