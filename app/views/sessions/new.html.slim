@@ -10,7 +10,8 @@
     .p-form-contents__input
       .c-text-field.c-text-field--password
         = f.password_field :password, placeholder: 'パスワード', class: 'p-form-contents__input-field c-text-field__input'
-    = f.check_box :remember_check
-    = f.label :remember_check, 'ログイン状態を保持する'
+    .p-form-contents__input
+      = f.check_box :remember_check
+      = f.label :remember_check, 'ログイン状態を保持する'
     .p-form-contents__submit
       button.c-hand-write-btn.c-hand-write-btn--wide ログイン

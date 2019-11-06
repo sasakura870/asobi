@@ -1,7 +1,9 @@
 = content_for(:title, '新規登録')
 
 .p-form-contents
-  .p-form-contents__header: h1 新規登録
+  .p-form-contents__header
+    h1 新規登録
+    = render partial: 'shared/error_messages', locals: { model: @user }
   .p-form-contents__item
   = form_with model: @user, local: true, class: 'p-form-contents__form' do |f|
     .p-form-contents__input

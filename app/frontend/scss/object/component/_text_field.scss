@@ -15,7 +15,7 @@
   &__input {
     width: 100%;
     background: $white_color;
-    padding: .3em .3em .3em 2.5em;
+    padding: .3em;
     border: 2px solid $general_line_color;
     border-radius: 3px;
     outline: none;
@@ -27,6 +27,10 @@
   }
 
   &--user {
+    .c-text-field__input {
+      padding: .3em .3em .3em 2em;
+    }
+
     &::before {
       font-weight: 900;
       content: "\f007";
@@ -34,6 +38,11 @@
   }
 
   &--search {
+    .c-text-field__input {
+      padding: .3em .3em .3em 2em;
+    }
+
+
     &::before {
       font-weight: 900;
       content: "\f002";
@@ -41,6 +50,10 @@
   }
 
   &--email {
+    .c-text-field__input {
+      padding: .3em .3em .3em 2em;
+    }
+
     &::before {
       font-weight: 400;
       content: "\f0e0";
@@ -48,6 +61,10 @@
   }
 
   &--password {
+    .c-text-field__input {
+      padding: .3em .3em .3em 2em;
+    }
+
     &::before {
       font-weight: 900;
       content: "\f13e";
