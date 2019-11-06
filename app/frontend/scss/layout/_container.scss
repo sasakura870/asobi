@@ -1,6 +1,6 @@
 .l-container {
   display: flex;
-  width: $global_page_width;
+  max-width: $global_page_width;
   margin: 0 auto;
   justify-content: space-between;
   padding: 1em 0;
