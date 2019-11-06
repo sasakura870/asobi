@@ -19,11 +19,11 @@
 
 .p-form-contents
   .p-form-contents__header: h1 パスワードの変更
-  / .p-form-contents__form
   = form_with model: current_user, scope: :password, url: settings_password_path(current_user), method: :patch, local: true, class: 'p-form-contents__form' do |f|
     .p-form-contents__input
       = f.label :old_password, '現在のパスワード', class: 'p-form-contents__input-label'
-      = f.password_field :old_password, class: 'p-form-contents__input-field'
+      .p-form-contents__input-field.c-text-field.c-text-field--user
+        = f.text_field :old_password, placeholder: '現在のパスワードを入力してください', class: 'c-text-field__input'
       p.p-form-contents__input-notes 現在のパスワードを入力してください
     .p-form-contents__input
       .p-form-contents__input-label
