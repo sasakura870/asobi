@@ -5,19 +5,43 @@
     @include contents-header();
   }
 
-  &__body {}
+  &__body {
+    display: flex;
+    justify-content: space-between;
+  }
 
-  &__left {}
+  &__left {
+    flex-grow: 3;
+    padding: 1em;
+  }
 
   &__form {}
 
-  &__input {}
+  &__input {
+    margin-bottom: 1em;
+  }
+
+  &__input-label {}
+
+  &__input-field {
+    margin-bottom: .5em;
+  }
+
+  &__input-note {
+    font-size: 1.2rem;
+    color: $supplement_color;
+  }
 
   &__submit {}
 
-  &__right {}
+  &__right {
+    flex-grow: 1;
+    padding: 1em;
+  }
 
-  &__user-photo {}
+  &__user-photo {
+    text-align: center;
+  }
 
   &__file-field {}
 }
