@@ -5,8 +5,18 @@
     @include contents-header();
   }
 
-  &__form {
+  &__item {
     padding: 1em;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $general_line_color;
+    }
+  }
+
+  &__form {
+    &:not(:last-child) {
+      border-bottom: 1px solid $general_line_color;
+    }
   }
 
   &__input {

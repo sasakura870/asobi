@@ -1,6 +1,13 @@
-@each $key,
-$color in $custom_colors {
-  .u-text-#{$key} {
-    color: $color
+.u-text {
+
+  @each $key,
+  $color in $custom_colors {
+    &-#{$key} {
+      color: $color
+    }
+  }
+
+  &-bold {
+    font-weight: 700;
   }
 }
