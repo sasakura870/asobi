@@ -5,16 +5,16 @@
       = f.label :old_password, '現在のパスワード', class: 'p-form-contents__input-label'
       .p-form-contents__input-field.c-text-field.c-text-field--password
         = f.password_field :old_password, placeholder: '現在のパスワードを入力してください', class: 'c-text-field__input'
-      p.p-form-contents__input-note 現在のパスワードを入力してください
+      / p.p-form-contents__input-note 現在のパスワードを入力してください
     .p-form-contents__input
       = f.label :password, '新しいパスワード', class: 'p-form-contents__input-label'
       .p-form-contents__input-field.c-text-field.c-text-field--password
         = f.password_field :password, placeholder: '新しいパスワードを入力してください', class: 'c-text-field__input'
-      p.p-form-contents__input-note 新しいパスワードを入力してください
+      / p.p-form-contents__input-note 新しいパスワードを入力してください
     .p-form-contents__input
       = f.label :password_confirmation, '新しいパスワード(確認用)', class: 'p-form-contents__input-label'
       .p-form-contents__input-field.c-text-field.c-text-field--password
         = f.password_field :password_confirmation, placeholder: '新しいパスワードを入力してください', class: 'c-text-field__input'
-      p.p-form-contents__input-note もう一度新しいパスワードを入力してください
+      / p.p-form-contents__input-note もう一度新しいパスワードを入力してください
     .p-form-contents__submit
       button.c-hand-write-btn type='submit' 変更する

@@ -14,13 +14,15 @@
   }
 
   &__form {
+    padding: 1em;
+
     &:not(:last-child) {
       border-bottom: 1px solid $general_line_color;
     }
   }
 
   &__input {
-    padding: 1em;
+    margin-bottom: 1em;
   }
 
   &__input-label {}
@@ -34,7 +36,5 @@
     color: $supplement_color;
   }
 
-  &__submit {
-    padding: 1em;
-  }
+  &__submit {}
 }
