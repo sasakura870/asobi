@@ -4,12 +4,6 @@ class ArticlesController < ApplicationController
 
   layout :switch_layout
 
-  # TODO いらない？
-  # def index
-  #   @articles = Article.includes(thumbnail_attachment: :blob, user: :photo_attachment)
-  #                      .posts.recent.page(params[:page])
-  # end
-
   def new
     @article = current_user.articles.new
   end
