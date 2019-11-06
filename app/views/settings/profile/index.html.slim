@@ -1,4 +1,4 @@
-.card
+/ .card
   .card-body
     h1.card-title.text-center プロフィールの編集
     = render partial: 'shared/error_messages', locals: { model: current_user }
@@ -27,3 +27,17 @@
 
             / profile-photo-form
             / p = asset_pack_path '../images/default_photo.png'
+
+.p-settings-profile-contents
+  .p-settings-profile-contents__header
+  .p-settings-profile-contents__body
+    .p-settings-profile-contents__left
+      = form_with model: current_user, scope: :profile, url: settings_profile_path(current_user), method: :patch, local: true, class: 'p-settings-profile-contents__form' do |f|
+        .p-settings-profile-contents__input
+        .p-settings-profile-contents__input
+        .p-settings-profile-contents__input
+        .p-settings-profile-contents__submit
+    .p-settings-profile-contents__right
+      = form_with model: current_user, scope: :profile, url: settings_profile_path(current_user), method: :patch, local: true, class: 'p-settings-profile-contents__form' do |f|
+        .p-settings-profile-contents__user-photo
+        .p-settings-profile-contents__file-field

@@ -1,0 +1,23 @@
+.p-settings-profile-contents {
+  @include contents-box();
+
+  &__header {
+    @include contents-header();
+  }
+
+  &__body {}
+
+  &__left {}
+
+  &__form {}
+
+  &__input {}
+
+  &__submit {}
+
+  &__right {}
+
+  &__user-photo {}
+
+  &__file-field {}
+}
