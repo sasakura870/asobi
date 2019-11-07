@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :drafts, only: %i[index destroy]
 
-  resources :tags, only: %i[index show]
+  resources :tags, only: %i[show]
 
   resources :favorites, only: %i[create destroy]
 
