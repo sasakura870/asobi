@@ -1,14 +1,14 @@
 <template>
   <button
     v-if="check"
-    :disabled="isPocessing"
+    :disabled="isProcessing"
     @click="deleteFollow"
     type="button"
     class="c-hand-write-btn c-hand-write-btn--wide"
   >フォロー中</button>
   <button
     v-else
-    :disabled="isPocessing"
+    :disabled="isProcessing"
     @click="createFollow"
     type="button"
     class="c-hand-write-btn c-hand-write-btn--supplement c-hand-write-btn--wide"
