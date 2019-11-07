@@ -1,7 +1,20 @@
 = content_for :title, @tag.name
 
-= content_for :sidemenu
-  .card
-    .card-body
-      h1.card-title = @tag.name
-      .card-text: button.button　type='button' フォローする
+= content_for :sidebar
+  .p-tag-profile-contents
+    .p-tag-profile-contents__tag
+      p.c-badge.c-badge--tag = @tag.name
+    .p-tag-profile-contents__follow-btn
+      follow-tag-button :tag-id="#{@tag.id}", :is-followed="#{current_user.already_follow_tag?(@tag)}"
+
+.p-list-contents
+  .p-list-contents__header: h1 新着の遊び
+  ul.p-list-contents__list
+    - if @articles.any?
+      - @articles.each do |article|
+        li.p-list-contents__list-item
+          = render partial: 'shared/parts/article_item', locals: { article: article }
+    - else
+      p タグ付けされた遊びはありません
+  .p-list-contents__footer
+    = paginate @articles

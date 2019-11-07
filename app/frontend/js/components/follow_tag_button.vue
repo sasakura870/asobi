@@ -25,7 +25,7 @@ Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken();
 export default {
   mixins: [Processing],
   props: {
-    userId: Number,
+    tagId: Number,
     isFollowed: Boolean
   },
   data: function() {
@@ -37,8 +37,8 @@ export default {
     createFollow: async function() {
       try {
         this.startProcessing();
-        const response = await Axios.post("/relationships", {
-          user_id: this.userId
+        const response = await Axios.post("/tag_maps", {
+          tag_id: this.tagId
         });
         if (response.status === 201) {
           this.check = !this.check;
@@ -53,9 +53,9 @@ export default {
     deleteFollow: async function() {
       try {
         this.startProcessing();
-        const response = await Axios.delete("/relationships/0", {
+        const response = await Axios.delete("/tag_maps/0", {
           data: {
-            user_id: this.userId
+            tag_id: this.tagId
           }
         });
         if (response.status === 200) {
