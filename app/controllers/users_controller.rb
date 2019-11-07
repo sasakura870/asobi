@@ -4,11 +4,6 @@ class UsersController < ApplicationController
 
   layout :switch_layout
 
-  # # TODO いらない？
-  # def index
-  #   @users = User.includes(:photo_attachment).page(params[:page])
-  # end
-
   def new
     @user = User.new
   end

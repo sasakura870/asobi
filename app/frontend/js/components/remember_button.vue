@@ -4,9 +4,15 @@
     :disabled="isProcessing"
     @click="forget"
     type="button"
-    class="btn btn-danger"
+    class="c-hand-write-btn c-hand-write-btn--danger"
   >解除する</button>
-  <button v-else :disabled="isProcessing" @click="remember" type="button" class="btn btn-main">設定する</button>
+  <button
+    v-else
+    :disabled="isProcessing"
+    @click="remember"
+    type="button"
+    class="c-hand-write-btn"
+  >設定する</button>
 </template>
 
 <script>

@@ -33,8 +33,13 @@
 
   &:hover {
     background: $color;
-    color: transparent;
+    color: $white_color;
   }
+}
+
+@mixin circle-btn-color-extension($color) {
+  background: $color;
+  border: .25em solid $color;
 }
 
 @mixin hand-write-btn-color-extension($color) {

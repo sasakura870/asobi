@@ -36,6 +36,7 @@ mixin
 	layout
 ================================*/
 
+@import "./layout/article_post";
 @import "./layout/container";
 @import "./layout/footer";
 @import "./layout/header";
@@ -47,15 +48,15 @@ mixin
 
 @import "./object/component/badge";
 @import "./object/component/button";
-@import "./object/component/checkbox";
+@import "./object/component/check_box";
 @import "./object/component/circle_button";
 @import "./object/component/errors";
 @import "./object/component/hand_write_button";
 @import "./object/component/link";
 @import "./object/component/outline_button";
+@import "./object/component/text_area";
 @import "./object/component/text_field";
 @import "./object/component/thumbnail";
-@import "./object/component/toy_btn";
 @import "./object/component/user_photo";
 
 /*===============================
@@ -66,6 +67,7 @@ mixin
 @import "./object/project/article_item";
 @import "./object/project/comment_form";
 @import "./object/project/comment_item";
+@import "./object/project/draft_item";
 @import "./object/project/footer";
 @import "./object/project/header";
 @import "./object/project/sticky_menu";
@@ -73,11 +75,13 @@ mixin
 /*
 contents
 ================================*/
-@import "./object/project/article_contents";
-@import "./object/project/card_contents";
-@import "./object/project/session_form_contents";
-@import "./object/project/list_contents";
-@import "./object/project/user_profile_contents";
+@import "./object/project/contents/account_activation_contents";
+@import "./object/project/contents/article_contents";
+@import "./object/project/contents/card_contents";
+@import "./object/project/contents/form_contents";
+@import "./object/project/contents/list_contents";
+@import "./object/project/contents/user_profile_contents";
+@import "./object/project/contents/settings_profile_contents";
 
 /*===============================
 	utility
@@ -90,5 +94,3 @@ contents
 @import "./object/utility/text";
 
 @import "./custom";
-@import "./custom_button";
-@import "./custom_text";

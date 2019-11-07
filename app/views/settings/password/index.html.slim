@@ -1,18 +1,20 @@
-.card
-  .card-body
-    h1.card-title.text-center パスワードの変更
-    = render partial: 'shared/error_messages', locals: { model: current_user }
-    = form_with model: current_user, scope: :password, url: settings_password_path(current_user), method: :patch, local: true do |f|
-      .form-group
-        = f.label '現在のパスワード', class: 'form-label'
-        = f.password_field :old_password, class: 'form-control'
-        small.text-muted 現在のパスワードを入力してください
-      .form-group
-        = f.label '新しいパスワード', class: 'form-label'
-        = f.password_field :password, class: 'form-control'
-        small.text-muted 新しいパスワードを入力してください
-      .form-group
-        = f.label '新しいパスワード(確認用)', class: 'form-label'
-        = f.password_field :password_confirmation, class: 'form-control'
-        small.text-muted もう一度新しいパスワードを入力してください
-      = f.submit '変更する', class: 'btn btn-main'
+.p-form-contents
+  .p-form-contents__header: h1 パスワードの変更
+  = form_with model: current_user, scope: :password, url: settings_password_path(current_user), method: :patch, local: true, class: 'p-form-contents__form' do |f|
+    .p-form-contents__input
+      = f.label :old_password, '現在のパスワード', class: 'p-form-contents__input-label'
+      .p-form-contents__input-field.c-text-field.c-text-field--password
+        = f.password_field :old_password, placeholder: '現在のパスワードを入力してください', class: 'c-text-field__input'
+      / p.p-form-contents__input-note 現在のパスワードを入力してください
+    .p-form-contents__input
+      = f.label :password, '新しいパスワード', class: 'p-form-contents__input-label'
+      .p-form-contents__input-field.c-text-field.c-text-field--password
+        = f.password_field :password, placeholder: '新しいパスワードを入力してください', class: 'c-text-field__input'
+      / p.p-form-contents__input-note 新しいパスワードを入力してください
+    .p-form-contents__input
+      = f.label :password_confirmation, '新しいパスワード(確認用)', class: 'p-form-contents__input-label'
+      .p-form-contents__input-field.c-text-field.c-text-field--password
+        = f.password_field :password_confirmation, placeholder: '新しいパスワードを入力してください', class: 'c-text-field__input'
+      / p.p-form-contents__input-note もう一度新しいパスワードを入力してください
+    .p-form-contents__submit
+      button.c-hand-write-btn type='submit' 変更する

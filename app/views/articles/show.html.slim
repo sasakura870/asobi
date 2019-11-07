@@ -41,8 +41,9 @@
             p.p-comment-item__datetime = comment.created_at
             - if logged_in? && comment.user == current_user
               .p-comment-item__menu: delete-comment-button :comment-id="#{comment.id}"
-  .p-list-contents__footer.p-comment-form
-    .p-comment-form__user-photo = user_photo current_user, size: 40, class_name: 'c-user-photo'
-    = form_with model: current_user.comments.new, local: true, class: 'p-comment-form__form' do |f|
-      = f.text_area :content, placeholder: 'コメントを入力…', required: true, rows: 4, class: 'p-comment-form__text-area'
-      .p-comment-form__submit: button.c-hand-write-btn 投稿する
+  - if logged_in?
+    .p-list-contents__footer.p-comment-form
+      .p-comment-form__user-photo = user_photo current_user, size: 40, class_name: 'c-user-photo'
+      = form_with model: current_user.comments.new, local: true, class: 'p-comment-form__form' do |f|
+        = f.text_area :content, placeholder: 'コメントを入力…', required: true, rows: 4, class: 'p-comment-form__text-area'
+        .p-comment-form__submit: button.c-hand-write-btn 投稿する

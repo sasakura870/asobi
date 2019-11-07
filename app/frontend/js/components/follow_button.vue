@@ -4,14 +4,14 @@
     :disabled="isPocessing"
     @click="deleteFollow"
     type="button"
-    class="btn btn-main btn-unfollow"
+    class="c-hand-write-btn c-hand-write-btn--wide"
   >フォロー中</button>
   <button
     v-else
     :disabled="isPocessing"
     @click="createFollow"
     type="button"
-    class="btn btn-outline-main"
+    class="c-hand-write-btn c-hand-write-btn--supplement c-hand-write-btn--wide"
   >フォローする</button>
 </template>
 

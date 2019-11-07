@@ -3,9 +3,8 @@ header#header.l-header
     .p-header__left
       .p-header__logo = link_to 'Asobi', root_path, class: 'c-link c-link--brand'
       = form_with url: searches_path, method: :get, local: true, class: 'p-header__search-form' do |f|
-        .c-text-field
-          = f.search_field :q, placeholder: 'キーワードを入力…', class: 'c-text-field__input-form'
-          .c-text-field__icon: i.fas.fa-search
+        .c-text-field.c-text-field--search
+          = f.search_field :q, placeholder: 'キーワードを入力…', class: 'c-text-field__input'
     .p-header__right
       ul.p-header__list
         - if logged_in?

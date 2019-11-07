@@ -1,29 +1,29 @@
-.card
-  .card-body
-    h1.card-title.text-center プロフィールの編集
-    = render partial: 'shared/error_messages', locals: { model: current_user }
-    = form_with model: current_user, scope: :profile, url: settings_profile_path(current_user), method: :patch, local: true do |f|
-      .row
-        .col-md-8
-          .form-group
-            = f.label :name, class: 'form-label'
-            = f.text_field :name, class: 'form-control', placeholder: 'ユーザーID'
-            small.text-muted 英数字とアンダースコア(_)のみ利用可能です。4~15文字で入力してください。
-          .form-group
-            = f.label :nick_name, class: 'form-label'
-            = f.text_field :nick_name, class: 'form-control', placeholder: 'ニックネーム'
-            small.text-muted 50字以内
-          .form-group
-            = f.label :introduction, class: 'form-label'
-            = f.text_area :introduction, class: 'form-control', size: '40x5'
-            small.text-muted 140字以内
-        .col-md-4
-          p.text-center
-            = user_photo(current_user, size: 200)
-            = f.file_field :photo, accept: 'image/*'
-        = f.submit '更新する', class: 'btn btn-main btn-block'
-        / p.text-center
-          profile-photo-form :img-src="'/image'"
-
-            / profile-photo-form
-            / p = asset_pack_path '../images/default_photo.png'
+.p-settings-profile-contents
+  .p-settings-profile-contents__header: h1 プロフィールの編集
+  .p-settings-profile-contents__body
+    .p-settings-profile-contents__left
+      = form_with model: current_user, scope: :profile, url: settings_profile_path(current_user), method: :patch, local: true, class: 'p-settings-profile-contents__form' do |f|
+        .p-settings-profile-contents__input
+          = f.label :name, '新しいユーザーID', class: 'p-settings-profile-contents__input-label'
+          .p-settings-profile-contents__input-field.c-text-field
+            = f.text_field :name, placeholder: 'ユーザーID', class: 'c-text-field__input'
+          p.p-settings-profile-contents__input-note 英数字とアンダースコア(_)が利用できます。4~15文字で入力してください。
+        .p-settings-profile-contents__input
+          = f.label :nick_name, class: 'p-settings-profile-contents__input-label'
+          .p-settings-profile-contents__input-field.c-text-field
+            = f.text_field :nick_name, placeholder: 'ニックネーム', class: 'c-text-field__input'
+          p.p-settings-profile-contents__input-note 50文字以内
+        .p-settings-profile-contents__input
+          = f.label :introduction, class: 'p-settings-profile-contents__input-label'
+          .p-settings-profile-contents__input-field
+            = f.text_area :introduction, placeholder: '自己紹介を入力…',size: '10x5', class: 'c-text-area'
+          p.p-settings-profile-contents__input-note 140字以内
+        .p-settings-profile-contents__submit
+          button.c-hand-write-btn type='submit' 更新する
+    .p-settings-profile-contents__right
+      = form_with model: current_user, scope: :profile, url: settings_profile_path(current_user), method: :patch, local: true, class: 'p-settings-profile-contents__form' do |f|
+        .p-settings-profile-contents__user-photo = user_photo current_user, size: 200, class_name: 'c-user-photo'
+        .p-settings-profile-contents__file-field
+          = f.file_field :photo, accept: 'image/*'
+        .p-settings-profile-contents__submit
+          button.c-hand-write-btn type='submit' 変更する

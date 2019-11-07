@@ -1,5 +1,7 @@
 <template>
-  <button @click="deleteDraft" type="button" class="btn btn-outline-danger">削除</button>
+  <button @click="deleteDraft" type="button" class="c-outline-btn c-outline-btn--danger">
+    <i class="fas fa-trash-alt"></i>
+  </button>
 </template>
 
 <script>

@@ -1,24 +1,29 @@
 = content_for(:title, '新規登録')
 
-.p-session-form-contents.u-shadow
-  .p-session-form-contents__header
+.p-form-contents
+  .p-form-contents__header
     h1 新規登録
     = render partial: 'shared/error_messages', locals: { model: @user }
-  ul.p-session-form-contents__social-btn-list
-    li.p-session-form-contents__social-btn-item
-      button.c-btn.c-btn--primary.c-btn--wide
-        i.fab.fa-twitter.fa-fw
-        | Twitterで新規登録
-  = form_with model: @user, local: true, class: 'p-session-form-contents__form' do |f|
-    .p-session-form-contents__form-input
-      = render partial: 'shared/parts/input_field', locals: { f: f, value: :name, icon: 'fas fa-fw fa-user', placeholder: 'ユーザーID', notes: '英数字とアンダースコア(_)で4~15文字' }
-    .p-session-form-contents__form-input
-      = render partial: 'shared/parts/email_field', locals: { f: f, value: :email, placeholder: 'メールアドレス', notes: '' }
-    .p-session-form-contents__form-input
-      = render partial: 'shared/parts/password_field', locals: { f: f, value: :password, placeholder: 'パスワード', notes: '' }
-    .p-session-form-contents__form-input
-      = render partial: 'shared/parts/password_field', locals: { f: f, value: :password_confirmation, placeholder: 'パスワード(確認用)', notes: '' }
-    .p-session-form-contents__form-input
-      = f.check_box :accept, class: ''
-      = f.label :accept, '利用規約に同意する', class: ''
-    button.p-session-form-contents__form-input.c-hand-write-btn.c-hand-write-btn--wide type='submit' 新規登録
+  .p-form-contents__item
+  = form_with model: @user, local: true, class: 'p-form-contents__form' do |f|
+    .p-form-contents__input
+      .c-text-field.c-text-field--user
+        = f.text_field :name, placeholder: 'ユーザーID', class: 'p-form-contents__input-field c-text-field__input'
+      p.p-form-contents__input-note 英数字とアンダースコア(_)が利用できます。4~15文字で入力してください。
+    .p-form-contents__input
+      .c-text-field.c-text-field--email
+        = f.email_field :email, placeholder: 'メールアドレス', class: 'p-form-contents__input-field c-text-field__input'
+    .p-form-contents__input
+      .c-text-field.c-text-field--password
+        = f.password_field :password, placeholder: 'パスワード', class: 'p-form-contents__input-field c-text-field__input'
+      p.p-form-contents__input-note 8文字以上で入力してください。
+    .p-form-contents__input
+      .c-text-field.c-text-field--password
+        = f.password_field :password_confirmation, placeholder: 'パスワード(確認用)', class: 'p-form-contents__input-field c-text-field__input'
+      p.p-form-contents__input-note もう一度パスワードをご入力ください
+    .p-form-contents__input
+      .c-check-box
+        = f.check_box :accept, class: 'c-check-box__input'
+        = f.label :accept, '利用規約に同意する', class: 'c-check-box__label'
+    .p-form-contents__submit
+      button.c-hand-write-btn.c-hand-write-btn--wide 新規登録

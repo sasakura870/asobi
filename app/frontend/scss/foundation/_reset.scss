@@ -7,6 +7,12 @@ body {
   font-size: 1.6rem;
   line-height: 1.4;
   background: $background_color;
+
+  // mediaクエリ
+}
+
+a {
+  text-decoration: none;
 }
 
 p {

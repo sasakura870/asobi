@@ -1,19 +1,18 @@
 = content_for :title, 'ログイン'
 
-.p-session-form-contents.u-shadow
-  .p-session-form-contents__header
-    h1 ログイン
-  ul.p-session-form-contents__social-btn-list
-    li.p-session-form-contents__social-btn-item
-      button.c-btn.c-btn--primary.c-btn--wide
-        i.fab.fa-twitter.fa-fw
-        | Twitterでログイン
-  = form_with scope: :session, url: login_path, local: true, class: 'p-session-form-contents__form' do |f|
-    .p-session-form-contents__form-input
-      = render partial: 'shared/parts/email_field', locals: { f: f, value: :email, placeholder: 'メールアドレス', notes: '' }
-    .p-session-form-contents__form-input
-      = render partial: 'shared/parts/password_field', locals: { f: f, value: :password, placeholder: 'パスワード', notes: '' }
-    .p-session-form-contents__form-input
-      = f.check_box :remember_check, class: ''
-      = f.label :remember_check, 'ログイン状態を保持する', class: ''
-    button.p-session-form-contents__form-input.c-hand-write-btn.c-hand-write-btn--wide type='submit' ログイン
+.p-form-contents
+  .p-form-contents__header: h1 ログイン
+  .p-form-contents__item
+  = form_with scope: :session, url: login_path, local: true, class: 'p-form-contents__form' do |f|
+    .p-form-contents__input
+      .c-text-field.c-text-field--email
+        = f.email_field :email, placeholder: 'メールアドレス', class: 'p-form-contents__input-field c-text-field__input'
+    .p-form-contents__input
+      .c-text-field.c-text-field--password
+        = f.password_field :password, placeholder: 'パスワード', class: 'p-form-contents__input-field c-text-field__input'
+    .p-form-contents__input
+      .c-check-box
+        = f.check_box :remember_check, class: 'c-check-box__input'
+        = f.label :remember_check, 'ログイン状態を保持する', class: 'c-check-box__label'
+    .p-form-contents__submit
+      button.c-hand-write-btn.c-hand-write-btn--wide ログイン
