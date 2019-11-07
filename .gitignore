@@ -30,6 +30,9 @@
 .rubocop.yml
 .rubocop_todo.yml
 
+# solargraphの設定ファイル
+.solargraph.yml
+
 vendor/bundle
 
 /public/packs
