@@ -74,6 +74,10 @@ class User < ApplicationRecord
     followers.include?(user)
   end
 
+  def already_follow_tag?(tag)
+    tags.include?(tag)
+  end
+
   def activation_mail_expired?
     send_activation_mail_at < 1.day.ago
   end

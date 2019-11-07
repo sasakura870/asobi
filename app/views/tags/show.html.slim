@@ -5,7 +5,7 @@
     .p-tag-profile-contents__tag
       p.c-badge.c-badge--tag = @tag.name
     .p-tag-profile-contents__follow-btn
-      button.c-hand-write-btn.c-hand-write-btn--wide フォローする
+      follow-tag-button :tag-id="#{@tag.id}", :is-followed="#{current_user.already_follow_tag?(@tag)}"
 
 .p-list-contents
   .p-list-contents__header: h1 新着の遊び

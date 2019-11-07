@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   resources :relationships, only: %i[create destroy]
 
+  resources :tag_maps, only: %i[create destroy]
+
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
