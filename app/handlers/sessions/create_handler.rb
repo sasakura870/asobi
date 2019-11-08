@@ -15,11 +15,7 @@ module Sessions
     def handle
       AuthenticateService.new(user: user, password: password).call
       LoginService.new(user: user, session: session).call
-      RememberService.new(user: user, cookies: cookies).call
-    end
-
-    def rollback
-      puts 'Rollback!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+      RememberService.new(user: user, cookies: cookies).call if remember_check
     end
 
     def user
