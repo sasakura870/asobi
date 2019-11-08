@@ -3,8 +3,9 @@ class FavoritesController < ApplicationController
 
   def create
     @article = Article.find_by(id: params[:article_id])
-    favorite = current_user.favorites.build(article_id: @article.id)
-    if favorite.save
+    # favorite = current_user.favorites.build(article_id: @article.id)
+    service = CreateFavoriteService.new(user: current_user, article: @article)
+    if service.call
       head :created
     else
       request_422
