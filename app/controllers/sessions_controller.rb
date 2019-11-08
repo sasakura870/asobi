@@ -25,8 +25,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    forget
-    logout
+    # forget
+    # logout
+    handler = Sessions::DestroyHandler.new(
+      user: current_user,
+      session: session,
+      cookies: cookies
+    )
+    handler.run
     flash[:success] = 'ログアウトしました'
     redirect_back_or root_path
   end
