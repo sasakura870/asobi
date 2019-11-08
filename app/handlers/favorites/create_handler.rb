@@ -14,7 +14,6 @@ module Favorites
     end
 
     def handle
-      puts 'Handle!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
       FavoriteService.new(user: user, article: article).call
     end
   end

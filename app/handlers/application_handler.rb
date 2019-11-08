@@ -3,7 +3,7 @@ class ApplicationHandler
   def run
     handle
     true
-  rescue ApplicationService::Error => e
+  rescue ApplicationService::ServiceError => e
     rollback
     false
   end

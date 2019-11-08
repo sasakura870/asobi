@@ -10,8 +10,8 @@ class RememberService < ApplicationService
 
   def perform
     expire = 1.month.from_now.utc
-    current_user.remember_me
-    cookies.signed[:user_id] = { value: current_user.id, expires: expire }
-    cookies[:remember] = { value: current_user.remember, expires: expire }
+    user.remember_me
+    cookies.signed[:user_id] = { value: user.id, expires: expire }
+    cookies[:remember] = { value: user.remember, expires: expire }
   end
 end
