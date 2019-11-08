@@ -2,10 +2,11 @@ class FavoritesController < ApplicationController
   before_action :filter_only_register
 
   def create
-    service = CreateFavoriteService.new(
+    handler = Favorites::CreateHandler.new(
       user: current_user,
-      article_id: params[:article_id])
-    if service.call
+      article_id: params[:article_id]
+    )
+    if handler.run
       head :created
     else
       request_422

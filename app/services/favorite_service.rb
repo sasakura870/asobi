@@ -9,13 +9,9 @@ class FavoriteService < ApplicationService
   attr_reader :user, :article
 
   def perform
-    return false unless article
+    return false if article.nil?
 
-    favorite = user.favorites.build(article: article.id)
+    favorite = user.favorites.build(article_id: article.id)
     favorite.save
   end
-
-  # def article
-  #   @article ||= Article.find_by(id: article)
-  # end
 end
