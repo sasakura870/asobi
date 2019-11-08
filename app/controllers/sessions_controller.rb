@@ -1,4 +1,3 @@
-# TODO create, destroyのサービス層の導入
 class SessionsController < ApplicationController
   before_action :filter_only_logged_in_users, only: :destroy
   before_action :filter_only_guests, only: %i[new create]
@@ -25,8 +24,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # forget
-    # logout
     handler = Sessions::DestroyHandler.new(
       user: current_user,
       session: session,
