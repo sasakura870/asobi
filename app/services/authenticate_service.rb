@@ -9,6 +9,8 @@ class AuthenticateService < ApplicationService
   attr_reader :user, :password
 
   def perform
-    service_failed message: 'メールアドレスまたはパスワードが違います' unless user&.authenticate(password)
+    unless user&.authenticate password
+      service_failed message: 'パスワードが違います'
+    end
   end
 end
