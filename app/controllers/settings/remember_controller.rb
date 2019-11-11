@@ -1,11 +1,11 @@
 module Settings
   class RememberController < Base
     def create
-      handle = Settings::Remember::CreateHandler.new(
+      handler = Settings::Remember::CreateHandler.new(
         user: current_user,
         cookies: cookies
       )
-      if handle.run
+      if handler.run
         head :ok
       else
         request_422
@@ -13,8 +13,15 @@ module Settings
     end
 
     def destroy
-      forget
-      head :ok
+      handler = Settings::Remember::DestroyHandler.new(
+        user: current_user,
+        cookies: cookies
+      )
+      if handler.run
+        head :ok
+      else
+        request_422
+      end
     end
   end
 end
