@@ -5,6 +5,7 @@ module Settings
     def index; end
 
     def destroy
+      # TODO service
       input_data = update_params(:quit, :password)
       if current_user&.authenticate input_data[:password]
         if current_user&.destroy
