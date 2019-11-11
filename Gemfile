@@ -71,6 +71,10 @@ group :development do
   # gem 'solargraph'
   # 送信したメールを確認するgem
   gem 'letter_opener'
+  # pryの導入
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
 end
 
 group :test do
