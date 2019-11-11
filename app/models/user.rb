@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_save :downcase_email
-  before_save :deactivate, if: :email_changed?
+  # before_save :deactivate, if: :email_changed?
 
   has_secure_password
   has_secure_password :remember, validations: false
@@ -82,15 +82,17 @@ class User < ApplicationRecord
     send_activation_mail_at < 1.day.ago
   end
 
+  def deactivate
+    self.status = :temporary
+    self.activation = SecureRandom.urlsafe_base64
+    self.send_activation_mail_at = Time.zone.now
+    save
+  end
+
   private
 
   def downcase_email
     self.email = email.downcase
   end
 
-  def deactivate
-    self.status = :temporary
-    self.activation = SecureRandom.urlsafe_base64
-    self.send_activation_mail_at = Time.zone.now
-  end
 end

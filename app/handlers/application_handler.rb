@@ -5,11 +5,17 @@ class ApplicationHandler
   # Serviceクラスが失敗した場合に何か処理を行いたい場合はrollbackメソッドをオーバーライドする
   # runメソッドは、handleメソッド内の全てのServiceクラスの処理が正常に終わればtrue, どれかが失敗すればfalseが返る
 
+  # fail_message : Serviceクラスの処理が失敗した際に渡されるエラーメッセージ
+  # fail_model : Serviceクラスの処理が失敗した際に渡される値(モデルのsave, updateの失敗時のモデルが渡ることを想定している)
+  attr_reader :fail_message, :fail_model
+
   # 複数のServiceを呼び出すメソッド
   def run
     handle
     true
   rescue ApplicationService::ServiceError => e
+    @fail_message = e.message
+    @fail_model = e.error_model
     rollback
     false
   end

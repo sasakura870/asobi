@@ -9,7 +9,7 @@ class FavoriteService < ApplicationService
   attr_reader :user, :article
 
   def perform
-    return false if article.nil?
+    service_failed message: 'いいねに失敗しました' if article.nil?
 
     favorite = user.favorites.build(article_id: article.id)
     favorite.save

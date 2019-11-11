@@ -14,15 +14,29 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    # @user = User.new(user_params)
 
-    if @user.save
-      UserMailer.account_activation(@user).deliver_now
-      login @user
+    # if @user.save
+    #   UserMailer.account_activation(@user).deliver_now
+    #   login @user
+    #   flash[:info] = '本登録用のメールを送信しました'
+    #   redirect_to account_activations_path
+    # else
+    #   flash.now[:error] = '登録に失敗しました'
+    #   render :new, layout: 'sessions'
+    # end
+
+    handler = Users::CreateHandler.new(
+      params: user_params,
+      accept: params[:user][:accept],
+      session: session
+    )
+    if handler.run
       flash[:info] = '本登録用のメールを送信しました'
       redirect_to account_activations_path
     else
-      flash.now[:error] = '登録に失敗しました'
+      @user = handler.fail_model
+      flash.now[:error] = handler.fail_message
       render :new, layout: 'sessions'
     end
   end

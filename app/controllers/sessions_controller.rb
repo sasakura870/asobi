@@ -29,8 +29,11 @@ class SessionsController < ApplicationController
       session: session,
       cookies: cookies
     )
-    handler.run
-    flash[:success] = 'ログアウトしました'
+    if handler.run
+      flash[:success] = 'ログアウトしました'
+    else
+      flash[:error] = 'ログアウトに失敗しました'
+    end
     redirect_back_or root_path
   end
 

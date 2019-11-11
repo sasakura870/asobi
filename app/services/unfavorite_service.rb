@@ -10,6 +10,6 @@ class UnfavoriteService < ApplicationService
 
   def perform
     favorite = user.favorites.find_by(article_id: article.id)
-    favorite&.destroy
+    service_failed message: 'いいねの取り消しに失敗しました' unless favorite&.destroy
   end
 end

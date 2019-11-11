@@ -8,6 +8,6 @@ class LogoutService < ApplicationService
   attr_reader :session
 
   def perform
-    session.delete :user_id
+    session[:user_id] = nil
   end
 end
