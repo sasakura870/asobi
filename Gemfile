@@ -67,8 +67,8 @@ group :development do
   gem 'better_errors'
   # better_errorsの画面上にirb/pry(PERL)を表示する
   gem 'binding_of_caller'
-  # solargraphインストール
-  gem 'solargraph'
+  # solargraphインストール(system内のsolargraphを使用するように変更したためコメントアウト)
+  # gem 'solargraph'
   # 送信したメールを確認するgem
   gem 'letter_opener'
 end
