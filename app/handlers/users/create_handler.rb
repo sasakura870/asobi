@@ -11,8 +11,10 @@ module Users
     attr_reader :params, :accept, :session
 
     def handle
+      params[:email] = params[:email].downcase
+      mailer = UserMailer.account_activation user
       CreateUserService.new(params: params, accept: accept).call
-      SendWelcomeEmailService.new(user: user).call
+      SendActivationEmailService.new(user: user, mailer: mailer).call
       LoginService.new(user: user, session: session).call
     end
 
