@@ -11,7 +11,7 @@ class FavoriteService < ApplicationService
   def perform
     service_failed message: 'いいねに失敗しました' if article.nil?
 
-    favorite = user.favorites.build(article_id: article.id)
+    favorite = user.favorites.build article_id: article.id
     favorite.save
   end
 end
