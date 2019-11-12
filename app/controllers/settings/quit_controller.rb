@@ -5,19 +5,14 @@ module Settings
     def index; end
 
     def destroy
-      # TODO service
       input_data = update_params(:quit, :password)
-      if current_user&.authenticate input_data[:password]
-        if current_user&.destroy
-          cookies.delete(:user_id)
-          cookies.delete(:remember)
-          logout
-        else
-          flash[:error] = '退会に失敗しました。時間を空けてもう一度お試しください'
-        end
-      else
-        flash[:error] = 'パスワードが正しくありません'
-      end
+      handler = Settings::Quit::DestroyHandler.new(
+        user: current_user,
+        password: input_data[:password],
+        session: session,
+        cookies: cookies
+      )
+      flash[:error] = handler.fail_message unless handler.run
       render :index
     end
   end
