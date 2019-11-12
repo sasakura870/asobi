@@ -7,12 +7,16 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  # TODO service層に処理を移動したい
   def current_user
+    return @current_user if @current_user.present?
+
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
     elsif cookies.signed[:user_id]
       user = User.find_by(id: cookies.signed[:user_id])
       if user&.authenticate_remember(cookies[:remember])
+        session[:user_id] = user.id
         @current_user = user
       end
     end
