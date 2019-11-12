@@ -8,11 +8,12 @@ class AccountActivationsController < ApplicationController
   end
 
   def edit
-    # TODO service層に移動
-    user = User.find_by(email: params[:email])
-    if user&.authenticate_activation(params[:id]) && user&.temporary? && !user&.activation_mail_expired?
-      user.signup
-      login user
+    handler = AccountActivations::EditHandler.new(
+      email: params[:email],
+      activation_token: params[:id],
+      session: session
+    )
+    if handler.run
       flash[:success] = '本登録が完了しました！'
     else
       flash[:error] = '無効なURLです'

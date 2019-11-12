@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :filter_only_register
 
   def create
+    # TODO service
     @article = Article.published.find_by(id: comment_params[:article_id])
     @comment = current_user.comments.new(comment_params)
     # comment = current_user.comments.new(article_id: params[:article_id],
@@ -16,6 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    # TODO service
     comment = current_user.comments.find_by(id: params[:id])
     if comment&.destroy
       render json: { type: 'success', message: 'コメントを削除しました' }

@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    # TODO service
     @article = current_user.articles.new(article_params)
     new_tag_list = params[:article][:tags_list].split.uniq
     if @article&.save && new_tag_list.length <= 10
@@ -48,6 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    # TODO service
     @article = current_user.articles.find_by(id_digest: params[:article][:id_digest])
     new_tag_list = params[:article][:tags_list].split.uniq
     if @article&.update(article_params) && new_tag_list.length <= 10
@@ -83,6 +85,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    # TODO service
   end
 
   private

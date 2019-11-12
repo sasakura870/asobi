@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   # TODO Service層の導入でメソッドが移動できる？
   protected
 
-  def login(user)
-    session[:user_id] = user.id
-  end
+  # def login(user)
+  #   session[:user_id] = user.id
+  # end
 
   def current_user
     if session[:user_id]
@@ -27,18 +27,18 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
-  def remember
-    expire = 1.month.from_now.utc
-    current_user.remember_me
-    cookies.signed[:user_id] = { value: current_user.id, expires: expire }
-    cookies[:remember] = { value: current_user.remember, expires: expire }
-  end
+  # def remember
+  #   expire = 1.month.from_now.utc
+  #   current_user.remember_me
+  #   cookies.signed[:user_id] = { value: current_user.id, expires: expire }
+  #   cookies[:remember] = { value: current_user.remember, expires: expire }
+  # end
 
-  def forget
-    current_user.forget_me
-    cookies.delete(:user_id)
-    cookies.delete(:remember)
-  end
+  # def forget
+  #   current_user.forget_me
+  #   cookies.delete(:user_id)
+  #   cookies.delete(:remember)
+  # end
 
   def logout
     session.delete(:user_id)

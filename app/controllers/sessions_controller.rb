@@ -1,4 +1,3 @@
-# TODO create, destroyのサービス層の導入
 class SessionsController < ApplicationController
   before_action :filter_only_logged_in_users, only: :destroy
   before_action :filter_only_guests, only: %i[new create]
@@ -8,12 +7,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: session_params[:email].downcase)
-    if user&.authenticate(session_params[:password])
-      # セッションを作成
-      login user
-      # チェックが付いていればログイン状態を保持する
-      session_params[:remember_check] == '1' ? remember : forget
+    handler = Sessions::CreateHandler.new(
+      email: session_params[:email],
+      password: session_params[:password],
+      remember_check: session_params[:remember_check],
+      session: session,
+      cookies: cookies
+    )
+    if handler.run
       flash[:success] = 'ログインしました'
       redirect_back_or root_path
     else
@@ -23,9 +24,16 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    forget
-    logout
-    flash[:success] = 'ログアウトしました'
+    handler = Sessions::DestroyHandler.new(
+      user: current_user,
+      session: session,
+      cookies: cookies
+    )
+    if handler.run
+      flash[:success] = 'ログアウトしました'
+    else
+      flash[:error] = 'ログアウトに失敗しました'
+    end
     redirect_back_or root_path
   end
 

@@ -1,11 +1,27 @@
-class Settings::RememberController < Settings::Base
-  def create
-    remember
-    head :ok
-  end
+module Settings
+  class RememberController < Base
+    def create
+      handler = Settings::Remember::CreateHandler.new(
+        user: current_user,
+        cookies: cookies
+      )
+      if handler.run
+        head :ok
+      else
+        request_422
+      end
+    end
 
-  def destroy
-    forget
-    head :ok
+    def destroy
+      handler = Settings::Remember::DestroyHandler.new(
+        user: current_user,
+        cookies: cookies
+      )
+      if handler.run
+        head :ok
+      else
+        request_422
+      end
+    end
   end
 end
