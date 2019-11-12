@@ -85,7 +85,18 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    # TODO service
+    handler = Articles::DestroyHandler.new(
+      user: current_user,
+      article_id_digest: params[:id]
+    )
+    if handler.run
+      flash[:success] = '記事を削除しました'
+      redirect_to current_user
+    else
+      @article = handler.fail_model
+      flash[:success] = '記事の削除に失敗しました'
+      render :show
+    end
   end
 
   private

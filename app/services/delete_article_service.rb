@@ -9,6 +9,6 @@ class DeleteArticleService < ApplicationService
   attr_reader :user, :article
 
   def perform
-    service_failed message: '下書きの削除に失敗しました' unless article&.destroy
+    service_failed message: '記事の削除に失敗しました', model: article unless article&.destroy
   end
 end
