@@ -2,24 +2,26 @@ class CommentsController < ApplicationController
   before_action :filter_only_register
 
   def create
-    # TODO service
-    @article = Article.published.find_by(id: comment_params[:article_id])
-    @comment = current_user.comments.new(comment_params)
-    # comment = current_user.comments.new(article_id: params[:article_id],
-    #                                     content: params[:content])
-    if @comment.save
+    handler = Comments::CreateHandler.new(
+      user: current_user,
+      article_id: comment_params[:article_id],
+      content: comment_params[:content]
+    )
+    if handler.run
       flash[:success] = 'コメントを投稿しました'
-      redirect_to @article
-      # head :created
+      # TODO ajax化したい
+      redirect_to Article.published.find_by(id: comment_params[:article_id])
     else
       request_422
     end
   end
 
   def destroy
-    # TODO service
-    comment = current_user.comments.find_by(id: params[:id])
-    if comment&.destroy
+    handler = Comments::DestroyHandler.new(
+      user: current_user,
+      comment_id: params[:id]
+    )
+    if handler.run
       render json: { type: 'success', message: 'コメントを削除しました' }
     else
       request_422

@@ -5,10 +5,6 @@
     ul.p-sticky-menu
       li.p-sticky-menu__item
         favorite-button :article-id='#{@article.id}' :is-favorited='#{current_user.already_favorite?(@article)}' :favorite-count=@article.favorites.count
-      / = link_to '#', class: 'btn btn-primary btn-round'
-        i.fas.fa-comment-dots.fa-fw.fa-spin
-      / = link_to '#', class: 'c-circle-btn c-circle-btn--primary'
-      /   i.fab.fa-twitter.fa-fw
       li.p-sticky-menu__item
         .p-sticky-menu__btn
           button.c-circle-btn.c-circle-btn--highlight
@@ -45,5 +41,6 @@
     .p-list-contents__footer.p-comment-form
       .p-comment-form__user-photo = user_photo current_user, size: 40, class_name: 'c-user-photo'
       = form_with model: current_user.comments.new, local: true, class: 'p-comment-form__form' do |f|
+        = f.hidden_field :article_id, value: @article.id
         = f.text_area :content, placeholder: 'コメントを入力…', required: true, rows: 4, class: 'p-comment-form__text-area'
         .p-comment-form__submit: button.c-hand-write-btn 投稿する
