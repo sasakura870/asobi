@@ -7,9 +7,11 @@ class DraftsController < ApplicationController
   end
 
   def destroy
-    # TODO service
-    draft = current_user.articles.draft.find_by(id: params[:id])
-    if draft&.destroy
+    handler = Drafts::DestroyHandler.new(
+      user: current_user,
+      article_id: params[:id]
+    )
+    if handler.run
       render json: { type: 'success', message: '下書きを削除しました' }
     else
       request_422
