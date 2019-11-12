@@ -91,11 +91,13 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    result = params.require(:article).permit(:title,
-                                             :overview,
-                                             :thumbnail,
-                                             :content,
-                                             :status)
+    result = params.require(:article).permit(
+      :title,
+      :overview,
+      :thumbnail,
+      :content,
+      :status
+    )
     result[:status] = result[:status].to_sym
     result
   end
