@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     )
     if handler.run
       flash[:success] = 'コメントを投稿しました'
-      # TODO ajax化したい
+      # TODO commit_dataを使う
       redirect_to Article.published.find_by(id: comment_params[:article_id])
     else
       request_422

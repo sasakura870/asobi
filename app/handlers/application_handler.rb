@@ -5,13 +5,15 @@ class ApplicationHandler
   # Serviceクラスが失敗した場合に何か処理を行いたい場合はrollbackメソッドをオーバーライドする
   # runメソッドは、handleメソッド内の全てのServiceクラスの処理が正常に終わればtrue, どれかが失敗すればfalseが返る
 
+  # success_model : Serviceクラスの処理が全て成功した際に渡される値
   # fail_message : Serviceクラスの処理が失敗した際に渡されるエラーメッセージ
   # fail_model : Serviceクラスの処理が失敗した際に渡される値(モデルのsave, updateの失敗時のモデルが渡ることを想定している)
-  attr_reader :fail_message, :fail_model
+  attr_reader :success_model, :fail_message, :fail_model
 
   # 複数のServiceを呼び出すメソッド
   def run
     handle
+    @success_model = commit_data
     true
   rescue ApplicationService::ServiceError => e
     @fail_message = e.message
@@ -28,7 +30,11 @@ class ApplicationHandler
     raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
 
+  # サービスが全て成功した場合に呼び出されるメソッド
+  # サービスが全て成功した場合にコントローラーへ渡したい値があれば、このメソッドをオーバーライドする
+  def commit_data; end
+
   # サービスが失敗した場合に呼び出されるメソッド
-  # handle内のサービスがどれか失敗した場合に行いたい処理がある場合は、このメソッドをオーバーライドする
+  # handle内のサービスが失敗した場合に行いたい処理があれば、このメソッドをオーバーライドする
   def rollback; end
 end

@@ -22,19 +22,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # TODO service
-    @article = current_user.articles.new(article_params)
-    new_tag_list = params[:article][:tags_list].split.uniq
-    if @article&.save && new_tag_list.length <= 10
-      # 入力されたタグを元に@articleとリンクさせる
-      tag_list = []
-      new_tag_list.each do |tag_name|
-        tag = Tag.find_by(name: tag_name)
-        tag = Tag.create(name: tag_name) if tag.nil?
-        tag_list << tag
-      end
-      @article.link_tag(tag_list)
-
+    handler = Articles::CreateHandler.new(
+      user: current_user,
+      params: article_params,
+      tag_names: params[:article][:tag]
+    )
+    if handler.run
+      @article = handler.success_model
       if @article.published?
         flash[:success] = '投稿しました！'
         redirect_to @article
@@ -43,6 +37,7 @@ class ArticlesController < ApplicationController
         redirect_to drafts_path
       end
     else
+      @article = handler.fail_model
       flash.now[:error] = '入力に不備があります'
       render :new
     end
@@ -105,7 +100,6 @@ class ArticlesController < ApplicationController
     result = params.require(:article).permit(
       :title,
       :overview,
-      :thumbnail,
       :content,
       :status
     )

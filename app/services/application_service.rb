@@ -4,21 +4,21 @@ class ApplicationService
 
   # call失敗時に呼び出されるエラークラス
   # Handlerはこのエラーをキャッチしてrollbackメソッドを実行する
-  class ServiceError < StandardError;
+  class ServiceError < StandardError
     attr_reader :error_model
     def initialize(error_model)
       @error_model = error_model
     end
   end
 
+  # result : 処理の結果、返したい値がある場合はこのプロパティに保存される
+  attr_reader :result
+
   # サービスを利用するクラスが呼び出すメソッド
   # 内部でperformメソッドを呼び出し、処理が失敗している場合は例外を投げる
   def call
-    # result = perform
-    # raise ServiceError, "#{self.class}の処理が失敗しました" unless result
-
-    # result
     perform
+    @result = service_result
     raise ServiceError.new(error_model), error_message if failed
   end
 
@@ -31,6 +31,9 @@ class ApplicationService
   def perform
     raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
+
+  # 処理の結果、返したい値がある場合はこのメソッドをオーバーライドする
+  def service_result; end
 
   # performメソッド内で処理の失敗を明記したい場合はservice_failedメソッドを使う
   # 引数messageは例外が所持するエラーメッセージを指定することができる
