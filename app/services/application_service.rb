@@ -5,7 +5,7 @@ class ApplicationService
   class SuccessResult
     attr_reader :message, :model
 
-    def initialize(message:,model:)
+    def initialize(message:, model:)
       @message = message
       @model = model
     end
@@ -22,7 +22,7 @@ class ApplicationService
   end
 
   # result : 処理の結果、返したい値がある場合はこのプロパティに保存される
-  attr_reader :result
+  # attr_reader :result
 
   # サービスを利用するクラスが呼び出すメソッド
   # 内部でperformメソッドを呼び出し、処理が失敗している場合は例外を投げる
@@ -31,7 +31,8 @@ class ApplicationService
     if failed
       raise ServiceError.new(model), message
     else
-      @result = SuccessResult.new(message: message, model: model)
+      # @result = SuccessResult.new(message: message, model: model)
+      SuccessResult.new(message: message, model: model)
     end
   end
 
