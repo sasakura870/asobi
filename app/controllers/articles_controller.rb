@@ -22,21 +22,15 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # TODO service
-    @article = current_user.articles.new(article_params)
-    new_tag_list = params[:article][:tags_list].split.uniq
-    if @article&.save && new_tag_list.length <= 10
-      # 入力されたタグを元に@articleとリンクさせる
-      tag_list = []
-      new_tag_list.each do |tag_name|
-        tag = Tag.find_by(name: tag_name)
-        tag = Tag.create(name: tag_name) if tag.nil?
-        tag_list << tag
-      end
-      @article.link_tag(tag_list)
-
+    handler = Articles::CreateHandler.new(
+      user: current_user,
+      params: article_params,
+      tag_names: params[:article][:tag]
+    ).run
+    @article = handler.model
+    if handler.result
       if @article.published?
-        flash[:success] = '投稿しました！'
+        flash[:success] = '投稿しました!'
         redirect_to @article
       elsif @article.draft?
         flash[:success] = '下書きに保存しました'
@@ -44,33 +38,19 @@ class ArticlesController < ApplicationController
       end
     else
       flash.now[:error] = '入力に不備があります'
-      render :new
+      render :new, layout: 'article_post'
     end
   end
 
   def update
-    # TODO service
-    @article = current_user.articles.find_by(id_digest: params[:article][:id_digest])
-    new_tag_list = params[:article][:tags_list].split.uniq
-    if @article&.update(article_params) && new_tag_list.length <= 10
-      linked_tag_list = @article.tags.map(&:name)
-
-      # @articleにリンクしていて、入力したタグに含まれていないタグ
-      (linked_tag_list - new_tag_list).each do |tag_name|
-        # リンク解除
-        tag = Tag.find_by(name: tag_name)
-        @article.unlink_tag(tag)
-      end
-
-      # 入力したタグに含まれていて、@articleがまだリンクしていないタグ
-      tag_list = []
-      (new_tag_list - linked_tag_list).each do |tag_name|
-        tag = Tag.find_by(name: tag_name)
-        tag = Tag.create(name: tag_name) if tag.nil?
-        tag_list << tag
-      end
-      @article.link_tag(tag_list)
-
+    handler = Articles::UpdateHandler.new(
+      user: current_user,
+      id_digest: params[:article][:id_digest],
+      params: article_params,
+      tag_names: params[:article][:tag]
+    ).run
+    @article = handler.model
+    if handler.result
       if @article.published?
         flash[:success] = '投稿しました！'
         redirect_to @article
@@ -79,23 +59,35 @@ class ArticlesController < ApplicationController
         redirect_to drafts_path
       end
     else
-      flash.now[:error] = '入力に不備があります'
-      render :edit
+      flash.now[:error] = handler.message
+      render :edit, layout: 'article_post'
     end
   end
 
   def destroy
-    # TODO service
+    handler = Articles::DestroyHandler.new(
+      user: current_user,
+      article_id_digest: params[:id]
+    )
+    if handler.run
+      flash[:success] = '記事を削除しました'
+      redirect_to current_user
+    else
+      @article = handler.fail_model
+      flash[:success] = '記事の削除に失敗しました'
+      render :show
+    end
   end
 
   private
 
   def article_params
-    result = params.require(:article).permit(:title,
-                                             :overview,
-                                             :thumbnail,
-                                             :content,
-                                             :status)
+    result = params.require(:article).permit(
+      :title,
+      :overview,
+      :content,
+      :status
+    )
     result[:status] = result[:status].to_sym
     result
   end

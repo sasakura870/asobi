@@ -12,7 +12,8 @@ module Sessions
 
     def handle
       ForgetService.new(user: user, cookies: cookies).call
-      LogoutService.new(session: session).call
+      result = LogoutService.new(session: session).call
+      handle_succeeded message: result.message
     end
   end
 end

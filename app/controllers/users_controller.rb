@@ -18,13 +18,13 @@ class UsersController < ApplicationController
       params: user_params,
       accept: params[:user][:accept],
       session: session
-    )
-    if handler.run
+    ).run
+    if handler.result
       flash[:info] = '本登録用のメールを送信しました'
       redirect_to account_activations_path
     else
-      @user = handler.fail_model
-      flash.now[:error] = handler.fail_message
+      @user = handler.model
+      flash.now[:error] = handler.message
       render :new, layout: 'sessions'
     end
   end
@@ -32,10 +32,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name,
-                                 :email,
-                                 :password,
-                                 :password_confirmation)
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation
+    )
   end
 
   def switch_layout

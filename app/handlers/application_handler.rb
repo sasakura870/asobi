@@ -5,22 +5,29 @@ class ApplicationHandler
   # Serviceクラスが失敗した場合に何か処理を行いたい場合はrollbackメソッドをオーバーライドする
   # runメソッドは、handleメソッド内の全てのServiceクラスの処理が正常に終わればtrue, どれかが失敗すればfalseが返る
 
-  # fail_message : Serviceクラスの処理が失敗した際に渡されるエラーメッセージ
-  # fail_model : Serviceクラスの処理が失敗した際に渡される値(モデルのsave, updateの失敗時のモデルが渡ることを想定している)
-  attr_reader :fail_message, :fail_model
+  # runメソッドの返り値として渡されるクラス
+  # 内部の値を変更したい場合は、handleメソッド内でhandle_succeededメソッドを呼び出す
+  # Serviceクラスの処理内でServiceErrorが出た場合は、その例外の値が代入される
+  class HandleResult
+    attr_reader :result, :message, :model
 
-  # 複数のServiceを呼び出すメソッド
-  def run
-    handle
-    true
-  rescue ApplicationService::ServiceError => e
-    @fail_message = e.message
-    @fail_model = e.error_model
-    rollback
-    false
+    def initialize(result, message, model)
+      @result = result
+      @message = message
+      @model = model
+    end
   end
 
-  private
+  # 複数のServiceを呼び出すメソッド
+  # 返り値にHandleResultクラスが返る
+  def run
+    handle
+    HandleResult.new(true, message, model)
+  rescue ApplicationService::ServiceError => e
+    HandleResult.new(false, e.message, e.model)
+  end
+
+  protected
 
   # サービスを実行するメソッド
   # 継承先のクラスはこのメソッドをオーバーライドする
@@ -28,7 +35,12 @@ class ApplicationHandler
     raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
 
-  # サービスが失敗した場合に呼び出されるメソッド
-  # handle内のサービスがどれか失敗した場合に行いたい処理がある場合は、このメソッドをオーバーライドする
-  def rollback; end
+  def handle_succeeded(message: "#{self.class}の処理に成功しました", model: nil)
+    @message = message
+    @model = model
+  end
+
+  private
+
+  attr_reader :message, :model
 end

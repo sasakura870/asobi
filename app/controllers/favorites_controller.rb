@@ -5,8 +5,8 @@ class FavoritesController < ApplicationController
     handler = Favorites::CreateHandler.new(
       user: current_user,
       article_id: params[:article_id]
-    )
-    if handler.run
+    ).run
+    if handler.result
       head :created
     else
       request_422
@@ -17,8 +17,8 @@ class FavoritesController < ApplicationController
     handler = Favorites::DestroyHandler.new(
       user: current_user,
       article_id: params[:article_id]
-    )
-    if handler.run
+    ).run
+    if handler.result
       head :ok
     else
       request_422

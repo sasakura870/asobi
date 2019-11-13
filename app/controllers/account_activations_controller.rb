@@ -12,11 +12,11 @@ class AccountActivationsController < ApplicationController
       email: params[:email],
       activation_token: params[:id],
       session: session
-    )
-    if handler.run
+    ).run
+    if handler.result
       flash[:success] = '本登録が完了しました！'
     else
-      flash[:error] = '無効なURLです'
+      flash[:error] = handler.message
     end
     redirect_to root_path
   end

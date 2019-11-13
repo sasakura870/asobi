@@ -5,19 +5,18 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
-  # TODO Service層の導入でメソッドが移動できる？
   protected
 
-  # def login(user)
-  #   session[:user_id] = user.id
-  # end
-
+  # TODO service層に処理を移動したい
   def current_user
+    return @current_user if @current_user.present?
+
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
     elsif cookies.signed[:user_id]
       user = User.find_by(id: cookies.signed[:user_id])
       if user&.authenticate_remember(cookies[:remember])
+        session[:user_id] = user.id
         @current_user = user
       end
     end
@@ -25,24 +24,6 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !current_user.nil?
-  end
-
-  # def remember
-  #   expire = 1.month.from_now.utc
-  #   current_user.remember_me
-  #   cookies.signed[:user_id] = { value: current_user.id, expires: expire }
-  #   cookies[:remember] = { value: current_user.remember, expires: expire }
-  # end
-
-  # def forget
-  #   current_user.forget_me
-  #   cookies.delete(:user_id)
-  #   cookies.delete(:remember)
-  # end
-
-  def logout
-    session.delete(:user_id)
-    @current_user = nil
   end
 
   def redirect_back_or(default)

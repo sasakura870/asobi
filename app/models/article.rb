@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  after_create :create_id_digest
+  # after_create :create_id_digest
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -13,6 +13,7 @@ class Article < ApplicationRecord
   validates :overview, length: { maximum: 140 }
   # validates :content, presence: true
   validates :user_id, presence: true
+  validates :tag_maps, length: { maximum: 10, message: 'タグの最大数は10個です' }
 
   enum status: { draft: 0, published: 1 }
 
@@ -29,12 +30,16 @@ class Article < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def link_tag(tags)
-    map = []
-    tags.each do |tag|
-      map << tag_maps.build(tag_id: tag.id)
-    end
-    TagMap.import map
+  def link_tag(tag)
+    tags << tag
+    # if new_record?
+    # else
+    #   map = []
+    #   tag_list.each do |tag|
+    #     map << tag_maps.build(tag_id: tag.id)
+    #   end
+    #   TagMap.import map
+    # end
   end
 
   def unlink_tag(tag)
@@ -42,12 +47,12 @@ class Article < ApplicationRecord
     map.destroy
   end
 
-  private
-
   def create_id_digest
-    if id_digest.nil?
-      new_digest = Digest::MD5.hexdigest(id.to_s)
-      update_column(:id_digest, new_digest)
-    end
+    new_digest = Digest::MD5.hexdigest(id.to_s)
+    update_column(:id_digest, new_digest)
+    # if id_digest.nil?
+    # end
   end
+
+  # private
 end

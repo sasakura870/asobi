@@ -11,19 +11,15 @@ module Users
     attr_reader :params, :accept, :session
 
     def handle
-      params[:email] = params[:email].downcase
-      mailer = UserMailer.account_activation user
-      CreateUserService.new(params: params, accept: accept).call
-      SendActivationEmailService.new(user: user, mailer: mailer).call
-      LoginService.new(user: user, session: session).call
-    end
-
-    def rollback
-      user.destroy if user&.id.present?
-    end
-
-    def user
-      @user ||= User.find_by(email: params[:email])
+      ActiveRecord::Base.transaction do
+        params[:email] = params[:email].downcase
+        result = CreateUserService.new(params: params, accept: accept).call
+        SendActivationEmailService.new(
+          user: result.model,
+          mailer: UserMailer.account_activation(result.model)
+        ).call
+        LoginService.new(user: result.model, session: session).call
+      end
     end
   end
 end

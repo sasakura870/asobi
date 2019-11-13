@@ -2,10 +2,27 @@
   @include contents-box();
   padding: 2em;
 
+  &__header {
+    @include contents-header();
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__datetime {
     font-size: 1.4rem;
     color: $supplement_color;
     margin-bottom: .5em;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: right;
+    font-size: 1.4rem;
+  }
+
+  &__menu-item {
+    margin-right: 1em;
   }
 
   &__overview {}

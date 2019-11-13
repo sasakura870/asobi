@@ -2,10 +2,11 @@ class TagMapsController < ApplicationController
   before_action :filter_only_register
 
   def create
-    # TODO service
-    tag = Tag.find_by(id: params[:tag_id])
-    tag_map = current_user.tag_maps.build(tag_id: tag.id)
-    if tag_map.save
+    handler = TagMaps::CreateHandler.new(
+      user: current_user,
+      tag_id: params[:tag_id]
+    ).run
+    if handler.result
       head :created
     else
       request_422
@@ -13,9 +14,11 @@ class TagMapsController < ApplicationController
   end
 
   def destroy
-    # TODO service
-    map = current_user.tag_maps.find_by(tag_id: params[:tag_id])
-    if map&.destroy
+    handler = TagMaps::DestroyHandler.new(
+      user: current_user,
+      tag_id: params[:tag_id]
+    ).run
+    if handler.result
       head :ok
     else
       request_422
