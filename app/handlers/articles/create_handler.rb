@@ -8,24 +8,18 @@ module Articles
 
     private
 
-    attr_reader :user, :article, :params, :tag_names
+    attr_reader :user, :params, :tag_names
 
     def handle
       ActiveRecord::Base.transaction do
-        tag_service = ListupTagService.new(tag_names: tag_names)
-        tag_service.call
-        article_service = CreateArticleService.new(
+        tag_service_result = ListupTagService.new(tag_names: tag_names).call
+        article_service_result = CreateArticleService.new(
           user: user,
           params: params,
-          tag_list: tag_service.result
-        )
-        article_service.call
-        @article = article_service.result
+          tag_list: tag_service_result.model
+        ).call
+        handle_succeeded model: article_service_result.model
       end
-    end
-
-    def commit_data
-      article
     end
   end
 end

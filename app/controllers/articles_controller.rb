@@ -26,20 +26,19 @@ class ArticlesController < ApplicationController
       user: current_user,
       params: article_params,
       tag_names: params[:article][:tag]
-    )
-    if handler.run
-      @article = handler.success_model
+    ).run
+    @article = handler.model
+    if handler.result
       if @article.published?
-        flash[:success] = '投稿しました！'
+        flash[:success] = '投稿しました!'
         redirect_to @article
       elsif @article.draft?
         flash[:success] = '下書きに保存しました'
         redirect_to drafts_path
       end
     else
-      @article = handler.fail_model
       flash.now[:error] = '入力に不備があります'
-      render :new
+      render :new, layout: 'article_post'
     end
   end
 
@@ -75,7 +74,7 @@ class ArticlesController < ApplicationController
       end
     else
       flash.now[:error] = '入力に不備があります'
-      render :edit
+      render :edit, layout: 'article_post'
     end
   end
 
