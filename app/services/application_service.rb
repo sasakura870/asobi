@@ -2,12 +2,22 @@ class ApplicationService
   # 全てのServiceクラスはこのクラスを継承する
   # 継承元のクラスはinitialize, performを実装する
 
+  class SuccessResult
+    attr_reader :message, :model
+
+    def initialize(message:,model:)
+      @message = message
+      @model = model
+    end
+  end
+
   # call失敗時に呼び出されるエラークラス
   # Handlerはこのエラーをキャッチしてrollbackメソッドを実行する
   class ServiceError < StandardError
-    attr_reader :error_model
-    def initialize(error_model)
-      @error_model = error_model
+    attr_reader :model
+
+    def initialize(model)
+      @model = model
     end
   end
 
@@ -18,13 +28,14 @@ class ApplicationService
   # 内部でperformメソッドを呼び出し、処理が失敗している場合は例外を投げる
   def call
     perform
-    @result = service_result
-    raise ServiceError.new(error_model), error_message if failed
+    if failed
+      raise ServiceError.new(model), message
+    else
+      @result = SuccessResult.new(message: message, model: model)
+    end
   end
 
-  private
-
-  attr_reader :failed, :error_message, :error_model
+  protected
 
   # 実際の処理を記述するメソッド
   # 継承元のクラスはこのメソッドをオーバーライドする
@@ -32,15 +43,22 @@ class ApplicationService
     raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
 
-  # 処理の結果、返したい値がある場合はこのメソッドをオーバーライドする
-  def service_result; end
+  def service_succeeded(message: "#{self.class}の処理が成功しました", model: nil)
+    @failed = false
+    @message = message
+    @model = model
+  end
 
   # performメソッド内で処理の失敗を明記したい場合はservice_failedメソッドを使う
   # 引数messageは例外が所持するエラーメッセージを指定することができる
   # 引数modelは例外クラスに値を渡すことができる
   def service_failed(message: "#{self.class}の処理が失敗しました", model: nil)
     @failed = true
-    @error_message = message
-    @error_model = model
+    @message = message
+    @model = model
   end
+
+  private
+
+  attr_reader :failed, :message, :model
 end
