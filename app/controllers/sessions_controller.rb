@@ -2,9 +2,7 @@ class SessionsController < ApplicationController
   before_action :filter_only_logged_in_users, only: :destroy
   before_action :filter_only_guests, only: %i[new create]
 
-  def new
-    @user = User.new
-  end
+  def new; end
 
   def create
     handler = Sessions::CreateHandler.new(
@@ -13,8 +11,8 @@ class SessionsController < ApplicationController
       remember_check: session_params[:remember_check],
       session: session,
       cookies: cookies
-    )
-    if handler.run
+    ).run
+    if handler.result
       flash[:success] = 'ログインしました'
       redirect_back_or root_path
     else
@@ -28,12 +26,9 @@ class SessionsController < ApplicationController
       user: current_user,
       session: session,
       cookies: cookies
-    )
-    if handler.run
-      flash[:success] = 'ログアウトしました'
-    else
-      flash[:error] = 'ログアウトに失敗しました'
-    end
+    ).run
+    flash_type = handler.result ? :success : :error
+    flash[flash_type] = handler.message
     redirect_back_or root_path
   end
 

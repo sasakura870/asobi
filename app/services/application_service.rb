@@ -2,6 +2,9 @@ class ApplicationService
   # 全てのServiceクラスはこのクラスを継承する
   # 継承元のクラスはinitialize, performを実装する
 
+  # callメソッド成功時に返り値として渡されるクラス
+  # 呼び出し元にメッセージとモデルを渡すことができる
+  # 内部のmessage, modelの値を変更したい場合は、performメソッド内でservice_succeededメソッドを呼び出す
   class SuccessResult
     attr_reader :message, :model
 
@@ -11,7 +14,7 @@ class ApplicationService
     end
   end
 
-  # call失敗時に呼び出されるエラークラス
+  # callメソッド失敗時に呼び出されるエラークラス
   # Handlerはこのエラーをキャッチしてrollbackメソッドを実行する
   class ServiceError < StandardError
     attr_reader :model
@@ -21,9 +24,6 @@ class ApplicationService
     end
   end
 
-  # result : 処理の結果、返したい値がある場合はこのプロパティに保存される
-  # attr_reader :result
-
   # サービスを利用するクラスが呼び出すメソッド
   # 内部でperformメソッドを呼び出し、処理が失敗している場合は例外を投げる
   def call
@@ -31,7 +31,6 @@ class ApplicationService
     if failed
       raise ServiceError.new(model), message
     else
-      # @result = SuccessResult.new(message: message, model: model)
       SuccessResult.new(message: message, model: model)
     end
   end
@@ -44,6 +43,8 @@ class ApplicationService
     raise NotImplementedError, "You must implement #{self.class}##{__method__}"
   end
 
+  # 成功時に特定のメッセージやモデルを渡したい場合はservice_succeededメソッドを使う
+  # 引数で指定したmessage, modelがSuccessResultモデルに渡される
   def service_succeeded(message: "#{self.class}の処理が成功しました", model: nil)
     @failed = false
     @message = message

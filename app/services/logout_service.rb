@@ -9,5 +9,6 @@ class LogoutService < ApplicationService
 
   def perform
     session[:user_id] = nil
+    service_succeeded message: 'ログアウトしました'
   end
 end
