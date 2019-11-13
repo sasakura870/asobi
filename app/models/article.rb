@@ -30,16 +30,16 @@ class Article < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def link_tag(tag_list)
-    if new_record?
-      tags << tag_list
-    else
-      map = []
-      tag_list.each do |tag|
-        map << tag_maps.build(tag_id: tag.id)
-      end
-      TagMap.import map
-    end
+  def link_tag(tag)
+    tags << tag
+    # if new_record?
+    # else
+    #   map = []
+    #   tag_list.each do |tag|
+    #     map << tag_maps.build(tag_id: tag.id)
+    #   end
+    #   TagMap.import map
+    # end
   end
 
   def unlink_tag(tag)

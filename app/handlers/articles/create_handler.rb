@@ -12,7 +12,10 @@ module Articles
 
     def handle
       ActiveRecord::Base.transaction do
-        tag_service_result = ListupTagService.new(tag_names: tag_names).call
+        tag_service_result = ListupTagService.new(
+          article: Article.new,
+          tag_names: tag_names
+        ).call
         article_service_result = CreateArticleService.new(
           user: user,
           params: params,
