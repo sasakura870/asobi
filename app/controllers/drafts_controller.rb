@@ -10,8 +10,8 @@ class DraftsController < ApplicationController
     handler = Drafts::DestroyHandler.new(
       user: current_user,
       article_id: params[:id]
-    )
-    if handler.run
+    ).run
+    if handler.result
       render json: { type: 'success', message: '下書きを削除しました' }
     else
       request_422

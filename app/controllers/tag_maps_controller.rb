@@ -5,8 +5,8 @@ class TagMapsController < ApplicationController
     handler = TagMaps::CreateHandler.new(
       user: current_user,
       tag_id: params[:tag_id]
-    )
-    if handler.run
+    ).run
+    if handler.result
       head :created
     else
       request_422
@@ -17,8 +17,8 @@ class TagMapsController < ApplicationController
     handler = TagMaps::DestroyHandler.new(
       user: current_user,
       tag_id: params[:tag_id]
-    )
-    if handler.run
+    ).run
+    if handler.result
       head :ok
     else
       request_422

@@ -13,15 +13,13 @@ module Users
     def handle
       ActiveRecord::Base.transaction do
         params[:email] = params[:email].downcase
-        mailer = UserMailer.account_activation user
-        CreateUserService.new(params: params, accept: accept).call
-        SendActivationEmailService.new(user: user, mailer: mailer).call
-        LoginService.new(user: user, session: session).call
+        result = CreateUserService.new(params: params, accept: accept).call
+        SendActivationEmailService.new(
+          user: result.model,
+          mailer: UserMailer.account_activation(result.model)
+        ).call
+        LoginService.new(user: result.model, session: session).call
       end
-    end
-
-    def user
-      @user ||= User.find_by(email: params[:email])
     end
   end
 end

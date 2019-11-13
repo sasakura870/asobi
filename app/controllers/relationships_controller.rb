@@ -5,8 +5,8 @@ class RelationshipsController < ApplicationController
     handler = Relationships::CreateHandler.new(
       following: current_user,
       follower_id: params[:user_id]
-    )
-    if handler.run
+    ).run
+    if handler.result
       head :created
     else
       request_422
@@ -17,8 +17,8 @@ class RelationshipsController < ApplicationController
     handler = Relationships::DestroyHandler.new(
       following: current_user,
       follower_id: params[:user_id]
-    )
-    if handler.run
+    ).run
+    if handler.result
       head :ok
     else
       request_422
