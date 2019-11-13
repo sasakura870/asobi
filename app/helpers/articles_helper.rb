@@ -8,10 +8,7 @@ module ArticlesHelper
     image_pack_tag 'article_default.png', class: class_name
   end
 
-  def set_user_link(user, size: 25, class_name: '')
-    link_to user_path(user), class: class_name do
-      user_photo(user, size: size, class_name: 'mr-2') +
-        content_tag(:span, "@#{user.name}")
-    end
+  def tag_formatting(tag_list)
+    tag_list.pluck(:name).join(' ')
   end
 end

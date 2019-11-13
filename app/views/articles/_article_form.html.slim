@@ -9,7 +9,7 @@
     = f.text_field :overview, placeholder: '記事の概要を入力できます(140字まで)', class: 'form-control'
   .form-group
     = f.label :tag, class: 'sr-only'
-    = f.text_field :tag, placeholder: '記事に関連するタグをスペース区切りで5つまで入力できます(屋外, トランプ, ローカルルール, 兵庫 etc...)', class: 'form-control'
+    = f.text_field :tag, value: tag_formatting(article.tags), placeholder: '記事に関連するタグをスペース区切りで5つまで入力できます(屋外, トランプ, ローカルルール, 兵庫 etc...)', class: 'form-control'
   .form-group
     = f.rich_text_area :content
   .from-group
