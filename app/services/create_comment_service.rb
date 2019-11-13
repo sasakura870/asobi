@@ -17,6 +17,10 @@ class CreateCommentService < ApplicationService
 
     params = { article_id: article.id, content: content }
     comment = user.comments.new(params)
-    service_failed message: 'コメントに失敗しました', model: comment unless comment.save
+    if comment.save
+      service_succeeded message: 'コメントしました!', model: article
+    else
+      service_failed message: 'コメントに失敗しました', model: comment
+    end
   end
 end

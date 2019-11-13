@@ -10,7 +10,8 @@ module Comments
     attr_reader :user, :comment_id
 
     def handle
-      DeleteCommentService.new(comment: comment).call
+      result = DeleteCommentService.new(comment: comment).call
+      handle_succeeded message: result.message, model: result.model
     end
 
     def comment

@@ -11,7 +11,8 @@ module Comments
     attr_reader :user, :article_id, :content
 
     def handle
-      CreateCommentService.new(user: user, article: article, content: content).call
+      result = CreateCommentService.new(user: user, article: article, content: content).call
+      handle_succeeded message: result.message, model: result.model
     end
 
     def article

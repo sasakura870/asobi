@@ -8,6 +8,10 @@ class DeleteCommentService < ApplicationService
   attr_reader :comment
 
   def perform
-    service_failed message: 'コメントの削除に失敗しました', model: comment unless comment&.destroy
+    if comment&.destroy
+      service_succeeded message: 'コメントを削除しました'
+    else
+      service_failed message: 'コメントの削除に失敗しました', model: comment
+    end
   end
 end

@@ -6,11 +6,10 @@ class CommentsController < ApplicationController
       user: current_user,
       article_id: comment_params[:article_id],
       content: comment_params[:content]
-    )
-    if handler.run
-      flash[:success] = 'コメントを投稿しました'
-      # TODO commit_dataを使う
-      redirect_to Article.published.find_by(id: comment_params[:article_id])
+    ).run
+    if handler.result
+      flash[:success] = handler.message
+      redirect_to handler.model
     else
       request_422
     end
@@ -20,9 +19,9 @@ class CommentsController < ApplicationController
     handler = Comments::DestroyHandler.new(
       user: current_user,
       comment_id: params[:id]
-    )
-    if handler.run
-      render json: { type: 'success', message: 'コメントを削除しました' }
+    ).run
+    if handler.result
+      render json: { type: 'success', message: handler.message }
     else
       request_422
     end
