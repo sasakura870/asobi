@@ -14,10 +14,10 @@
         p.p-article-contents__updated-at <span>更新</span> : #{date_format @article.updated_at}
     - if @article.user == current_user
       .p-article-contents__menu
-        = link_to(edit_article_path(@article), class: 'p-article-contents__menu-item c-link')
+        = link_to edit_article_path(@article), class: 'p-article-contents__menu-item c-link'
           i.fas.fa-pen.fa-fw
           | 編集する
-        = link_to(article_path, method: :delete, data: { confirm: "削除すると二度と元に戻せません。獲得したいいねも削除されます。\n削除してよろしいですか？" }, class: 'p-article-contents__menu-item c-link')
+        = link_to article_path, method: :delete, data: { confirm: "削除すると二度と元に戻せません。獲得したいいねも削除されます。\n削除してよろしいですか？" }, class: 'p-article-contents__menu-item c-link'
           i.fas.fa-trash-alt.fa-fw
           | 削除する
   p.p-article-contents__overview = @article.overview

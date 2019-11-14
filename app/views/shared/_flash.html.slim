@@ -1,4 +1,4 @@
 - if flash.any?
   = hidden_field_tag :toast_type, flash.keys[0]
   = hidden_field_tag :toast_message, flash.to_hash.values[0]
-  = javascript_pack_tag 'toast'
+  / = javascript_pack_tag 'toast'
