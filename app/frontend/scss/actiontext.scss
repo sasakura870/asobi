@@ -3,12 +3,13 @@
 // the trix-editor content (whether displayed or under editing). Feel free to incorporate this
 // inclusion directly in any other asset bundle and remove this file.
 //
-//= require trix/dist/trix
+// //= require trix/dist/trix
 // @import "trix/dist/trix";
 // We need to override trix.css’s image gallery styles to accommodate the
 
 // <action-text-attachment> element we wrap around attachments. Otherwise,
 // images in galleries will be squished by the max-width: 33%; rule.
+
 .trix-content {
   .attachment-gallery {
 
@@ -39,13 +40,16 @@
 
   // ここから追加したコード
 
+  div {
+    margin-bottom: .8rem;
+  }
+
   h1 {
-    font-size: 3.2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     border-left: 5px solid $main_color;
     background: lighten($main_color, 30);
     padding: .8rem 1.6rem;
-    margin-top: 1.6rem;
     margin-bottom: 1.6rem;
   }
 
@@ -70,7 +74,6 @@
     background: #efefef;
     color: #555;
     border: none;
-    margin-top: 1.6rem;
     margin-bottom: 1.6rem;
 
     &::before {
@@ -88,21 +91,20 @@
 
   pre {
     @include hand-write-border();
+    font-size: 1.6rem;
+    font-family: inherit;
     padding: 0.5em 1em;
-    margin-top: 1.6rem;
-    margin-bottom: 1.6rem;
+    margin-bottom: .8rem;
   }
 
   ul {
     position: relative;
     border: solid 2px $main_color;
     border-radius: 5px;
-    padding: 0.5em 1em 0.5em 2.3em;
-    margin-top: 1.6rem;
-    margin-bottom: 1.6rem;
+    padding: 0.5em 1em 0.5em 2em;
+    margin-bottom: .8rem;
 
     li {
-      line-height: 1.5;
       padding: 0.5em 0;
 
       &::before {
@@ -120,34 +122,30 @@
     counter-reset: number;
     border: solid 2px $highlight_color;
     border-radius: 5px;
-    padding: 0.5em;
-    margin-top: 1.6rem;
-    margin-bottom: 1.6rem;
+    padding: 0.5em 0;
+    margin-bottom: .8rem;
 
     li {
       position: relative;
-      padding-left: 30px;
-      line-height: 1.5em;
-      padding: 0.5em 0.5em 0.5em 30px;
+      margin-left: 1em;
+      padding: 0.5em 0.5em 0.5em 2em;
 
       &:before {
         position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
         counter-increment: number;
         content: counter(number);
         display: inline-block;
         background: $highlight_color;
         color: white;
-        font-family: 'Avenir', 'Arial Black', 'Arial', sans-serif;
         font-weight: bold;
-        font-size: 1.6rem;
-        border-radius: 50%;
-        left: 0;
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
+        font-size: 1.2rem;
+        line-height: 1.5em;
         text-align: center;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
       }
     }

@@ -1,0 +1,39 @@
+.p-article-post-form {
+  padding: 1em;
+
+  &__title {
+    font-size: 2.4rem;
+    margin-bottom: .5em;
+  }
+
+  &__overview {
+    margin-bottom: .5em;
+  }
+
+  &__content-wrapper {
+    background: $white_color;
+    border: 2px solid $general_line_color;
+    border-radius: 3px;
+    margin-bottom: 1em;
+    padding: 1em;
+
+    trix-editor {
+      min-height: 20em;
+      max-height: 20em;
+      overflow-y: auto;
+      padding: 1em;
+    }
+  }
+
+  &__submit-list {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+
+  &__submit-item {
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}

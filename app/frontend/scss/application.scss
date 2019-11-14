@@ -12,6 +12,7 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "trix/dist/trix";
+@import "selectize/dist/css/selectize";
 
 /*===============================
 foundation
@@ -29,8 +30,10 @@ mixin
 @import "./foundation/mixin/button";
 @import "./foundation/mixin/contents_box";
 
-//自動生成されたファイルだが、foundationフォルダ内の変数とmixinを内部で使用するためにここに記述
+// 自動生成されたファイルだが、foundationフォルダ内の変数とmixinを内部で使用するためにここに記述
 @import "./actiontext";
+// selectize.jsのデザイン修正用
+@import "./selectize.scss";
 
 /*===============================
 	layout
@@ -65,6 +68,7 @@ mixin
 
 @import "./object/project/article_card";
 @import "./object/project/article_item";
+@import "./object/project/article_post_form";
 @import "./object/project/comment_form";
 @import "./object/project/comment_item";
 @import "./object/project/draft_item";

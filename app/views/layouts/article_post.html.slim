@@ -3,11 +3,9 @@ html lang = 'ja'
   = render partial: 'shared/head'
   body
     = render partial: 'shared/header'
-    / .container.container-width-custom.py-4
-      main
-        = yield
     #container.l-article-post
       main = yield
     - if Rails.env.development?
       = debug(params)
     = render partial: 'shared/flash'
+    = javascript_pack_tag 'selectize'
