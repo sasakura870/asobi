@@ -15,7 +15,10 @@
 
 .p-article-contents.u-mb3
   .p-article-contents__header
-    p.p-article-contents__datetime = @article.created_at
+    .p-article-contents__datetime
+      p.p-article-contents__created-at <span>投稿</span> : #{date_format @article.created_at}
+      - if @article.updated?
+        p.p-article-contents__updated-at <span>更新</span> : #{date_format @article.updated_at}
     - if @article.user == current_user
       .p-article-contents__menu
         = link_to(edit_article_path(@article), class: 'p-article-contents__menu-item c-link')
