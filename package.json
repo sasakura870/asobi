@@ -15,6 +15,7 @@
     "ress": "^2.0.1",
     "selectize": "^0.12.6",
     "sweetalert2": "^8.18.3",
+    "tippy.js": "^5.1.1",
     "trix": "^1.0.0",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.10",

@@ -12,6 +12,7 @@ environment.plugins.prepend('Provide',
     $: 'jquery',
     jQuery: 'jquery',
     Popper: ['popper.js', 'default'],
+    Tippy: 'tippy.js',
     vue: 'vue/dist/vue',
     Swal: 'sweetalert2'
   })
