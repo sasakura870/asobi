@@ -16,10 +16,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
   }
 
-  // ツールチップ
-  tippy("#hogehoge", {
-    content: "I'm a Tippy tooltip!",
-  });
+  // // ツールチップ
+  // const t = tippy("button", {
+  //   content: 'test'
+  // });
+  // console.log(t);
+  // console.log(t._tippy);
+
 
   // selectize
   $("#article_tag").selectize({
