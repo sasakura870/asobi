@@ -25,6 +25,17 @@ ol {
   list-style: none;
 }
 
+pre.debug_dump {
+  max-width: 1200px;
+  text-align: left;
+  margin: 10px auto;
+  padding: 5px;
+  border: 2px solid gray;
+  background: lightgray;
+  border-radius: 3px;
+}
+
+
 .swal2-popup {
   font-size: 1.6rem !important;
 }
