@@ -93,6 +93,8 @@
     @include hand-write-border();
     font-size: 1.6rem;
     font-family: inherit;
+    max-width: 40em;
+    overflow: scroll;
     padding: 0.5em 1em;
     margin-bottom: .8rem;
   }
