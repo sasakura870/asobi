@@ -12,9 +12,5 @@ module Relationships
     def handle
       UnfollowUserService.new(following: following, follower_id: follower_id).call
     end
-
-    def follower
-      @follower = User.find_by(id: follower_id)
-    end
   end
 end
