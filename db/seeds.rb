@@ -43,8 +43,8 @@ users.each do |user|
       status: :published
     }
     tag_list = []
-    5.times { tag_list << Faker::Sports::Basketball.team }
-    5.times { tag_list << Faker::Games::Pokemon.name }
+    2.times { tag_list << Faker::Sports::Basketball.team }
+    3.times { tag_list << Faker::Games::Pokemon.name }
     Articles::CreateHandler.new(
       user: user,
       params: params,

@@ -20,10 +20,10 @@ class ListupTagService < ApplicationService
         return
       end
     end
-    if tag_list.size < 11
+    if tag_list.size < 6
       service_succeeded model: tag_list
     else
-      service_failed message: 'タグは10個まで指定できます', model: tag_list
+      service_failed message: 'タグは5つまで指定できます', model: tag_list
     end
   end
 end
