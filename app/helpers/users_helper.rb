@@ -6,4 +6,8 @@ module UsersHelper
       image_pack_tag 'default_photo.png', size: "#{size}x#{size}", class: class_name
     end
   end
+
+  def user_name_format(user)
+    user.nick_name.present? ? user.nick_name : "@#{user.name}"
+  end
 end

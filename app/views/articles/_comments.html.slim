@@ -6,7 +6,7 @@
           .p-comment-item__header
             = link_to comment.user, class: 'p-comment-item__icon'
               = user_photo comment.user, size: 40, class_name: 'c-user-photo'
-            .p-comment-item__user-name = link_to "@#{comment.user.name}", comment.user, class: 'c-link c-link-user'
+            .p-comment-item__user-name = link_to user_name_format(comment.user), comment.user, class: 'c-link c-link-user'
           p.p-comment-item__body = comment.content
           .p-comment-item__footer
             p.p-comment-item__datetime = relative_time comment.created_at

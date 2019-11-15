@@ -4,4 +4,4 @@
     p.p-article-card__title = article.title
   = link_to article.user, class: 'p-article-card__footer c-link'
     .p-article-card__icon = user_photo article.user, size: 40, class_name: 'c-user-photo'
-    .p-article-card__user-name = article.user.name
+    .p-article-card__user-name = user_name_format article.user

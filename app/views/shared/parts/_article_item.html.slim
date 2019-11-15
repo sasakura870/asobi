@@ -10,7 +10,7 @@
     .p-article-item__footer
       .p-article-item__user-profile
         .p-article-item__user-photo = user_photo article.user, size: 40, class_name: 'c-user-photo'
-        p.p-article-item__user-name @#{article.user.name}
+        p.p-article-item__user-name = user_name_format article.user
       .p-article-item__reaction
         .p-article-item__favorite: span.c-badge.c-badge--favorite = article.favorites.count
         .p-article-item__comment: span.c-badge.c-badge--comment = article.comments.count
