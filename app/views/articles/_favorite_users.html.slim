@@ -1,9 +1,17 @@
 .p-card-contents
   .p-card-contents__header
-    h2 いいねしたユーザー
+    - if sidebar
+      h2 いいねしたユーザー
+    - else
+      h2
+        = link_to article.title, article, class: 'c-link'
+        | をいいねしたユーザー
   ul.p-card-contents__list
     - users.each do |user|
       li.p-card-contents__list-item
         = render partial: 'shared/parts/user_profile_mini', locals: { user: user }
   .p-card-contents__footer
-    = link_to '続きを見る', favorites_article_path(article), class: 'c-link'
+    - if sidebar
+      = link_to 'すべて見る', favorite_article_path(article), class: 'c-link'
+    - else
+      / = paginate users

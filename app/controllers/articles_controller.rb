@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     # @article ||= Article.find_by(id_digest: params[:id])
   end
 
-  def favorites
+  def favorite
     @article = Article.find_by(id_digest: params[:id])
   end
 
@@ -101,6 +101,7 @@ class ArticlesController < ApplicationController
     case action_name
     when 'new', 'edit' then 'article_post'
     when 'show' then 'article_show'
+    when 'favorite' then 'no_sidebar'
     end
   end
 end
