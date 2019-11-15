@@ -20,4 +20,12 @@ module ApplicationHelper
       return title + ' - ' + base_title
     end
   end
+
+  def date_format(datetime)
+    datetime.strftime '%F'
+  end
+
+  def relative_time(datetime)
+    time_ago_in_words(datetime) + '前'
+  end
 end

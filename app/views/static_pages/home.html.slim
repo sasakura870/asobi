@@ -12,6 +12,6 @@
 = render partial: 'shared/components/3column_articles', locals: { articles: @daily_articles, content_title: 'デイリーランキング', ranking: true }
 = render partial: 'shared/components/3column_articles', locals: { articles: @weekly_articles, content_title: 'ウィークリーランキング', ranking: true }
 
-= content_for(:sidemenu) do
+= content_for(:sidebar) do
   = render partial: 'shared/components/capsule_toys'
   = render partial: 'shared/components/mini_article_group', locals: { articles: @recommended_articles, content_title: 'オススメの遊び' }

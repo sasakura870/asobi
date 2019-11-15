@@ -9,7 +9,7 @@ class ListupTagService < ApplicationService
   attr_reader :article, :tag_names
 
   def perform
-    tag_array = tag_names.split.reject(&:blank?).uniq
+    tag_array = tag_names.split(',').reject(&:blank?).uniq
     tag_list = []
     tag_array.each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)
@@ -20,10 +20,10 @@ class ListupTagService < ApplicationService
         return
       end
     end
-    if tag_list.size < 11
+    if tag_list.size < 6
       service_succeeded model: tag_list
     else
-      service_failed message: 'タグは10個まで指定できます', model: tag_list
+      service_failed message: 'タグは5つまで指定できます', model: tag_list
     end
   end
 end

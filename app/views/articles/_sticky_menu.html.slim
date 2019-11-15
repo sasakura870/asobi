@@ -1,0 +1,7 @@
+ul.p-sticky-menu
+  li.p-sticky-menu__item
+    favorite-button :article-id=article.id :is-favorited='#{current_user&.already_favorite?(article)}' :favorite-count=article.favorites.count
+  li.p-sticky-menu__item
+    .p-sticky-menu__btn
+      button.c-circle-btn.c-circle-btn--highlight
+        i.fas.fa-surprise.fa-fw

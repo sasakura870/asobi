@@ -11,12 +11,13 @@
     text-align: left;
   }
 
-  &__full-name {
+  &__nick-name {
     font-weight: 700;
   }
 
   &__name {
     color: $supplement_color;
+    margin-bottom: 1em;
   }
 
   &__follow-btn {}

@@ -3,8 +3,8 @@
     = user_photo user, size: 200, class_name: 'c-user-photo'
   .p-user-profile-contents__header
     - if user.nick_name.present?
-      h3.p-user-profile-contents__full-name = user.nick_name
-    h4.p-user-profile-contents__name @#{user.name}
+      h2.p-user-profile-contents__nick-name = user.nick_name
+    h3.p-user-profile-contents__name = link_to "@#{user.name}", user, class: 'c-link'
     - if logged_in? && user != current_user
       .p-user-profile-contents__follow-btn
         follow-button　:user-id='#{user.id}' :is-followed='#{current_user.already_follow?(user)}'

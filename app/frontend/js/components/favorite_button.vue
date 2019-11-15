@@ -1,14 +1,20 @@
 <template>
   <div v-if="check">
-    <span class="p-sticky-menu__btn-counter">{{count}}</span>
+    <span class="p-sticky-menu__btn-counter u-text-main c-link">{{
+      count
+    }}</span>
     <div class="p-sticky-menu__btn">
-      <button @click="deleteFavorite" :disabled="isProcessing" class="c-circle-btn">
+      <button
+        @click="deleteFavorite"
+        :disabled="isProcessing"
+        class="c-circle-btn"
+      >
         <i class="fas fa-star fa-fw"></i>
       </button>
     </div>
   </div>
   <div v-else>
-    <span class="p-sticky-menu__btn-counter">{{count}}</span>
+    <span class="p-sticky-menu__btn-counter c-link">{{ count }}</span>
     <div class="p-sticky-menu__btn">
       <button
         @click="createFavorite"
@@ -82,5 +88,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

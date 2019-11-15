@@ -13,6 +13,7 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "trix/dist/trix";
 @import "selectize/dist/css/selectize";
+@import "tippy.js/dist/tippy";
 
 /*===============================
 foundation
@@ -75,6 +76,7 @@ mixin
 @import "./object/project/footer";
 @import "./object/project/header";
 @import "./object/project/sticky_menu";
+@import "./object/project/user_profile_mini";
 
 /*
 contents

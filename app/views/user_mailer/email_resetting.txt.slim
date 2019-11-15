@@ -1,5 +1,5 @@
 | こんにちは、#{@user.name}さん。
-| Qiitaにご登録いただいたメールアドレスを確認します。
+| Asobiにご登録いただいたメールアドレスを確認します。
 | 下記のURLからアクセスして、認証を完了してください。
 | リンクの有効期限はメールアドレス変更から24時間以内です。ご注意ください。
 = edit_account_activation_url(@user.activation, email: @user.email)

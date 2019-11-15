@@ -6,13 +6,30 @@
     @include contents-header();
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 0;
   }
 
   &__datetime {
     font-size: 1.4rem;
-    color: $supplement_color;
     margin-bottom: .5em;
+    display: flex;
+  }
+
+  &__created-at {
+    margin-right: 1em;
+
+    span {
+      font-weight: 700;
+      color: $highlight_color;
+    }
+  }
+
+  &__updated-at {
+
+    span {
+      font-weight: 700;
+      color: $sub_highlight_color;
+    }
   }
 
   &__menu {

@@ -1,6 +1,4 @@
 class Article < ApplicationRecord
-  # after_create :create_id_digest
-
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
@@ -26,20 +24,16 @@ class Article < ApplicationRecord
     id_digest
   end
 
+  def updated?
+    updated_at - created_at > 1.day
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
 
   def link_tag(tag)
     tags << tag
-    # if new_record?
-    # else
-    #   map = []
-    #   tag_list.each do |tag|
-    #     map << tag_maps.build(tag_id: tag.id)
-    #   end
-    #   TagMap.import map
-    # end
   end
 
   def unlink_tag(tag)
@@ -50,9 +44,5 @@ class Article < ApplicationRecord
   def create_id_digest
     new_digest = Digest::MD5.hexdigest(id.to_s)
     update_column(:id_digest, new_digest)
-    # if id_digest.nil?
-    # end
   end
-
-  # private
 end

@@ -9,6 +9,6 @@
     .p-article-card__reaction
       .p-article-card__favorite: span.c-badge.c-badge--favorite = article.favorites.count
       .p-article-card__comment: span.c-badge.c-badge--comment = article.comments.count
-  = link_to article.user, class: 'p-article-card__footer'
+  = link_to article.user, class: 'p-article-card__footer c-link'
     .p-article-card__icon = user_photo article.user, size: 40, class_name: 'c-user-photo'
-    .p-article-card__user-name = article.user.name
+    .p-article-card__user-name = user_name_format article.user

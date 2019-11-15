@@ -9,6 +9,6 @@ module ArticlesHelper
   end
 
   def tag_formatting(tag_list)
-    tag_list.pluck(:name).join(' ')
+    tag_list.pluck(:name).join(',')
   end
 end

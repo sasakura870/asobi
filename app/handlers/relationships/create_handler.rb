@@ -10,11 +10,7 @@ module Relationships
     attr_reader :following, :follower_id
 
     def handle
-      FollowUserService.new(following: following, follower: follower).call
-    end
-
-    def follower
-      @follower = User.find_by(id: follower_id)
+      FollowUserService.new(following: following, follower_id: follower_id).call
     end
   end
 end
