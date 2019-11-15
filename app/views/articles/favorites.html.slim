@@ -1,10 +1,2 @@
-.card-body
-  h1.card-title.display-3 #{@article.title} / いいねしたユーザー一覧
-  .row
-    - @article.favorite_users.each do |user|
-      .col-md-4
-        .card-deck
-          .card
-            .card-body
-              = link_to user.name, user
+= render partial: 'articles/favorite_users', locals: { article: @article, users: @article.favorite_users}
 

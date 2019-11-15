@@ -15,5 +15,7 @@
     border-bottom: 1px solid $general_line_color;
   }
 
-  &__footer {}
+  &__footer {
+    text-align: center;
+  }
 }

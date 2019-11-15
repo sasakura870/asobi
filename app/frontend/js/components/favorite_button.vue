@@ -38,7 +38,6 @@ export default {
   mixins: [Processing],
   props: {
     articleId: Number,
-    favoritesUrl: String,
     isFavorited: Boolean,
     favoriteCount: Number
   },

@@ -1,0 +1,9 @@
+.p-user-profile-mini
+  .p-user-profile-mini__photo
+    = link_to user
+      = user_photo user, size: 80, class_name: 'c-user-photo'
+  .p-user-profile-mini__body
+    .p-user-profile-mini__name
+      = link_to user.name, user, class: 'c-link'
+    .p-user-profile-mini__follow-btn
+      button.c-btn フォローする

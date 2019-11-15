@@ -1,0 +1,20 @@
+.p-user-profile-mini {
+  display: flex;
+  width: 270px;
+  // margin: .5em;
+  padding: .5em;
+
+  &__photo {
+    margin-right: 1em;
+  }
+
+  &__body {
+    flex: 1 1;
+  }
+
+  &__name {
+    margin-bottom: .5em;
+  }
+
+  &__follow-btn {}
+}
