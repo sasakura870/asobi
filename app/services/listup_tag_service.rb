@@ -9,7 +9,7 @@ class ListupTagService < ApplicationService
   attr_reader :article, :tag_names
 
   def perform
-    tag_array = tag_names.split.reject(&:blank?).uniq
+    tag_array = tag_names.split(',').reject(&:blank?).uniq
     tag_list = []
     tag_array.each do |tag_name|
       tag = Tag.find_or_create_by(name: tag_name)

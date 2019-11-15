@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   // selectize
   $("#article_tag").selectize({
     plugins: ['restore_on_backspace', 'remove_button'],
-    delimiter: " ",
+    delimiter: ",",
     persist: false,
     maxItems: 10,
     create: function (input) {
