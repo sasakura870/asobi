@@ -28,4 +28,8 @@ module ApplicationHelper
   def relative_time(datetime)
     time_ago_in_words(datetime) + '前'
   end
+
+  def visitor
+    VisitorViewModel.new(user: current_user)
+  end
 end
