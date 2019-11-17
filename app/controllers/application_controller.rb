@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :store_location, if: -> { controller_name != 'sessions' }
 
+  # TODO 後々削除する
   helper_method :current_user, :logged_in?
 
   protected

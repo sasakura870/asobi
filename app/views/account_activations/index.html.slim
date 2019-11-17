@@ -5,7 +5,7 @@
     h1.u-text-main 仮登録が完了しました！
     p 受け取ったメールから本登録を完了してください！
   .p-account-activation-contents__body
-    h2.p-account-activation-contents__email = current_user.email
+    h2.p-account-activation-contents__email = visitor.email
     p.p-account-activation-contents__text メール本文に記載されているURLをクリックして会員登録を完了しましょう！
     .p-account-activation-contents__info
       // TODO メール再送リンクの処理

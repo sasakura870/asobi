@@ -12,6 +12,7 @@ module Settings
         session: session,
         cookies: cookies
       )
+      # TODO 失敗時のエラーメッセージが出ない
       flash[:error] = handler.fail_message unless handler.run
       render :index
     end

@@ -10,12 +10,12 @@
           p.p-comment-item__body = comment.content
           .p-comment-item__footer
             p.p-comment-item__datetime = relative_time comment.created_at
-            - if comment.user == current_user
+            - if visitor.myself? comment.user
               .p-comment-item__menu: delete-comment-button :comment-id="#{comment.id}"
-  - if logged_in?
+  - if visitor.logged_in?
     .p-list-contents__footer.p-comment-form
-      .p-comment-form__user-photo = user_photo current_user, size: 40, class_name: 'c-user-photo'
-      = form_with model: current_user.comments.new, local: true, class: 'p-comment-form__form' do |f|
+      .p-comment-form__user-photo = user_photo visitor, size: 40, class_name: 'c-user-photo'
+      = form_with model: Comment.new(user_id: visitor.id), local: true, class: 'p-comment-form__form' do |f|
         = f.hidden_field :article_id, value: article.id
         = f.text_area :content, placeholder: 'コメントを入力…', required: true, rows: 4, class: 'p-comment-form__text-area'
         .p-comment-form__submit: button.c-hand-write-btn 投稿する
