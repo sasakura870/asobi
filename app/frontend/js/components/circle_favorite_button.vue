@@ -1,13 +1,16 @@
 <template>
   <div v-if="check">
-    <span class="p-sticky-menu__btn-counter u-text-main c-link">{{
+    <span class="p-sticky-menu__btn-counter u-text-main c-link">
+      {{
       count
-    }}</span>
-    <div class="p-sticky-menu__btn">
+      }}
+    </span>
+    <div class="p-sticky-menu__btn js-tooltip" :data-tippy-content="tooltipMessage">
       <button
         @click="deleteFavorite"
-        :disabled="isProcessing"
+        :disabled="isProcessing || !favoritable"
         class="c-circle-btn"
+        :class="{ 'u-disable' : !favoritable }"
       >
         <i class="fas fa-star fa-fw"></i>
       </button>
@@ -15,11 +18,12 @@
   </div>
   <div v-else>
     <span class="p-sticky-menu__btn-counter c-link">{{ count }}</span>
-    <div class="p-sticky-menu__btn">
+    <div class="p-sticky-menu__btn js-tooltip" :data-tippy-content="tooltipMessage">
       <button
         @click="createFavorite"
-        :disabled="isProcessing"
+        :disabled="isProcessing || !favoritable"
         class="c-circle-btn c-circle-btn--supplement"
+        :class="{ 'u-disable' : !favoritable }"
       >
         <i class="fas fa-star fa-fw"></i>
       </button>
@@ -39,6 +43,8 @@ export default {
   props: {
     articleId: Number,
     isFavorited: Boolean,
+    favoritable: Boolean,
+    myArticle: Boolean,
     favoriteCount: Number
   },
   data: function() {
@@ -46,6 +52,14 @@ export default {
       check: this.isFavorited,
       count: this.favoriteCount
     };
+  },
+  computed: {
+    tooltipMessage: function() {
+      var message = this.check ? "いいね解除" : "いいね";
+      message = this.favoritable ? message : "新規登録していいねしましょう！";
+      message = this.myArticle ? "自分の遊びにはいいねできません" : message;
+      return message;
+    }
   },
   methods: {
     createFavorite: async function() {

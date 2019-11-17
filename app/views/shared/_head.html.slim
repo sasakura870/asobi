@@ -3,7 +3,7 @@
     meta charset = 'UTF-8'
     = csrf_meta_tags
     = csp_meta_tag
-    = javascript_pack_tag 'application'
     - if javascript_file_exist?
       = javascript_pack_tag javascript_path
+    = javascript_pack_tag 'application'
     = stylesheet_pack_tag 'application', component: 'all'

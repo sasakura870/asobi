@@ -7,19 +7,22 @@ header#header.l-header
           = f.search_field :q, placeholder: 'キーワードを入力…', class: 'c-text-field__input'
     .p-header__right
       ul.p-header__list
-        - if logged_in?
+        - if visitor.logged_in?
           li.p-header__list-item
             = link_to new_article_path, class: 'c-hand-write-btn c-hand-write-btn--dark-tone'
               i.fas.fa-pen.fa-fw
               | 投稿
-          li.p-header__list-item
+          li.p-header__list-item.js-tooltip data-tippy-content="まだ使えません！"
             = link_to '#', class: 'c-link c-link--nav'
               i.far.fa-bell.fa-lg
+          - if visitor.temporary?
+            li.p-header__list-item
+              span.c-badge.c-badge--sub-highlight 仮登録
           li.p-header__list-item
             .p-header__dropdown
-              = user_photo current_user, size:35, class_name: 'c-user-photo'
+              = user_photo visitor, size:35, class_name: 'c-user-photo'
               ul.p-header__dropdown-list.u-shadow
-                li.p-header__dropdown-item = link_to 'マイページ', current_user
+                li.p-header__dropdown-item = link_to 'マイページ', user_path(visitor)
                 li.p-header__dropdown-item = link_to '設定', settings_root_path
                 li.p-header__dropdown-item = link_to '下書き一覧', drafts_path
                 li.p-header__dropdown-item = link_to 'ログアウト', logout_path, method: :delete

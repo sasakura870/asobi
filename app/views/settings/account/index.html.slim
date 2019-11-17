@@ -1,6 +1,6 @@
 .p-form-contents
   .p-form-contents__header: h1 アカウント設定
-  = form_with model: current_user, scope: :account, url: settings_account_path(current_user), method: :patch, local: true, class: 'p-form-contents__form' do |f|
+  = form_with model: visitor, scope: :account, url: settings_account_path(visitor), method: :patch, local: true, class: 'p-form-contents__form' do |f|
     .p-form-contents__input
       = f.label :email, class: 'p-form-contents__input-label u-text-bold'
         i.far.fa-envelope.fa-fw
@@ -8,10 +8,11 @@
       .p-form-contents__input-field.c-text-field.c-text-field--email
         = f.email_field :email, placeholder: '新しいメールアドレス', class: 'c-text-field__input'
       p.p-form-contents__input-note メールアドレス変更後は仮登録の状態に戻ります。変更後は送られてきたメールから再度本登録を行ってください。
-      - if current_user.temporary?
+      - if visitor.temporary?
         small.u-text-sub-highlight
           | 本登録が完了していません。本登録用メールから本登録を行ってください。
           br/
+          / TODO 再送用メール処理
           | 本登録用メールを再送する場合は#{link_to 'こちらをクリックしてください', '#'}
     .p-form-contents__submit: button.c-hand-write-btn 変更する
   .p-form-contents__item

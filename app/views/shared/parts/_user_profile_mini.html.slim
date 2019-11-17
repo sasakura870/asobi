@@ -5,6 +5,6 @@
   .p-user-profile-mini__body
     .p-user-profile-mini__name
       = link_to user_name_format(user), user, class: 'c-link'
-    - if logged_in? && current_user != user
+    - if visitor.logged_in? && !visitor.myself?(user)
       .p-user-profile-mini__follow-btn
-        follow-button　:user-id='#{user.id}' :is-followed='#{current_user.already_follow?(user)}'
+        follow-button　:user-id='#{user.id}' :is-followed='#{visitor.follow?(user)}'

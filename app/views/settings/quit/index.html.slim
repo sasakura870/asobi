@@ -1,13 +1,13 @@
 .p-form-contents
-  - if logged_in?
+  - if visitor.logged_in?
     .p-form-contents__header: h1 退会する
     .p-form-contents__item
       p アカウントを削除すると、Asobiでの活動内容(投稿した記事、いいねなど)が全て削除されます。
       p: strong.u-text-danger この処理は取り消しできません。十分にご注意ください。
-      p アカウント名: #{link_to current_user.name, current_user, class: 'c-link'}
-    = form_with model: current_user, scope: :quit, url: settings_quit_path(current_user), method: :delete, local: true, class: 'p-form-contents__form' do |f|
+      p アカウント名: #{link_to visitor.name, user_path(visitor), class: 'c-link'}
+    = form_with model: visitor, scope: :quit, url: settings_quit_path(visitor), method: :delete, local: true, class: 'p-form-contents__form' do |f|
       .p-form-contents__input
-        = f.label :password, class: 'p-form-contents__input-label'
+        = f.label :password, 'パスワード', class: 'p-form-contents__input-label'
         .p-form-contents__input-field.c-text-field.c-text-field--password
           = f.password_field :password, class: 'c-text-field__input'
       button.p-form-contents__submit.c-btn.c-btn--danger 退会する
