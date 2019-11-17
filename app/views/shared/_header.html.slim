@@ -12,12 +12,12 @@ header#header.l-header
             = link_to new_article_path, class: 'c-hand-write-btn c-hand-write-btn--dark-tone'
               i.fas.fa-pen.fa-fw
               | 投稿
-          li.p-header__list-item
+          li.p-header__list-item.js-tooltip data-tippy-content="まだ使えません！"
             = link_to '#', class: 'c-link c-link--nav'
               i.far.fa-bell.fa-lg
           - if visitor.temporary?
             li.p-header__list-item
-              span.c-badge.c-badge--highlight 仮登録
+              span.c-badge.c-badge--sub-highlight 仮登録
           li.p-header__list-item
             .p-header__dropdown
               = user_photo visitor, size:35, class_name: 'c-user-photo'
