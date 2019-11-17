@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   new vue({
     el: '#container',
     components: {
-      'favorite-button': CircleFavoriteButton,
+      'circle-favorite-button': CircleFavoriteButton,
       'delete-comment-button': DeleteCommentButton,
       'follow-button': FollowButton
       // 'comment-form': CommentForm

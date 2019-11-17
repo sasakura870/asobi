@@ -1,7 +1,7 @@
 require("selectize");
 import tippy from "tippy.js";
 
-document.addEventListener('DOMContentLoaded', function (event) {
+document.addEventListener('DOMContentLoaded', function () {
   // flash表示用toast
   const type = document.getElementById("toast_type");
   const message = document.getElementById("toast_message");
@@ -16,12 +16,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
   }
 
-  // // ツールチップ
-  // const t = tippy("button", {
-  //   content: 'test'
-  // });
-  // console.log(t);
-  // console.log(t._tippy);
+  // ツールチップ
+  tippy(".js-tooltip", {
+    placement: "bottom",
+    trigger: "mouseenter focus",
+    onTrigger: function (instance) {
+      instance.setContent(instance.reference.getAttribute('data-tippy-content'));
+    }
+  });
 
 
   // selectize

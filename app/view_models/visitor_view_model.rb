@@ -35,6 +35,10 @@ class VisitorViewModel
     logged_in? && user.tags.exists?(tag.id)
   end
 
+  def my_article?(article)
+    logged_in? && user.articles.exists?(article.id)
+  end
+
   private
 
   attr_reader :user

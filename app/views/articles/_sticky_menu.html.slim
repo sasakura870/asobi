@@ -1,6 +1,6 @@
 ul.p-sticky-menu
   li.p-sticky-menu__item
-    circle-favorite-button :article-id=article.id :is-favorited='#{current_user&.already_favorite?(article)}' :favorite-count=article.favorites.count
+    circle-favorite-button :article-id=article.id :is-favorited="#{visitor.favorite?(article)}" :favoritable="#{visitor.register?}" :my-article="#{visitor.my_article?(article)}" :favorite-count=article.favorites.count
   li.p-sticky-menu__item
     .p-sticky-menu__btn
       button.c-circle-btn.c-circle-btn--highlight
