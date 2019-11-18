@@ -1,6 +1,6 @@
 .p-list-contents
   ul.p-list-contents__list
-    - article.comments.each do |comment|
+    - article.comments.older.each do |comment|
       li.p-list-contents__list-item
         .p-comment-item id="comment-#{comment.id}"
           .p-comment-item__header
