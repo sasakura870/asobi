@@ -48,6 +48,9 @@ gem 'activerecord-import', '~> 1.0', '>= 1.0.3'
 # # 検索機能の導入(内部でform_forを使っていたため使用せず)
 # gem 'ransack'
 
+# カウントのキャッシュ
+gem 'counter_culture'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
