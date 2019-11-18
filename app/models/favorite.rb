@@ -1,6 +1,7 @@
 class Favorite < ApplicationRecord
   belongs_to :user
   belongs_to :article
+  counter_culture :article
 
   validates :article_id, uniqueness: { scope: :user_id }
   validate :cannot_favorite_yourself, :cannot_favorite_draft
