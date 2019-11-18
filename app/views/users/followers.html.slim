@@ -5,5 +5,5 @@
 
 .u-mb3 = render partial: 'users/tab_menu', locals: { user: @user, action: :followers }
 / = render partial: 'users/article_contents', locals: { articles: @articles, header_title: '新着の遊び', no_contents_message: '投稿された遊びはありません' }
-= render partial: 'users/user_list_contents', locals: { user: @followers, header_title: 'フォロワー', no_contents_message: 'フォロワーはいません' }
+= render partial: 'users/user_list_contents', locals: { users: @followers, header_title: 'フォロワー', no_contents_message: 'フォロワーはいません' }
 
