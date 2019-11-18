@@ -43,7 +43,6 @@ export default {
         if (result.value) {
           Axios.delete(`/comments/${this.commentId}`)
             .then(function(response) {
-              console.log(response.data);
               if (response.status === 200) {
                 element.remove();
                 toast(response.data.type, response.data.message);

@@ -7,9 +7,10 @@ class FavoritesController < ApplicationController
       article_id: params[:article_id]
     ).run
     if handler.result
-      head :created
+      render status: :ok, json: { type: 'success', message: 'いいねしました!' }
     else
-      request_422
+      render status: :internal_server_error,
+             json: { type: 'error', message: 'いいねに失敗しました' }
     end
   end
 
@@ -19,9 +20,10 @@ class FavoritesController < ApplicationController
       article_id: params[:article_id]
     ).run
     if handler.result
-      head :ok
+      render status: :ok, json: { type: 'success', message: 'いいねを解除しました!' }
     else
-      request_422
+      render status: :internal_server_error,
+             json: { type: 'error', message: 'いいねの解除に失敗しました' }
     end
   end
 end
