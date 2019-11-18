@@ -51,10 +51,7 @@ export default {
             .catch(function(error) {
               console.log("deleteCommentFailure");
               console.log(error);
-              toast(
-                "error",
-                "コメントの削除に失敗しました。時間を置いて再度やり直してください"
-              );
+              toast(error.response.data.type, error.response.data.message);
             });
         }
       });
