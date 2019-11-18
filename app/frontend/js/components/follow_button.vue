@@ -1,18 +1,22 @@
 <template>
-  <button
-    v-if="check"
-    :disabled="isProcessing"
-    @click="deleteFollow"
-    type="button"
-    class="c-hand-write-btn c-hand-write-btn--wide"
-  >フォロー中</button>
-  <button
-    v-else
-    :disabled="isProcessing"
-    @click="createFollow"
-    type="button"
-    class="c-hand-write-btn c-hand-write-btn--supplement c-hand-write-btn--wide"
-  >フォローする</button>
+  <div class="js-tooltip" :data-tippy-content="tooltipMessage">
+    <button
+      v-if="check"
+      :disabled="isProcessing || !followable"
+      @click="deleteFollow"
+      type="button"
+      class="c-hand-write-btn c-hand-write-btn--wide"
+      :class="{ 'u-disable' : !followable }"
+    >フォロー中</button>
+    <button
+      v-else
+      :disabled="isProcessing || !followable"
+      @click="createFollow"
+      type="button"
+      class="c-hand-write-btn c-hand-write-btn--supplement c-hand-write-btn--wide"
+      :class="{ 'u-disable' : !followable }"
+    >フォローする</button>
+  </div>
 </template>
 
 <script>
@@ -20,18 +24,27 @@ import Axios from "axios";
 import { csrfToken } from "@rails/ujs";
 import { async } from "q";
 import Processing from "../mixins/processing";
+import Toast from "../mixins/toast";
 
 Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken();
 export default {
-  mixins: [Processing],
+  mixins: [Processing, Toast],
   props: {
     userId: Number,
-    isFollowed: Boolean
+    isFollowed: Boolean,
+    followable: Boolean
   },
   data: function() {
     return {
       check: this.isFollowed
     };
+  },
+  computed: {
+    tooltipMessage: function() {
+      var message = this.check ? "フォロー解除" : "フォロー";
+      message = this.followable ? message : "新規登録してフォローしましょう!";
+      return message;
+    }
   },
   methods: {
     createFollow: async function() {
@@ -40,12 +53,14 @@ export default {
         const response = await Axios.post("/relationships", {
           user_id: this.userId
         });
-        if (response.status === 201) {
+        if (response.status === 200) {
           this.check = !this.check;
+          this.toast(response.data.type, response.data.message);
         }
       } catch (error) {
         console.log("createFollowFailure");
         console.log(error);
+        this.toast(error.response.data.type, error.response.data.message);
       } finally {
         this.endProcessing();
       }
@@ -60,10 +75,12 @@ export default {
         });
         if (response.status === 200) {
           this.check = !this.check;
+          this.toast(response.data.type, response.data.message);
         }
       } catch (error) {
         console.log("deleteFollowFailure");
         console.log(error);
+        this.toast(error.response.data.type, error.response.data.message);
       } finally {
         this.endProcessing();
       }

@@ -7,4 +7,4 @@
       .p-user-list-item__introduction = user.introduction
     .p-user-list-item__follow
       - if visitor.logged_in? && !visitor.myself?(user)
-        follow-button　:user-id='#{user.id}' :is-followed='#{visitor.follow?(user)}'
+        follow-button　:user-id='#{user.id}' :is-followed='#{visitor.follow?(user)}' :followable='#{visitor.register?}'

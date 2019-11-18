@@ -7,9 +7,10 @@ class RelationshipsController < ApplicationController
       follower_id: params[:user_id]
     ).run
     if handler.result
-      head :created
+      render status: :ok, json: { type: 'success', message: 'フォローしました!' }
     else
-      request_422
+      render status: :internal_server_error,
+             json: { type: 'error', message: 'フォローに失敗しました' }
     end
   end
 
@@ -19,9 +20,10 @@ class RelationshipsController < ApplicationController
       follower_id: params[:user_id]
     ).run
     if handler.result
-      head :ok
+      render status: :ok, json: { type: 'success', message: 'フォローを解除しました' }
     else
-      request_422
+      render status: :internal_server_error,
+             json: { type: 'error', message: 'フォローの解除に失敗しました' }
     end
   end
 end
