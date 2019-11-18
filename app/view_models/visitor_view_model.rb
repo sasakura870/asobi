@@ -8,7 +8,7 @@ class VisitorViewModel
   end
 
   def logged_in?
-    user.present?
+    user.present? && !user.destroyed?
   end
 
   def myself?(target_user)

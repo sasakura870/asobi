@@ -11,9 +11,8 @@ module Settings
         password: input_data[:password],
         session: session,
         cookies: cookies
-      )
-      # TODO 失敗時のエラーメッセージが出ない
-      flash[:error] = handler.fail_message unless handler.run
+      ).run
+      flash.now[:error] = handler.message unless handler.result
       render :index
     end
   end
