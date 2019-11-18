@@ -1,23 +1,23 @@
 .c-link {
-  color: $primary_color;
+  color: $primary-color;
 
   &:hover {
     text-decoration: none;
   }
 
   &--brand {
-    color: $white_color;
+    color: $white-color;
 
     &:hover {
-      color: $white_color;
+      color: $white-color;
     }
   }
 
   &--nav {
-    color: rgba($white_color, 0.5);
+    color: rgba($white-color, 0.5);
 
     &:hover {
-      color: $white_color;
+      color: $white-color;
     }
   }
 }

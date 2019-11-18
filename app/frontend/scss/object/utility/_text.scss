@@ -1,7 +1,7 @@
 .u-text {
 
   @each $key,
-  $color in $custom_colors {
+  $color in $custom-colors {
     &-#{$key} {
       color: $color
     }

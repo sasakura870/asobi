@@ -1,9 +1,9 @@
 .c-outline-btn {
   @include block-btn();
-  @include outline-btn-color-extension($main_color);
+  @include outline-btn-color-extension($main-color);
 
   @each $key,
-  $color in $custom_colors {
+  $color in $custom-colors {
     &--#{$key} {
       @include outline-btn-color-extension(($color));
     }

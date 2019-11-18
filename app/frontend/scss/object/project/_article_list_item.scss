@@ -4,7 +4,7 @@
   margin-bottom: 1em;
 
   &:hover {
-    background: $general_line_color;
+    background: $general-line-color;
   }
 
   &__thumbnail {
@@ -22,7 +22,7 @@
 
   &__overview {
     font-size: 1.2rem;
-    color: $supplement_color;
+    color: $supplement-color;
   }
 
   &__title {
@@ -62,7 +62,7 @@
 
   &__user-name {
     // font-weight: 700;
-    color: $black_color;
+    color: $black-color;
   }
 
   &__reaction {

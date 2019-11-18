@@ -24,7 +24,7 @@
       height: $check-box-size;
       content: "";
       transition: .3s;
-      border: 2px solid $general_line_color;
+      border: 2px solid $general-line-color;
       border-radius: 3px;
       opacity: 1;
     }
@@ -35,7 +35,7 @@
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
       font-size: $check-box-size;
-      color: $main_color;
+      color: $main-color;
       content: "\f00c";
       transition: .3s;
       opacity: 0;
@@ -48,7 +48,7 @@
 //   position: relative;
 //   margin: .5rem;
 //   padding-left: 1em;
-//   border: 2px solid $general_line_color;
+//   border: 2px solid $general-line-color;
 //   cursor: pointer;
 
 //   &__input {
@@ -63,7 +63,7 @@
 //     width: 1em;
 //     height: 1em;
 //     content: "";
-//     border: 2px solid $general_line_color;
+//     border: 2px solid $general-line-color;
 //     border-radius: 3px;
 //   }
 // }

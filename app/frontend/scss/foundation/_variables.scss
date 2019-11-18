@@ -1,7 +1,7 @@
 /*===============================
 	サイズ
 ================================*/
-$global_page_width: 1200px;
+$global-page-width: 1200px;
 
 
 /*===============================
@@ -11,40 +11,40 @@ $global_page_width: 1200px;
 /*
 	カスタムカラー(コンポーネントにも同様のカラーのCSSを作成)
 ================================*/
-$background_color: #F9ED69;
-$main_color: #F08A5D;
-$highlight_color: #6A2C70;
-$sub_highlight_color: #B83B5E;
-$main_dark_tone_color: #B1552C;
-$primary_color: #518CFC;
-$danger_color: #DC3445;
-$supplement_color: #939393;
-$gold_color: #DBB400;
-$silver_color: #96A9B3;
-$copper_color: #C47022;
+$background-color: #F9ED69;
+$main-color: #F08A5D;
+$highlight-color: #6A2C70;
+$sub-highlight-color: #B83B5E;
+$main-dark-tone-color: #B1552C;
+$primary-color: #518CFC;
+$danger-color: #DC3445;
+$supplement-color: #939393;
+$gold-color: #DBB400;
+$silver-color: #96A9B3;
+$copper-color: #C47022;
 
-$custom_colors: (bg: $background_color,
-  main: $main_color,
-  highlight: $highlight_color,
-  sub-highlight: $sub_highlight_color,
-  dark-tone: $main_dark_tone_color,
-  primary: $primary_color,
-  danger: $danger_color,
-  supplement: $supplement_color,
-  gold: $gold_color,
-  silver: $silver_color,
-  copper: $copper_color);
+$custom-colors: (bg: $background-color,
+  main: $main-color,
+  highlight: $highlight-color,
+  sub-highlight: $sub-highlight-color,
+  dark-tone: $main-dark-tone-color,
+  primary: $primary-color,
+  danger: $danger-color,
+  supplement: $supplement-color,
+  gold: $gold-color,
+  silver: $silver-color,
+  copper: $copper-color);
 
 /*
 	コンポーネントに使用しないカラー
 ================================*/
-$header_color: $main_color;
-$footer_color: $main_color;
+$header-color: $main-color;
+$footer-color: $main-color;
 
-$general_line_color: #DDDDDD;
-$white_color: white;
-$black_color: black;
-$float_shadow_color: rgba(0, 0, 0, 0.15);
+$general-line-color: #DDDDDD;
+$white-color: white;
+$black-color: black;
+$float-shadow-color: rgba(0, 0, 0, 0.15);
 
 /*===============================
 	余白
