@@ -9,6 +9,10 @@ class UpdateUserService < ApplicationService
   attr_reader :user, :params
 
   def perform
-    service_failed message: '更新に失敗しました', model: user unless user.update params
+    if user.update params
+      service_succeeded model: user
+    else
+      service_failed message: '更新に失敗しました', model: user
+    end
   end
 end

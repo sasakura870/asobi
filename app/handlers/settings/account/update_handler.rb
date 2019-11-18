@@ -11,8 +11,8 @@ module Settings
       attr_reader :user, :email
 
       def handle
-        mailer = UserMailer.email_resetting user
-        UpdateUserService.new(user: user, params: { email: email }).call
+        update_result = UpdateUserService.new(user: user, params: { email: email }).call
+        mailer = UserMailer.email_resetting update_result.model
         SendActivationEmailService.new(user: user, mailer: mailer).call
       end
     end
