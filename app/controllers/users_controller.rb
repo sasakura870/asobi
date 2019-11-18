@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :filter_only_guests, only: %i[new create]
-  before_action :filter_temporary_users_page, only: :show
+  before_action :filter_temporary_users_page, only: %i[show favorites followings followers]
 
   layout :switch_layout
 
@@ -9,8 +9,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find_by(name: params[:id])
-    @articles = @user.articles.recent.page(params[:page])
+    @articles = @user.articles.recent.page params[:page]
+  end
+
+  def favorites
+    @articles = @user.favorite_articles.recent.page params[:page]
+  end
+
+  def followings
+    @followings = @user.followings.page params[:page]
+  end
+
+  def followers
+    @followers = @user.followers.page params[:page]
   end
 
   def create
@@ -43,7 +54,7 @@ class UsersController < ApplicationController
   def switch_layout
     case action_name
     when 'new' then 'sessions'
-    when 'show' then 'left_sidebar'
+    when 'show', 'favorites', 'followings', 'followers' then 'left_sidebar'
     end
   end
 

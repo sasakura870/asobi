@@ -8,7 +8,13 @@ Rails.application.routes.draw do
 
   resources :searches, only: :index
 
-  resources :users, only: %i[show create destroy]
+  resources :users, only: %i[show create destroy] do
+    member do
+      get :favorites
+      get :followings
+      get :followers
+    end
+  end
   get 'signup', to: 'users#new'
 
   namespace :settings do

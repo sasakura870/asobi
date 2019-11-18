@@ -1,0 +1,12 @@
+.p-list-contents
+  .p-list-contents__header
+    h1 = header_title
+  - if articles.any?
+    ul.p-list-contents__list
+      - articles.each do |article|
+        li.p-list-contents__list-item
+          = render partial: 'shared/parts/article_list_item', locals: { article: article }
+  - else
+    p = no_contents_message
+  .p-list-contents__footer
+    = paginate articles
