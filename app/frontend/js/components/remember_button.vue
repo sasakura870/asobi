@@ -20,10 +20,11 @@ import Axios from "axios";
 import { csrfToken } from "@rails/ujs";
 import { async } from "q";
 import Processing from "../mixins/processing";
+import Toast from "../mixins/toast";
 
 Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken();
 export default {
-  mixins: [Processing],
+  mixins: [Processing, Toast],
   props: {
     isRemembered: Boolean
   },
@@ -34,15 +35,18 @@ export default {
   },
   methods: {
     remember: async function() {
+      const toast = this.toast;
       try {
         this.startProcessing();
         const response = await Axios.post("/settings/remember");
         if (response.status === 200) {
           this.check = !this.check;
+          this.toast(response.data.type, response.data.message);
         }
       } catch (error) {
         console.log("rememberFailure");
         console.log(error);
+        this.toast(error.response.data.type, error.response.data.message);
       } finally {
         this.endProcessing();
       }
@@ -53,12 +57,14 @@ export default {
         const response = await Axios.delete("/settings/remember/0");
         if (response.status === 200) {
           this.check = !this.check;
+          this.toast(response.data.type, response.data.message);
         }
       } catch (error) {
         console.log("forgetFailure");
         console.log(error);
       } finally {
         this.endProcessing();
+        this.toast(error.response.data.type, error.response.data.message);
       }
     }
   }

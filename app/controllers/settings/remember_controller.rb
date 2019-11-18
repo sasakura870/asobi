@@ -6,9 +6,10 @@ module Settings
         cookies: cookies
       )
       if handler.run
-        head :ok
+        render status: :ok, json: { type: 'success', message: 'ログイン状態を保持しました!' }
       else
-        request_422
+        render status: :internal_server_error,
+               json: { type: 'error', message: '永続ログインに失敗しました' }
       end
     end
 
@@ -18,9 +19,10 @@ module Settings
         cookies: cookies
       )
       if handler.run
-        head :ok
+        render status: :ok, json: { type: 'success', message: '永続ログインを解除しました!' }
       else
-        request_422
+        render status: :internal_server_error,
+               json: { type: 'error', message: '永続ログインの解除に失敗しました' }
       end
     end
   end

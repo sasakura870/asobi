@@ -60,7 +60,6 @@ export default {
   },
   methods: {
     createFavorite: async function() {
-      const toast = this.toast;
       try {
         this.startProcessing();
         const response = await Axios.post("/favorites", {
@@ -69,18 +68,18 @@ export default {
         if (response.status === 200) {
           this.check = !this.check;
           this.count++;
-          toast(response.data.type, response.data.message);
+          this.toast(response.data.type, response.data.message);
         }
       } catch (error) {
         console.log("createFavoriteFailure");
         console.log(error);
-        toast(error.response.data.type, error.response.data.message);
+        this.toast(error.response.data.type, error.response.data.message);
       } finally {
         this.endProcessing();
       }
     },
     deleteFavorite: async function() {
-      const toast = this.toast;
+      // const toast = this.toast;
       try {
         this.startProcessing();
         const response = await Axios.delete("/favorites/0", {
@@ -91,12 +90,12 @@ export default {
         if (response.status === 200) {
           this.check = !this.check;
           this.count--;
-          toast(response.data.type, response.data.message);
+          this.toast(response.data.type, response.data.message);
         }
       } catch (error) {
         console.log("deleteFavoriteFailure");
         console.log(error);
-        toast(error.response.data.type, error.response.data.message);
+        this.toast(error.response.data.type, error.response.data.message);
       } finally {
         this.endProcessing();
       }
