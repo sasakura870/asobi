@@ -1,0 +1,9 @@
+.p-user-list-item
+  .p-user-list-item__photo
+    = user_photo user, class_name: 'c-user-photo'
+  .p-user-list-item__body
+    .p-user-list-item__profile
+      .p-user-list-item__name = user_name_format user
+      .p-user-list-item__introduction = user.introduction
+    .p-user-list-item__follow
+      button.c-hand-write-btn フォローする

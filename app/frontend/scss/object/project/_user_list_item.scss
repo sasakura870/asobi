@@ -1,0 +1,27 @@
+.p-user-list-item {
+  display: flex;
+
+  &__photo {
+    flex: 1;
+    width: 30%;
+    margin-right: 1em;
+  }
+
+  &__body {
+    flex: 3;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__profile {}
+
+  &__name {
+    margin-bottom: .5em;
+  }
+
+  &__introduction {
+    font-size: 1.2rem;
+  }
+
+  &__follow {}
+}
