@@ -1,0 +1,32 @@
+.p-tab-menu {
+  border: 1px solid $general_line_color;
+  border-radius: 3px;
+  background: $white_color;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  &__list-item {
+    flex: 1 1;
+    text-align: center;
+    padding: .5em;
+
+    &:hover {
+      background: $general_line_color;
+    }
+
+    &--linked {
+      background: $general_line_color;
+      border-bottom: 3px solid $main_color;
+    }
+
+  }
+
+  &__item-badge {
+    font-size: 1.2rem;
+    margin-left: 1em;
+  }
+}
