@@ -7,5 +7,5 @@
     h3.p-user-profile-contents__name = link_to "@#{user.name}", user, class: 'c-link'
     - if visitor.logged_in? && !visitor.myself?(user)
       .p-user-profile-contents__follow-btn
-        follow-button　:user-id='#{user.id}' :is-followed='#{visitor.follow?(user)}'
+        follow-button　:user-id='#{user.id}' :is-followed='#{visitor.follow?(user)}' :followable='#{visitor.register?}'
   = simple_format(h(user.introduction), class: 'p-user-profile-contents__introduction')

@@ -1,10 +1,6 @@
 <template>
   <div v-if="check">
-    <span class="p-sticky-menu__btn-counter u-text-main c-link">
-      {{
-      count
-      }}
-    </span>
+    <span class="p-sticky-menu__btn-counter u-text-main c-link">{{count}}</span>
     <div class="p-sticky-menu__btn js-tooltip" :data-tippy-content="tooltipMessage">
       <button
         @click="deleteFavorite"
@@ -35,11 +31,12 @@
 import Axios from "axios";
 import { csrfToken } from "@rails/ujs";
 import Processing from "../mixins/processing";
+import Toast from "../mixins/toast";
 
 Axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken();
 
 export default {
-  mixins: [Processing],
+  mixins: [Processing, Toast],
   props: {
     articleId: Number,
     isFavorited: Boolean,
@@ -68,18 +65,21 @@ export default {
         const response = await Axios.post("/favorites", {
           article_id: this.articleId
         });
-        if (response.status === 201) {
+        if (response.status === 200) {
           this.check = !this.check;
           this.count++;
+          this.toast(response.data.type, response.data.message);
         }
       } catch (error) {
         console.log("createFavoriteFailure");
         console.log(error);
+        this.toast(error.response.data.type, error.response.data.message);
       } finally {
         this.endProcessing();
       }
     },
     deleteFavorite: async function() {
+      // const toast = this.toast;
       try {
         this.startProcessing();
         const response = await Axios.delete("/favorites/0", {
@@ -90,10 +90,12 @@ export default {
         if (response.status === 200) {
           this.check = !this.check;
           this.count--;
+          this.toast(response.data.type, response.data.message);
         }
       } catch (error) {
         console.log("deleteFavoriteFailure");
         console.log(error);
+        this.toast(error.response.data.type, error.response.data.message);
       } finally {
         this.endProcessing();
       }

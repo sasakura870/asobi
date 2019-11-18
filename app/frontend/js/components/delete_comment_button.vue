@@ -43,7 +43,6 @@ export default {
         if (result.value) {
           Axios.delete(`/comments/${this.commentId}`)
             .then(function(response) {
-              console.log(response.data);
               if (response.status === 200) {
                 element.remove();
                 toast(response.data.type, response.data.message);
@@ -52,10 +51,7 @@ export default {
             .catch(function(error) {
               console.log("deleteCommentFailure");
               console.log(error);
-              toast(
-                "error",
-                "コメントの削除に失敗しました。時間を置いて再度やり直してください"
-              );
+              toast(error.response.data.type, error.response.data.message);
             });
         }
       });

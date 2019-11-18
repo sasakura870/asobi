@@ -21,9 +21,10 @@ class CommentsController < ApplicationController
       comment_id: params[:id]
     ).run
     if handler.result
-      render json: { type: 'success', message: handler.message }
+      render status: :ok, json: { type: 'success', message: handler.message }
     else
-      request_422
+      render status: :internal_server_error,
+             json: { type: 'error', message: handler.message }
     end
   end
 

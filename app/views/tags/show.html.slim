@@ -5,7 +5,8 @@
     .p-tag-profile-contents__tag
       p.c-badge.c-badge--tag = @tag.name
     .p-tag-profile-contents__follow-btn
-      follow-tag-button :tag-id="#{@tag.id}", :is-followed="#{visitor.follow_tag?(@tag)}"
+      - if visitor.logged_in?
+        follow-tag-button :tag-id="#{@tag.id}" :is-followed="#{visitor.follow_tag?(@tag)}" :followable="#{visitor.register?}"
 
 .p-list-contents
   .p-list-contents__header: h1 新着の遊び
