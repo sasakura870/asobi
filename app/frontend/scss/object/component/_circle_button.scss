@@ -1,8 +1,8 @@
 .c-circle-btn {
-  @include circle-btn-color-extension($main_color);
+  @include circle-btn-color-extension($main-color);
   display: inline-block;
   position: relative;
-  color: $white_color;
+  color: $white-color;
   padding: .3em;
   border-radius: 50%;
   text-align: center;
@@ -16,7 +16,7 @@
   }
 
   @each $key,
-  $color in $custom_colors {
+  $color in $custom-colors {
     &--#{$key} {
       @include circle-btn-color-extension($color);
     }

@@ -1,6 +1,6 @@
 .p-article-card {
-  background: $white_color;
-  border: 2px solid $black_color;
+  background: $white-color;
+  border: 2px solid $black-color;
   border-radius: 3px;
   padding: 1em;
   // min-width: 450px;
@@ -8,13 +8,13 @@
 
   &__body {
     display: block;
-    border-bottom: 2px solid $black_color;
+    border-bottom: 2px solid $black-color;
     margin-bottom: .5em;
     text-align: left;
   }
 
   &__overview {
-    color: $supplement_color;
+    color: $supplement-color;
     font-size: 1.2rem;
   }
 

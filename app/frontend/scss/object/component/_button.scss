@@ -1,10 +1,10 @@
 .c-btn {
   @include block-btn();
   color: white;
-  @include btn-color-extension($main_color);
+  @include btn-color-extension($main-color);
 
   @each $key,
-  $color in $custom_colors {
+  $color in $custom-colors {
     &--#{$key} {
       @include btn-color-extension($color);
     }

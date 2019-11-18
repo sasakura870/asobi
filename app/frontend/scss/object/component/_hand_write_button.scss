@@ -4,10 +4,10 @@
   position: relative;
   background: transparent;
   color: white;
-  @include hand-write-btn-color-extension($main_color);
+  @include hand-write-btn-color-extension($main-color);
 
   &:hover {
-    color: $white_color;
+    color: $white-color;
 
     &::before {
       box-shadow: none;
@@ -30,7 +30,7 @@
   }
 
   @each $key,
-  $color in $custom_colors {
+  $color in $custom-colors {
     &--#{$key} {
       @include hand-write-btn-color-extension($color);
     }

@@ -9,20 +9,20 @@
     font-family: "Font Awesome 5 Free";
     content: "";
     transition: 0.2s;
-    color: $supplement_color;
+    color: $supplement-color;
   }
 
   &__input {
     width: 100%;
-    background: $white_color;
+    background: $white-color;
     padding: .3em;
-    border: 2px solid $general_line_color;
+    border: 2px solid $general-line-color;
     border-radius: 3px;
     outline: none;
     transition: 0.2s;
 
     &:focus {
-      border-color: $primary_color;
+      border-color: $primary-color;
     }
   }
 

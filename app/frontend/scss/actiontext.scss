@@ -47,8 +47,8 @@
   h1 {
     font-size: 2.4rem;
     font-weight: 700;
-    border-left: 5px solid $main_color;
-    background: lighten($main_color, 30);
+    border-left: 5px solid $main-color;
+    background: lighten($main-color, 30);
     padding: .8rem 1.6rem;
     margin-bottom: 1.6rem;
   }
@@ -60,10 +60,10 @@
   del {}
 
   a {
-    color: $main_color;
+    color: $main-color;
 
     &:hover {
-      color: $main_color;
+      color: $main-color;
     }
   }
 
@@ -101,7 +101,7 @@
 
   ul {
     position: relative;
-    border: solid 2px $main_color;
+    border: solid 2px $main-color;
     border-radius: 5px;
     padding: 0.5em 1em 0.5em 2em;
     margin-bottom: .8rem;
@@ -115,14 +115,14 @@
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         content: "\f138";
-        color: $main_color;
+        color: $main-color;
       }
     }
   }
 
   ol {
     counter-reset: number;
-    border: solid 2px $highlight_color;
+    border: solid 2px $highlight-color;
     border-radius: 5px;
     padding: 0.5em 0;
     margin-bottom: .8rem;
@@ -142,7 +142,7 @@
         counter-increment: number;
         content: counter(number);
         display: inline-block;
-        background: $highlight_color;
+        background: $highlight-color;
         color: white;
         font-weight: bold;
         font-size: 1.2rem;

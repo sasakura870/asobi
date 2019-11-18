@@ -1,5 +1,5 @@
 .p-footer {
-  max-width: $global_page_width;
+  max-width: $global-page-width;
   margin: 0 auto;
 
   &__link-list {
@@ -17,6 +17,6 @@
 
   &__copyright {
     text-align: center;
-    color: $white_color;
+    color: $white-color;
   }
 }

@@ -22,7 +22,7 @@
 
   &:hover {
     background: darken($color, 10);
-    color: $white_color;
+    color: $white-color;
   }
 }
 
@@ -33,7 +33,7 @@
 
   &:hover {
     background: $color;
-    color: $white_color;
+    color: $white-color;
   }
 }
 

@@ -9,7 +9,7 @@
     padding: 1em;
 
     &:not(:last-child) {
-      border-bottom: 1px solid $general_line_color;
+      border-bottom: 1px solid $general-line-color;
     }
   }
 
@@ -17,7 +17,7 @@
     padding: 1em;
 
     &:not(:last-child) {
-      border-bottom: 1px solid $general_line_color;
+      border-bottom: 1px solid $general-line-color;
     }
   }
 
@@ -33,7 +33,7 @@
 
   &__input-note {
     font-size: 1.2rem;
-    color: $supplement_color;
+    color: $supplement-color;
   }
 
   &__submit {}

@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :filter_only_register, only: %i[create]
+  before_action :filter_only_register, except: %i[show favorite]
   before_action :filter_only_post, only: :show
 
   layout :switch_layout
