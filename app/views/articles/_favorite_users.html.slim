@@ -7,7 +7,7 @@
         = link_to article.title, article, class: 'c-link'
         | をいいねしたユーザー
   ul.p-card-contents__list
-    - users.each do |user|
+    - users.find_each do |user|
       li.p-card-contents__list-item
         = render partial: 'shared/parts/user_profile_mini', locals: { user: user }
   .p-card-contents__footer

@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
   validates :content, presence: true
   validate :only_post
 
-  scope :older, -> { order(:created_at) }
+  scope :lately, -> { order(:created_at) }
 
   private
 

@@ -19,6 +19,9 @@ class ArticlesController < ApplicationController
 
   def favorite
     @article = Article.find_by(id_digest: params[:id])
+    @users = @article.favorite_users
+                     .includes(photo_attachment: :blob)
+                     .page params[:page]
   end
 
   def create
