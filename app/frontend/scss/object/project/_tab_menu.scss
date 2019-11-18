@@ -3,30 +3,39 @@
   border-radius: 3px;
   background: $white_color;
 
-  &__list {
+  &__menu {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0;
   }
 
-  &__list-item {
+  &__menu-item {
     flex: 1 1;
     text-align: center;
-    padding: .5em;
 
     &:hover {
       background: $general_line_color;
+      border-bottom: 3px solid $main_color;
     }
 
     &--linked {
       background: $general_line_color;
       border-bottom: 3px solid $main_color;
     }
+  }
 
+  &__menu-item-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+  }
+
+  &__item-text {
+    margin-right: 1em;
   }
 
   &__item-badge {
     font-size: 1.2rem;
-    margin-left: 1em;
   }
 }

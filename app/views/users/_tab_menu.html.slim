@@ -1,14 +1,18 @@
 .p-tab-menu
-  ul.p-tab-menu__list
-    li.p-tab-menu__list-item class=('p-tab-menu__list-item--linked' if action == :show)
-      = link_to user, class: 'c-link'
-        p 遊び<span class="p-tab-menu__item-badge c-badge">#{user.articles.size}</span>
-    li.p-tab-menu__list-item class=('p-tab-menu__list-item--linked' if action == :favorites)
-      = link_to favorites_user_path(user), class: 'c-link'
-        p いいねした遊び<span class="p-tab-menu__item-badge c-badge">#{user.favorite_articles.size}</span>
-    li.p-tab-menu__list-item class=('p-tab-menu__list-item--linked' if action == :followings)
-      = link_to followings_user_path(user), class: 'c-link'
-        p フォロー<span class="p-tab-menu__item-badge c-badge">#{user.followings.size}</span>
-    li.p-tab-menu__list-item class=('p-tab-menu__list-item--linked' if action == :followers)
-      = link_to followers_user_path(user), class: 'c-link'
-        p フォロワー<span class="p-tab-menu__item-badge c-badge">#{user.followers.size}</span>
+  ul.p-tab-menu__menu
+    li.p-tab-menu__menu-item class=('p-tab-menu__menu-item--linked' if action == :show)
+      = link_to user, class: 'p-tab-menu__menu-item-wrapper c-link'
+        p.p-tab-menu__item-text 遊び
+        span.p-tab-menu__item-badge.c-badge = user.articles.size
+    li.p-tab-menu__menu-item class=('p-tab-menu__menu-item--linked' if action == :favorites)
+      = link_to favorites_user_path(user), class: 'p-tab-menu__menu-item-wrapper c-link'
+        p.p-tab-menu__item-text いいね
+        span.p-tab-menu__item-badge.c-badge = user.favorite_articles.size
+    li.p-tab-menu__menu-item class=('p-tab-menu__menu-item--linked' if action == :followings)
+      = link_to followings_user_path(user), class: 'p-tab-menu__menu-item-wrapper c-link'
+        p.p-tab-menu__item-text フォロー
+        span.p-tab-menu__item-badge.c-badge = user.followings.size
+    li.p-tab-menu__menu-item class=('p-tab-menu__menu-item--linked' if action == :followers)
+      = link_to followers_user_path(user), class: 'p-tab-menu__menu-item-wrapper c-link'
+        p.p-tab-menu__item-text フォロワー
+        span.p-tab-menu__item-badge.c-badge = user.followers.size
