@@ -1,6 +1,3 @@
-// @import 'media/fonts/memoir-round-c63b435d0161341b85dd2b9262eef3ee.otf';
-@import '~bootstrap/scss/bootstrap';
-
 /*===============================
 	パッケージ
 ================================*/
@@ -33,8 +30,6 @@ mixin
 
 // 自動生成されたファイルだが、foundationフォルダ内の変数とmixinを内部で使用するためにここに記述
 @import "./actiontext";
-// selectize.jsのデザイン修正用
-@import "./selectize.scss";
 
 /*===============================
 	layout
@@ -102,5 +97,3 @@ contents
 @import "./object/utility/shadow";
 @import "./object/utility/spacer";
 @import "./object/utility/text";
-
-@import "./custom";
