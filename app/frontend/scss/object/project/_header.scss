@@ -46,12 +46,6 @@
 
   &__dropdown {
     position: relative;
-
-    &:hover {
-      .p-header__dropdown-list {
-        display: block;
-      }
-    }
   }
 
   &__dropdown-list {
@@ -61,18 +55,17 @@
     border: 1px solid $general-line-color;
     border-radius: 3px;
     background: white;
-    right: 10px;
-    display: none;
+    right: 0px;
     padding: 1em;
     margin-bottom: 0;
   }
 
   &__dropdown-item {
-    padding: 0.3em;
+    padding: .5em 0;
+    border-bottom: 1px solid $general-line-color;
 
-    &:not(:last-child) {
-      margin-bottom: 1em;
-      border-bottom: 1px solid $general-line-color;
+    &:hover {
+      background: $general-line-color;
     }
   }
 }
