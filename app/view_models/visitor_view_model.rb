@@ -24,21 +24,29 @@ class VisitorViewModel
   end
 
   def favorite?(article)
+    return false unless logged_in?
+
     @favorites ||= user.favorite_articles.pluck :id
     logged_in? && @favorites.include?(article.id)
   end
 
   def follow?(target_user)
+    return false unless logged_in?
+
     @followings ||= user.followings.pluck :id
     logged_in? && @followings.include?(target_user.id)
   end
 
   def follow_tag?(tag)
+    return false unless logged_in?
+
     @tags ||= user.tags.pluck :id
     logged_in? && @tags.include?(tag.id)
   end
 
   def my_article?(article)
+    return false unless logged_in?
+
     @articles ||= user.articles.pluck :id
     logged_in? && @articles.include?(article.id)
   end
