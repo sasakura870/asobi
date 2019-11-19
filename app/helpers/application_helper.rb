@@ -30,6 +30,6 @@ module ApplicationHelper
   end
 
   def visitor
-    VisitorViewModel.new(user: current_user)
+    @visitor ||= VisitorViewModel.new(user: current_user)
   end
 end
