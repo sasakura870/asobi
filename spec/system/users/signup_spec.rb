@@ -6,7 +6,7 @@ RSpec.describe '新規登録画面' do
     expect(page).to have_css('input', class: 'form-control', count: 4)
   end
 
-  # TODO ログインリンクが存在する
+  # TODO: ログインリンクが存在する
   # TODO ログイン画面へ遷移する
 
   describe '新規登録' do
@@ -38,10 +38,10 @@ RSpec.describe '新規登録画面' do
         end
       end
 
-      # TODO 誤った情報を入力した場合
-        # TODO 新規登録画面へ遷移する
-        # TODO 登録失敗のalertが表示される
-        # TODO エラーメッセージが表示される
+      # TODO: 誤った情報を入力した場合
+      # TODO 新規登録画面へ遷移する
+      # TODO 登録失敗のalertが表示される
+      # TODO エラーメッセージが表示される
 
       # context '誤った確認用パスワードを入力した場合' do
       #   let(:confirmation) { 'badpassword' }

@@ -51,18 +51,17 @@ gem 'activerecord-import', '~> 1.0', '>= 1.0.3'
 # カウントのキャッシュ
 gem 'counter_culture'
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # N+1問題の検出
   gem 'bullet'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -75,9 +74,9 @@ group :development do
   # 送信したメールを確認するgem
   gem 'letter_opener'
   # pryの導入
-  gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -85,12 +84,12 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
   gem 'factory_bot_rails', '~> 4.11'
   gem 'rspec-rails', '~> 3.7'
   gem 'spring-commands-rspec'
+  gem 'webdrivers'
   # systemSpec内でブラウザの再起動を再現する
-  gem "show_me_the_cookies"
+  gem 'show_me_the_cookies'
 end
 
 group :production do
@@ -98,4 +97,4 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

@@ -3,7 +3,7 @@ class DraftsController < ApplicationController
   layout 'no_sidebar'
 
   def index
-    @drafts = current_user.articles.draft.recent.page(params[:page])
+    @drafts = current_user.articles.draft.recent.page params[:page]
   end
 
   def destroy

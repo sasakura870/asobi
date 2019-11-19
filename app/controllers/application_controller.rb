@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # TODO service層に処理を移動したい
+  # TODO: service層に処理を移動したい
   def current_user
     return @current_user unless @current_user.nil?
 

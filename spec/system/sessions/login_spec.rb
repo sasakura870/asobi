@@ -4,7 +4,7 @@ RSpec.describe 'ログイン画面' do
   let(:main_user) { create(:user) }
   before { visit login_path }
 
-  # TODO 新規登録画面に遷移する
+  # TODO: 新規登録画面に遷移する
   # TODO パスワード再設定画面に遷移する
 
   describe 'ログイン機能' do
@@ -54,7 +54,7 @@ RSpec.describe 'ログイン画面' do
 
     context '使用して再起動する場合' do
       let(:remember_action) { check 'ログイン状態を保持する', visible: false }
-      it { expect(page).to have_checked_field("ログイン状態を保持する") }
+      it { expect(page).to have_checked_field('ログイン状態を保持する') }
       it '再起動後もログインしている' do
         within('header') { expect(page).to have_link 'dropdown_profile' }
       end

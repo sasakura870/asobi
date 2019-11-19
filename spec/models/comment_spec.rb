@@ -6,7 +6,7 @@ RSpec.describe Comment, type: :model do
   let(:draft_article) { register.articles.drafts.first }
 
   describe 'validation' do
-    subject { article.comments.build(params)}
+    subject { article.comments.build(params) }
 
     context '正常な値の場合' do
       let(:article) { post_article }
