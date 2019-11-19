@@ -19,13 +19,13 @@ header#header.l-header
             li.p-header__list-item
               span.c-badge.c-badge--sub-highlight 仮登録
           li.p-header__list-item
-            .p-header__dropdown
+            .p-header__dropdown.js-dropdown
               = user_photo visitor, size:35, class_name: 'c-user-photo'
               ul.p-header__dropdown-list.u-shadow
-                li.p-header__dropdown-item = link_to 'マイページ', user_path(visitor)
-                li.p-header__dropdown-item = link_to '設定', settings_root_path
-                li.p-header__dropdown-item = link_to '下書き一覧', drafts_path
-                li.p-header__dropdown-item = link_to 'ログアウト', logout_path, method: :delete
+                li.p-header__dropdown-item = link_to 'マイページ', user_path(visitor), class: 'c-link c-link--list'
+                li.p-header__dropdown-item = link_to '設定', settings_root_path, class: 'c-link c-link--list'
+                li.p-header__dropdown-item = link_to '下書き一覧', drafts_path, class: 'c-link c-link--list'
+                li.p-header__dropdown-item = link_to 'ログアウト', logout_path, method: :delete, class: 'c-link c-link--list'
         - else
           li.p-header__list-item = link_to '新規登録', signup_path, class: 'c-hand-write-btn c-hand-write-btn--sub-highlight'
           li.p-header__list-item = link_to 'ログイン', login_path, class: 'c-link c-link--nav'

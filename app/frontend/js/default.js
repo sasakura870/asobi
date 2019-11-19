@@ -2,6 +2,16 @@ require("selectize");
 import tippy from "tippy.js";
 
 document.addEventListener('DOMContentLoaded', function () {
+  // ドロップダウンメニュー
+  const dropdown = document.getElementsByClassName("js-dropdown");
+  console.log(dropdown);
+  for (let index = 0; index < dropdown.length; index++) {
+    console.log(`index : ${index}`)
+    dropdown[index].addEventListener('click', function (event) {
+      console.log(event);
+    });
+  }
+
   // flash表示用toast
   const type = document.getElementById("toast_type");
   const message = document.getElementById("toast_message");

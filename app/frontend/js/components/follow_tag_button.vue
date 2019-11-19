@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     tooltipMessage: function() {
-      var message = this.check ? "フォロー解除" : "フォロー";
+      let message = this.check ? "フォロー解除" : "フォロー";
       message = this.followable ? message : "新規登録してフォローしましょう!";
       return message;
     }

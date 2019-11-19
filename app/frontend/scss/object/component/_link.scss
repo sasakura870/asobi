@@ -20,4 +20,12 @@
       color: $white-color;
     }
   }
+
+  &--list {
+    color: $supplement-color;
+
+    &:hover {
+      color: $black-color;
+    }
+  }
 }
