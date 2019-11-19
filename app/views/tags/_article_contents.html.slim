@@ -2,7 +2,7 @@
   .p-list-contents__header: h1 新着の遊び
   ul.p-list-contents__list
     - if articles.any?
-      - articles.each do |article|
+      - articles.find_each do |article|
         li.p-list-contents__list-item
           = render partial: 'shared/parts/article_list_item', locals: { article: article }
     - else
