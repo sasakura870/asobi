@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     tooltipMessage: function() {
-      var message = this.check ? "いいね解除" : "いいね";
+      let message = this.check ? "いいね解除" : "いいね";
       message = this.favoritable ? message : "新規登録していいねしましょう！";
       message = this.myArticle ? "自分の遊びにはいいねできません" : message;
       return message;

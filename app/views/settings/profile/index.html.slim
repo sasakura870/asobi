@@ -9,12 +9,12 @@
             = f.text_field :name, placeholder: 'ユーザーID', class: 'c-text-field__input'
           p.p-settings-profile-contents__input-note 英数字とアンダースコア(_)が利用できます。4~15文字で入力してください。
         .p-settings-profile-contents__input
-          = f.label :nick_name, class: 'p-settings-profile-contents__input-label'
+          = f.label :nick_name, 'ニックネーム', class: 'p-settings-profile-contents__input-label'
           .p-settings-profile-contents__input-field.c-text-field
             = f.text_field :nick_name, placeholder: 'ニックネーム', class: 'c-text-field__input'
           p.p-settings-profile-contents__input-note 50文字以内
         .p-settings-profile-contents__input
-          = f.label :introduction, class: 'p-settings-profile-contents__input-label'
+          = f.label :introduction, '自己紹介', class: 'p-settings-profile-contents__input-label'
           .p-settings-profile-contents__input-field
             = f.text_area :introduction, placeholder: '自己紹介を入力…',size: '10x5', class: 'c-text-area'
           p.p-settings-profile-contents__input-note 140字以内

@@ -4,9 +4,9 @@
   = render partial: 'articles/sticky_menu', locals: { article: @article }
 
 = content_for(:side_menu)
-  .u-mb3 = render partial: 'shared/parts/user_profile', locals: { user: @article.user }
+  .u-mb-3 = render partial: 'shared/parts/user_profile', locals: { user: @article.user }
   = render partial: 'articles/favorite_users', locals: { article: @article, users: @favorite_users, sidebar: true }
-  / TODO オススメの記事一覧
+  // TODO オススメの記事一覧
 
 = render partial: 'articles/contents', locals: { article: @article }
 = render partial: 'articles/comments', locals: { article_id: @article.id, comments: @comments }
