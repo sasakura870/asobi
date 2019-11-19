@@ -1,6 +1,6 @@
 .p-list-contents
   ul.p-list-contents__list
-    - article.comments.find_each do |comment|
+    - comments.find_each do |comment|
       li.p-list-contents__list-item
         .p-comment-item id="comment-#{comment.id}"
           .p-comment-item__header
@@ -16,7 +16,7 @@
     .p-list-contents__footer.p-comment-form
       .p-comment-form__user-photo = user_photo visitor, size: 40, class_name: 'c-user-photo'
       = form_with model: Comment.new(user_id: visitor.id), local: true, class: 'p-comment-form__form' do |f|
-        = f.hidden_field :article_id, value: article.id
+        = f.hidden_field :article_id, value: article_id
         = f.text_area :content, placeholder: 'コメントを入力…', required: true, rows: 4, class: 'p-comment-form__text-area'
         .p-comment-form__submit: button.c-hand-write-btn 投稿する
   - else

@@ -15,6 +15,10 @@ class ArticlesController < ApplicationController
 
   def show
     # @article ||= Article.find_by(id_digest: params[:id])
+    @favorite_users = @article.favorite_users
+                              .includes(photo_attachment: :blob)
+                              .limit 3
+    @comments = @article.comments.includes user: { photo_attachment: :blob }
   end
 
   def favorite
