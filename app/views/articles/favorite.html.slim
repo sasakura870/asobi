@@ -1,1 +1,3 @@
-= render partial: 'articles/favorite_users', locals: { article: @article, users: @article.favorite_users, sidebar: false }
+= content_for(:title, @article.title)
+
+= render partial: 'articles/favorite_users', locals: { article: @article, users: @users, sidebar: false }

@@ -1,21 +1,6 @@
 = content_for :title, @tag.name
 
 = content_for :sidebar
-  .p-tag-profile-contents
-    .p-tag-profile-contents__tag
-      p.c-badge.c-badge--tag = @tag.name
-    .p-tag-profile-contents__follow-btn
-      - if visitor.logged_in?
-        follow-tag-button :tag-id="#{@tag.id}" :is-followed="#{visitor.follow_tag?(@tag)}" :followable="#{visitor.register?}"
+  = render partial: 'tags/sidebar', locals: { tag: @tag }
 
-.p-list-contents
-  .p-list-contents__header: h1 新着の遊び
-  ul.p-list-contents__list
-    - if @articles.any?
-      - @articles.each do |article|
-        li.p-list-contents__list-item
-          = render partial: 'shared/parts/article_list_item', locals: { article: article }
-    - else
-      p タグ付けされた遊びはありません
-  .p-list-contents__footer
-    = paginate @articles
+= render partial: 'tags/article_contents', locals: { articles: @articles }

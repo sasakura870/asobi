@@ -3,14 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_action :store_location, if: -> { controller_name != 'sessions' }
 
-  # TODO 後々削除する
   helper_method :current_user
 
   protected
 
-  # TODO service層に処理を移動したい
+  # TODO: service層に処理を移動したい
   def current_user
-    return @current_user if @current_user.present?
+    return @current_user unless @current_user.nil?
 
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])

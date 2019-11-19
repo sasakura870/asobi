@@ -4,9 +4,9 @@
     <div class="p-sticky-menu__btn js-tooltip" :data-tippy-content="tooltipMessage">
       <button
         @click="deleteFavorite"
-        :disabled="isProcessing || !favoritable"
+        :disabled="isProcessing || !favoritable || myArticle"
         class="c-circle-btn"
-        :class="{ 'u-disable' : !favoritable }"
+        :class="{ 'u-disable' : !favoritable || myArticle }"
       >
         <i class="fas fa-star fa-fw"></i>
       </button>
@@ -17,9 +17,9 @@
     <div class="p-sticky-menu__btn js-tooltip" :data-tippy-content="tooltipMessage">
       <button
         @click="createFavorite"
-        :disabled="isProcessing || !favoritable"
+        :disabled="isProcessing || !favoritable || myArticle"
         class="c-circle-btn c-circle-btn--supplement"
-        :class="{ 'u-disable' : !favoritable }"
+        :class="{ 'u-disable' : !favoritable || myArticle }"
       >
         <i class="fas fa-star fa-fw"></i>
       </button>

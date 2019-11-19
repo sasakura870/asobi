@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# TODO 個別のページを作成する予定
+# TODO: 個別のページを作成する予定
 RSpec.describe 'setting画面' do
   let(:main_user) { create(:user) }
 

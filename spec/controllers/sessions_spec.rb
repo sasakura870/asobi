@@ -42,9 +42,11 @@ RSpec.describe 'Sessions', type: :request do
   end
 
   describe 'POST #create' do
-    subject { post login_path, params: { session: { email: request_user.email,
-                                                    password: request_user.password,
-                                                    remember_check: '0' } } }
+    subject do
+      post login_path, params: { session: { email: request_user.email,
+                                            password: request_user.password,
+                                            remember_check: '0' } }
+    end
 
     context '本登録済みユーザーでログインしている場合' do
       let(:request_user) { register }

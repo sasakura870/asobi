@@ -128,7 +128,7 @@ RSpec.describe User, type: :model do
         end
       end
     end
-    # TODO validationテストの追加
+    # TODO: validationテストの追加
     describe 'photo属性'
   end
 

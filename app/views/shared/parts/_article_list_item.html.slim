@@ -12,5 +12,5 @@
         .p-article-list-item__user-photo = user_photo article.user, size: 40, class_name: 'c-user-photo'
         p.p-article-list-item__user-name = user_name_format article.user
       .p-article-list-item__reaction
-        .p-article-list-item__favorite: span.c-badge.c-badge--favorite = article.favorites.count
-        .p-article-list-item__comment: span.c-badge.c-badge--comment = article.comments.count
+        .p-article-list-item__favorite: span.c-badge.c-badge--favorite = article.favorites_count
+        .p-article-list-item__comment: span.c-badge.c-badge--comment = article.comments_count

@@ -1,5 +1,5 @@
 module ArticlesHelper
-  def set_thumbnail(article, class_name: 'article')
+  def set_thumbnail(_article, class_name: 'article')
     # if article.thumbnail.attached?
     #   image_tag article.thumbnail, class: class_name
     # else

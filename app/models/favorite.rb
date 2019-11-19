@@ -1,6 +1,7 @@
 class Favorite < ApplicationRecord
   belongs_to :user
   belongs_to :article
+  counter_culture :article
 
   validates :article_id, uniqueness: { scope: :user_id }
   validate :cannot_favorite_yourself, :cannot_favorite_draft
@@ -13,6 +14,8 @@ class Favorite < ApplicationRecord
   end
 
   def cannot_favorite_draft
-    errors.add(:draft, '下書きにいいねはできません') unless Article.find_by(id: article_id).published?
+    unless Article.find_by(id: article_id).published?
+      errors.add(:draft, '下書きにいいねはできません')
+    end
   end
 end

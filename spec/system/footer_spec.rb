@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# TODO 全体的に描き直すべき?
+# TODO: 全体的に描き直すべき?
 RSpec.describe 'footer' do
   before { visit root_path }
 

@@ -24,22 +24,36 @@ class VisitorViewModel
   end
 
   def favorite?(article)
-    logged_in? && user.favorite_articles.exists?(article.id)
+    return false unless logged_in?
+
+    @favorites ||= user.favorite_articles.pluck :id
+    logged_in? && @favorites.include?(article.id)
   end
 
   def follow?(target_user)
-    logged_in? && user.followings.exists?(target_user.id)
+    return false unless logged_in?
+
+    @followings ||= user.followings.pluck :id
+    logged_in? && @followings.include?(target_user.id)
   end
 
   def follow_tag?(tag)
-    logged_in? && user.tags.exists?(tag.id)
+    return false unless logged_in?
+
+    @tags ||= user.tags.pluck :id
+    logged_in? && @tags.include?(tag.id)
   end
 
   def my_article?(article)
-    logged_in? && user.articles.exists?(article.id)
+    return false unless logged_in?
+
+    @articles ||= user.articles.pluck :id
+    logged_in? && @articles.include?(article.id)
   end
 
   private
 
-  attr_reader :user
+  # SQLがView内で複数回らないようにidを格納した配列を保持しておく
+  # 今後Ajaxの処理が多くなってくるともしかしたらバグるかも
+  attr_reader :user, :articles, :tags, :favorites, :followings
 end

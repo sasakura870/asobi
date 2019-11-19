@@ -10,10 +10,14 @@ class Relationship < ApplicationRecord
   private
 
   def cannot_follow_yourself
-    errors.add(:follow_yourself, '自分自身はフォローできません') if following_id == follower_id
+    if following_id == follower_id
+      errors.add(:follow_yourself, '自分自身はフォローできません')
+    end
   end
 
   def cannot_follow_temporary
-    errors.add(:follow_temporary, '仮登録ユーザーはフォローできません') if User.find_by(id: follower_id)&.temporary?
+    if User.find_by(id: follower_id)&.temporary?
+      errors.add(:follow_temporary, '仮登録ユーザーはフォローできません')
+    end
   end
 end
