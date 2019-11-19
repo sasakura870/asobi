@@ -3,6 +3,6 @@
 = content_for(:sidebar)
   = render partial: 'shared/parts/user_profile', locals: { user: @user }
 
-.u-mb3 = render partial: 'users/tab_menu', locals: { user: @user, action: :favorites }
+.u-mb-3 = render partial: 'users/tab_menu', locals: { user: @user, action: :favorites }
 = render partial: 'users/article_contents', locals: { articles: @articles, header_title: 'いいね', no_contents_message: 'いいねをした遊びはありません' }
 

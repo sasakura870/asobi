@@ -19,11 +19,11 @@
     h3.u-text-bold
       i.fas.fa-sign-in-alt.fa-fw
       | 永続ログインの設定
-    p.u-mb3 永続ログインを設定すると、次回から自動でログインされます。
+    p.u-mb-3 永続ログインを設定すると、次回から自動でログインされます。
     remember-button :is-remembered='#{cookies.has_key? :remember}'
   .p-form-contents__item
     h3.u-text-bold
       i.fas.fa-trash-alt.fa-fw
       | 退会
-    p.u-mb3: strong 退会すると二度と元に戻せません。ご注意ください。
+    p.u-mb-3: strong 退会すると二度と元に戻せません。ご注意ください。
     = link_to '退会する', settings_quit_index_path, class: 'c-outline-btn c-outline-btn--danger'

@@ -5,7 +5,7 @@ html lang = 'ja'
     = render partial: 'shared/header'
     = yield(:jumbotron)
     #container.l-container
-      main.l-main.u-flex-size-3.u-mr3 = yield
+      main.l-main.u-flex-size-3.u-mr-3 = yield
       aside.l-sidebar--right.u-flex-size-1 = yield(:sidebar)
     = render partial: 'shared/footer'
     - if Rails.env.development?
