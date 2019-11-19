@@ -9,19 +9,29 @@ class UsersController < ApplicationController
   end
 
   def show
-    @articles = @user.articles.recent.page params[:page]
+    @articles = @user.articles
+                     .includes(:tags, tag_maps: :tag)
+                     .recent
+                     .page params[:page]
   end
 
   def favorites
-    @articles = @user.favorite_articles.recent.page params[:page]
+    @articles = @user.favorite_articles
+                     .includes(:tags, user: { photo_attachment: :blob }, tag_maps: :tag)
+                     .recent
+                     .page params[:page]
   end
 
   def followings
-    @followings = @user.followings.page params[:page]
+    @followings = @user.followings
+                       .includes(photo_attachment: :blob)
+                       .page params[:page]
   end
 
   def followers
-    @followers = @user.followers.page params[:page]
+    @followers = @user.followers
+                      .includes(photo_attachment: :blob)
+                      .page params[:page]
   end
 
   def create

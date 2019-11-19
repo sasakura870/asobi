@@ -3,7 +3,7 @@
     h1 = header_title
   - if users.any?
     ul.p-list-contents__list
-      - users.each do |user|
+      - users.find_each do |user|
         li.p-list-contents__list-item
           = render partial: 'shared/parts/user_list_item', locals: { user: user }
   - else
