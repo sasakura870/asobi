@@ -15,7 +15,7 @@ $background-color: #F9ED69;
 $main-color: #F08A5D;
 $highlight-color: #6A2C70;
 $sub-highlight-color: #B83B5E;
-$main-dark-tone-color: #B1552C;
+$main-dark-tone-color: darken($main-color, 25);
 $primary-color: #518CFC;
 $danger-color: #DC3445;
 $supplement-color: #939393;
