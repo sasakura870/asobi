@@ -35,9 +35,9 @@ class ApplicationController < ActionController::Base
     render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
   end
 
-  def request_422
-    render file: Rails.root.join('public/422.html'), status: 422, layout: false, content_type: 'text/html'
-  end
+  # def request_422
+  #   render file: Rails.root.join('public/422.html'), status: 422, layout: false, content_type: 'text/html'
+  # end
 
   private
 

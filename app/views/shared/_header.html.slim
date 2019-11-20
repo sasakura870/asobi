@@ -2,9 +2,9 @@ header#header.l-header
   nav.p-header
     .p-header__left
       .p-header__logo = link_to 'Asobi', root_path, class: 'c-link c-link--brand'
-      = form_with url: searches_path, method: :get, local: true, class: 'p-header__search-form' do |f|
+      = form_with url: searches_articles_path, method: :get, local: true, class: 'p-header__search-form' do |f|
         .c-text-field.c-text-field--search
-          = f.search_field :q, placeholder: 'キーワードを入力…', class: 'c-text-field__input'
+          = f.search_field :q, value: @q, placeholder: 'キーワードを入力…', required: true, class: 'c-text-field__input'
     .p-header__right
       ul.p-header__list
         - if visitor.logged_in?
@@ -13,7 +13,7 @@ header#header.l-header
               i.fas.fa-pen.fa-fw
               | 投稿
           li.p-header__list-item.js-tooltip data-tippy-content='工事中...'
-            = link_to '#', class: 'c-link c-link--nav'
+            = link_to '#', class: 'c-link c-link--global-nav'
               i.far.fa-bell.fa-lg
           - if visitor.temporary?
             li.p-header__list-item
@@ -22,22 +22,22 @@ header#header.l-header
             .p-header__dropdown.js-dropdown
               = user_photo visitor, size:35, class_name: 'c-user-photo'
               ul.p-header__dropdown-list.u-shadow.u-hide.js-dropdown-target
-                = link_to user_path(visitor), class: 'c-link c-link--list'
+                = link_to user_path(visitor), class: 'c-link c-link--list-nav'
                   li.p-header__dropdown-item
                     i.fas.fa-user.fa-fw
                     | マイページ
-                = link_to settings_root_path, class: 'c-link c-link--list'
+                = link_to settings_root_path, class: 'c-link c-link--list-nav'
                   li.p-header__dropdown-item
                     i.fas.fa-cog.fa-fw
                     | 設定
-                = link_to drafts_path, class: 'c-link c-link--list'
+                = link_to drafts_path, class: 'c-link c-link--list-nav'
                   li.p-header__dropdown-item
                     i.far.fa-file.fa-fw
                     | 下書き一覧
-                = link_to logout_path, method: :delete, class: 'c-link c-link--list'
+                = link_to logout_path, method: :delete, class: 'c-link c-link--list-nav'
                   li.p-header__dropdown-item
                     i.fas.fa-sign-out-alt.fa-fw
                     | ログアウト
         - else
           li.p-header__list-item = link_to '新規登録', signup_path, class: 'c-hand-write-btn c-hand-write-btn--sub-highlight'
-          li.p-header__list-item = link_to 'ログイン', login_path, class: 'c-link c-link--nav'
+          li.p-header__list-item = link_to 'ログイン', login_path, class: 'c-link c-link--global-nav'

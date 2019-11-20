@@ -1,0 +1,12 @@
+= content_for(:title, "「#{@q}」の検索結果")
+
+.p-tag-list-contents
+  .p-tag-list-contents__header
+    h1 「#{@q}」を含むタグの検索結果 : #{@view_model.tags_count}件
+  ul.p-tag-list-contents__list
+    - if @view_model.show_data.any?
+      - @view_model.show_data.find_each do |tag|
+        li.p-tag-list-contents__item = link_to tag.name, tag, class: 'c-badge c-badge--tag'
+    - else
+      li.p-tag-list-contents__item 「#{@q}」を含むタグは見つかりませんでした。
+  .p-tag-list-contents_footer = paginate @view_model.show_data

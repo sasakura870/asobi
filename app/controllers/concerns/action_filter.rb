@@ -2,13 +2,13 @@ module ActionFilter
   extend ActiveSupport::Concern
 
   included do
-    def filter_only_current_user(user)
-      if logged_in? && current_user.id != user.id
-        request_422
-      elsif !logged_in?
-        redirect_to login_path
-      end
-    end
+    # def filter_only_current_user(user)
+    #   if logged_in? && current_user.id != user.id
+    #     request_422
+    #   elsif !logged_in?
+    #     redirect_to login_path
+    #   end
+    # end
 
     def filter_only_register
       if logged_in? && current_user.temporary?

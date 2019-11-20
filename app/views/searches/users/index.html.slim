@@ -1,0 +1,14 @@
+= content_for(:title, "「#{@q}」の検索結果")
+
+.p-list-contents
+  .p-list-contents__header
+    h1 「#{@q}」を含むユーザーの検索結果 : #{@view_model.users_count}件
+  - if @view_model.show_data.any?
+    ul.p-list-contents__list
+      - @view_model.show_data.find_each do |user|
+        li.p-list-contents__list-item
+          = render partial: 'shared/parts/user_list_item', locals: { user: user }
+  - else
+    p 「#{@q}」を含むユーザーは見つかりませんでした。
+  .p-list-contents__footer
+    = paginate @view_model.show_data

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @articles = @user.favorite_articles
                      .includes(:tags, user: { photo_attachment: :blob }, tag_maps: :tag)
                      .recent
-                     .page(params[:page]).per(5)
+                     .page params[:page]
   end
 
   def followings

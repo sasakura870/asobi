@@ -11,11 +11,11 @@ $global-page-width: 1200px;
 /*
 	カスタムカラー(コンポーネントにも同様のカラーのCSSを作成)
 ================================*/
-$background-color: #F9ED69;
-$main-color: #F08A5D;
-$highlight-color: #6A2C70;
-$sub-highlight-color: #B83B5E;
-$main-dark-tone-color: #B1552C;
+$background-color: #fff4e4;
+$main-color: #f08a5d;
+$highlight-color: #b83b5e;
+$sub-highlight-color: #6a2c70;
+$main-dark-tone-color: darken($main-color, 25);
 $primary-color: #518CFC;
 $danger-color: #DC3445;
 $supplement-color: #939393;

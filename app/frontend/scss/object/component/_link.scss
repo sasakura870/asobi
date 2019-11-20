@@ -2,6 +2,7 @@
   color: $primary-color;
 
   &:hover {
+    color: darken($primary-color, 30);
     text-decoration: none;
   }
 
@@ -13,7 +14,7 @@
     }
   }
 
-  &--nav {
+  &--global-nav {
     color: rgba($white-color, 0.5);
 
     &:hover {
@@ -21,11 +22,11 @@
     }
   }
 
-  &--list {
+  &--list-nav {
     color: $supplement-color;
 
     &:hover {
-      color: $black-color;
+      color: $main-color;
     }
   }
 }
