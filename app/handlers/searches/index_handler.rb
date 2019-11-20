@@ -1,13 +1,17 @@
 module Searches
   class IndexHandler < ApplicationHandler
-    def initialize
-
+    def initialize(q:, action:)
+      @q = q
+      @action = action
     end
 
     private
 
-    def handle
+    attr_reader :q, :action
 
+    def handle
+      result = SearchTagService.new(q: q).call
+      handle_succeeded model: result.model
     end
   end
 end

@@ -6,13 +6,7 @@ html lang = 'ja'
     #container.l-container
       aside.l-sidebar--left.u-flex-size-1
         = render partial: 'searches/sidebar', locals: { q: @q, article_count: 120, user_count: 13, tag_count: 8}
-      main.l-main.u-flex-size-3
-        .p-list-contents
-          .p-list-contents__header
-            h1 = controller.controller_name
-          ul.p-list-contents__list
-            li.p-list-contents__list-item = yield
-          .p-list-contents__footer
+      main.l-main.u-flex-size-3 = yield
     = render partial: 'shared/footer'
     - if Rails.env.development?
       = debug(params)
