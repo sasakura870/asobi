@@ -8,5 +8,5 @@
       - @result.find_each do |tag|
         li.p-tag-list-contents__item = link_to tag.name, tag, class: 'c-badge c-badge--tag'
     - else
-      p 「#{@q}」を含むタグは見つかりませんでした。
+      li.p-tag-list-contents__item 「#{@q}」を含むタグは見つかりませんでした。
   .p-tag-list-contents_footer = paginate @result

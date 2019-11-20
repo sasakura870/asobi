@@ -4,7 +4,7 @@ header#header.l-header
       .p-header__logo = link_to 'Asobi', root_path, class: 'c-link c-link--brand'
       = form_with url: searches_articles_path, method: :get, local: true, class: 'p-header__search-form' do |f|
         .c-text-field.c-text-field--search
-          = f.search_field :q, value: @q, placeholder: 'キーワードを入力…', class: 'c-text-field__input'
+          = f.search_field :q, value: @q, placeholder: 'キーワードを入力…', required: true, class: 'c-text-field__input'
     .p-header__right
       ul.p-header__list
         - if visitor.logged_in?
