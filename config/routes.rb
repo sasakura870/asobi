@@ -6,12 +6,6 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy', to: 'static_pages#privacy'
 
-  # resources :searches, only: :index do
-  #   collection do
-  #     get :users
-  #     get :tags
-  #   end
-  # end
   namespace :searches do
     resources :articles, only: :index
     resources :users, only: :index
