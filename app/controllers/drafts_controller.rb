@@ -14,7 +14,9 @@ class DraftsController < ApplicationController
     if handler.result
       render json: { type: 'success', message: '下書きを削除しました' }
     else
-      request_422
+      # request_422
+      render status: :internal_server_error,
+             json: { type: 'error', message: '下書きの削除に失敗しました' }
     end
   end
 end

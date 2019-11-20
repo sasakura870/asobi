@@ -9,10 +9,11 @@ class CommentsController < ApplicationController
     ).run
     if handler.result
       flash[:success] = handler.message
-      redirect_to handler.model
     else
-      request_422
+      # request_422
+      flash.now[:error] = handler.message
     end
+    redirect_to handler.model
   end
 
   def destroy
