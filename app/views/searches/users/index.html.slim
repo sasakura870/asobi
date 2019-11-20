@@ -1,6 +1,7 @@
 = content_for(:title, "「#{@q}」の検索結果")
 
 p users
+p = @q
 / h3 検索結果 : #{@articles.total_count}件
 / - if @articles.any?
 /   .row
