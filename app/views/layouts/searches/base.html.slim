@@ -1,0 +1,20 @@
+doctype html
+html lang = 'ja'
+  = render partial: 'shared/head'
+  body
+    = render partial: 'shared/header'
+    #container.l-container
+      aside.l-sidebar--left.u-flex-size-1
+        nav.p-list-contents.u-mr-3
+          ul.p-list-contents_list
+            = link_to settings_profile_index_path, class: 'c-link c-link--list'
+              li.p-list-contents__list-item.u-pv-2 プロフィール
+            = link_to settings_account_index_path, class: 'c-link c-link--list'
+              li.p-list-contents__list-item.u-pv-2 アカウント
+            = link_to settings_password_index_path, class: 'c-link c-link--list'
+              li.p-list-contents__list-item.u-pv-2 パスワード
+      main.l-main.u-flex-size-4 = yield
+    = render partial: 'shared/footer'
+    - if Rails.env.development?
+      = debug(params)
+    = render partial: 'shared/flash'
