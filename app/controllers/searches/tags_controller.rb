@@ -1,12 +1,12 @@
 module Searches
   class TagsController < Base
     def index
-      handler = Searches::IndexHandler.new(
-        q: @q,
-        action: :tags
-      ).run
-      @result = handler.model.page params[:page]
-      flash.now[:error] = handler.message unless handler.result
+      @view_model = SearchesViewModel.new(
+        articles_count: @search_models.articles.size,
+        users_count: @search_models.users.size,
+        tags_count: @search_models.tags.size,
+        show_data: @search_models.tags.page(params[:page])
+      )
     end
   end
 end

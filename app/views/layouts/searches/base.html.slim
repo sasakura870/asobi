@@ -5,7 +5,7 @@ html lang = 'ja'
     = render partial: 'shared/header'
     #container.l-container
       aside.l-sidebar--left.u-flex-size-1
-        = render partial: 'searches/sidebar', locals: { q: @q, article_count: 120, user_count: 13, tag_count: 8}
+        = render partial: 'searches/sidebar', locals: { q: @q, articles_count: @view_model.articles_count, users_count: @view_model.users_count, tags_count: @view_model.tags_count}
       main.l-main.u-flex-size-3 = yield
     = render partial: 'shared/footer'
     - if Rails.env.development?

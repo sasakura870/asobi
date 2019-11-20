@@ -1,25 +1,15 @@
 module Searches
   class IndexHandler < ApplicationHandler
-    def initialize(q:, action:)
+    def initialize(q:)
       @q = q
-      @action = action
     end
 
     private
 
-    attr_reader :q, :action
+    attr_reader :q
 
     def handle
-      case action
-      when :articles
-
-      when :users
-        result = SearchUserService.new(q: q).call
-      when :tags
-        result = SearchTagService.new(q: q).call
-      else
-        raise NotImplementedError "searches#{action}は存在しません"
-      end
+      result = SearchQueryService.new(q: q).call
       handle_succeeded model: result.model
     end
   end

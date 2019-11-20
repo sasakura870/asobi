@@ -5,16 +5,16 @@ nav.p-list-contents.u-mr-3
         p
           i.fas.fa-dice.fa-fw
           | 遊び
-        span.c-badge = article_count
+        span.c-badge = articles_count
     = link_to searches_users_path(q: q), class: 'c-link c-link--list-nav'
       li.p-list-contents__list-item.u-flex-box.u-flex-box--fill.u-pv-2
         p
           i.fas.fa-user.fa-fw
           | ユーザー
-        span.c-badge = user_count
+        span.c-badge = users_count
     = link_to searches_tags_path(q: q), class: 'c-link c-link--list-nav'
       li.p-list-contents__list-item.u-flex-box.u-flex-box--fill.u-pv-2
         p
           i.fas.fa-tags.fa-fw
           | タグ
-        span.c-badge = tag_count
+        span.c-badge = tags_count
