@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
                       .includes(user: :photo_attachment)
                       .published
                       .recent
-                      .take(3)
+                      .take(10)
     @weekly_articles = Article
                        .includes(user: :photo_attachment)
                        .take(3)

@@ -1,0 +1,8 @@
+.p-card-contents
+  .p-card-contents__header
+    h1 おすすめの遊び
+  ul.p-card-contents__list
+    - articles.each do |article|
+      li.p-card-contents__list-item
+        = render partial: 'shared/parts/article_card', locals: { article: article }
+  .p-card-contents__footer

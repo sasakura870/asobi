@@ -9,8 +9,7 @@
           .col-md-7
             h4 ここにスライドショーが入ります。
 
-= render partial: 'shared/components/3column_articles', locals: { articles: @daily_articles, content_title: 'デイリーランキング', ranking: true }
-= render partial: 'shared/components/3column_articles', locals: { articles: @weekly_articles, content_title: 'ウィークリーランキング', ranking: true }
+= render partial: 'static_pages/trend_articles', locals: { articles: @daily_articles }
 
 = content_for(:sidebar) do
   = render partial: 'shared/components/capsule_toys'
