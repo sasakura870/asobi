@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'tags/index'
-  get 'home', to: 'static_pages#home'
+  resources :home, only: :index
+
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
   get 'terms', to: 'static_pages#terms'
@@ -54,6 +54,6 @@ Rails.application.routes.draw do
 
   resources :resend_emails, only: :create
 
-  root 'static_pages#home'
+  root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

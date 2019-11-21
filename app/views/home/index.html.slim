@@ -9,7 +9,7 @@
           .col-md-7
             h4 ここにスライドショーが入ります。
 
-= render partial: 'static_pages/trend_articles', locals: { articles: @daily_articles }
+= render partial: 'home/trend_articles', locals: { articles: @daily_articles }
 
 = content_for(:sidebar) do
   = render partial: 'shared/components/capsule_toys'
