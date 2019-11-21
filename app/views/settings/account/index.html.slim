@@ -12,8 +12,7 @@
         small.u-text-sub-highlight
           | 本登録が完了していません。本登録用メールから本登録を行ってください。
           br/
-          // TODO 再送用メール処理
-          | 本登録用メールを再送する場合は#{link_to 'こちらをクリックしてください', '#'}
+          | 本登録用メールを再送する場合は#{link_to 'こちらをクリックしてください', resend_emails_path, method: :post, remote: true, class: 'c-link'}
     .p-form-contents__submit: button.c-hand-write-btn 変更する
   .p-form-contents__item
     h3.u-text-bold
