@@ -29,4 +29,13 @@
       color: $main-color;
     }
   }
+
+  &--tag {
+    color: $white-color;
+
+    &:hover {
+      color: $white-color;
+      text-decoration: underline;
+    }
+  }
 }

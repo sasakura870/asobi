@@ -1,6 +1,6 @@
 .p-tag-list-contents.u-mb-3
   .p-tag-list-contents__header
-    h2 おすすめのタグ
+    h2 <i class="fas fa-tags fa-fw"></i>おすすめのタグ
   ul.p-tag-list-contents__list
     - tags.each do |tag|
-      li.p-tag-list-contents__item = link_to tag.name, tag, class: 'c-badge c-badge--tag'
+      li.p-tag-list-contents__item = link_to tag.name, tag, class: 'c-badge c-badge--tag c-link c-link--tag'
