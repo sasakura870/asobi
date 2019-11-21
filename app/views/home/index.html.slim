@@ -1,0 +1,20 @@
+- unless visitor.logged_in?
+  = content_for(:jumbotron)
+    .jumbotron.jumbotron-fluid.bgcolor-header.text-white
+      .container
+        .row
+          .col-md-5
+            h1 遊び足りない！！！
+            p 地元に伝わる遊び、いろんなゲームのローカルルール、自分で考えた「遊び」をみんなで共有しよう！
+          .col-md-7
+            h4 ここにスライドショーが入ります。
+
+= render partial: 'home/trend_articles', locals: { articles: @trend_articles }
+// TODO フォロワーの新着
+// TODO フォロータグの新着
+  // TODO 2つ合わせたタイムラインの実装
+
+= content_for(:sidebar) do
+  = render partial: 'home/capsule_toy'
+  = render partial: 'home/trend_users', locals: { users: @trend_users }
+  = render partial: 'home/trend_tags', locals: { tags: @trend_tags }

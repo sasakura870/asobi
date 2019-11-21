@@ -10,8 +10,7 @@ header#header.l-header
         - if visitor.logged_in?
           li.p-header__list-item
             = link_to new_article_path, class: 'c-hand-write-btn c-hand-write-btn--dark-tone'
-              i.fas.fa-pen.fa-fw
-              | 投稿
+              <i class='fas fa-pen fa-fw'></i>投稿
           li.p-header__list-item.js-tooltip data-tippy-content='工事中...'
             = link_to '#', class: 'c-link c-link--global-nav'
               i.far.fa-bell.fa-lg
@@ -24,20 +23,16 @@ header#header.l-header
               ul.p-header__dropdown-list.u-shadow.u-hide.js-dropdown-target
                 = link_to user_path(visitor), class: 'c-link c-link--list-nav'
                   li.p-header__dropdown-item
-                    i.fas.fa-user.fa-fw
-                    | マイページ
+                    <i class='fas fa-user fa-fw'></i>マイページ
                 = link_to settings_root_path, class: 'c-link c-link--list-nav'
                   li.p-header__dropdown-item
-                    i.fas.fa-cog.fa-fw
-                    | 設定
+                    <i class='fas fa-cog fa-fw'></i>設定
                 = link_to drafts_path, class: 'c-link c-link--list-nav'
                   li.p-header__dropdown-item
-                    i.far.fa-file.fa-fw
-                    | 下書き一覧
+                    <i class='fas fa-file fa-fw'></i>下書き一覧
                 = link_to logout_path, method: :delete, class: 'c-link c-link--list-nav'
                   li.p-header__dropdown-item
-                    i.fas.fa-sign-out-alt.fa-fw
-                    | ログアウト
+                    <i class='fas fa-sign-out-alt fa-fw'></i>ログアウト
         - else
           li.p-header__list-item = link_to '新規登録', signup_path, class: 'c-hand-write-btn c-hand-write-btn--sub-highlight'
           li.p-header__list-item = link_to 'ログイン', login_path, class: 'c-link c-link--global-nav'

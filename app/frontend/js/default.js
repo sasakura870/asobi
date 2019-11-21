@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-
   // selectize
   $("#article_tag").selectize({
     plugins: ['restore_on_backspace', 'remove_button'],
