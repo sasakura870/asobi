@@ -7,7 +7,7 @@
     ul.p-list-contents__list
       - @view_model.show_data.find_each do |user|
         li.p-list-contents__list-item
-          = render partial: 'shared/parts/user_list_item', locals: { user: user }
+          = render partial: 'shared/components/user_list_item', locals: { user: user }
   - else
     p 「#{@q}」を含むユーザーは見つかりませんでした。
   .p-list-contents__footer

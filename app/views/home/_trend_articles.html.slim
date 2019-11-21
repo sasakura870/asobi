@@ -4,5 +4,5 @@
   ul.p-card-contents__list
     - articles.each do |article|
       li.p-card-contents__list-item
-        = render partial: 'shared/parts/article_card', locals: { article: article }
+        = render partial: 'shared/components/article_card', locals: { article: article }
   .p-card-contents__footer

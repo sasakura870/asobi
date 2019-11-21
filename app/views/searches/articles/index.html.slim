@@ -7,7 +7,7 @@
     ul.p-list-contents__list
       - @view_model.show_data.each do |article|
         li.p-list-contents__list-item
-          = render partial: 'shared/parts/article_list_item', locals: { article: article }
+          = render partial: 'shared/components/article_list_item', locals: { article: article }
   - else
     p 「#{@q}」を含む遊びは見つかりませんでした。
   .p-list-contents__footer

@@ -9,7 +9,7 @@
   ul.p-card-contents__list
     - users.find_each do |user|
       li.p-card-contents__list-item
-        = render partial: 'shared/parts/user_profile_mini', locals: { user: user }
+        = render partial: 'shared/components/user_profile_mini', locals: { user: user }
   .p-card-contents__footer
     - if sidebar
       = link_to 'すべて見る', favorite_article_path(article), class: 'c-link'
