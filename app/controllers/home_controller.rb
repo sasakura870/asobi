@@ -6,7 +6,7 @@ class HomeController < ApplicationController
                       .published
                       .recent
                       .take(12)
-    @trend_users = User.order(id: :desc).take(6)
+    @trend_users = User.register.order(id: :desc).take(6)
     @trend_tags = Tag.order(id: :desc).take(10)
   end
 end
