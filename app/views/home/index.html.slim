@@ -9,8 +9,12 @@
           .col-md-7
             h4 ここにスライドショーが入ります。
 
-= render partial: 'home/trend_articles', locals: { articles: @daily_articles }
+= render partial: 'home/trend_articles', locals: { articles: @trend_articles }
+// TODO フォロワーの新着
+// TODO フォロータグの新着
+  // TODO 2つ合わせたタイムラインの実装
 
 = content_for(:sidebar) do
-  = render partial: 'shared/components/capsule_toys'
-  = render partial: 'shared/components/mini_article_group', locals: { articles: @recommended_articles, content_title: 'オススメの遊び' }
+  = render partial: 'home/capsule_toy'
+  = render partial: 'home/trend_users', locals: { users: @trend_users }
+  = render partial: 'home/trend_tags', locals: { tags: @trend_tags }
