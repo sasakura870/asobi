@@ -1,7 +1,7 @@
 class CapsuleToysController < ApplicationController
   def index
-    # 記事を取ってくる
-    # それ用に整形する
+    handler = CapsuleToys::IndexHandler.new.run
+    @article = handler.model
     render :index, formats: :json, handlers: :jbuilder
   end
 end

@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const capsule_toy = document.getElementsByClassName("js-capsule-toy");
-  for (let index = 0; index < capsule_toy.length; index++) {
-    console.log(capsule_toy[index]);
-    capsule_toy[index].addEventListener('click', function () {
+  const capsuleToy = document.getElementsByClassName("js-capsule-toy");
+  for (let index = 0; index < capsuleToy.length; index++) {
+    capsuleToy[index].addEventListener('click', async function () {
+      const articleData = await fetch("/capsule_toys")
+        .then(response => response.json())
+        .catch(error => error);
+      console.log(articleData);
       Swal.fire({
-        type: 'success',
-        title: 'ガチャ',
-        text: 'hogehoge'
+        text: articleData
       });
     });
   }

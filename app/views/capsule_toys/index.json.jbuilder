@@ -1,2 +1,1 @@
-json.text 'hogehoge'
-json.title 'test'
+json.merge! @article.attributes
