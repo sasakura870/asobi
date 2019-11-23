@@ -31,7 +31,12 @@ class SearchQueryService < ApplicationService
     users = User.includes(photo_attachment: :blob)
                 .where('name iLIKE ? OR nick_name iLIKE ?', "%#{q}%", "%#{q}%")
     tags = Tag.where('name iLIKE ?', "%#{q}%")
-    articles = Article.includes(:tags, user: { photo_attachment: :blob }, tag_maps: :tag)
+    articles = Article.includes(
+                        :rich_text_content,
+                        :tags,
+                        user: { photo_attachment: :blob },
+                        tag_maps: :tag
+                      )
                       .published
                       .where('title iLIKE ? OR overview iLIKE ?', "%#{q}%", "%#{q}%")
     result = SearchQueryResult.new(

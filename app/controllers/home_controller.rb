@@ -2,7 +2,12 @@ class HomeController < ApplicationController
   def index
     # TODO: viewModel検討する？
     @trend_articles = Article
-                      .includes(:tags, user: { photo_attachment: :blob }, tag_maps: :tag)
+                      .includes(
+                        :rich_text_content,
+                        :tags,
+                        user: { photo_attachment: :blob },
+                        tag_maps: :tag
+                      )
                       .published
                       .recent
                       .take(12)

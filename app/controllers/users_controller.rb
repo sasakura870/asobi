@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @articles = @user.articles
-                     .includes(:tags, tag_maps: :tag)
+                     .includes(:rich_text_content, :tags, tag_maps: :tag)
                      .published
                      .recent
                      .page params[:page]
@@ -18,7 +18,12 @@ class UsersController < ApplicationController
 
   def favorites
     @articles = @user.favorite_articles
-                     .includes(:tags, user: { photo_attachment: :blob }, tag_maps: :tag)
+                     .includes(
+                       :rich_text_content,
+                       :tags,
+                       user: { photo_attachment: :blob },
+                       tag_maps: :tag
+                      )
                      .published
                      .recent
                      .page params[:page]
