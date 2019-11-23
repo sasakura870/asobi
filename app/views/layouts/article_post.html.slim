@@ -3,9 +3,8 @@ html lang = 'ja'
   = render partial: 'shared/head'
   body
     = render partial: 'shared/header'
-    #container.l-article-post
+    #container_without_vue.l-article-post
       main = yield
     - if Rails.env.development?
       = debug(params)
     = render partial: 'shared/flash'
-    / = javascript_pack_tag 'selectize'
