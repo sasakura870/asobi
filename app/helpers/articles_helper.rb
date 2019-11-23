@@ -5,7 +5,7 @@ module ArticlesHelper
     # else
     #   image_pack_tag 'article_default.png', class: class_name
     # end
-    image_pack_tag 'article_default.png', class: class_name
+    image_pack_tag 'default_article_thumbnail.png', class: class_name
   end
 
   def tag_formatting(tag_list)
