@@ -1,4 +1,3 @@
-import CapsuleToyArticle from "./components/capsule_toy_article";
 import CircleFavoriteButton from "./components/circle_favorite_button";
 import DeleteCommentButton from "./components/delete_comment_button";
 import DeleteDraftButton from "./components/delete_draft_button";
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
     new vue({
       el: "#container",
       components: {
-        // CapsuleToyArticle,
         CircleFavoriteButton,
         DeleteCommentButton,
         DeleteDraftButton,
