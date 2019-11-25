@@ -4,7 +4,7 @@ class AccountActivationsController < ApplicationController
   layout 'sessions'
 
   def index
-    @user = User.find_by(name: params[:id])
+    @user = User.find_by!(name: params[:id])
   end
 
   def edit

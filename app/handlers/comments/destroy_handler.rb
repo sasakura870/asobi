@@ -15,7 +15,7 @@ module Comments
     end
 
     def comment
-      @comment ||= user.comments.find_by(id: comment_id)
+      @comment ||= user.comments.find_by! id: comment_id
     end
   end
 end

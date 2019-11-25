@@ -9,7 +9,7 @@ class Favorite < ApplicationRecord
   private
 
   def cannot_favorite_yourself
-    article = Article.find_by(id: article_id)
+    article = Article.find_by id: article_id
     errors.add(:your_article, '自分の記事にいいねはできません') if article.user_id == user_id
   end
 

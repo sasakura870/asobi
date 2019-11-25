@@ -14,7 +14,7 @@ module Drafts
     end
 
     def article
-      @article ||= user.articles.draft.find_by id: article_id
+      @article ||= user.articles.draft.find_by! id: article_id
     end
   end
 end

@@ -10,13 +10,14 @@ class ApplicationController < ActionController::Base
   protected
 
   # TODO: service層に処理を移動したい
+  # TODO: find_by!でエラーが出ないか心配
   def current_user
     return @current_user unless @current_user.nil?
 
     if session[:user_id]
-      @current_user ||= User.find_by(id: session[:user_id])
+      @current_user ||= User.find_by!(id: session[:user_id])
     elsif cookies.signed[:user_id]
-      user = User.find_by(id: cookies.signed[:user_id])
+      user = User.find_by!(id: cookies.signed[:user_id])
       if user&.authenticate_remember(cookies[:remember])
         session[:user_id] = user.id
         @current_user = user
@@ -33,9 +34,9 @@ class ApplicationController < ActionController::Base
     session.delete(:return_to)
   end
 
-  def request_404
-    render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
-  end
+  # def request_404
+  #   render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
+  # end
 
   private
 

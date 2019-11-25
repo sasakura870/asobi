@@ -14,7 +14,7 @@ module Articles
     end
 
     def article
-      @article ||= user.articles.published.find_by id_digest: article_id_digest
+      @article ||= user.articles.published.find_by! id_digest: article_id_digest
     end
   end
 end
