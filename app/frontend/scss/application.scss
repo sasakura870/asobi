@@ -63,6 +63,7 @@ mixin
 	project
 ================================*/
 
+@import "./object/project/anonymous_form";
 @import "./object/project/article_card";
 @import "./object/project/article_list_item";
 @import "./object/project/article_post_form";
@@ -79,6 +80,7 @@ mixin
 /*
 contents
 ================================*/
+
 @import "./object/project/contents/account_activation_contents";
 @import "./object/project/contents/article_contents";
 @import "./object/project/contents/capsule_toy_contents";
