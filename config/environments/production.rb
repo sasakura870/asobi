@@ -1,6 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # 例外発生時にエラー用コントローラーへ飛ぶ
+  config.exceptions_app = ->(env) { ErrorsController.action(:show).call(env) }
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

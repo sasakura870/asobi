@@ -1,0 +1,8 @@
+.p-error-page
+  .p-error-page__status
+    span.p-error-page__status-code 404
+    span.p-error-page__status-text Not Found
+  .p-error-page__description
+    p お探しのページは一時的にアクセスができない状況にあるか、移動もしくは削除された可能性があります。
+    p また、URLにタイプミスがないか再度ご確認ください。
+  .p-error-page__home-link = link_to 'トップページへ戻る', root_path, class: 'c-link'
