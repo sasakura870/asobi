@@ -2,7 +2,7 @@
   = link_to article, class: 'p-article-card__body c-link'
     p.p-article-card__overview = article.overview
     p.p-article-card__title = article.title
-    = set_thumbnail article, class_name: 'p-article-card__thumbnail'
+    = set_thumbnail article, class_name: 'p-article-card__thumbnail c-thumbnail'
     ul.p-article-card__tag-list
       - article.tags.each do |tag|
         li.p-article-card__tag-item: span.c-badge.c-badge--tag = tag.name

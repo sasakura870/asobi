@@ -42,10 +42,12 @@
     margin-right: 1em;
   }
 
-  &__overview {}
+  &__overview {
+    margin-bottom: .5em;
+  }
 
   &__title {
-    font-size: 4.4rem;
+    font-size: 4rem;
     font-weight: 700;
     margin-bottom: 1.6rem;
   }

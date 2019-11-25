@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   include ActionFilter
 
-  before_action :store_location, if: -> { controller_name != 'sessions' }
+  before_action :store_location, if: -> {
+    request.get? && controller_name != 'sessions' && controller_name != 'capsule_toys'
+  }
 
   helper_method :current_user
 
@@ -38,6 +40,6 @@ class ApplicationController < ActionController::Base
   private
 
   def store_location
-    session[:return_to] = request.url if request.get?
+    session[:return_to] = request.url
   end
 end

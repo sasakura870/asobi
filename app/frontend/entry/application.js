@@ -19,5 +19,11 @@ const images = require.context("../images", true);
 // const imagePath = (name) => images(name, true)
 
 import "@fortawesome/fontawesome-free/js/all";
-import "../js/default";
+import "../js/load_vue_components";
+import "../js/dropdown";
+import "../js/flash";
+import "../js/tooltip";
+import "../js/selectize";
+import "../js/ujs_message";
+import "../js/capsule_toy";
 import "../scss/application";

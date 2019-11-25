@@ -5,7 +5,12 @@ class TagsController < ApplicationController
     @tag = Tag.find_by name: params[:id]
     @articles = @tag
                 .articles
-                .includes(:tags, user: { photo_attachment: :blob }, tag_maps: :tag)
+                .includes(
+                  :rich_text_content,
+                  :tags,
+                  user: { photo_attachment: :blob },
+                  tag_maps: :tag
+                )
                 .published
                 .recent
                 .page params[:page]

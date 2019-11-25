@@ -10,7 +10,7 @@
     .p-account-activation-contents__info
       .p-account-activation-contents__help
         p 24時間を過ぎた場合、最初から登録をやり直して頂く必要があります。
-        p 詳しくは<a href="#" class="c-link">こちら</a>をご覧ください。
+        p 詳しくは#{link_to 'こちら', help_path, class: 'c-link'}をご覧ください。
       .p-account-activation-contents__resend
         p.u-mb-1 メールが届いていない場合は、下のリンクからメールを再送できます。
         = link_to 'メールを再送する', resend_emails_path, method: :post, remote: true, class: 'c-link'
