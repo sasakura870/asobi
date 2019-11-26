@@ -14,7 +14,7 @@ module Favorites
     end
 
     def article
-      @article ||= Article.find_by(id: article_id)
+      @article ||= Article.find_by! id: article_id
     end
   end
 end

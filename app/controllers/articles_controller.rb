@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :filter_only_register, except: %i[show favorite]
-  before_action :filter_only_post, only: :show
+  # before_action :filter_only_post, only: :show
 
   layout :switch_layout
 
@@ -9,12 +9,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = current_user.articles.find_by(id_digest: params[:id])
-    request_404 if @article.nil?
+    @article = current_user.articles.find_by!(id_digest: params[:id])
+    # request_404 if @article.nil?
   end
 
   def show
-    # @article ||= Article.find_by(id_digest: params[:id])
+    @article = Article.published.find_by!(id_digest: params[:id])
     @favorite_users = @article.favorite_users
                               .includes(photo_attachment: :blob)
                               .limit 3
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def favorite
-    @article = Article.find_by(id_digest: params[:id])
+    @article = Article.find_by!(id_digest: params[:id])
     @users = @article.favorite_users
                      .includes(photo_attachment: :blob)
                      .page params[:page]
@@ -99,10 +99,10 @@ class ArticlesController < ApplicationController
     result
   end
 
-  def filter_only_post
-    @article = Article.find_by(id_digest: params[:id])
-    request_404 if @article.nil? || @article.draft?
-  end
+  # def filter_only_post
+  #   @article = Article.find_by(id_digest: params[:id])
+  #   request_404 if @article.nil? || @article.draft?
+  # end
 
   def switch_layout
     case action_name

@@ -3,12 +3,13 @@ module Settings
     def index; end
 
     def update
-      input_data = update_params(:profile, :name, :nick_name, :photo, :introduction)
+      input_data = update_params :profile, :name, :nick_name, :introduction
       handler = Settings::Profile::UpdateHandler.new(
         user: current_user,
-        params: input_data
-      )
-      if handler.run
+        params: input_data,
+        photo: params[:profile][:photo]
+      ).run
+      if handler.result
         flash[:success] = 'プロフィールを更新しました'
         redirect_to settings_profile_index_path
       else

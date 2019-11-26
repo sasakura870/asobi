@@ -78,13 +78,18 @@ class UsersController < ApplicationController
   # 仮ユーザーのページは閲覧できない
   # 仮ユーザーが自分のページを閲覧する場合はaccount_activations#indexにリダイレクト
   def filter_temporary_users_page
-    @user = User.find_by(name: params[:id])
-    if @user&.temporary?
-      if @user.id != current_user&.id
-        request_404
-      else
-        redirect_to account_activations_path
-      end
+    if current_user&.temporary? && current_user&.name == params[:id]
+      redirect_to account_activations_path
+    else
+      @user = User.register.find_by! name: params[:id]
     end
+    # @user = User.find_by(name: params[:id])
+    # if @user&.temporary?
+    #   if @user.id != current_user&.id
+    #     request_404
+    #   else
+    #     redirect_to account_activations_path
+    #   end
+    # end
   end
 end

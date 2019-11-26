@@ -15,7 +15,7 @@ class PickupArticleService < ApplicationService
 
   def perform
     pickup_id = Article.published.pluck(:id).sample
-    article = Article.find(pickup_id)
+    article = Article.find pickup_id
     user = article.user
     tag_list = article.tags
     result = PickupArticleResult.new(

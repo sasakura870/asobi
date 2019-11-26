@@ -21,4 +21,8 @@
         .p-comment-form__submit: button.c-hand-write-btn 投稿する
   - else
     .p-list-contents__footer
-      p あなたもコメントしてみませんか？
+      .p-anonymous-form
+        h4.p-anonymous-form__title ユーザー登録してコメントしてみませんか?
+        .p-anonymous-form__signup
+          = link_to '新規登録', signup_path, class: 'c-hand-write-btn c-hand-write-btn--sub-highlight'
+        .p-anonymous-form__submit すでにアカウントを持っている方は#{link_to 'ログイン', login_path, class: 'c-link'}

@@ -63,12 +63,14 @@ mixin
 	project
 ================================*/
 
+@import "./object/project/anonymous_form";
 @import "./object/project/article_card";
 @import "./object/project/article_list_item";
 @import "./object/project/article_post_form";
 @import "./object/project/comment_form";
 @import "./object/project/comment_item";
 @import "./object/project/draft_item";
+@import "./object/project/error_page";
 @import "./object/project/footer";
 @import "./object/project/header";
 @import "./object/project/sticky_menu";
@@ -79,6 +81,7 @@ mixin
 /*
 contents
 ================================*/
+
 @import "./object/project/contents/account_activation_contents";
 @import "./object/project/contents/article_contents";
 @import "./object/project/contents/capsule_toy_contents";

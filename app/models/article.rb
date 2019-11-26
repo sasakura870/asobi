@@ -38,7 +38,7 @@ class Article < ApplicationRecord
   end
 
   def unlink_tag(tag)
-    map = tag_maps.find_by(tag_id: tag.id)
+    map = tag_maps.find_by! tag_id: tag.id
     map.destroy
   end
 

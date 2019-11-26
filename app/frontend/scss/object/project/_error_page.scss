@@ -1,0 +1,33 @@
+.p-error-page {
+  background: $white-color;
+  border: 5px dashed $main-color;
+  width: 900px;
+  margin: 0 auto;
+  padding-top: 1.6rem;
+
+  &__status {
+    margin-bottom: 1em;
+    padding: 0 1.6rem;
+  }
+
+  &__status-code {
+    font-size: 3.2rem;
+    color: $black-color;
+    margin-right: 1.6rem;
+  }
+
+  &__status-text {
+    font-size: 2.4rem;
+    color: $supplement-color;
+  }
+
+  &__description {
+    margin-bottom: 1em;
+    padding: 0 1.6rem;
+  }
+
+  &__home-link {
+    margin-bottom: 1em;
+    padding: 0 1.6rem;
+  }
+}

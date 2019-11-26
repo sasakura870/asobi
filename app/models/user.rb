@@ -85,4 +85,28 @@ class User < ApplicationRecord
     self.send_activation_mail_at = Time.zone.now
     save
   end
+
+  def attach_base64_photo(image)
+    photo.purge if photo.attached?
+
+    content_type = grep_content_type image
+    contents = grep_contents image
+    decoded_data = Base64.decode64(contents)
+    photo.attach(
+      io: StringIO.new(decoded_data),
+      filename: "#{Time.current.to_i}.#{content_type}",
+      content_type: "image/#{content_type}"
+    )
+  end
+
+  private
+
+  def grep_content_type(image)
+    image_type = image[%r/(image\/[a-z]{3,4})|(application\/[a-z]{3,4})/]
+    image_type[%r{\b(?!.*\/).*}]
+  end
+
+  def grep_contents(image)
+    image.sub %r/data:((image|application)\/.{3,}),/, ''
+  end
 end

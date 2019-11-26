@@ -1,0 +1,9 @@
+.p-error-page
+  .p-error-page__status
+    span.p-error-page__status-code 500
+    span.p-error-page__status-text Internal Server Error
+  .p-error-page__description
+    p サーバーエラーが発生しました。
+    p サーバーの問題でお探しのページを表示できません。
+    p 再度時間をおいてアクセスしてください。
+  .p-error-page__home-link = link_to 'トップページへ戻る', root_path, class: 'c-link'

@@ -11,12 +11,16 @@ module Comments
     attr_reader :user, :article_id, :content
 
     def handle
-      result = CreateCommentService.new(user: user, article: article, content: content).call
+      result = CreateCommentService.new(
+        user: user,
+        article: article,
+        content: content
+      ).call
       handle_succeeded message: result.message, model: result.model
     end
 
     def article
-      @article ||= Article.published.find_by(id: article_id)
+      @article ||= Article.published.find_by! id: article_id
     end
   end
 end
