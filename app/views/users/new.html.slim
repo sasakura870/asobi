@@ -22,8 +22,9 @@
         = f.password_field :password_confirmation, placeholder: 'パスワード(確認用)', class: 'p-form-contents__input-field c-text-field__input'
       p.p-form-contents__input-note もう一度パスワードをご入力ください
     .p-form-contents__input
-      .c-check-box
+      .c-check-box.u-mb-2
         = f.check_box :accept, class: 'c-check-box__input'
         = f.label :accept, '利用規約に同意する', class: 'c-check-box__label'
+      = link_to '利用規約を読む', terms_path, target: :_blank
     .p-form-contents__submit
       button.c-hand-write-btn.c-hand-write-btn--wide 新規登録

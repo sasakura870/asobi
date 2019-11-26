@@ -19,7 +19,7 @@
             = f.text_area :introduction, placeholder: '自己紹介を入力…',size: '10x5', class: 'c-text-area'
           p.p-settings-profile-contents__input-note 140字以内
         .p-settings-profile-contents__submit
-          button.c-hand-write-btn type='submit' 更新する
+          button.c-hand-write-btn 更新する
     .p-settings-profile-contents__right
       .p-settings-profile-contents__user-photo
         profile-photo-form :img-src="'#{user_photo_url(visitor)}'" :token="'#{form_authenticity_token}'"
