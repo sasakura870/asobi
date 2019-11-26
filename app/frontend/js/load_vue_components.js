@@ -3,6 +3,7 @@ import DeleteCommentButton from "./components/delete_comment_button";
 import DeleteDraftButton from "./components/delete_draft_button";
 import FollowButton from "./components/follow_button";
 import FollowTagButton from "./components/follow_tag_button";
+import ProfilePhotoForm from "./components/profile_photo_form";
 import RememberButton from "./components/remember_button";
 
 vue.config.ignoredElements = [
@@ -21,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
         DeleteDraftButton,
         FollowButton,
         FollowTagButton,
-        RememberButton
+        ProfilePhotoForm,
+        RememberButton,
       }
     });
   }

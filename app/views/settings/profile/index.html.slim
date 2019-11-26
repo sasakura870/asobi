@@ -21,9 +21,6 @@
         .p-settings-profile-contents__submit
           button.c-hand-write-btn type='submit' 更新する
     .p-settings-profile-contents__right
-      = form_with model: visitor, scope: :profile, url: settings_profile_path(visitor), method: :patch, local: true, class: 'p-settings-profile-contents__form' do |f|
-        .p-settings-profile-contents__user-photo = user_photo visitor, size: 200, class_name: 'c-user-photo'
-        .p-settings-profile-contents__file-field
-          = f.file_field :photo, accept: 'image/*'
-        .p-settings-profile-contents__submit
-          button.c-hand-write-btn type='submit' 変更する
+      .p-settings-profile-contents__user-photo
+        profile-photo-form :img-src="'#{user_photo_url(visitor)}'" :token="'#{form_authenticity_token}'"
+
