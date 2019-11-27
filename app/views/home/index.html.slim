@@ -1,13 +1,6 @@
 - unless visitor.logged_in?
-  = content_for(:jumbotron)
-    .jumbotron.jumbotron-fluid.bgcolor-header.text-white
-      .container
-        .row
-          .col-md-5
-            h1 遊び足りない！！！
-            p 地元に伝わる遊び、いろんなゲームのローカルルール、自分で考えた「遊び」をみんなで共有しよう！
-          .col-md-7
-            h4 ここにスライドショーが入ります。
+  = content_for(:hero_header)
+    = render partial: 'home/hero_header'
 
 = render partial: 'home/trend_articles', locals: { articles: @trend_articles }
 // TODO フォロワーの新着
