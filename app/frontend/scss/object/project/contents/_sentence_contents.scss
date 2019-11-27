@@ -1,0 +1,13 @@
+.p-sentence-contents {
+  @include contents-box();
+
+  h1,
+  h2 {
+    margin-top: 1.6rem;
+  }
+
+  ol {
+    list-style-type: decimal;
+    padding: .5em 0 .5em 1em;
+  }
+}
