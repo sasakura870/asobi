@@ -4,13 +4,8 @@
     ul.p-list-contents__list
       - unless feed_items.blank?
         - feed_items.each do |item|
-          li.p-list-contents__list-item = item.title
-          - visitor.timeline_messages(item).each do |message|
-            div = message
+          li.p-list-contents__list-item
+            = render partial: 'home/timeline_item', locals: { article: item, messages: visitor.timeline_messages(item) }
       - else
         li.p-list-contents__list-item ユーザーやタグをフォローしてタイムラインを充実させましょう！
   .p-list-contents__footer = paginate feed_items
-
-// Userのネームフォーマッティング、name
-// Articleのタイトル、id_digest、時間のフォーマッティング
-// タグリスト

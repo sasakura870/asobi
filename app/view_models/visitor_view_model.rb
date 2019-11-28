@@ -53,12 +53,16 @@ class VisitorViewModel
 
   def timeline_messages(article)
     messages = []
-    messages << "#{article.user.name}さんが投稿しました!" if follow?(article.user)
+    messages << {
+      user: "#{article.user.name}さんが投稿しました!"
+    } if follow?(article.user)
     tag_names = []
     article.tags.each do |tag|
       tag_names << tag.name if follow_tag?(tag)
     end
-    messages << "#{tag_names.join ','}タグが付いた遊びが投稿されました!" unless tag_names.blank?
+    messages << {
+      tag: "#{tag_names.join ','}タグが付いた遊びが投稿されました!"
+    } unless tag_names.blank?
     messages
   end
 
