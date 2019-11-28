@@ -34,7 +34,8 @@ class User < ApplicationRecord
 
   enum status: { temporary: 0,
                  register: 1,
-                 admin: 2 }
+                 admin: 2,
+                 guest: 3 }
 
   has_one_attached :photo
 
