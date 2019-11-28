@@ -2,8 +2,11 @@
   = content_for(:hero_header)
     = render partial: 'home/hero_header'
 
+- if visitor.logged_in?
+  = render partial: 'home/tab_menu', locals: { action: action_name.to_sym }
 = render partial: 'home/trend_articles', locals: { articles: @trend_articles }
 = render partial: 'home/timeline', locals: { feed_items: @feed_items }
+timeline-contents
 
 = content_for(:sidebar) do
   = render partial: 'home/capsule_toy'

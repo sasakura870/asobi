@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :home, only: :index
+  resources :home, only: %i[index update]
 
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'
