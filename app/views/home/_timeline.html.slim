@@ -9,7 +9,7 @@
             div = message
       - else
         li.p-list-contents__list-item ユーザーやタグをフォローしてタイムラインを充実させましょう！
-  .p-list-contents__footer
+  .p-list-contents__footer = paginate feed_items
 
 // Userのネームフォーマッティング、name
 // Articleのタイトル、id_digest、時間のフォーマッティング

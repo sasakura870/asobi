@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :home, only: %i[index update]
+  resources :home, only: %i[index] do
+    get :timeline, on: :collection
+  end
 
   get 'about', to: 'static_pages#about'
   get 'help', to: 'static_pages#help'

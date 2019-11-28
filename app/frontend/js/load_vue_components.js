@@ -5,7 +5,6 @@ import FollowButton from "./components/follow_button";
 import FollowTagButton from "./components/follow_tag_button";
 import ProfilePhotoForm from "./components/profile_photo_form";
 import RememberButton from "./components/remember_button";
-import TimelineContents from "./components/timeline_contents";
 
 vue.config.ignoredElements = [
   'trix-toolbar',
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         FollowTagButton,
         ProfilePhotoForm,
         RememberButton,
-        TimelineContents
       }
     });
   }
