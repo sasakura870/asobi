@@ -1,6 +1,6 @@
 module Settings
   class Base < ApplicationController
-    before_action :filter_only_logged_in_users
+    before_action :pass_only_logged_in_user
 
     protected
 

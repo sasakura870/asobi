@@ -1,5 +1,5 @@
 class AccountActivationsController < ApplicationController
-  before_action :filter_only_temporary
+  before_action :pass_only_temporary
 
   layout 'sessions'
 

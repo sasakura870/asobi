@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :filter_only_guests, only: %i[new create]
+  before_action :pass_only_logout, only: %i[new create]
   before_action :filter_temporary_users_page, only: %i[show favorites followings followers]
 
   layout :switch_layout

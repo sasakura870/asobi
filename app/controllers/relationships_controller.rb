@@ -1,5 +1,5 @@
 class RelationshipsController < ApplicationController
-  before_action :filter_only_register
+  before_action :pass_only_register
 
   def create
     handler = Relationships::CreateHandler.new(

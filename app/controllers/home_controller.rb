@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :filter_only_logged_in_users, only: :timeline
+  before_action :pass_only_logged_in_user, only: :timeline
 
   def index
     handler = Home::IndexHandler.new.run

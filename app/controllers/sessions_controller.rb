@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  before_action :filter_only_logged_in_users, only: :destroy
-  before_action :filter_only_guests, only: %i[new create]
+  before_action :pass_only_logged_in_user, only: :destroy
+  before_action :pass_only_logout, only: %i[new create]
 
   def new; end
 
