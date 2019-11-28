@@ -3,7 +3,7 @@ html lang = 'ja'
   = render partial: 'shared/head'
   body
     = render partial: 'shared/header'
-    = yield(:jumbotron)
+    = yield(:hero_header)
     #container.l-container
       main.l-main.u-flex-size-3.u-mr-3 = yield
       aside.l-sidebar--right.u-flex-size-1 = yield(:sidebar)
