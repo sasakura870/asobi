@@ -59,23 +59,6 @@ class User < ApplicationRecord
     favorites.exists?(article_id: article.id)
   end
 
-  # TODO いらない？
-  # def my_comment?(comment)
-  #   comments.exists?(id: comment.id)
-  # end
-
-  # def already_follow?(user)
-  #   followings.include?(user)
-  # end
-
-  # def followed_by?(user)
-  #   followers.include?(user)
-  # end
-
-  # def already_follow_tag?(tag)
-  #   tags.include?(tag)
-  # end
-
   def activation_mail_expired?
     send_activation_mail_at < 1.day.ago
   end
