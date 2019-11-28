@@ -1,0 +1,12 @@
+.p-list-contents
+  .p-list-contents__header
+    h1 <i class="far fa-clock"></i>タイムライン
+    ul.p-list-contents__list
+      - unless feed_items.blank?
+        - feed_items.each do |item|
+          li.p-list-contents__list-item = item.title
+          - visitor.timeline_messages(item).each do |message|
+            div = message
+      - else
+        li.p-list-contents__list-item ユーザーやタグをフォローしてタイムラインを充実させましょう！
+  .p-list-contents__footer

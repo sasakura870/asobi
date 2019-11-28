@@ -3,9 +3,7 @@
     = render partial: 'home/hero_header'
 
 = render partial: 'home/trend_articles', locals: { articles: @trend_articles }
-// TODO フォロワーの新着
-// TODO フォロータグの新着
-  // TODO 2つ合わせたタイムラインの実装
+= render partial: 'home/timeline', locals: { feed_items: @feed_items }
 
 = content_for(:sidebar) do
   = render partial: 'home/capsule_toy'

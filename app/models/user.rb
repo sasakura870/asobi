@@ -59,21 +59,22 @@ class User < ApplicationRecord
     favorites.exists?(article_id: article.id)
   end
 
-  def my_comment?(comment)
-    comments.exists?(id: comment.id)
-  end
+  # TODO いらない？
+  # def my_comment?(comment)
+  #   comments.exists?(id: comment.id)
+  # end
 
-  def already_follow?(user)
-    followings.include?(user)
-  end
+  # def already_follow?(user)
+  #   followings.include?(user)
+  # end
 
-  def followed_by?(user)
-    followers.include?(user)
-  end
+  # def followed_by?(user)
+  #   followers.include?(user)
+  # end
 
-  def already_follow_tag?(tag)
-    tags.include?(tag)
-  end
+  # def already_follow_tag?(tag)
+  #   tags.include?(tag)
+  # end
 
   def activation_mail_expired?
     send_activation_mail_at < 1.day.ago
@@ -91,7 +92,7 @@ class User < ApplicationRecord
 
     content_type = grep_content_type image
     contents = grep_contents image
-    decoded_data = Base64.decode64(contents)
+    decoded_data = Base64.decode64 contents
     photo.attach(
       io: StringIO.new(decoded_data),
       filename: "#{Time.current.to_i}.#{content_type}",

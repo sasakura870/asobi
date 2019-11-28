@@ -51,6 +51,17 @@ class VisitorViewModel
     logged_in? && @articles.include?(article.id)
   end
 
+  def timeline_messages(article)
+    messages = []
+    messages << "#{article.user.name}さんが投稿しました!" if follow?(article.user)
+    tag_names = []
+    article.tags.each do |tag|
+      tag_names << tag.name if follow_tag?(tag)
+    end
+    messages << "#{tag_names.join ','}タグが付いた遊びが投稿されました!" unless tag_names.blank?
+    messages
+  end
+
   private
 
   # SQLがView内で複数回らないようにidを格納した配列を保持しておく
