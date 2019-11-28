@@ -23,6 +23,7 @@ class TimelineArticlesService < ApplicationService
                        tags: visitor.tag_ids
                      )
                      .distinct
+                     .published
                      .order(created_at: :desc)
                      .page(page)
     service_succeeded model: timeline_items
