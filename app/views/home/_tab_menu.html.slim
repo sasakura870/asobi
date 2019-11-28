@@ -2,7 +2,7 @@
   ul.p-tab-menu__menu
     li.p-tab-menu__menu-item class=('p-tab-menu__menu-item--linked' if action == :index)
       = link_to root_path, class: 'p-tab-menu__menu-item-wrapper c-link'
-        p.p-tab-menu__item-text オススメの遊び
+        p.p-tab-menu__item-text <i class="fas fa-dice fa-fw"></i>おすすめの遊び
     li.p-tab-menu__menu-item class=('p-tab-menu__menu-item--linked' if action == :timeline)
       = link_to timeline_home_index_path, class: 'p-tab-menu__menu-item-wrapper c-link'
-        p.p-tab-menu__item-text タイムライン
+        p.p-tab-menu__item-text <i class="fas fa-clock fa-fw"></i>タイムライン
