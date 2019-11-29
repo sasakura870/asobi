@@ -79,4 +79,6 @@ Article.find_each do |article|
   end
 end
 Favorite.import favorite_list
+Favorite.counter_culture_fix_counts
 Comment.import comment_list
+Comment.counter_culture_fix_counts
