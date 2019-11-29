@@ -39,8 +39,14 @@ class User < ApplicationRecord
 
   has_one_attached :photo
 
+  scope :allowed, -> { register.or(guest) }
+
   def to_param
     name
+  end
+
+  def allowed?
+    register? || guest?
   end
 
   def signup

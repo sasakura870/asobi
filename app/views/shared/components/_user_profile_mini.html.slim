@@ -7,4 +7,4 @@
       = link_to user_name_format(user), user, class: 'c-link'
     - if visitor.logged_in? && !visitor.myself?(user)
       .p-user-profile-mini__follow-btn
-        follow-button　:user-id='#{user.id}' :is-followed='#{visitor.follow?(user)}' :followable='#{visitor.register?}'
+        follow-button　:user-id='#{user.id}' :is-followed='#{visitor.follow?(user)}' :followable='#{visitor.allowed?}'

@@ -12,7 +12,7 @@
             p.p-comment-item__datetime = relative_time comment.created_at
             - if visitor.myself? comment.user
               .p-comment-item__menu: delete-comment-button :comment-id="#{comment.id}"
-  - if visitor.register?
+  - if visitor.allowed?
     .p-list-contents__footer.p-comment-form
       .p-comment-form__user-photo = user_photo visitor, size: 40, class_name: 'c-user-photo'
       = form_with model: Comment.new(user_id: visitor.id), local: true, class: 'p-comment-form__form' do |f|

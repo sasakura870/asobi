@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :pass_only_register, except: %i[show favorite]
-  # before_action :filter_only_post, only: :show
+  before_action :pass_only_allowed, except: %i[show favorite]
 
   layout :switch_layout
 
@@ -98,11 +97,6 @@ class ArticlesController < ApplicationController
     result[:status] = result[:status].to_sym
     result
   end
-
-  # def filter_only_post
-  #   @article = Article.find_by(id_digest: params[:id])
-  #   request_404 if @article.nil? || @article.draft?
-  # end
 
   def switch_layout
     case action_name

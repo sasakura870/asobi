@@ -1,5 +1,5 @@
 class TagMapsController < ApplicationController
-  before_action :pass_only_register
+  before_action :pass_only_allowed
 
   def create
     handler = TagMaps::CreateHandler.new(
