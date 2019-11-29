@@ -3,9 +3,7 @@ class AccountActivationsController < ApplicationController
 
   layout 'sessions'
 
-  def index
-    @user = User.find_by!(name: params[:id])
-  end
+  def index; end
 
   def edit
     handler = AccountActivations::EditHandler.new(
