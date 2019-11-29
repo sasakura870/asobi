@@ -1,11 +1,9 @@
 class AccountActivationsController < ApplicationController
-  before_action :filter_only_temporary
+  before_action :pass_only_temporary
 
   layout 'sessions'
 
-  def index
-    @user = User.find_by!(name: params[:id])
-  end
+  def index; end
 
   def edit
     handler = AccountActivations::EditHandler.new(

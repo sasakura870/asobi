@@ -1,5 +1,7 @@
 module Settings
   class AccountController < Base
+    before_action :filter_only_guest, only: :update
+
     def index; end
 
     def update

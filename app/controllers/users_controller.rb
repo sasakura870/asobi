@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :filter_only_guests, only: %i[new create]
+  before_action :pass_only_logout, only: %i[new create]
   before_action :filter_temporary_users_page, only: %i[show favorites followings followers]
 
   layout :switch_layout
@@ -81,15 +81,7 @@ class UsersController < ApplicationController
     if current_user&.temporary? && current_user&.name == params[:id]
       redirect_to account_activations_path
     else
-      @user = User.register.find_by! name: params[:id]
+      @user = User.allowed.find_by! name: params[:id]
     end
-    # @user = User.find_by(name: params[:id])
-    # if @user&.temporary?
-    #   if @user.id != current_user&.id
-    #     request_404
-    #   else
-    #     redirect_to account_activations_path
-    #   end
-    # end
   end
 end

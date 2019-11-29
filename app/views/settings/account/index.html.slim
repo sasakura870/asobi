@@ -12,7 +12,10 @@
           | 本登録が完了していません。本登録用メールから本登録を行ってください。
           br/
           | 本登録用メールを再送する場合は#{link_to 'こちらをクリックしてください', resend_emails_path, method: :post, remote: true, class: 'c-link'}
-    .p-form-contents__submit: button.c-hand-write-btn 変更する
+    - if visitor.guest?
+      p.u-text-danger ゲストユーザーはメールアドレスの変更はできません
+    -else
+      .p-form-contents__submit: button.c-hand-write-btn 変更する
   .p-form-contents__item
     h3.u-text-bold
       <i class='fas fa-sign-in-alt fa-fw'></i>永続ログインの設定
@@ -22,4 +25,7 @@
     h3.u-text-bold
       <i class='fas fa-trash-alt fa-fw'></i>退会
     p.u-mb-3: strong 退会すると二度と元に戻せません。ご注意ください。
-    = link_to '退会する', settings_quit_index_path, class: 'c-outline-btn c-outline-btn--danger'
+    - if visitor.guest?
+      p.u-text-danger ゲストユーザーは退会できません
+    -else
+      = link_to '退会する', settings_quit_index_path, class: 'c-outline-btn c-outline-btn--danger'

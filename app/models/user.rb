@@ -34,12 +34,19 @@ class User < ApplicationRecord
 
   enum status: { temporary: 0,
                  register: 1,
-                 admin: 2 }
+                 admin: 2,
+                 guest: 3 }
 
   has_one_attached :photo
 
+  scope :allowed, -> { register.or(guest) }
+
   def to_param
     name
+  end
+
+  def allowed?
+    register? || guest?
   end
 
   def signup
@@ -58,23 +65,6 @@ class User < ApplicationRecord
   def already_favorite?(article)
     favorites.exists?(article_id: article.id)
   end
-
-  # TODO いらない？
-  # def my_comment?(comment)
-  #   comments.exists?(id: comment.id)
-  # end
-
-  # def already_follow?(user)
-  #   followings.include?(user)
-  # end
-
-  # def followed_by?(user)
-  #   followers.include?(user)
-  # end
-
-  # def already_follow_tag?(tag)
-  #   tags.include?(tag)
-  # end
 
   def activation_mail_expired?
     send_activation_mail_at < 1.day.ago

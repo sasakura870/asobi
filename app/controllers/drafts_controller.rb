@@ -1,5 +1,5 @@
 class DraftsController < ApplicationController
-  before_action :filter_only_register
+  before_action :pass_only_allowed
   layout 'no_sidebar'
 
   def index

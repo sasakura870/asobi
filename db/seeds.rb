@@ -18,6 +18,13 @@ user_list = []
     status: :register
   )
 end
+user_list << User.new(
+  name: 'guest_user',
+  email: 'guest@asobiexample.com',
+  password: 'guestpassword',
+  password_confirmation: 'guestpassword',
+  status: :guest
+)
 User.import user_list
 Faker::Config.locale = :en
 User.take(20).each do |user|
@@ -72,4 +79,6 @@ Article.find_each do |article|
   end
 end
 Favorite.import favorite_list
+Favorite.counter_culture_fix_counts
 Comment.import comment_list
+Comment.counter_culture_fix_counts

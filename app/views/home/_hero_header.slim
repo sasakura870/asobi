@@ -5,3 +5,5 @@
     | 地元にある変わった遊び、いろんな遊びのローカルルール、自分で創作した遊びやルール、ゲームの縛りプレイ、そんな楽しい遊びを見つけましょう！
   .p-hero-header__session-btn
     = link_to '新規登録する', signup_path, class: 'c-hand-write-btn c-hand-write-btn--sub-highlight'
+    p.u-pv-2 または
+    = link_to 'ゲストユーザーとしてログイン', guest_logins_path, method: :post, class: 'c-hand-write-btn c-hand-write-btn--primary'
