@@ -24,7 +24,8 @@ class ArticlesController < ApplicationController
     @article = Article.find_by!(id_digest: params[:id])
     @users = @article.favorite_users
                      .includes(photo_attachment: :blob)
-                     .page params[:page]
+                     .page(params[:page])
+                     .per(24)
   end
 
   def create

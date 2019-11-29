@@ -13,6 +13,5 @@ class TagsController < ApplicationController
                     .published
                     .recent
                     .page params[:page]
-    # request_404 if @tag.nil?
   end
 end
