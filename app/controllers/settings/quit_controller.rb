@@ -1,5 +1,7 @@
 module Settings
   class QuitController < Base
+    before_action :filter_only_guest
+
     layout 'sessions'
 
     def index; end

@@ -13,7 +13,15 @@ module ActionFilter
 
     def pass_only_temporary
       if logged_in? && current_user.register?
-        redirect_to user_path current_user
+        redirect_to current_user
+      elsif !logged_in?
+        redirect_to login_path
+      end
+    end
+
+    def filter_only_guest
+      if logged_in? && current_user.guest?
+        redirect_to current_user
       elsif !logged_in?
         redirect_to login_path
       end
@@ -24,7 +32,7 @@ module ActionFilter
     end
 
     def pass_only_logout
-      redirect_to user_path(current_user) if logged_in?
+      redirect_to current_user if logged_in?
     end
   end
 end

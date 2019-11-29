@@ -23,6 +23,10 @@ class VisitorViewModel
     logged_in? && user.temporary?
   end
 
+  def guest?
+    logged_in? && user.guest?
+  end
+
   def favorite?(article)
     return false unless logged_in?
 
