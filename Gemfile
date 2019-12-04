@@ -94,6 +94,7 @@ end
 
 group :production do
   gem 'fog'
+  gem 'unicorn', '~> 5.5', '>= 5.5.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
