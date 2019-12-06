@@ -1,0 +1,12 @@
+.p-timeline-item
+  .p-timeline-item__header
+    ul.p-timeline-item__message-list
+      - messages.each do |message|
+        li.p-timeline-item__message-item
+          - if message.keys[0] == :user
+            i.fas.fa-user.fa-fw
+          - else
+            i.fas.fa-tag.fa-fw
+          = message.values[0]
+  .p-timeline-item__body
+    = render partial: 'shared/components/article_list_item', locals: { article: article }

@@ -1,0 +1,73 @@
+.c-text-field {
+  position: relative;
+  width: 100%;
+
+  &::before {
+    position: absolute;
+    top: .4em;
+    left: .8em;
+    font-family: "Font Awesome 5 Free";
+    content: "";
+    transition: 0.2s;
+    color: $supplement-color;
+  }
+
+  &__input {
+    width: 100%;
+    background: $white-color;
+    padding: .3em;
+    border: 2px solid $general-line-color;
+    border-radius: 3px;
+    outline: none;
+    transition: 0.2s;
+
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+
+  &--user {
+    .c-text-field__input {
+      padding: .3em .3em .3em 2em;
+    }
+
+    &::before {
+      font-weight: 900;
+      content: "\f007";
+    }
+  }
+
+  &--search {
+    .c-text-field__input {
+      padding: .3em .3em .3em 2em;
+    }
+
+
+    &::before {
+      font-weight: 900;
+      content: "\f002";
+    }
+  }
+
+  &--email {
+    .c-text-field__input {
+      padding: .3em .3em .3em 2em;
+    }
+
+    &::before {
+      font-weight: 400;
+      content: "\f0e0";
+    }
+  }
+
+  &--password {
+    .c-text-field__input {
+      padding: .3em .3em .3em 2em;
+    }
+
+    &::before {
+      font-weight: 900;
+      content: "\f13e";
+    }
+  }
+}

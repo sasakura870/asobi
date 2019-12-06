@@ -1,0 +1,16 @@
+= render partial: 'shared/error_messages', locals: { model: article }
+= form_with model: article, local: true, class: 'p-article-post-form' do |f|
+  - if article.id_digest.present?
+    = f.hidden_field :id_digest, value: article.id_digest
+  .p-article-post-form__title.c-text-field
+    = f.text_field :title, placeholder: 'タイトルを入力できます(140字まで)', class: 'c-text-field__input'
+  .p-article-post-form__overview.c-text-field
+    = f.text_field :overview, placeholder: '遊びの概要を入力できます(140字まで)', class: 'c-text-field__input'
+  = f.text_field :tag, value: tag_formatting(article.tags) ,placeholder: '記事に関連するタグをスペース区切りで10個まで入力できます(屋外, トランプ, ローカルルール, 兵庫 野球 鬼ごっこ etc...)'
+  .p-article-post-form__content-wrapper
+    = f.rich_text_area :content
+  ul.p-article-post-form__submit-list
+    li.p-article-post-form__submit-item
+      = f.button '下書きに保存', name: 'article[status]', value: 'draft', class: 'c-hand-write-btn c-hand-write-btn--supplement'
+    li.p-article-post-form__submit-item
+      = f.button '投稿する', name: 'article[status]', value: 'published', class: 'c-hand-write-btn'

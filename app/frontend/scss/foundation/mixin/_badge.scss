@@ -1,0 +1,10 @@
+@mixin block-badge {
+  display: inline-block;
+  padding: .35em .5em;
+  border-radius: 5px
+}
+
+@mixin badge-color-extension($color) {
+  background: $color;
+  color: $white-color;
+}

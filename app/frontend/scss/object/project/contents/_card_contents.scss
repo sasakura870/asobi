@@ -1,0 +1,23 @@
+.p-card-contents {
+  @include contents-box();
+
+  &__header {
+    @include contents-header();
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+
+  &__list-item {
+    max-width: fit-content;
+    margin-bottom: 1em;
+  }
+
+  &__footer {
+    text-align: center;
+  }
+}

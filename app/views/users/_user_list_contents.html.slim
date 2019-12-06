@@ -1,0 +1,12 @@
+.p-list-contents
+  .p-list-contents__header
+    h1 = header_title
+  - if users.any?
+    ul.p-list-contents__list
+      - users.find_each do |user|
+        li.p-list-contents__list-item
+          = render partial: 'shared/components/user_list_item', locals: { user: user }
+  - else
+    p = no_contents_message
+  .p-list-contents__footer
+    = paginate users

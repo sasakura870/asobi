@@ -1,0 +1,41 @@
+.p-tab-menu {
+  border: 1px solid $general-line-color;
+  border-radius: 3px;
+  background: $white-color;
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+
+  &__menu-item {
+    flex: 1 1;
+    text-align: center;
+
+    &:hover {
+      background: $general-line-color;
+      border-bottom: 3px solid $main-color;
+    }
+
+    &--linked {
+      background: $general-line-color;
+      border-bottom: 3px solid $main-color;
+    }
+  }
+
+  &__menu-item-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+  }
+
+  &__item-text {
+    margin-right: 1em;
+  }
+
+  &__item-badge {
+    font-size: 1.2rem;
+  }
+}

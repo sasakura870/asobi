@@ -1,0 +1,5 @@
+h1 Asobi
+p 初めまして、#{@user.name}さん！
+p Asobiへようこそ！下記のリンクへアクセスして、本登録を完了してください！
+p: strong リンクの有効期限は仮登録完了から24時間以内です。ご注意ください。
+= link_to '本登録', edit_account_activation_url(@user.activation, email: @user.email)

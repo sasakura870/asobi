@@ -1,0 +1,15 @@
+.c-outline-btn {
+  @include block-btn();
+  @include outline-btn-color-extension($main-color);
+
+  @each $key,
+  $color in $custom-colors {
+    &--#{$key} {
+      @include outline-btn-color-extension(($color));
+    }
+  }
+
+  &--wide {
+    @include wide-btn-extension();
+  }
+}

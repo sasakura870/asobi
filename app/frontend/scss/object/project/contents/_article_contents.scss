@@ -1,0 +1,67 @@
+.p-article-contents {
+  @include contents-box();
+  padding: 2em;
+
+  &__header {
+    @include contents-header();
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  &__datetime {
+    font-size: 1.4rem;
+    margin-bottom: .5em;
+    display: flex;
+  }
+
+  &__created-at {
+    margin-right: 1em;
+
+    span {
+      font-weight: 700;
+      color: $highlight-color;
+    }
+  }
+
+  &__updated-at {
+
+    span {
+      font-weight: 700;
+      color: $sub-highlight-color;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: right;
+    font-size: 1.4rem;
+  }
+
+  &__menu-item {
+    margin-right: 1em;
+  }
+
+  &__overview {
+    margin-bottom: .5em;
+  }
+
+  &__title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+  }
+
+  &__tag-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    margin-bottom: 1em;
+
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}

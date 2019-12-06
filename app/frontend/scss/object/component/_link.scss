@@ -1,0 +1,41 @@
+.c-link {
+  color: $primary-color;
+
+  &:hover {
+    color: darken($primary-color, 30);
+    text-decoration: none;
+  }
+
+  &--brand {
+    color: $white-color;
+
+    &:hover {
+      color: $white-color;
+    }
+  }
+
+  &--global-nav {
+    color: rgba($white-color, 0.5);
+
+    &:hover {
+      color: $white-color;
+    }
+  }
+
+  &--list-nav {
+    color: $supplement-color;
+
+    &:hover {
+      color: $main-color;
+    }
+  }
+
+  &--tag {
+    color: $white-color;
+
+    &:hover {
+      color: $white-color;
+      text-decoration: underline;
+    }
+  }
+}

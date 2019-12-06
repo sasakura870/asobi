@@ -1,0 +1,17 @@
+.p-form-contents
+  .p-form-contents__header: h1 パスワードの変更
+  = form_with model: visitor, scope: :password, url: settings_password_path(visitor), method: :patch, local: true, class: 'p-form-contents__form' do |f|
+    .p-form-contents__input
+      = f.label :old_password, '現在のパスワード', class: 'p-form-contents__input-label'
+      .p-form-contents__input-field.c-text-field.c-text-field--password
+        = f.password_field :old_password, placeholder: '現在のパスワードを入力してください', class: 'c-text-field__input'
+    .p-form-contents__input
+      = f.label :password, '新しいパスワード', class: 'p-form-contents__input-label'
+      .p-form-contents__input-field.c-text-field.c-text-field--password
+        = f.password_field :password, placeholder: '新しいパスワードを入力してください', class: 'c-text-field__input'
+    .p-form-contents__input
+      = f.label :password_confirmation, '新しいパスワード(確認用)', class: 'p-form-contents__input-label'
+      .p-form-contents__input-field.c-text-field.c-text-field--password
+        = f.password_field :password_confirmation, placeholder: '新しいパスワードを入力してください', class: 'c-text-field__input'
+    .p-form-contents__submit
+      button.c-hand-write-btn 変更する

@@ -1,0 +1,5 @@
+p こんにちは、#{@user.name}さん。
+p Asobiにご登録いただいたメールアドレスを確認します。
+p 下記のリンクからアクセスして、認証を完了してください。
+p: strong リンクの有効期限はメールアドレス変更から24時間以内です。ご注意ください。
+= link_to '本登録', edit_account_activation_url(@user.activation, email: @user.email)

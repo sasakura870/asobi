@@ -1,0 +1,13 @@
+.u-text {
+
+  @each $key,
+  $color in $custom-colors {
+    &-#{$key} {
+      color: $color
+    }
+  }
+
+  &-bold {
+    font-weight: 700;
+  }
+}

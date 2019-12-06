@@ -1,0 +1,42 @@
+@each $key,
+$value in $spacers {
+  .u-m-#{$key} {
+    margin: 0 $value $value 0;
+  }
+
+  .u-mr-#{$key} {
+    margin: 0 $value 0 0;
+  }
+
+  .u-mb-#{$key} {
+    margin: 0 0 $value 0;
+  }
+
+  .u-p-#{$key} {
+    padding: $value;
+  }
+
+  .u-pv-#{$key} {
+    padding: $value 0;
+  }
+
+  .u-ph-#{$key} {
+    padding: 0 $value;
+  }
+
+  .u-pt-#{$key} {
+    padding: $value 0 0 0;
+  }
+
+  .u-pr-#{$key} {
+    padding: 0 $value 0 0;
+  }
+
+  .u-pb-#{$key} {
+    padding: 0 0 $value 0;
+  }
+
+  .u-pl-#{$key} {
+    padding: 0 0 0 $value;
+  }
+}

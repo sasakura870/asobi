@@ -1,0 +1,76 @@
+/*===============================
+	サイズ
+================================*/
+$global-page-width: 1200px;
+
+
+/*===============================
+	カラー
+================================*/
+
+/*
+	カスタムカラー(コンポーネントにも同様のカラーのCSSを作成)
+================================*/
+$background-color: #fff4e4;
+$main-color: #f08a5d;
+$highlight-color: #b83b5e;
+$sub-highlight-color: #6a2c70;
+$main-dark-tone-color: darken($main-color, 25);
+$primary-color: #518CFC;
+$danger-color: #DC3445;
+$supplement-color: #939393;
+$gold-color: #DBB400;
+$silver-color: #96A9B3;
+$copper-color: #C47022;
+
+$custom-colors: (bg: $background-color,
+  main: $main-color,
+  highlight: $highlight-color,
+  sub-highlight: $sub-highlight-color,
+  dark-tone: $main-dark-tone-color,
+  primary: $primary-color,
+  danger: $danger-color,
+  supplement: $supplement-color,
+  gold: $gold-color,
+  silver: $silver-color,
+  copper: $copper-color);
+
+/*
+	コンポーネントに使用しないカラー
+================================*/
+$header-color: $main-color;
+$footer-color: $main-color;
+
+$general-line-color: #DDDDDD;
+$white-color: white;
+$black-color: black;
+$float-shadow-color: rgba(0, 0, 0, 0.15);
+
+/*===============================
+	余白
+================================*/
+
+$spacers: (0: 0,
+  1: 1.6rem * .25,
+  2: 1.6rem * .5,
+  3: 1.6rem,
+  4: 1.6rem * 1.5,
+  5: 1.6rem * 3);
+
+/*===============================
+	flexレイアウト用変数
+================================*/
+
+$flex-size-list: (dot-4: 0.4,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6);
+
+/*===============================
+  checkbox用変数
+================================*/
+
+$check-box-size: 1.6rem * 1.5

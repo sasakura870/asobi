@@ -1,0 +1,4 @@
+- if model.errors.present?
+  ul.c-errors
+    - model.errors.full_messages.each do |msg|
+      li.c-errors__item = msg

@@ -1,0 +1,23 @@
+.p-list-contents {
+  @include contents-box();
+
+  &__header {
+    @include contents-header();
+  }
+
+  &__list {
+    margin-bottom: 1em;
+  }
+
+  &__list-item {
+    border-bottom: 1px solid $general-line-color;
+
+    &:not(:last-child) {
+      margin-bottom: 1em;
+    }
+  }
+
+  &__footer {
+    text-align: center;
+  }
+}
