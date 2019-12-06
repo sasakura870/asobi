@@ -26,6 +26,12 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# データベースの設定ファイル
+/config/database.yml
+
+# 本番環境のUnicorn設定ファイル
+/config/unicorn.conf.rb
+
 # rubocop設定ファイル
 .rubocop.yml
 .rubocop_todo.yml

@@ -93,8 +93,9 @@ group :test do
 end
 
 group :production do
-  gem 'fog'
+  gem 'fog-aws'
   gem 'unicorn', '~> 5.5', '>= 5.5.1'
+  gem 'aws-sdk-s3', '~> 1.58'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
