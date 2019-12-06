@@ -1,8 +1,0 @@
-= content_for(:title, user_name_format(@user))
-
-= content_for(:sidebar)
-  = render partial: 'shared/components/user_profile', locals: { user: @user }
-
-.u-mb-3 = render partial: 'users/tab_menu', locals: { user: @user, action: :show }
-= render partial: 'users/article_contents', locals: { articles: @articles, header_title: '新着の遊び', no_contents_message: '投稿された遊びはありません' }
-

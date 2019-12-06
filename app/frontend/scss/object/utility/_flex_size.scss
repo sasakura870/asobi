@@ -1,6 +1,0 @@
-@each $key,
-$value in $flex-size-list {
-  .u-flex-size-#{$key} {
-    flex: $value;
-  }
-}
