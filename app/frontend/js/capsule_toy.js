@@ -5,6 +5,7 @@ const capsuleToyFunc = async function () {
     const articleData = data.article;
     const userData = data.user;
     const tags = data.tags;
+    console.log(userData);
     let articleHtml = `<div class="p-article-card u-float">
           <a href="/articles/${articleData.id_digest}" class="p-article-card__body c-link">
           <p class="p-article-card__overview">${articleData.overview}</p>
@@ -24,7 +25,7 @@ const capsuleToyFunc = async function () {
           <div class="p-article-card__icon">
           <img src="${userData.photo}" width="40" height="40" class="c-user-photo">
           </div>
-          <div class="p-article-card__user-name">${userData.nick_name === "" ? `@${userData.name}` : userData.nick_name}</div>
+          <div class="p-article-card__user-name">${!userData.nick_name ? `@${userData.name}` : userData.nick_name}</div>
           </a>
           </div>`
 
