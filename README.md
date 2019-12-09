@@ -1,24 +1,80 @@
-# README
+# Asobi
+Asobiは様々なローカルルールや自分で考えた遊びを記録・共有するサービスです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# URL
+http://www.asobi-app.com/
 
-Things you may want to cover:
+# 主な機能
+## ユーザー登録
+ユーザーID, メールアドレス, パスワードを入力することで仮登録ができます。
+登録後に送信されるメールに記載されているリンクから本登録が完了します。
+また、ヘッダーアイコンをクリックすると出てくるユーザーメニューの「設定」から各種設定ができます。
 
-* Ruby version
+また、ユーザー登録不要のゲストログインも可能です。ページ上部のヘッダーから簡単にゲストログインできます。
+ゲストユーザーは本登録ユーザーと同様の機能が使えます(メールアドレス変更、退会のみ不可)
 
-* System dependencies
+## 投稿
+登録したユーザーはヘッダーメニューから遊びを作成することができます。
+遊びには「タイトル」「概要」「タグ」「本文」の項目があり、それぞれ記載することで遊びの投稿が可能です。
+本文には、よりよく記述するための様々な編集機能をお使いいただけます。
 
-* Configuration
+また、遊びを下書き保存することも可能です。保存した下書きはユーザーメニューから閲覧、編集が可能です。
 
-* Database creation
+## 閲覧
+投稿された遊びは全てのユーザーが閲覧できます。
+登録済みのユーザーは画面左のボタンから遊びに「いいね」をつけることができます。気に入った遊びには是非いいねを付けましょう。
+また、遊びにコメントすることも可能です。
 
-* Database initialization
+## タグ
+遊びには「タグ」を5つまでつけることができます。
+タグが付けられた遊びの一覧を見ることができるので、関連するタグを付けてユーザーに見つけてもらいやすくしましょう。
 
-* How to run the test suite
+## 検索
+ヘッダーの検索窓からキーワード検索ができます。
+キーワードを入力して検索することで、キーワードに関連する「ユーザー」「遊び」「タグ」を探すことができます。
+検索を利用してお気に入りの遊びを探しましょう。
 
-* Services (job queues, cache servers, search engines, etc.)
+## フォロー
+登録済みのユーザーはユーザーとタグを「フォロー」することができます。
+フォローすることで、トップページのタイムラインにフォローしたユーザーとタグの新着の遊びが表示されます。
 
-* Deployment instructions
+## Asobiガチャ
+Asobiの特徴として、「Asobiガチャ」機能があります。
+これはAsobiに投稿された遊びをランダムに1つ表示する機能です。
+トップページまたは遊びの詳細画面のボタンからAsobiガチャを引くことができます。
+是非Asobiガチャを引いてまだ見ぬ遊びに出会いましょう。
 
-* ...
+# 使用技術
+
+## バックエンド
++ Ruby 2.6.3
++ Ruby on Rails 6.0.0
+  - Webpacker 4.39.3
+  - ActiveStorage
+  - ActionText
+  - slim 4.0.1
+  - kaminari 1.1.1
+  - ActiveRecord-Import 1.0.3
+  - counter_culture 2.2.4
++ RSpec 3.9
+
+## フロントエンド
++ Vue.js 2.6.10
+  - Vue Croppa 1.3.8
++ FontAwesome 5.10.2
++ sweetalert2 8.18.3
++ Tippy.js 5.1.1
++ selectize.js 0.12.6
+
+## インフラ
++ AWS
+  - VPC
+  - EC2
+  - Route 53
+  - RDS
+    * PostgreSQL 11.5
+  - S3
++ Nginx 1.16.1
++ Unicorn 5.5.1
+
+SCSSはフレームワークを使わず、[FLOCSS](https://github.com/hiloki/flocss)に基づいて作成しました。
