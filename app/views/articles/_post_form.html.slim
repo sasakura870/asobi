@@ -6,7 +6,7 @@
     = f.text_field :title, placeholder: 'タイトルを入力できます(140字まで)', class: 'c-text-field__input'
   .p-article-post-form__overview.c-text-field
     = f.text_field :overview, placeholder: '遊びの概要を入力できます(140字まで)', class: 'c-text-field__input'
-  = f.text_field :tag, value: tag_formatting(article.tags) ,placeholder: '記事に関連するタグをスペース区切りで10個まで入力できます(屋外, トランプ, ローカルルール, 兵庫 野球 鬼ごっこ etc...)'
+  = f.text_field :tag, value: tag_formatting(article.tags) ,placeholder: '記事に関連するタグをスペース区切りで5個まで入力できます(屋外, トランプ, ローカルルール, 兵庫 野球 鬼ごっこ etc...)'
   .p-article-post-form__content-wrapper
     = f.rich_text_area :content
   ul.p-article-post-form__submit-list
